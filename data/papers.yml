@@ -1,0 +1,1983 @@
+- id: d13004a0f023
+  title: 基于紧耦合GNSS-视觉-惯性的平滑一致状态估计系统
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=%E5%9F%BA%E4%BA%8E%E7%B4%A7%E8%80%A6%E5%90%88GNSS-%E8%A7%86%E8%A7%89-%E6%83%AF%E6%80%A7%E7%9A%84%E5%B9%B3%E6%BB%91%E4%B8%80%E8%87%B4%E7%8A%B6%E6%80%81%E4%BC%B0%E8%AE%A1%E7%B3%BB%E7%BB%9F
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: unified_global_to_local
+    relevance_score: 1.0
+    tags: []
+    datasets: []
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究跨视角视觉定位；关注轻量化、速度或端侧部署；面向 GNSS-denied 导航或连续定位。
+    benchmarks: []
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: ce14891059e1
+  title: Visual Localization with Google Earth Images for Robust Global Pose Estimation of UAVs
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=Visual%20Localization%20with%20Google%20Earth%20Images%20for%20Robust%20Global%20Pose%20Estimation%20of%20UAVs
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: fine_pose_localization
+    relevance_score: 1.0
+    tags: []
+    datasets: []
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究跨视角视觉定位；面向 GNSS-denied 导航或连续定位。
+    benchmarks: []
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: 295bb428fa52
+  title: Vision-Based UAV Self-Positioning in Low-Altitude Urban Environments
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=Vision-Based%20UAV%20Self-Positioning%20in%20Low-Altitude%20Urban%20Environments
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: retrieval
+    relevance_score: 1.0
+    tags: []
+    datasets:
+    - DenseUAV
+    - University-1652
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究跨视角视觉定位；处理高度变化、尺度差异或视场不一致。
+    benchmarks:
+    - DenseUAV
+    - University-1652
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: 6cf6dbcaed80
+  title: Visible-to-Infrared Image Translation for Matching Tasks
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=Visible-to-Infrared%20Image%20Translation%20for%20Matching%20Tasks
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: navigation_aided
+    relevance_score: 1.0
+    tags: []
+    datasets: []
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究热红外/可见光与卫星图之间的跨模态定位；强调图像/区域对齐以提升精度；缓解跨域、跨模态或环境变化。
+    benchmarks: []
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: f265bcce8a8b
+  title: View Consistent Purification for Accurate Cross-View Localization
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://arxiv.org/abs/2308.08110
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: fine_pose_localization
+    relevance_score: 1.0
+    tags: []
+    datasets: []
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究跨视角视觉定位；强调图像/区域对齐以提升精度。
+    benchmarks: []
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: e134010b5d6e
+  title: University-1652 A Multi-view Multi-source Benchmark for Drone-based Geo-localization
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=University-1652%20A%20Multi-view%20Multi-source%20Benchmark%20for%20Drone-based%20Geo-localization
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: retrieval
+    relevance_score: 1.0
+    tags: []
+    datasets:
+    - University-1652
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究跨视角视觉定位；主要贡献需要结合全文进一步细读。
+    benchmarks:
+    - University-1652
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: 1d9504fbc049
+  title: UAV-VisLoc A Large-scale Dataset for UAV Visual Localization
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=UAV-VisLoc%20A%20Large-scale%20Dataset%20for%20UAV%20Visual%20Localization
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: retrieval
+    relevance_score: 1.0
+    tags: []
+    datasets:
+    - DenseUAV
+    - UAV-VisLoc
+    - University-1652
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究跨视角视觉定位；强调图像/区域对齐以提升精度；处理高度变化、尺度差异或视场不一致；面向 GNSS-denied 导航或连续定位。
+    benchmarks:
+    - DenseUAV
+    - UAV-VisLoc
+    - University-1652
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: 189d681f636e
+  title: UAV-GeoLoc A Large-Vocabulary Dataset and Geometry-Transformed Method for UAV Geo-Localization
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=UAV-GeoLoc%20A%20Large-Vocabulary%20Dataset%20and%20Geometry-Transformed%20Method%20for%20UAV%20Geo-Localization
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: retrieval
+    relevance_score: 1.0
+    tags: []
+    datasets:
+    - DenseUAV
+    - GTA-UAV
+    - SUES-200
+    - UAV-GeoLoc
+    - University-1652
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究跨视角视觉定位；通过检索候选卫星图实现位置估计；强调图像/区域对齐以提升精度；处理高度变化、尺度差异或视场不一致；面向 GNSS-denied 导航或连续定位。
+    benchmarks:
+    - DenseUAV
+    - GTA-UAV
+    - SUES-200
+    - UAV-GeoLoc
+    - University-1652
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: 950172f7f8c8
+  title: UASTHN Uncertainty-Aware Deep Homography Estimation for UAV Satellite-Thermal Geo-Localization
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=UASTHN%20Uncertainty-Aware%20Deep%20Homography%20Estimation%20for%20UAV%20Satellite-Thermal%20Geo-Localization
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: fine_pose_localization
+    relevance_score: 1.0
+    tags: []
+    datasets: []
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究热红外/可见光与卫星图之间的跨模态定位；强调图像/区域对齐以提升精度；缓解跨域、跨模态或环境变化；面向 GNSS-denied 导航或连续定位。
+    benchmarks: []
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: f6975dbe0dea
+  title: Toward Integrating Semantic-aware Path Planning and Reliable Localization for UAV Operations
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=Toward%20Integrating%20Semantic-aware%20Path%20Planning%20and%20Reliable%20Localization%20for%20UAV%20Operations
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: navigation_aided
+    relevance_score: 1.0
+    tags: []
+    datasets: []
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究 UAV 视觉跟踪或目标跟踪；强调图像/区域对齐以提升精度；关注轻量化、速度或端侧部署。
+    benchmarks: []
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: cdfcc0ec1b73
+  title: SliceMatch Geometry-Guided Aggregation for Cross-View Pose Estimation
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=SliceMatch%20Geometry-Guided%20Aggregation%20for%20Cross-View%20Pose%20Estimation
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: fine_pose_localization
+    relevance_score: 1.0
+    tags: []
+    datasets: []
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究跨视角视觉定位；关注轻量化、速度或端侧部署。
+    benchmarks: []
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: 11c3f6572110
+  title: Simple, Effective and General A New Backbone for Cross-view Image Geo-localization
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://arxiv.org/abs/2302.01572
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: unified_global_to_local
+    relevance_score: 1.0
+    tags: []
+    datasets: []
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究跨视角视觉定位；强调图像/区域对齐以提升精度。
+    benchmarks: []
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: 03a071c292ff
+  title: SURFNet A Surface-Aware UAVSatellite Geolocation Framework via Feature Aggregation and Dual Positional Encoding
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=SURFNet%20A%20Surface-Aware%20UAVSatellite%20Geolocation%20Framework%20via%20Feature%20Aggregation%20and%20Dual%20Positional%20Encoding
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: retrieval
+    relevance_score: 1.0
+    tags: []
+    datasets:
+    - DenseUAV
+    - GTA-UAV
+    - SUES-200
+    - University-1652
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究跨视角视觉定位；强调图像/区域对齐以提升精度；关注轻量化、速度或端侧部署；处理高度变化、尺度差异或视场不一致；缓解跨域、跨模态或环境变化；面向 GNSS-denied 导航或连续定位。
+    benchmarks:
+    - DenseUAV
+    - GTA-UAV
+    - SUES-200
+    - University-1652
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: 83972fc6c838
+  title: SUES-200 A Multi-height Multi-scene Cross-view Image Benchmark Across Drone and Satellite
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=SUES-200%20A%20Multi-height%20Multi-scene%20Cross-view%20Image%20Benchmark%20Across%20Drone%20and%20Satellite
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: retrieval
+    relevance_score: 1.0
+    tags: []
+    datasets:
+    - SUES-200
+    - University-1652
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究跨视角视觉定位；强调图像/区域对齐以提升精度；关注轻量化、速度或端侧部署；处理高度变化、尺度差异或视场不一致；面向 GNSS-denied 导航或连续定位。
+    benchmarks:
+    - SUES-200
+    - University-1652
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: b5caac31809c
+  title: STHN Deep Homography Estimation for UAV Thermal Geo-localization with Satellite Imagery
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://arxiv.org/abs/2405.20470
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: fine_pose_localization
+    relevance_score: 1.0
+    tags: []
+    datasets: []
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究热红外/可见光与卫星图之间的跨模态定位；强调图像/区域对齐以提升精度；缓解跨域、跨模态或环境变化；面向 GNSS-denied 导航或连续定位。
+    benchmarks: []
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: 54ed1af6a9b3
+  title: ST-D3QN Advancing UAV Path Planning With an Enhanced Deep Reinforcement Learning Framework in Ultra-Low Altitudes
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=ST-D3QN%20Advancing%20UAV%20Path%20Planning%20With%20an%20Enhanced%20Deep%20Reinforcement%20Learning%20Framework%20in%20Ultra-Low%20Altitudes
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: navigation_aided
+    relevance_score: 1.0
+    tags: []
+    datasets: []
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究 UAV 路径规划与定位协同；处理高度变化、尺度差异或视场不一致。
+    benchmarks: []
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: c58d8d343927
+  title: SMDT Cross-View Geo-Localization with Image Alignment and Transformer
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=SMDT%20Cross-View%20Geo-Localization%20with%20Image%20Alignment%20and%20Transformer
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: retrieval
+    relevance_score: 1.0
+    tags: []
+    datasets:
+    - DenseUAV
+    - SUES-200
+    - University-1652
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究视觉分割/遥感分割相关方法；强调图像/区域对齐以提升精度。
+    benchmarks:
+    - DenseUAV
+    - SUES-200
+    - University-1652
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: 2b493532d767
+  title: SHAA Spatial Hybrid Attention Network With Adaptive Cross-Entropy Loss Function for UAV-View Geo-Localization
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=SHAA%20Spatial%20Hybrid%20Attention%20Network%20With%20Adaptive%20Cross-Entropy%20Loss%20Function%20for%20UAV-View%20Geo-Localization
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: retrieval
+    relevance_score: 1.0
+    tags: []
+    datasets:
+    - DenseUAV
+    - SUES-200
+    - University-1652
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究跨视角视觉定位；强调图像/区域对齐以提升精度；面向 GNSS-denied 导航或连续定位。
+    benchmarks:
+    - DenseUAV
+    - SUES-200
+    - University-1652
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: d677dd26cb3e
+  title: SCOF Supervised Contrastive Orthogonal Fusion for Robust Cross-View Geolocalization
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=SCOF%20Supervised%20Contrastive%20Orthogonal%20Fusion%20for%20Robust%20Cross-View%20Geolocalization
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: retrieval
+    relevance_score: 1.0
+    tags: []
+    datasets:
+    - DenseUAV
+    - SUES-200
+    - University-1652
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究跨视角视觉定位；强调图像/区域对齐以提升精度；面向 GNSS-denied 导航或连续定位。
+    benchmarks:
+    - DenseUAV
+    - SUES-200
+    - University-1652
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: ccd22757308c
+  title: SAVL Scene-Adaptive UAV Visual Localization Using Sparse Feature Extraction and Incremental Descriptor Mapping
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=SAVL%20Scene-Adaptive%20UAV%20Visual%20Localization%20Using%20Sparse%20Feature%20Extraction%20and%20Incremental%20Descriptor%20Mapping
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: fine_pose_localization
+    relevance_score: 1.0
+    tags: []
+    datasets:
+    - DenseUAV
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究跨视角视觉定位；强调图像/区域对齐以提升精度；面向 GNSS-denied 导航或连续定位。
+    benchmarks:
+    - DenseUAV
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: 9a41c34577e0
+  title: Rethinking Cross-view Object Geo-Localization Towards Many-to-Many Real-world Localization
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=Rethinking%20Cross-view%20Object%20Geo-Localization%20Towards%20Many-to-Many%20Real-world%20Localization
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: navigation_aided
+    relevance_score: 1.0
+    tags: []
+    datasets: []
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究跨视角视觉定位；强调图像/区域对齐以提升精度。
+    benchmarks: []
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: 5f3026c15e82
+  title: R2PLoc A Region-to-Point UAV Visual Geo-Localization Framework Leveraging Hierarchical Semantic Representation
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=R2PLoc%20A%20Region-to-Point%20UAV%20Visual%20Geo-Localization%20Framework%20Leveraging%20Hierarchical%20Semantic%20Representation
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: unified_global_to_local
+    relevance_score: 1.0
+    tags: []
+    datasets:
+    - DenseUAV
+    - SUES-200
+    - UAV-VisLoc
+    - University-1652
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究跨视角视觉定位；通过检索候选卫星图实现位置估计；强调图像/区域对齐以提升精度；关注轻量化、速度或端侧部署；处理高度变化、尺度差异或视场不一致。
+    benchmarks:
+    - DenseUAV
+    - SUES-200
+    - UAV-VisLoc
+    - University-1652
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: c8be0750a5a1
+  title: One-to-Many Retrieval Between UAV Images and Satellite Images for UAV Self-Localization in Real-World Scenarios
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=One-to-Many%20Retrieval%20Between%20UAV%20Images%20and%20Satellite%20Images%20for%20UAV%20Self-Localization%20in%20Real-World%20Scenarios
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: unified_global_to_local
+    relevance_score: 1.0
+    tags: []
+    datasets:
+    - DenseUAV
+    - SUES-200
+    - UAV-VisLoc
+    - University-1652
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究跨视角视觉定位；通过检索候选卫星图实现位置估计；强调图像/区域对齐以提升精度；处理高度变化、尺度差异或视场不一致。
+    benchmarks:
+    - DenseUAV
+    - SUES-200
+    - UAV-VisLoc
+    - University-1652
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: 67f7a7aa8d61
+  title: Object-level Cross-view Geo-localization with Location Enhancement and Multi-Head Cross Attention
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=Object-level%20Cross-view%20Geo-localization%20with%20Location%20Enhancement%20and%20Multi-Head%20Cross%20Attention
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: retrieval
+    relevance_score: 1.0
+    tags: []
+    datasets:
+    - SUES-200
+    - University-1652
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究目标级跨视角地理定位；强调图像/区域对齐以提升精度。
+    benchmarks:
+    - SUES-200
+    - University-1652
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: e762d8c49f13
+  title: Notes on Kalman Filter
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=Notes%20on%20Kalman%20Filter
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: navigation_aided
+    relevance_score: 1.0
+    tags: []
+    datasets: []
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究跨视角视觉定位；面向 GNSS-denied 导航或连续定位。
+    benchmarks: []
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: 372e8ffef5dd
+  title: MultiLoc Multi-view Guided Relative Pose Regression for Fast and Robust Visual Re-Localization
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=MultiLoc%20Multi-view%20Guided%20Relative%20Pose%20Regression%20for%20Fast%20and%20Robust%20Visual%20Re-Localization
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: navigation_aided
+    relevance_score: 1.0
+    tags: []
+    datasets: []
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究跨视角视觉定位；通过检索候选卫星图实现位置估计；强调图像/区域对齐以提升精度；处理高度变化、尺度差异或视场不一致；缓解跨域、跨模态或环境变化。
+    benchmarks: []
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: f5df981b2073
+  title: Multi-Level Embedding and Alignment Network with Consistency and Invariance Learning for Cross-View Geo-Localization
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=Multi-Level%20Embedding%20and%20Alignment%20Network%20with%20Consistency%20and%20Invariance%20Learning%20for%20Cross-View%20Geo-Localization
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: retrieval
+    relevance_score: 1.0
+    tags: []
+    datasets:
+    - SUES-200
+    - University-1652
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究跨视角视觉定位；强调图像/区域对齐以提升精度；关注轻量化、速度或端侧部署；缓解跨域、跨模态或环境变化；面向 GNSS-denied 导航或连续定位。
+    benchmarks:
+    - SUES-200
+    - University-1652
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+  discovery:
+    found_by: []
+- id: cd3a222e27f8
+  title: MobileGeo Exploring Hierarchical Knowledge Distillation for Resource-Efficient Cross-view Drone Geo-Localization
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=MobileGeo%20Exploring%20Hierarchical%20Knowledge%20Distillation%20for%20Resource-Efficient%20Cross-view%20Drone%20Geo-Localization
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: retrieval
+    relevance_score: 1.0
+    tags: []
+    datasets:
+    - SUES-200
+    - University-1652
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究知识蒸馏或轻量化表征学习；强调图像/区域对齐以提升精度；关注轻量化、速度或端侧部署；面向 GNSS-denied 导航或连续定位。
+    benchmarks:
+    - SUES-200
+    - University-1652
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: c5cb9de649a1
+  title: Matching 2D Images in 3D Metric Relative Pose from Metric
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=Matching%202D%20Images%20in%203D%20Metric%20Relative%20Pose%20from%20Metric
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: navigation_aided
+    relevance_score: 1.0
+    tags: []
+    datasets: []
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究跨视角视觉定位；强调图像/区域对齐以提升精度；处理高度变化、尺度差异或视场不一致。
+    benchmarks: []
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: f688dd8cddb0
+  title: MMGeo Multimodal Compositional Geo-Localization for UAVs
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=MMGeo%20Multimodal%20Compositional%20Geo-Localization%20for%20UAVs
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: retrieval
+    relevance_score: 1.0
+    tags: []
+    datasets:
+    - DenseUAV
+    - GTA-UAV
+    - Game4Loc
+    - UAV-VisLoc
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究跨视角视觉定位；通过检索候选卫星图实现位置估计；缓解跨域、跨模态或环境变化。
+    benchmarks:
+    - DenseUAV
+    - GTA-UAV
+    - Game4Loc
+    - UAV-VisLoc
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: bd2d89d0fc4e
+  title: MM-Geo Multi-Scale and Multi-Positive UAV-View Geo-Localization
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=MM-Geo%20Multi-Scale%20and%20Multi-Positive%20UAV-View%20Geo-Localization
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: retrieval
+    relevance_score: 1.0
+    tags: []
+    datasets:
+    - DenseUAV
+    - GTA-UAV
+    - Game4Loc
+    - UAV-VisLoc
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究跨视角视觉定位；强调图像/区域对齐以提升精度；处理高度变化、尺度差异或视场不一致；面向 GNSS-denied 导航或连续定位。
+    benchmarks:
+    - DenseUAV
+    - GTA-UAV
+    - Game4Loc
+    - UAV-VisLoc
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: 36136642f061
+  title: MCCG A ConvNeXt-Based Multiple-Classifier Method for Cross-View Geo-Localization
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=MCCG%20A%20ConvNeXt-Based%20Multiple-Classifier%20Method%20for%20Cross-View%20Geo-Localization
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: retrieval
+    relevance_score: 1.0
+    tags: []
+    datasets:
+    - SUES-200
+    - University-1652
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究跨视角视觉定位；处理高度变化、尺度差异或视场不一致；面向 GNSS-denied 导航或连续定位。
+    benchmarks:
+    - SUES-200
+    - University-1652
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: c84291931b02
+  title: Long-range UAV Thermal Geo-localization with Satellite Imagery
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=Long-range%20UAV%20Thermal%20Geo-localization%20with%20Satellite%20Imagery
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: fine_pose_localization
+    relevance_score: 1.0
+    tags: []
+    datasets:
+    - Boson-nighttime
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究热红外/可见光与卫星图之间的跨模态定位；缓解跨域、跨模态或环境变化；面向 GNSS-denied 导航或连续定位。
+    benchmarks:
+    - Boson-nighttime
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: cd3dc92a8286
+  title: Leveraging Map Retrieval and Alignment for Robust UAV Visual Geo-Localization
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=Leveraging%20Map%20Retrieval%20and%20Alignment%20for%20Robust%20UAV%20Visual%20Geo-Localization
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: unified_global_to_local
+    relevance_score: 1.0
+    tags: []
+    datasets: []
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究跨视角视觉定位；通过检索候选卫星图实现位置估计；强调图像/区域对齐以提升精度；处理高度变化、尺度差异或视场不一致；面向 GNSS-denied 导航或连续定位。
+    benchmarks: []
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: b28d98811c7b
+  title: Game4Loc A UAV Geo-Localization Benchmark from Game Data
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=Game4Loc%20A%20UAV%20Geo-Localization%20Benchmark%20from%20Game%20Data
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: retrieval
+    relevance_score: 1.0
+    tags: []
+    datasets:
+    - DenseUAV
+    - GTA-UAV
+    - Game4Loc
+    - SUES-200
+    - UAV-VisLoc
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究跨视角视觉定位；通过检索候选卫星图实现位置估计；强调图像/区域对齐以提升精度；处理高度变化、尺度差异或视场不一致；面向 GNSS-denied 导航或连续定位。
+    benchmarks:
+    - DenseUAV
+    - GTA-UAV
+    - Game4Loc
+    - SUES-200
+    - UAV-VisLoc
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: 07f34415191b
+  title: FoundLoc Vision-based Onboard Aerial Localization in the Wild
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=FoundLoc%20Vision-based%20Onboard%20Aerial%20Localization%20in%20the%20Wild
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: navigation_aided
+    relevance_score: 1.0
+    tags: []
+    datasets: []
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究跨视角视觉定位；面向 GNSS-denied 导航或连续定位。
+    benchmarks: []
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: 01a3b5e8b396
+  title: Fine-Grained Cross-View Geo-Localization Using a Correlation-Aware Homography Estimator
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://arxiv.org/abs/2308.16906
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: fine_pose_localization
+    relevance_score: 1.0
+    tags: []
+    datasets: []
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究跨视角视觉定位；强调图像/区域对齐以提升精度；关注轻量化、速度或端侧部署；面向 GNSS-denied 导航或连续定位。
+    benchmarks: []
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: ffa7a7877031
+  title: Enhancing Cross-View Geo-Localization With Domain Alignment and Scene Consistency
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=Enhancing%20Cross-View%20Geo-Localization%20With%20Domain%20Alignment%20and%20Scene%20Consistency
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: retrieval
+    relevance_score: 1.0
+    tags: []
+    datasets:
+    - SUES-200
+    - University-1652
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究跨视角视觉定位；强调图像/区域对齐以提升精度；缓解跨域、跨模态或环境变化；面向 GNSS-denied 导航或连续定位。
+    benchmarks:
+    - SUES-200
+    - University-1652
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: a49bd8bbea92
+  title: Do Keypoints Contain Crucial Information Mining Keypoint Information to Enhance Cross-View Geo-Localization
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=Do%20Keypoints%20Contain%20Crucial%20Information%20Mining%20Keypoint%20Information%20to%20Enhance%20Cross-View%20Geo-Localization
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: retrieval
+    relevance_score: 1.0
+    tags: []
+    datasets:
+    - University-1652
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究跨视角视觉定位；主要贡献需要结合全文进一步细读。
+    benchmarks:
+    - University-1652
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: d04c0e428697
+  title: DINOv2-Based UAV Visual Self-Localization in Low-Altitude Urban Environments
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=DINOv2-Based%20UAV%20Visual%20Self-Localization%20in%20Low-Altitude%20Urban%20Environments
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: retrieval
+    relevance_score: 1.0
+    tags: []
+    datasets:
+    - DenseUAV
+    - SUES-200
+    - University-1652
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究跨视角视觉定位；强调图像/区域对齐以提升精度；处理高度变化、尺度差异或视场不一致；面向 GNSS-denied 导航或连续定位。
+    benchmarks:
+    - DenseUAV
+    - SUES-200
+    - University-1652
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: 8ac25db258bb
+  title: DINO-MSRA 用于无人机与卫星影像跨视角图像检索定位的新型网络架构 平一凡
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=DINO-MSRA%20%E7%94%A8%E4%BA%8E%E6%97%A0%E4%BA%BA%E6%9C%BA%E4%B8%8E%E5%8D%AB%E6%98%9F%E5%BD%B1%E5%83%8F%E8%B7%A8%E8%A7%86%E8%A7%92%E5%9B%BE%E5%83%8F%E6%A3%80%E7%B4%A2%E5%AE%9A%E4%BD%8D%E7%9A%84%E6%96%B0%E5%9E%8B%E7%BD%91%E7%BB%9C%E6%9E%B6%E6%9E%84%20%E5%B9%B3%E4%B8%80%E5%87%A1
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: retrieval
+    relevance_score: 1.0
+    tags: []
+    datasets:
+    - SUES-200
+    - University-1652
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究跨视角视觉定位；通过检索候选卫星图实现位置估计。
+    benchmarks:
+    - SUES-200
+    - University-1652
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: 933a07cca9fd
+  title: Cross-View UAV Geo-Localization with Precision-Focused Efficient Design A Hierarchical Distillation Approach with
+    Multi-view Refinement
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=Cross-View%20UAV%20Geo-Localization%20with%20Precision-Focused%20Efficient%20Design%20A%20Hierarchical%20Distillation%20Approach%20with%20Multi-view%20Refinement
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: retrieval
+    relevance_score: 1.0
+    tags: []
+    datasets:
+    - University-1652
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究知识蒸馏或轻量化表征学习；强调图像/区域对齐以提升精度；关注轻量化、速度或端侧部署；面向 GNSS-denied 导航或连续定位。
+    benchmarks:
+    - University-1652
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: f21c9cfe29c0
+  title: Cross-Attention Between Satellite and Ground Views for Enhanced Fine-Grained Robot
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=Cross-Attention%20Between%20Satellite%20and%20Ground%20Views%20for%20Enhanced%20Fine-Grained%20Robot
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: unified_global_to_local
+    relevance_score: 1.0
+    tags: []
+    datasets: []
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究跨视角视觉定位；强调图像/区域对齐以提升精度；面向 GNSS-denied 导航或连续定位。
+    benchmarks: []
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: d490bde886ee
+  title: Comparative Studies of Descriptor-Based Image Matching Techniques for AAV Applications (1)
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=Comparative%20Studies%20of%20Descriptor-Based%20Image%20Matching%20Techniques%20for%20AAV%20Applications%20%281%29
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: fine_pose_localization
+    relevance_score: 1.0
+    tags: []
+    datasets:
+    - ALTO
+    - DenseUAV
+    - University-1652
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究跨视角视觉定位；强调图像/区域对齐以提升精度；处理高度变化、尺度差异或视场不一致；面向 GNSS-denied 导航或连续定位。
+    benchmarks:
+    - ALTO
+    - DenseUAV
+    - University-1652
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: a88eadab59a7
+  title: CDM-Net A Framework for Cross-View Geo-Localization With Multimodal Data
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://doi.org/10.1109/TGRS.2025.3594544
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: retrieval
+    relevance_score: 1.0
+    tags: []
+    datasets:
+    - SUES-200
+    - University-1652
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究跨视角视觉定位；通过检索候选卫星图实现位置估计；强调图像/区域对齐以提升精度；处理高度变化、尺度差异或视场不一致；缓解跨域、跨模态或环境变化。
+    benchmarks:
+    - SUES-200
+    - University-1652
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: 5692c9145e2b
+  title: CAMP A Cross-View Geo-Localization Method Using Contrastive Attributes Mining and Position-Aware Partitioning
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=CAMP%20A%20Cross-View%20Geo-Localization%20Method%20Using%20Contrastive%20Attributes%20Mining%20and%20Position-Aware%20Partitioning
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: retrieval
+    relevance_score: 1.0
+    tags: []
+    datasets:
+    - SUES-200
+    - University-1652
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究跨视角视觉定位；主要贡献需要结合全文进一步细读。
+    benchmarks:
+    - SUES-200
+    - University-1652
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: 44ce5ac96986
+  title: Bridging the appearance gap Multi-experience localization for long-term visual teach and repeat
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=Bridging%20the%20appearance%20gap%20Multi-experience%20localization%20for%20long-term%20visual%20teach%20and%20repeat
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: navigation_aided
+    relevance_score: 1.0
+    tags: []
+    datasets: []
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究跨视角视觉定位；缓解跨域、跨模态或环境变化。
+    benchmarks: []
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: 9ba16a43537d
+  title: Beyond Matching to Tiles Bridging Unaligned Aerial and Satellite Views for Vision-Only UAV Navigation
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=Beyond%20Matching%20to%20Tiles%20Bridging%20Unaligned%20Aerial%20and%20Satellite%20Views%20for%20Vision-Only%20UAV%20Navigation
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: navigation_aided
+    relevance_score: 1.0
+    tags: []
+    datasets:
+    - University-1652
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究跨视角视觉定位；强调图像/区域对齐以提升精度；关注轻量化、速度或端侧部署；面向 GNSS-denied 导航或连续定位。
+    benchmarks:
+    - University-1652
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: 5f4142a58af4
+  title: APA-BI Adaptive Partition Aggregation and Bidirectional Integration for UAV-View Geo-Localization
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=APA-BI%20Adaptive%20Partition%20Aggregation%20and%20Bidirectional%20Integration%20for%20UAV-View%20Geo-Localization
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: retrieval
+    relevance_score: 1.0
+    tags: []
+    datasets:
+    - DenseUAV
+    - SUES-200
+    - University-1652
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究跨视角视觉定位；通过检索候选卫星图实现位置估计；面向 GNSS-denied 导航或连续定位。
+    benchmarks:
+    - DenseUAV
+    - SUES-200
+    - University-1652
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: de5c1acf58ab
+  title: A Transformer-Based Feature Segmentation and Region Alignment Method for UAV-View Geo-Localization
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://arxiv.org/abs/2201.09206
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: retrieval
+    relevance_score: 1.0
+    tags: []
+    datasets:
+    - University-1652
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究视觉分割/遥感分割相关方法；强调图像/区域对齐以提升精度；关注轻量化、速度或端侧部署；处理高度变化、尺度差异或视场不一致。
+    benchmarks:
+    - University-1652
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: 7ac44ed43a07
+  title: A Novel EAGLe Framework for Robust UAV-View Geo-Localization
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=A%20Novel%20EAGLe%20Framework%20for%20Robust%20UAV-View%20Geo-Localization
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: retrieval
+    relevance_score: 1.0
+    tags: []
+    datasets:
+    - SUES-200
+    - University-1652
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究跨视角视觉定位；通过检索候选卫星图实现位置估计；缓解跨域、跨模态或环境变化。
+    benchmarks:
+    - SUES-200
+    - University-1652
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false
+- id: 0dffafd487e0
+  title: A Hierarchical Absolute Visual Localization System for Low-Altitude Drones in GNSS-Denied Environments
+  year: null
+  venue: ''
+  authors: []
+  abstract: ''
+  urls:
+    paper: https://www.semanticscholar.org/search?q=A%20Hierarchical%20Absolute%20Visual%20Localization%20System%20for%20Low-Altitude%20Drones%20in%20GNSS-Denied%20Environments
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: unified_global_to_local
+    relevance_score: 1.0
+    tags: []
+    datasets: []
+    possible_leaderboard: false
+    reason: migrated from existing local markdown
+    needs_review: true
+  summary:
+    summary_cn: 研究跨视角视觉定位；通过检索候选卫星图实现位置估计；强调图像/区域对齐以提升精度；处理高度变化、尺度差异或视场不一致；面向 GNSS-denied 导航或连续定位。
+    benchmarks: []
+    main_modules: []
+    reported_results: []
+    code_url: null
+    needs_review: true
+  status: parsed
+  verified: false

@@ -1,0 +1,52 @@
+name: Migrate Existing Paper Tables
+
+on:
+  workflow_dispatch:
+    inputs:
+      resolve_links:
+        description: "Resolve paper links with Semantic Scholar"
+        required: false
+        default: "true"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  migrate-existing:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Migrate existing paper tables
+        env:
+          SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
+        shell: bash
+        run: |
+          EXTRA=""
+          if [ "${{ github.event.inputs.resolve_links }}" = "true" ]; then
+            EXTRA="--resolve-links"
+          fi
+          python scripts/uav_cvgl_auto.py migrate-existing $EXTRA
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v8
+        with:
+          branch: bot/migrate-existing-paper-tables
+          title: "Migrate existing paper tables"
+          commit-message: "Migrate existing paper tables to v0.3 format"
+          body: |
+            This PR converts existing paper tables into the public v0.3 format:
+            - removes the visible classification-reason column
+            - renames the content column to research summary
+            - stores classification reasons in data/internal/classification_reasons.yml
+            - rebuilds papers/*.md
+          labels: automated-update, migration

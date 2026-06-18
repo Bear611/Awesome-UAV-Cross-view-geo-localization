@@ -1,0 +1,27 @@
+# These seed papers are used for citation-expansion search.
+# semantic_scholar_id is optional. If missing, the script will search by title first.
+seeds:
+  - dataset: University-1652
+    title: 'University-1652: A Multi-view Multi-source Benchmark for Drone-based Geo-localization'
+    arxiv_id: '2002.12186'
+    semantic_scholar_id: ''
+  - dataset: SUES-200
+    title: 'SUES-200: A Multi-height Multi-scene Cross-view Image Benchmark Across Drone and Satellite'
+    arxiv_id: '2204.10704'
+    semantic_scholar_id: ''
+  - dataset: DenseUAV
+    title: 'Vision-Based UAV Self-Positioning in Low-Altitude Urban Environments'
+    arxiv_id: ''
+    semantic_scholar_id: ''
+  - dataset: UAV-VisLoc
+    title: 'UAV-VisLoc: A Large-scale Dataset for UAV Visual Localization'
+    arxiv_id: ''
+    semantic_scholar_id: ''
+  - dataset: GTA-UAV
+    title: 'Game4Loc: A UAV Geo-Localization Benchmark from Game Data'
+    arxiv_id: ''
+    semantic_scholar_id: ''
+  - dataset: UAV-GeoLoc
+    title: 'UAV-GeoLoc: A Large-Vocabulary Dataset and Geometry-Transformed Method for UAV Geo-Localization'
+    arxiv_id: ''
+    semantic_scholar_id: ''
