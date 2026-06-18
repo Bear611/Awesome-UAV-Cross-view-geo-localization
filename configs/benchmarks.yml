@@ -1,0 +1,36 @@
+benchmarks:
+  - University-1652
+  - SUES-200
+  - DenseUAV
+  - UAV-VisLoc
+  - UAV-GeoLoc
+  - GTA-UAV
+  - Game4Loc
+  - World-UAV
+  - Nardo-Air
+  - ALTO
+  - UAV-R2P
+  - UVL-R2P
+  - Boson-nighttime
+  - Thermal-UAV
+aliases:
+  University-1652:
+    - University 1652
+    - University1652
+  SUES-200:
+    - SUES 200
+  DenseUAV:
+    - Dense UAV
+    - Dense-UAV
+  UAV-VisLoc:
+    - UAV VisLoc
+    - UAV visual localization dataset
+  GTA-UAV:
+    - GTA UAV
+    - Game4Loc
+  UAV-GeoLoc:
+    - UAV GeoLoc
+    - UAVPlace
+  UAV-R2P:
+    - UVL-R2P
+    - R2PLoc benchmark

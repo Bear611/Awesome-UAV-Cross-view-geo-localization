@@ -1,0 +1,160 @@
+- title: A Transformer-Based Feature Segmentation and Region Alignment Method for UAV-View Geo-Localization
+  category: retrieval
+  reason: 摘要包含 UAV/drone 与 satellite/cross-view 定位，并使用典型 UAV-CVGL 检索数据集。
+- title: CDM-Net A Framework for Cross-View Geo-Localization With Multimodal Data
+  category: retrieval
+  reason: 命中关键词 `CDM-Net`，结合题名/摘要判断。
+- title: Enhancing Cross-View Geo-Localization With Domain Alignment and Scene Consistency
+  category: retrieval
+  reason: 摘要包含 UAV/drone 与 satellite/cross-view 定位，并使用典型 UAV-CVGL 检索数据集。
+- title: Game4Loc A UAV Geo-Localization Benchmark from Game Data
+  category: retrieval
+  reason: 命中关键词 `Game4Loc`，结合题名/摘要判断。
+- title: MCCG A ConvNeXt-Based Multiple-Classifier Method for Cross-View Geo-Localization
+  category: retrieval
+  reason: 命中关键词 `MCCG`，结合题名/摘要判断。
+- title: MobileGeo Exploring Hierarchical Knowledge Distillation for Resource-Efficient Cross-view Drone Geo-Localization
+  category: retrieval
+  reason: 命中关键词 `MobileGeo`，结合题名/摘要判断。
+- title: UAV-VisLoc A Large-scale Dataset for UAV Visual Localization
+  category: retrieval
+  reason: 命中关键词 `UAV-VisLoc`，结合题名/摘要判断。
+- title: Do Keypoints Contain Crucial Information Mining Keypoint Information to Enhance Cross-View Geo-Localization
+  category: retrieval
+  reason: 摘要包含 UAV/drone 与 satellite/cross-view 定位，并使用典型 UAV-CVGL 检索数据集。
+- title: Multi-Level Embedding and Alignment Network with Consistency and Invariance Learning for Cross-View Geo-Localization
+  category: retrieval
+  reason: 摘要包含 UAV/drone 与 satellite/cross-view 定位，并使用典型 UAV-CVGL 检索数据集。
+- title: Multilevel Embedding and Alignment Network With Consistency and Invariance Learning for Cross-View Geo-Localization
+  category: retrieval
+  reason: 摘要包含 UAV/drone 与 satellite/cross-view 定位，并使用典型 UAV-CVGL 检索数据集。
+- title: SCOF Supervised Contrastive Orthogonal Fusion for Robust Cross-View Geolocalization
+  category: retrieval
+  reason: 命中关键词 `SCOF`，结合题名/摘要判断。
+- title: SMDT Cross-View Geo-Localization with Image Alignment and Transformer
+  category: retrieval
+  reason: 命中关键词 `SMDT`，结合题名/摘要判断。
+- title: SURFNet A Surface-Aware UAVSatellite Geolocation Framework via Feature Aggregation and Dual Positional Encoding
+  category: retrieval
+  reason: 命中关键词 `SURFNet`，结合题名/摘要判断。
+- title: A Novel EAGLe Framework for Robust UAV-View Geo-Localization
+  category: retrieval
+  reason: 命中关键词 `EAGLe`，结合题名/摘要判断。
+- title: APA-BI Adaptive Partition Aggregation and Bidirectional Integration for UAV-View Geo-Localization
+  category: retrieval
+  reason: 命中关键词 `APA-BI`，结合题名/摘要判断。
+- title: DINO-MSRA 用于无人机与卫星影像跨视角图像检索定位的新型网络架构 平一凡
+  category: retrieval
+  reason: 命中关键词 `DINO-MSRA`，结合题名/摘要判断。
+- title: DINOv2-Based UAV Visual Self-Localization in Low-Altitude Urban Environments
+  category: retrieval
+  reason: 摘要包含 UAV/drone 与 satellite/cross-view 定位，并使用典型 UAV-CVGL 检索数据集。
+- title: SHAA Spatial Hybrid Attention Network With Adaptive Cross-Entropy Loss Function for UAV-View Geo-Localization
+  category: retrieval
+  reason: 命中关键词 `SHAA`，结合题名/摘要判断。
+- title: SUES-200 A Multi-height Multi-scene Cross-view Image Benchmark Across Drone and Satellite
+  category: retrieval
+  reason: 命中关键词 `SUES-200`，结合题名/摘要判断。
+- title: UAV-GeoLoc A Large-Vocabulary Dataset and Geometry-Transformed Method for UAV Geo-Localization
+  category: retrieval
+  reason: 命中关键词 `UAV-GeoLoc`，结合题名/摘要判断。
+- title: University-1652 A Multi-view Multi-source Benchmark for Drone-based Geo-localization
+  category: retrieval
+  reason: 命中关键词 `University-1652`，结合题名/摘要判断。
+- title: Vision-Based UAV Self-Positioning in Low-Altitude Urban Environments
+  category: retrieval
+  reason: 摘要包含 UAV/drone 与 satellite/cross-view 定位，并使用典型 UAV-CVGL 检索数据集。
+- title: Cross-View UAV Geo-Localization with Precision-Focused Efficient Design A Hierarchical Distillation Approach with
+    Multi-view Refinement
+  category: retrieval
+  reason: 摘要包含 UAV/drone 与 satellite/cross-view 定位，并使用典型 UAV-CVGL 检索数据集。
+- title: Object-level Cross-view Geo-localization with Location Enhancement and Multi-Head Cross Attention
+  category: retrieval
+  reason: 摘要包含 UAV/drone 与 satellite/cross-view 定位，并使用典型 UAV-CVGL 检索数据集。
+- title: CAMP A Cross-View Geo-Localization Method Using Contrastive Attributes Mining and Position-Aware Partitioning
+  category: retrieval
+  reason: 命中关键词 `CAMP`，结合题名/摘要判断。
+- title: MM-Geo Multi-Scale and Multi-Positive UAV-View Geo-Localization
+  category: retrieval
+  reason: 命中关键词 `MM-Geo`，结合题名/摘要判断。
+- title: MMGeo Multimodal Compositional Geo-Localization for UAVs
+  category: retrieval
+  reason: 命中关键词 `MMGeo`，结合题名/摘要判断。
+- title: STHN Deep Homography Estimation for UAV Thermal Geo-localization with Satellite Imagery
+  category: fine_pose_localization
+  reason: 命中关键词 `STHN`，结合题名/摘要判断。
+- title: Comparative Studies of Descriptor-Based Image Matching Techniques for AAV Applications (1)
+  category: fine_pose_localization
+  reason: 命中关键词 `Descriptor-Based Image Matching`，结合题名/摘要判断。
+- title: SAVL Scene-Adaptive UAV Visual Localization Using Sparse Feature Extraction and Incremental Descriptor Mapping
+  category: fine_pose_localization
+  reason: 命中关键词 `SAVL`，结合题名/摘要判断。
+- title: Fine-Grained Cross-View Geo-Localization Using a Correlation-Aware Homography Estimator
+  category: fine_pose_localization
+  reason: 摘要强调局部对齐、homography、姿态或候选区域内精定位。
+- title: SliceMatch Geometry-Guided Aggregation for Cross-View Pose Estimation
+  category: fine_pose_localization
+  reason: 摘要强调局部对齐、homography、姿态或候选区域内精定位。
+- title: View Consistent Purification for Accurate Cross-View Localization
+  category: fine_pose_localization
+  reason: 摘要强调局部对齐、homography、姿态或候选区域内精定位。
+- title: Long-range UAV Thermal Geo-localization with Satellite Imagery
+  category: fine_pose_localization
+  reason: 命中关键词 `Long-range UAV Thermal`，结合题名/摘要判断。
+- title: UASTHN Uncertainty-Aware Deep Homography Estimation for UAV Satellite-Thermal Geo-Localization
+  category: fine_pose_localization
+  reason: 命中关键词 `STHN`，结合题名/摘要判断。
+- title: Visual Localization with Google Earth Images for Robust Global Pose Estimation of UAVs
+  category: fine_pose_localization
+  reason: 命中关键词 `Google Earth`，结合题名/摘要判断。
+- title: 基于紧耦合GNSS-视觉-惯性的平滑一致状态估计系统
+  category: unified_global_to_local
+  reason: 摘要同时包含全局候选检索与局部匹配/坐标细化。
+- title: Leveraging Map Retrieval and Alignment for Robust UAV Visual Geo-Localization
+  category: unified_global_to_local
+  reason: 命中关键词 `Map Retrieval and Alignment`，结合题名/摘要判断。
+- title: One-to-Many Retrieval Between UAV Images and Satellite Images for UAV Self-Localization in Real-World Scenarios
+  category: unified_global_to_local
+  reason: 命中关键词 `One-to-Many Retrieval`，结合题名/摘要判断。
+- title: Simple, Effective and General A New Backbone for Cross-view Image Geo-localization
+  category: unified_global_to_local
+  reason: 摘要同时包含全局候选检索与局部匹配/坐标细化。
+- title: A Hierarchical Absolute Visual Localization System for Low-Altitude Drones in GNSS-Denied Environments
+  category: unified_global_to_local
+  reason: 命中关键词 `Hierarchical Absolute Visual Localization`，结合题名/摘要判断。
+- title: R2PLoc A Region-to-Point UAV Visual Geo-Localization Framework Leveraging Hierarchical Semantic Representation
+  category: unified_global_to_local
+  reason: 命中关键词 `R2PLoc`，结合题名/摘要判断。
+- title: Cross-Attention Between Satellite and Ground Views for Enhanced Fine-Grained Robot
+  category: unified_global_to_local
+  reason: 摘要同时包含全局候选检索与局部匹配/坐标细化。
+- title: Visible-to-Infrared Image Translation for Matching Tasks
+  category: navigation_aided
+  reason: 摘要把定位与导航、轨迹、状态估计或路径规划结合。
+- title: Bridging the appearance gap Multi-experience localization for long-term visual teach and repeat
+  category: navigation_aided
+  reason: 摘要把定位与导航、轨迹、状态估计或路径规划结合。
+- title: Notes on Kalman Filter
+  category: navigation_aided
+  reason: 命中关键词 `Kalman`，结合题名/摘要判断。
+- title: Rethinking Cross-view Object Geo-Localization Towards Many-to-Many Real-world Localization
+  category: navigation_aided
+  reason: 摘要把定位与导航、轨迹、状态估计或路径规划结合。
+- title: ST-D3QN Advancing UAV Path Planning With an Enhanced Deep Reinforcement Learning Framework in Ultra-Low Altitudes
+  category: navigation_aided
+  reason: 摘要把定位与导航、轨迹、状态估计或路径规划结合。
+- title: Toward Integrating Semantic-aware Path Planning and Reliable Localization for UAV Operations
+  category: navigation_aided
+  reason: 命中关键词 `Semantic-aware Path Planning`，结合题名/摘要判断。
+- title: FoundLoc Vision-based Onboard Aerial Localization in the Wild
+  category: navigation_aided
+  reason: 摘要把定位与导航、轨迹、状态估计或路径规划结合。
+- title: Beyond Matching to Tiles Bridging Unaligned Aerial and Satellite Views for Vision-Only UAV Navigation
+  category: navigation_aided
+  reason: 命中关键词 `Beyond Matching to Tiles`，结合题名/摘要判断。
+- title: Matching 2D Images in 3D Metric Relative Pose from Metric
+  category: navigation_aided
+  reason: 摘要把定位与导航、轨迹、状态估计或路径规划结合。
+- title: MultiLoc Multi-view Guided Relative Pose Regression for Fast and Robust Visual Re-Localization
+  category: navigation_aided
+  reason: 摘要把定位与导航、轨迹、状态估计或路径规划结合。

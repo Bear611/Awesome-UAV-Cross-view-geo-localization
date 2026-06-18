@@ -1,0 +1,95 @@
+name: Backfill UAV-CVGL Search
+
+on:
+  workflow_dispatch:
+    inputs:
+      start_year:
+        description: "Start year"
+        required: false
+        default: "2016"
+      end_year:
+        description: "End year"
+        required: false
+        default: "2026"
+      limit_per_query:
+        description: "Result limit per keyword query"
+        required: false
+        default: "30"
+      citation_limit:
+        description: "Citation search limit per seed dataset paper"
+        required: false
+        default: "300"
+      classify_limit:
+        description: "Max papers to classify in this run, 0 means all"
+        required: false
+        default: "0"
+      skip_minimax:
+        description: "Set true to only use DeepSeek classification"
+        required: false
+        default: "false"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  backfill-search:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Search historical candidates
+        env:
+          SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
+        run: |
+          python scripts/uav_cvgl_auto.py backfill \
+            --start-year ${{ github.event.inputs.start_year }} \
+            --end-year ${{ github.event.inputs.end_year }} \
+            --limit-per-query ${{ github.event.inputs.limit_per_query }} \
+            --citation-limit ${{ github.event.inputs.citation_limit }}
+
+      - name: Classify candidates
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
+          SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
+          DEEPSEEK_MODEL: ${{ vars.DEEPSEEK_MODEL }}
+          MINIMAX_MODEL: ${{ vars.MINIMAX_MODEL }}
+          MINIMAX_BASE_URL: ${{ vars.MINIMAX_BASE_URL }}
+        shell: bash
+        run: |
+          EXTRA=""
+          if [ "${{ github.event.inputs.skip_minimax }}" = "true" ]; then
+            EXTRA="--skip-minimax"
+          fi
+          python scripts/uav_cvgl_auto.py classify \
+            --input data/backfill_candidates.yml \
+            --mode backfill \
+            --limit ${{ github.event.inputs.classify_limit }} \
+            $EXTRA
+          python scripts/uav_cvgl_auto.py stats --input data/backfill_candidates.yml
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v8
+        with:
+          branch: bot/backfill-uav-cvgl
+          title: "Backfill UAV-CVGL candidates"
+          commit-message: "Backfill UAV-CVGL paper candidates"
+          body: |
+            Large-scale historical search.
+
+            Please review before merging:
+            - data/backfill_candidates.yml
+            - DeepSeek classification
+            - MiniMax summaries
+
+            This PR does not verify leaderboard results.
+          labels: automated-update, backfill

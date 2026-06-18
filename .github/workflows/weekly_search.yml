@@ -1,0 +1,80 @@
+name: Weekly UAV-CVGL Search
+
+on:
+  # Runs every Monday 02:00 UTC = Monday 10:00 Singapore/Beijing time.
+  schedule:
+    - cron: "0 2 * * 1"
+  workflow_dispatch:
+    inputs:
+      days:
+        description: "Search window in days"
+        required: false
+        default: "14"
+      limit_per_query:
+        description: "Result limit per keyword query"
+        required: false
+        default: "15"
+      classify_limit:
+        description: "Max papers to classify in this run, 0 means all"
+        required: false
+        default: "0"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  weekly-search:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Search recent papers
+        run: |
+          python scripts/uav_cvgl_auto.py weekly \
+            --days ${{ github.event.inputs.days || '14' }} \
+            --limit-per-query ${{ github.event.inputs.limit_per_query || '15' }}
+
+      - name: Classify and summarize candidates
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
+          SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
+          DEEPSEEK_MODEL: ${{ vars.DEEPSEEK_MODEL }}
+          MINIMAX_MODEL: ${{ vars.MINIMAX_MODEL }}
+          MINIMAX_BASE_URL: ${{ vars.MINIMAX_BASE_URL }}
+        run: |
+          python scripts/uav_cvgl_auto.py classify \
+            --input data/weekly_candidates.yml \
+            --mode weekly \
+            --limit ${{ github.event.inputs.classify_limit || '0' }}
+          python scripts/uav_cvgl_auto.py stats --input data/weekly_candidates.yml
+
+      - name: Build weekly update page
+        run: python scripts/uav_cvgl_auto.py build-weekly
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v8
+        with:
+          branch: bot/weekly-uav-cvgl-update
+          title: "Weekly UAV-CVGL paper update"
+          commit-message: "Update weekly UAV-CVGL candidates"
+          body: |
+            Automated weekly search.
+
+            Please review before merging:
+            - data/weekly_candidates.yml
+            - weekly_updates/*.md
+            - DeepSeek classification
+            - MiniMax summaries
+
+            This PR does not verify leaderboard results.
+          labels: automated-update, weekly
