@@ -1,0 +1,17 @@
+name: Validate Markdown
+
+on:
+  workflow_dispatch:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check files
+        run: |
+          test -f README.md
+          test -f docs/taxonomy.md
+          test -f leaderboards/leaderboard_summary.md
+          echo "Basic repository files exist."
