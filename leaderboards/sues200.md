@@ -1,12 +1,11 @@
-# SUES-200 标准 Per-Height 设置
+# SUES-200
 
-原始任务同样分为 Drone→Satellite 和 Satellite→Drone。原始指标为不同高度下的 R@1 与 AP。下表不混入跨数据集 UDA 设置。
+These entries are automatically extracted from the v0.4 historical backfill. They are marked unverified and should be manually checked before being treated as an official ranking. Rows are grouped by dataset-specific protocol; metrics with different tasks, splits, or units are not mixed.
 
-| 方法 / 论文 | D→S 150m R@1/AP | D→S 200m R@1/AP | D→S 250m R@1/AP | D→S 300m R@1/AP | S→D 150m R@1/AP | S→D 200m R@1/AP | S→D 250m R@1/AP | S→D 300m R@1/AP |
-|---|---:|---:|---:|---:|---:|---:|---:|---:|
-| MEAN | 95.50 / 96.46 | 98.38 / 98.72 | 98.95 / 99.17 | 99.52 / 99.63 | 97.50 / 94.75 | 100.00 / 97.09 | 100.00 / 98.28 | 100.00 / 99.21 |
-| CAMP | 95.40 / 96.38 | 97.63 / 98.16 | 98.05 / 98.45 | 99.33 / 99.46 | 96.25 / 93.69 | 97.50 / 96.76 | 98.75 / 98.10 | 100.00 / 98.85 |
-| CDM-Net | 93.78 / 95.16 | 97.62 / 98.16 | 98.28 / 98.69 | 99.20 / 99.31 | 95.25 / 92.24 | 98.50 / 96.40 | 99.00 / 97.60 | 99.00 / 98.01 |
-| MCCG | 82.22 / 85.47 | 89.38 / 91.41 | 93.82 / 95.04 | 95.07 / 96.20 | 93.75 / 89.72 | 93.75 / 92.21 | 96.25 / 96.14 | 98.75 / 96.64 |
-| SUES-200 ViT baseline | 59.32 / - | 62.30 / - | 71.35 / - | 77.17 / - | - | - | - | - |
-| DINO-MSRA | 97.20 / - | - | - | - | 98.75 / - | - | - | - |
+Auto-extracted rows: **3**.
+
+| Dataset | Task | Split | Metric | Method | Value | Paper | Source | Verified | Notes |
+|---|---|---|---|---|---:|---|---|---|---|
+| SUES-200 | cross-view retrieval | test, 150 m altitude | AP | Ours (Refined BEV) | 74.5 | Unifying UAV Cross-View Geo-Localization via 3D Geometric Perception | Unifying UAV Cross-View Geo-Localization via 3D Geometric Perception (2026); Table 1 | false | Table 1 (PDF p10); only paper-reported value; needs manual verification |
+| SUES-200 | cross-view retrieval | test, 150 m altitude | R@1 | Ours (Refined BEV) | 68.0 | Unifying UAV Cross-View Geo-Localization via 3D Geometric Perception | Unifying UAV Cross-View Geo-Localization via 3D Geometric Perception (2026); Table 1 | false | Table 1 (PDF p10); only paper-reported value; needs manual verification |
+| SUES-200 | Heterogeneous feature matching / robust estimation | UAV–satellite matching (Table 4) | F-score (%) | Spatial Consistency-Guided Sampling (proposed) | 92.65 | A Spatial Consistency-Guided Sampling Algorithm for UAV Remote Sensing Heterogeneous Image Matching | A Spatial Consistency-Guided Sampling Algorithm for UAV Remote Sensing Heterogeneous Image Matching (2025); Table 4 in paper | false | Precision 94.63%, Recall 91.75%, MPE 0.0463 px. Matching F-score, not SUES-200 cross-view retrieval accuracy. Marked unverified. |
