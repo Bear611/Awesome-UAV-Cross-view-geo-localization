@@ -1,82 +1,80 @@
-# UAV-CVGL Automation v0.3
+﻿# Automation Guide
 
-This automation has two modes.
+## Search Modes
 
-## Mode 1: Backfill
+### Full Backfill Search
 
-Backfill is a high-recall historical search mode. It searches by high-frequency UAV-CVGL keywords and by papers that cite seed dataset papers such as University-1652, SUES-200, DenseUAV, UAV-VisLoc, GTA-UAV, and UAV-GeoLoc.
+This mode performs a full historical search. It is intended for manual runs.
 
-Backfill is not scheduled. Run it manually because it can generate many candidates and consume API credits.
+Pipeline:
 
-## Mode 2: Weekly Watch
+1. Keyword search with Semantic Scholar, OpenAlex, and arXiv.
+2. Citation expansion with OpenAlex for benchmark seed papers.
+3. Deduplication.
+4. DeepSeek classification, one paper per API call.
+5. MiniMax full-text-assisted English summary and category confirmation, one relevant paper per API call.
+6. Merge parsed candidates into the official paper tables after manual review.
 
-Weekly Watch is a high-precision update mode. It searches recent papers, runs DeepSeek classification, uses MiniMax to summarize relevant papers, generates `data/weekly_candidates.yml`, and creates a weekly markdown update.
+### Weekly Watch
 
-It is scheduled by GitHub Actions every Monday 02:00 UTC.
+This mode searches recent papers only. It can run in GitHub Actions and open a pull request.
 
-## LLM Responsibilities
+## Why OpenAlex for Citation Expansion?
 
-DeepSeek is used for coarse paper classification:
+arXiv does not provide a citation graph API. OpenAlex supports citation expansion through `filter=cites:<OpenAlexWorkId>`, so it is used for benchmark citation search.
 
-- whether the paper belongs to UAV-CVGL;
-- whether it is UAV-related;
-- which of the four categories it belongs to;
-- which benchmarks are mentioned;
-- whether it may contain leaderboard results.
+## Local Full Backfill Command
 
-MiniMax is used for paper summary:
+```cmd
+cd /d D:\download\awesome-uav-cvgl-v0.1\awesome-uav-cvgl-v0.1
 
-- 200-280 Chinese character research summary;
-- proposed modules / methods;
-- benchmark names;
-- reported results if explicitly available;
-- code link if explicitly available.
+set DEEPSEEK_API_KEY=your_new_deepseek_key
+set MINIMAX_API_KEY=your_new_minimax_key
+set DEEPSEEK_MODEL=deepseek-chat
+set MINIMAX_MODEL=MiniMax-M3
+set MINIMAX_BASE_URL=https://api.minimaxi.com/v1
+set MINIMAX_PDF_CHAR_LIMIT=120000
+set MINIMAX_PDF_MAX_PAGES=80
+set MINIMAX_PDF_MAX_BYTES=104857600
+set MINIMAX_PDF_LANDING_MAX_BYTES=3145728
+set MINIMAX_PDF_MAX_CANDIDATES=16
+set MINIMAX_TABLE_CHAR_LIMIT=30000
+MINIMAX_REQUEST_TIMEOUT=180
+MINIMAX_REQUEST_RETRIES=3
+set UAV_CVGL_PDF_CACHE_DIR=data\pdf_cache
 
-## Context Control
+python scripts\uav_cvgl_auto.py backfill --start-year 2016 --end-year 2026 --limit-per-query 15 --citation-limit 150
+python scripts\uav_cvgl_auto.py stats --input data\backfill_candidates.yml
+python scripts\uav_cvgl_auto.py classify --input data\backfill_candidates.yml --mode backfill
+python scripts\uav_cvgl_auto.py stats --input data\backfill_candidates.yml
+python scripts\uav_cvgl_auto.py merge --candidates data\backfill_candidates.yml
 
-The pipeline never sends multiple papers in one prompt.
-
-For each paper:
-
-- unrelated paper: one DeepSeek call only;
-- relevant paper: one DeepSeek call + one MiniMax call.
-
-The default DeepSeek prompt uses title, year, venue, and abstract only. The default MiniMax prompt also uses title, abstract, and DeepSeek classification only. PDF extraction is disabled by default.
-
-## Observable Progress
-
-During local or GitHub Actions execution, logs show:
-
-- searched keyword;
-- number of candidates written;
-- `[current/total]` processing status;
-- whether DeepSeek or MiniMax was called;
-- parsed / rejected / error counts;
-- DeepSeek call count;
-- MiniMax call count.
-
-Every paper is written back to YAML immediately after processing. If the run is interrupted, rerun the command and cached classifications/summaries will be skipped.
-
-## Public Paper Table Format
-
-Generated paper pages use:
-
-```markdown
-| 论文 | 研究内容 | 数据/benchmark | Code |
+git add .
+git commit -m "Run full UAV-CVGL backfill update"
+git push
 ```
 
-The old visible `分类原因` column is removed from public pages. It is stored internally in:
+Notes:
+
+- If a DeepSeek key is prefixed with `ds:`, the local script strips that provider prefix before calling the DeepSeek API.
+- MiniMax summaries must use `MiniMax-M3`; the script stops if `MINIMAX_MODEL` is set to any other model.
+- MiniMax keys may be endpoint-specific. The default endpoint is `https://api.minimaxi.com/v1`; when `https://api.minimax.io/v1` returns an authentication error, the script retries the China endpoint.
+- MiniMax-M3 summaries use accessible PDF text by default when a PDF URL, OpenAlex open-access PDF, DOI landing-page PDF, publisher `citation_pdf_url`, or arXiv PDF can be resolved. Default local limits are 120,000 extracted characters, 80 pages, 100 MB per PDF, 3 MB per landing page, 16 candidate URLs per paper, and 30,000 table-evidence characters. Tune `MINIMAX_PDF_CHAR_LIMIT`, `MINIMAX_PDF_MAX_PAGES`, `MINIMAX_PDF_MAX_BYTES`, `MINIMAX_PDF_LANDING_MAX_BYTES`, `MINIMAX_PDF_MAX_CANDIDATES`, and `MINIMAX_TABLE_CHAR_LIMIT` if the run needs more or less full-text context.
+- MiniMax-M3 receives extracted PDF/HTML table evidence and returns `leaderboard_metrics` rows for unverified leaderboard review. These rows map to `data/leaderboards.csv` columns and should not be promoted into public leaderboard files until manually checked.
+- The public MiniMax OpenAI-compatible API documents MiniMax-M3 text, image, and video inputs. This pipeline therefore passes full paper text extracted from PDFs to MiniMax-M3 rather than assuming an undocumented PDF file content block.
+- For papers that require institutional access, download the PDF through an authorized browser session into `data/pdf_cache` (or another path set by `UAV_CVGL_PDF_CACHE_DIR`). The classifier reads this local cache before trying network PDF discovery. Do not commit downloaded PDFs.
+- MiniMax also returns a second-pass category confirmation. The script stores that confirmation in each paper summary and marks records for review when it disagrees with DeepSeek.
+
+## Generated Reports
+
+Full backfill generates:
 
 ```text
-data/internal/classification_reasons.yml
+data/reports/backfill_search_report.md
+data/reports/backfill_search_report.json
+data/reports/classification_report.md
+data/reports/classification_report.json
 ```
 
-## Security
+These reports show search steps, source counts, algorithm paper counts, survey paper counts, unrelated paper counts, and error counts.
 
-Never write API keys into code, README, issues, pull requests, or logs. Use GitHub Actions Secrets:
-
-- `DEEPSEEK_API_KEY`
-- `MINIMAX_API_KEY`
-- optional: `SEMANTIC_SCHOLAR_API_KEY`
-
-If an API key is accidentally exposed, revoke it immediately and create a new one.

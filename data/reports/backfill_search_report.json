@@ -1,0 +1,599 @@
+{
+  "generated_at": "2026-06-19T15:21:29",
+  "mode": "backfill",
+  "start_year": 2016,
+  "end_year": 2026,
+  "raw_records": 1213,
+  "deduplicated_candidates": 663,
+  "search_stats": {
+    "keyword:semantic_scholar": 75,
+    "keyword:openalex": 427,
+    "keyword:arxiv": 357,
+    "citation:openalex": 354
+  },
+  "details": [
+    {
+      "phase": "keyword",
+      "source": "semantic_scholar",
+      "query": "UAV cross-view geo-localization",
+      "count": 0
+    },
+    {
+      "phase": "keyword",
+      "source": "openalex",
+      "query": "UAV cross-view geo-localization",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "arxiv",
+      "query": "UAV cross-view geo-localization",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "semantic_scholar",
+      "query": "drone cross-view geo-localization",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "openalex",
+      "query": "drone cross-view geo-localization",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "arxiv",
+      "query": "drone cross-view geo-localization",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "semantic_scholar",
+      "query": "UAV-view geo-localization",
+      "count": 0
+    },
+    {
+      "phase": "keyword",
+      "source": "openalex",
+      "query": "UAV-view geo-localization",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "arxiv",
+      "query": "UAV-view geo-localization",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "semantic_scholar",
+      "query": "drone-view geo-localization",
+      "count": 0
+    },
+    {
+      "phase": "keyword",
+      "source": "openalex",
+      "query": "drone-view geo-localization",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "arxiv",
+      "query": "drone-view geo-localization",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "semantic_scholar",
+      "query": "UAV satellite image retrieval",
+      "count": 0
+    },
+    {
+      "phase": "keyword",
+      "source": "openalex",
+      "query": "UAV satellite image retrieval",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "arxiv",
+      "query": "UAV satellite image retrieval",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "semantic_scholar",
+      "query": "drone satellite image retrieval",
+      "count": 0
+    },
+    {
+      "phase": "keyword",
+      "source": "openalex",
+      "query": "drone satellite image retrieval",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "arxiv",
+      "query": "drone satellite image retrieval",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "semantic_scholar",
+      "query": "UAV visual localization satellite",
+      "count": 0
+    },
+    {
+      "phase": "keyword",
+      "source": "openalex",
+      "query": "UAV visual localization satellite",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "arxiv",
+      "query": "UAV visual localization satellite",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "semantic_scholar",
+      "query": "UAV self-positioning satellite",
+      "count": 0
+    },
+    {
+      "phase": "keyword",
+      "source": "openalex",
+      "query": "UAV self-positioning satellite",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "arxiv",
+      "query": "UAV self-positioning satellite",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "semantic_scholar",
+      "query": "UAV geo-localization satellite imagery",
+      "count": 0
+    },
+    {
+      "phase": "keyword",
+      "source": "openalex",
+      "query": "UAV geo-localization satellite imagery",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "arxiv",
+      "query": "UAV geo-localization satellite imagery",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "semantic_scholar",
+      "query": "cross-view UAV localization",
+      "count": 0
+    },
+    {
+      "phase": "keyword",
+      "source": "openalex",
+      "query": "cross-view UAV localization",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "arxiv",
+      "query": "cross-view UAV localization",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "semantic_scholar",
+      "query": "aerial cross-view geo-localization",
+      "count": 0
+    },
+    {
+      "phase": "keyword",
+      "source": "openalex",
+      "query": "aerial cross-view geo-localization",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "arxiv",
+      "query": "aerial cross-view geo-localization",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "semantic_scholar",
+      "query": "UAV satellite image matching",
+      "count": 0
+    },
+    {
+      "phase": "keyword",
+      "source": "openalex",
+      "query": "UAV satellite image matching",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "arxiv",
+      "query": "UAV satellite image matching",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "semantic_scholar",
+      "query": "UAV satellite homography localization",
+      "count": 0
+    },
+    {
+      "phase": "keyword",
+      "source": "openalex",
+      "query": "UAV satellite homography localization",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "arxiv",
+      "query": "UAV satellite homography localization",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "semantic_scholar",
+      "query": "coarse-to-fine UAV geo-localization",
+      "count": 0
+    },
+    {
+      "phase": "keyword",
+      "source": "openalex",
+      "query": "coarse-to-fine UAV geo-localization",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "arxiv",
+      "query": "coarse-to-fine UAV geo-localization",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "semantic_scholar",
+      "query": "region-to-point UAV visual geo-localization",
+      "count": 0
+    },
+    {
+      "phase": "keyword",
+      "source": "openalex",
+      "query": "region-to-point UAV visual geo-localization",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "arxiv",
+      "query": "region-to-point UAV visual geo-localization",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "semantic_scholar",
+      "query": "GNSS-denied UAV visual localization satellite",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "openalex",
+      "query": "GNSS-denied UAV visual localization satellite",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "arxiv",
+      "query": "GNSS-denied UAV visual localization satellite",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "semantic_scholar",
+      "query": "University-1652",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "openalex",
+      "query": "University-1652",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "arxiv",
+      "query": "University-1652",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "semantic_scholar",
+      "query": "SUES-200",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "openalex",
+      "query": "SUES-200",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "arxiv",
+      "query": "SUES-200",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "semantic_scholar",
+      "query": "DenseUAV",
+      "count": 0
+    },
+    {
+      "phase": "keyword",
+      "source": "openalex",
+      "query": "DenseUAV",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "arxiv",
+      "query": "DenseUAV",
+      "count": 6
+    },
+    {
+      "phase": "keyword",
+      "source": "semantic_scholar",
+      "query": "UAV-VisLoc",
+      "count": 0
+    },
+    {
+      "phase": "keyword",
+      "source": "openalex",
+      "query": "UAV-VisLoc",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "arxiv",
+      "query": "UAV-VisLoc",
+      "count": 2
+    },
+    {
+      "phase": "keyword",
+      "source": "semantic_scholar",
+      "query": "UAV-GeoLoc",
+      "count": 0
+    },
+    {
+      "phase": "keyword",
+      "source": "openalex",
+      "query": "UAV-GeoLoc",
+      "count": 7
+    },
+    {
+      "phase": "keyword",
+      "source": "arxiv",
+      "query": "UAV-GeoLoc",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "semantic_scholar",
+      "query": "GTA-UAV",
+      "count": 0
+    },
+    {
+      "phase": "keyword",
+      "source": "openalex",
+      "query": "GTA-UAV",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "arxiv",
+      "query": "GTA-UAV",
+      "count": 2
+    },
+    {
+      "phase": "keyword",
+      "source": "semantic_scholar",
+      "query": "Game4Loc",
+      "count": 0
+    },
+    {
+      "phase": "keyword",
+      "source": "openalex",
+      "query": "Game4Loc",
+      "count": 11
+    },
+    {
+      "phase": "keyword",
+      "source": "arxiv",
+      "query": "Game4Loc",
+      "count": 1
+    },
+    {
+      "phase": "keyword",
+      "source": "semantic_scholar",
+      "query": "World-UAV",
+      "count": 0
+    },
+    {
+      "phase": "keyword",
+      "source": "openalex",
+      "query": "World-UAV",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "arxiv",
+      "query": "World-UAV",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "semantic_scholar",
+      "query": "Nardo-Air",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "openalex",
+      "query": "Nardo-Air",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "arxiv",
+      "query": "Nardo-Air",
+      "count": 0
+    },
+    {
+      "phase": "keyword",
+      "source": "semantic_scholar",
+      "query": "R2PLoc",
+      "count": 0
+    },
+    {
+      "phase": "keyword",
+      "source": "openalex",
+      "query": "R2PLoc",
+      "count": 4
+    },
+    {
+      "phase": "keyword",
+      "source": "arxiv",
+      "query": "R2PLoc",
+      "count": 0
+    },
+    {
+      "phase": "keyword",
+      "source": "semantic_scholar",
+      "query": "UAV-R2P",
+      "count": 0
+    },
+    {
+      "phase": "keyword",
+      "source": "openalex",
+      "query": "UAV-R2P",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "arxiv",
+      "query": "UAV-R2P",
+      "count": 1
+    },
+    {
+      "phase": "keyword",
+      "source": "semantic_scholar",
+      "query": "UAV cross-view geo-localization survey",
+      "count": 0
+    },
+    {
+      "phase": "keyword",
+      "source": "openalex",
+      "query": "UAV cross-view geo-localization survey",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "arxiv",
+      "query": "UAV cross-view geo-localization survey",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "semantic_scholar",
+      "query": "cross-view geo-localization survey UAV",
+      "count": 0
+    },
+    {
+      "phase": "keyword",
+      "source": "openalex",
+      "query": "cross-view geo-localization survey UAV",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "arxiv",
+      "query": "cross-view geo-localization survey UAV",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "semantic_scholar",
+      "query": "survey drone geo-localization satellite",
+      "count": 0
+    },
+    {
+      "phase": "keyword",
+      "source": "openalex",
+      "query": "survey drone geo-localization satellite",
+      "count": 15
+    },
+    {
+      "phase": "keyword",
+      "source": "arxiv",
+      "query": "survey drone geo-localization satellite",
+      "count": 15
+    },
+    {
+      "phase": "citation",
+      "source": "openalex",
+      "query": "University-1652",
+      "count": 150
+    },
+    {
+      "phase": "citation",
+      "source": "openalex",
+      "query": "SUES-200",
+      "count": 104
+    },
+    {
+      "phase": "citation",
+      "source": "openalex",
+      "query": "DenseUAV",
+      "count": 67
+    },
+    {
+      "phase": "citation",
+      "source": "openalex",
+      "query": "UAV-VisLoc",
+      "count": 8
+    },
+    {
+      "phase": "citation",
+      "source": "openalex",
+      "query": "GTA-UAV",
+      "count": 18
+    },
+    {
+      "phase": "citation",
+      "source": "openalex",
+      "query": "UAV-GeoLoc",
+      "count": 0
+    },
+    {
+      "phase": "citation",
+      "source": "openalex",
+      "query": "UAV-R2P",
+      "count": 7
+    }
+  ],
+  "output": "data/backfill_candidates.yml"
+}

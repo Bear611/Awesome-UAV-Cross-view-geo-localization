@@ -27,6 +27,9 @@ backfill_keywords:
   - 'Nardo-Air'
   - 'R2PLoc'
   - 'UAV-R2P'
+  - 'UAV cross-view geo-localization survey'
+  - 'cross-view geo-localization survey UAV'
+  - 'survey drone geo-localization satellite'
 
 # High-precision keywords for weekly watch.
 weekly_keywords:

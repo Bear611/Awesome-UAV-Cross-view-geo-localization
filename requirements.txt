@@ -2,3 +2,5 @@ requests>=2.31.0
 PyYAML>=6.0.1
 rapidfuzz>=3.6.1
 python-dateutil>=2.8.2
+pypdf>=4.0.0
+pdfplumber>=0.11.0

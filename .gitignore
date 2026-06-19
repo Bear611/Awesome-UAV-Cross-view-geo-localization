@@ -4,3 +4,7 @@ __pycache__/
 .env
 .vscode/
 .idea/
+data/pdf_cache/
+data/snapshots/
+data/reports/*.log
+data/reports/*.err.log
