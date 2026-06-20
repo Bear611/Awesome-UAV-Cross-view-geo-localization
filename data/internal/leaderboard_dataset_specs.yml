@@ -1,0 +1,186 @@
+University-1652:
+  dataset: University-1652
+  description: 'University-1652 is a multi-view multi-source benchmark for drone-based cross-view geo-localization. It contains 1,652 university
+    buildings, each captured by drone (oblique), satellite (orthogonal), and ground cameras. The standard split uses 701 buildings for training
+    and 951 for testing. The primary task is cross-view image retrieval: given a query drone image, retrieve the corresponding satellite image
+    (Drone→Satellite), and vice versa (Satellite→Drone). The official evaluation protocol uses Recall@K (R@1, R@5, R@10) and Average Precision
+    (AP) computed over all queries.'
+  official_protocols:
+  - name: Drone→Satellite Retrieval
+    columns:
+    - Method
+    - R@1
+    - R@5
+    - R@10
+    - AP
+    primary_sort_metric: R@1
+    higher_is_better: true
+  - name: Satellite→Drone Retrieval
+    columns:
+    - Method
+    - R@1
+    - R@5
+    - R@10
+    - AP
+    primary_sort_metric: R@1
+    higher_is_better: true
+  inclusion_rules: Only results from the standard 701/951 train/test split are considered. Methods must use only drone and satellite images from
+    the dataset for training and testing (no additional data sources). No post-processing such as re-ranking or test-time augmentation unless
+    explicitly noted and compared under identical conditions. Results must be reported as single-crop, single-pass retrieval numbers.
+  exclusion_rules:
+  - Use of ground-view images or auxiliary datasets for training
+  - Re-ranking, test-time augmentation, or ensemble methods that break the single-pass retrieval protocol
+  - Custom train/test splits that deviate from the official 701/951 partition
+  - Techniques that rely on external geographic metadata (e.g., GPS tags) during training or inference beyond what is provided in the image metadata
+  - Multi-query or multi-view fusion at test time (unless explicitly stated and baseline comparisons adjusted accordingly)
+  dataset_paper_summary: 'The University-1652 dataset was introduced in ''University-1652: A Multi-view Multi-source Benchmark for Drone-based
+    Geo-localization'' (2020). It consists of images from 1,652 university buildings taken from drone, satellite, and ground cameras. The benchmark
+    focuses on cross-view drone–satellite geo-localization, where models must match an oblique drone query to the correct satellite image (or
+    vice versa) without using GPS. The standard evaluation uses Recall@K and Average Precision, and the train/test split comprises 701/951 buildings,
+    respectively.'
+  needs_manual_review: false
+SUES-200:
+  dataset: SUES-200
+  description: SUES-200 is a multi-height, multi-scene cross-view image benchmark for drone and satellite geo-localization. It contains images
+    captured at four drone flight altitudes (150m, 200m, 250m, 300m) with corresponding satellite tiles. The dataset is split into per-altitude
+    training and test sets with disjoint location classes.
+  official_protocols:
+  - name: Standard Supervised Cross-View Retrieval
+    columns:
+    - Mean Drone→Satellite R@1
+    - Mean Drone→Satellite AP
+    - Mean Satellite→Drone R@1
+    - Mean Satellite→Drone AP
+    primary_sort_metric: Mean Drone→Satellite R@1
+    higher_is_better: true
+  inclusion_rules: Methods must use the official SUES-200 training and test splits as defined in the original paper. Training must include both
+    drone and satellite images from the training set. Inference uses a single drone image as query and a gallery of satellite images (or vice
+    versa) without any multi-view aggregation, re-ranking, or test-time augmentation unless explicitly allowed by the original benchmark protocol.
+    Results must be reported on the standard test set for all four altitudes (150m, 200m, 250m, 300m). Metrics are computed as the mean across
+    altitudes for each retrieval direction.
+  exclusion_rules:
+  - Results from ablation studies, weather robustness experiments, zero-shot transfer, or auxiliary tasks.
+  - Methods that use multi-view input at test time, satellite-free training, or other non-standard data usage.
+  - Results that only report on a subset of altitudes or a different validation split.
+  - Methods that apply illegal bells and whistles like extra data, re-ranking, or test-time augmentation beyond the official protocol.
+  dataset_paper_summary: 'SUES-200 is a large-scale cross-view geo-localization benchmark containing drone and satellite image pairs captured
+    at four different flight altitudes (150m, 200m, 250m, 300m). The dataset is split into training and test sets per altitude, each with distinct
+    location classes. The official task is single-image cross-view retrieval: given a query drone image, retrieve the corresponding satellite
+    tile from a gallery (Drone→Satellite) and vice versa (Satellite→Drone). The standard evaluation metrics are recall@K (R@K) and Average Precision
+    (AP), averaged across altitudes. The primary metric for ranking is the mean Drone→Satellite recall@1.'
+  needs_manual_review: false
+DenseUAV:
+  dataset: DenseUAV
+  description: DenseUAV is a cross-view geo-localization dataset for vision-based UAV self-positioning in low-altitude urban environments. The
+    benchmark evaluates the ability to match drone-captured images against geo-tagged satellite tiles. This leaderboard tracks the Drone→Satellite
+    retrieval task using the official train/test split.
+  official_protocols:
+  - name: Drone-to-Satellite Retrieval
+    columns:
+    - Method
+    - Recall@1
+    - AP
+    primary_sort_metric: Recall@1
+    higher_is_better: true
+  inclusion_rules: Only results obtained using the official DenseUAV training set are eligible. The evaluation must be performed on the official
+    test set with no test-time data augmentation, re-ranking, or extra post-processing beyond standard cosine similarity retrieval. Methods must
+    be directly comparable (e.g., using common input resolutions and not relying on additional datasets for pre-training unless explicitly stated
+    as a transfer experiment, which is excluded).
+  exclusion_rules:
+  - Results using additional training data from external datasets (e.g., University-1652, SUES-200) are excluded.
+  - Test-time augmentations (TTA), re-ranking, query expansion, or any post-hoc refinement are disallowed.
+  - Models that differ significantly in input resolution or aspect ratio from the standard protocol (e.g., using multi-scale or multiple crops
+    at test time) are excluded.
+  - Results from zero-shot transfer, domain adaptation, or fine-tuning on a subset of DenseUAV are not accepted in this default leaderboard.
+  - Satellite-to-Drone retrieval results are not tracked here; they belong to a separate, secondary protocol.
+  dataset_paper_summary: Vision-Based UAV Self-Positioning in Low-Altitude Urban Environments (DenseUAV) introduces a benchmark dataset and evaluation
+    protocol for drone-to-satellite cross-view geo-localization. It provides synchronized UAV and satellite imagery covering dense urban scenarios,
+    with standardized train/test splits and evaluation metrics.
+  needs_manual_review: true
+UAV-VisLoc:
+  dataset: UAV-VisLoc
+  description: UAV-VisLoc is a large-scale dataset for cross-view UAV geo-localization in GNSS-denied environments, containing 14,998 UAV images
+    from 30 flight trajectories across six continents, paired with over 120,000 geo-referenced satellite tiles. The images span altitudes from
+    160 to 2,500 meters and include both RGB and infrared modalities from real and synthetic flights.
+  official_protocols:
+  - name: Cross-View Image Retrieval
+    columns:
+    - Recall@1
+    - Recall@5
+    - Recall@10
+    - Recall@1%
+    primary_sort_metric: Recall@1%
+    higher_is_better: true
+  inclusion_rules: Methods must use the official UAV-VisLoc training/test split and evaluate on the provided test set. Results must report at
+    least Recall@1% and Recall@1, computed identically to the baseline protocol (single-query cross-view retrieval of satellite tiles). Training
+    may use the official training set or any external data, as long as testing is solely on the UAV-VisLoc test split with the official gallery
+    and query sets.
+  exclusion_rules:
+  - Methods that do not use the official test split or alter the gallery/query set without justification.
+  - Methods that only report localization error (e.g., mean APE) without standard retrieval recall metrics.
+  - Methods that use additional sensor modalities (GPS, IMU) during the retrieval stage to influence the retrieved set (post-retrieval fusion
+    is allowed if retrieval is isolated and metrics are computed on that stage).
+  - Ablation studies, zero-shot transfer experiments on subsets, or results from data not part of the official release.
+  - Methods evaluated on a custom subset of trajectories that are not representative of the full benchmark (e.g., using only 7 of 9 maps without
+    protocol compliance).
+  dataset_paper_summary: UAV-VisLoc introduces a cross-view image retrieval benchmark for UAV geo-localization without GNSS, providing continuous
+    flight trajectories over six continents and seven scene types. It validates ground-truth annotations and baseline retrieval experiments to
+    establish benchmark usability under diverse real-world conditions.
+  needs_manual_review: false
+GTA-UAV:
+  dataset: GTA-UAV
+  description: GTA-UAV is a synthetic cross-view geo-localization dataset derived from Grand Theft Auto V, featuring UAV and satellite imagery
+    with accurate GPS coordinates. It supports research in UAV self-localization via image retrieval.
+  official_protocols:
+  - name: Cross-Area Retrieval
+    columns:
+    - Method
+    - Recall@1
+    - Recall@5
+    - Recall@10
+    - AP
+    - SDM@3
+    - Dis@1
+    primary_sort_metric: Recall@1
+    higher_is_better: true
+  inclusion_rules: Methods must evaluate on the official GTA-UAV benchmark and report at least Recall@1 under the cross-area evaluation protocol.
+    Evaluations must use the standard training/validation/test splits as defined in the dataset paper. Only RGB images are used; no additional
+    satellite or UAV data beyond the dataset is allowed for training.
+  exclusion_rules:
+  - Methods that use ground truth orientation or depth for retrieval (unless explicitly stated as part of the method and not used for retrieval
+    baseline).
+  - Methods that do not report results on the cross-area protocol (e.g., only same-area).
+  - Methods that use data from other datasets for pre-training and do not clearly indicate the training setting.
+  - Methods that modify the dataset (e.g., different downsampling or coordinate systems) without following the official guidelines.
+  dataset_paper_summary: Game4Loc introduces GTA-UAV, a large-scale synthetic cross-view geo-localization dataset created from the Grand Theft
+    Auto V game engine. It provides paired UAV and satellite imagery with accurate geo-tags across diverse urban scenes under varying conditions.
+    The official benchmark includes a cross-area evaluation protocol where training and testing areas are geographically disjoint. Standard metrics
+    are Recall@K, AP, SDM@3 (success rate at 3m distance), and Dis@1 (average distance error of top-1).
+  needs_manual_review: false
+Game4Loc:
+  dataset: Game4Loc
+  description: Game4Loc is a large-scale cross-view UAV geo-localization benchmark using synthetic data from GTA V. It contains 120k drone-view
+    and satellite image pairs with full 360-degree coverage.
+  official_protocols:
+  - name: Standard Retrieval Protocol
+    columns:
+    - Method / Training Setting
+    - R@1
+    - R@5
+    - R@10
+    - R@1%
+    - mAP
+    - MedR
+    primary_sort_metric: R@1
+    higher_is_better: true
+  inclusion_rules: Only papers that follow the official train/test split and use the standard retrieval evaluation (gallery size as specified
+    by dataset) are included. Methods must be evaluated on the UAV-to-satellite retrieval task.
+  exclusion_rules:
+  - Uses different data splits (e.g., random splits not matching official)
+  - Uses additional training data not in the official training set
+  - Uses different gallery size or evaluation protocol
+  - Ablation studies or variants not representing the main method
+  - Results from transfer learning or domain adaptation experiments not on the main benchmark
+  dataset_paper_summary: Game4Loc is a synthetic UAV geo-localization dataset constructed from GTA V, providing diverse weather, lighting, and
+    altitude conditions. The task is cross-view matching between drone and satellite images.
+  needs_manual_review: false

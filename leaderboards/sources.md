@@ -1,26 +1,29 @@
 # Leaderboard Sources
 
-The v0.4 leaderboard rows are derived from MiniMax-M3 extraction over full-text PDF/HTML/table evidence after DeepSeek relevance filtering. Rows remain `verified=false` until manual review.
+The rebuilt leaderboards are generated from:
 
-| Artifact | Description |
+| Artifact | Role |
 |---|---|
-| `data/leaderboards.csv` | Machine-readable extracted leaderboard rows for configured public benchmarks. |
-| `data/backfill_candidates.yml` | Source candidate records, classification decisions, summaries, and extracted `leaderboard_metrics`. |
-| `data/reports/backfill_search_report.md` | Search-source report confirming OpenAlex citation expansion. |
-| `data/reports/classification_report.md` | Classification and summarization report. |
+| `data/internal/leaderboard_dataset_specs.yml` | DeepSeek-generated dataset protocol and metric specifications. |
+| `data/internal/leaderboard_reviews.yml` | MiniMax-M3 one-paper-at-a-time review cache. |
+| `data/leaderboards.csv` | Machine-readable wide-row leaderboard export. |
+| `data/backfill_candidates.yml` | Original candidate records and prior extraction evidence. |
 
 ## Included Row Counts
 
 | Dataset | Rows |
 |---|---:|
-| University-1652 | 114 |
-| UAV-VisLoc | 18 |
-| DenseUAV | 15 |
-| SUES-200 | 3 |
+| DenseUAV | 5 |
+| GTA-UAV | 2 |
+| SUES-200 | 15 |
+| University-1652 | 51 |
 
 ## Excluded Row Counts
 
 | Dataset | Rows |
 |---|---:|
-| AerialVL | 2 |
-| UL14 | 1 |
+| DenseUAV | 26 |
+| GTA-UAV | 11 |
+| SUES-200 | 50 |
+| UAV-VisLoc | 23 |
+| University-1652 | 116 |

@@ -4,3 +4,4 @@ rapidfuzz>=3.6.1
 python-dateutil>=2.8.2
 pypdf>=4.0.0
 pdfplumber>=0.11.0
+playwright>=1.45.0
