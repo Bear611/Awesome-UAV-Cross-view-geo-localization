@@ -5,7 +5,7 @@ from __future__ import annotations
 
 import argparse
 
-from browser_session_utils import add_common_browser_args, ensure_paths, export_netscape_cookies, import_playwright, print_cookie_domain_summary
+from browser_session_utils import add_common_browser_args, ensure_paths, export_netscape_cookies, import_playwright, launch_persistent_browser, print_cookie_domain_summary
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -24,12 +24,7 @@ def main() -> None:
     print(f"Persistent profile: {args.profile}")
     print(f"Opening: {args.url}")
     with sync_playwright() as p:
-        context = p.chromium.launch_persistent_context(
-            args.profile,
-            headless=False,
-            accept_downloads=True,
-            downloads_path=args.download_dir,
-        )
+        context = launch_persistent_browser(p, args.profile, args.download_dir, args.browser_channel)
         page = context.new_page()
         page.goto(args.url, wait_until="domcontentloaded", timeout=90000)
         input("Use the visible browser as needed. Press Enter here to continue...")

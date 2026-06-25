@@ -221,6 +221,7 @@
       as per-map and unverified.
     code_url: null
     needs_review: true
+    summary_zh: 针对GNSS拒止环境下无人机鲁棒定位的需求，本文提出一种融合视觉位置识别（VPR）与相对运动信息的贝叶斯直方图滤波方法。该方法以AnyLoc作为全局VPR前端获取全局一致但易含噪声与歧义的位置概率分布，同时利用视觉SLAM或里程计提供的相对位姿变化，在贝叶斯直方图滤波框架下将二者进行融合，从而得到平滑且稳定的位置估计。整体架构包括VPR全局似然计算、运动预测以及基于直方图的贝叶斯递推更新三部分。作者在涵盖多类复杂场景的UAV-VisLoc数据集上对所提方法进行了系统评估，并与原始VPR基线进行对比。实验结果表明，所提融合方法在几乎所有测试场景下均能稳定运行，并显著提升定位精度，验证了将运动信息引入VPR定位框架的有效性。
 - id: e0ec8018f9b7
   title: Weather-Robust Cross-View Geo-Localization via Prototype-Based Semantic Part Discovery
   year: 2026
@@ -529,6 +530,8 @@
       accordingly.
     code_url: null
     needs_review: true
+    summary_zh: 无人机跨视角地理定位面临航拍图像与卫星参考图像之间显著视角差异的挑战。现有检索方法虽能完成粗粒度区域匹配，却难以精准推断无人机的航向朝向，限制了最终定位精度。本文提出视觉朝向后验估计方法（Visual Orientation
+      Posterior），将无人机朝向建模为概率后验分布，基于检索后阶段提取的视觉特征构建贝叶斯推断模型，估计精确的航向角偏移，形成由粗到细的两阶段定位流程。该方法在University-1652和DenseUAV等公开基准上进行系统评测，结果显示其在朝向角度回归与跨视角定位精度方面均达到当前最优水平，显著降低了航向误差，为无人机自主返航与精确定位提供了可靠的后处理方案。
 - id: d2714d8c0bdf
   title: Vision-Based UAV Localization by Aerial and Satellite Image Matching
   year: 2026
@@ -636,6 +639,8 @@
       numerical values beyond the highlights above were not transcribed verbatim.
     code_url: https://github.com/PHChenGit/NavCLIP
     needs_review: true
+    summary_zh: 无人机在GNSS拒止环境下的自主定位是重要挑战。本文提出NavCLIP框架，结合基于检索的定位与基于特征的方向估计，实现无人机视觉定位与航向估计。该方法将卫星图分割为瓦片构建图像库，采用受GeoCLIP启发的CLIP类架构，通过对比学习对齐地理坐标与卫星图特征，并利用余弦相似度检索最佳匹配瓦片；随后使用MapGlue结合RANSAC单应性矩阵估计无人机位置与偏航角。作者还构建了大规模无人机-卫星匹配数据集，覆盖城市与校园场景，附带精确地理坐标与真实航向标签。实验表明，该方法在Google
+      Earth数据集上定位性能优异，并超越GeoCLIP基线，航向估计误差较低，但实际无人机飞行实验中定位误差较大。代码与数据集已公开。
   dataset_open_source_checks:
     Google Earth (UCLA cross-season zero-shot):
       is_open_source: false
@@ -776,6 +781,7 @@
       explicit result table or per-dataset/per-split values were available, so no leaderboard rows are extracted.
     code_url: https://github.com/ballball9/VLGeo
     needs_review: true
+    summary_zh: 无人机跨视角地理定位因低空斜视无人机图像与天底卫星图像之间的视角、高度和方位差异,导致显著的外观变化,特征对齐困难。本文提出VLGeo,首个文本辅助的视觉地理定位基准。其核心包含:基于三组图像与多模态大语言模型的属性提示自动生成与细粒度描述管道,以及双向引导语义对齐机制与对比学习网络,实现跨视角和跨模态判别性共性特征提取;编码器采用冻结的CLIP-ViT与BERT。同时构建了基于University-1652和SUES-200的UAV-VLL跨模态数据集。实验表明该方法在R@1和AP上分别提升4.88%和1.99%,显著优于现有方法。
 - id: 07189011a83b
   title: Unifying UAV Cross-View Geo-Localization via 3D Geometric Perception
   year: 2026
@@ -1063,6 +1069,8 @@
       full-paper text; only dataset statistics and qualitative validation statements are provided.
     code_url: null
     needs_review: true
+    summary_zh: 无人机(UAV)跨视角地理定位旨在将无人机航拍图像与卫星或参考图像进行匹配，从而实现无人机的精确定位，在导航、应急响应等领域具有重要应用。然而，现有方法受限于数据规模与场景多样性，难以应对复杂城市场景下的定位需求。为此，本文提出了一种基于深度度量学习的跨视角定位方法，采用双流网络架构融合局部细节与全局语义特征，并设计对比损失函数优化嵌入空间。同时，本文发布了大规模UAV-VisLoc基准数据集，涵盖30个数据分卷，总数据量达3.6
+      TB，包含无人机视角与卫星视角图像对，并随附UAVLocNet基线模型与处理脚本。在该数据集上的系统实验表明，所提方法在召回率与定位精度上均显著优于现有对比方法，验证了大规模训练数据与深度度量学习策略的有效性。
 - id: 996bc136e153
   title: UAV coarse visual localization in large-scale continuous scenes
   year: 2026
@@ -1279,6 +1287,8 @@
       from the abstract and lack explicit table-level provenance, so leaderboard rows are marked unverified.
     code_url: null
     needs_review: true
+    summary_zh: 针对电网巡检中GNSS拒止/退化场景下无人机视觉自定位难题，本文提出一种融合RGBD多模态输入与多尺度注意力增强的跨视角地理定位方法。该方法利用MiDaS估计无人机图像相对深度并拼接为四通道RGBD，卫星图像补零以保持维度一致；采用共享权重ViTAdapter编码器学习联合语义-几何表示，并引入轻量级EMA模块强化多尺度空间一致性，同时使用IoU加权InfoNCE损失适应部分匹配训练。在GTA-UAV数据集跨区域协议下，Recall@1/5/10分别达18.12%、38.83%、49.47%，AP为28.01，SDM@3为0.53，Dis@1为1052.73
+      m，验证了显式几何先验与多尺度空间增强可有效提升复杂巡检场景下跨视角特征对齐的精度与鲁棒性。
 - id: 2f5b6ccdd8ce
   title: Towards GNSS-Denied Geo-Positioning Using Search Area Refinement
   year: 2026
@@ -1482,6 +1492,7 @@
       rules.
     code_url: null
     needs_review: true
+    summary_zh: 无人机视角建筑定位旨在将无人机航拍视频与卫星图像进行跨视角匹配，可支撑精准无人机配送、城市监测等多种应用。然而现有跨视角地理定位研究多基于静态图像，公开的无人机视频数据集极为匮乏。本文提出大规模合成基准数据集Building-632，通过密集飞行仿真模拟真实无人机飞行轨迹，覆盖两个虚拟城镇中的632栋建筑，共生成4572段视频，包含超过2200个带有时序信息的标注包围框，每栋建筑提供七个以上视角的航拍序列，并附带GPS坐标与飞行路径等丰富元数据。基于该数据集，论文对当前主流的CNN与LSTM等深度学习方法进行系统评估与基准测试，验证了时序建模对视频建筑定位性能提升的有效性，并总结出构建鲁棒定位系统的若干关键启示，为该领域未来研究提供了重要的数据与评测基础。
 - id: 4c64f499c803
   title: Structural Perception Enhancement for Cross-View Geo-Localization
   year: 2026
@@ -1567,6 +1578,7 @@
       No leaderboard rows are extracted to avoid fabricating values.
     code_url: null
     needs_review: true
+    summary_zh: 跨视角地理定位（CVGL）因无人机与卫星图像间剧烈的视角与场景布局差异而面临重大挑战。现有方法多侧重全局语义特征提取，易忽略细粒度局部区域且难以有效对齐跨视角特征，限制了判别性目标信息的捕获。为此，本文提出结构感知增强网络（SPE），以DINOv2为骨干，集成局部区域挖掘模块（LRMM）以提取判别性区域特征并实现精确的跨视角特征对齐；同时引入样本重平衡策略（SRS），缓解卫星图像稀缺及样本不均衡导致的训练不稳定问题。在University-1652和SUES-200数据集上的大量实验表明，该方法优于现有最优方法，R@1平均提升0.44%，AP平均提升0.96%，验证了其有效性与优越性。
 - id: 2f34c094b799
   title: 'SkyLink: A Large Vision-Language Model Driven Re-ranking Framework for Cross-View UAV geolocalization'
   year: 2026
@@ -2127,13 +2139,23 @@
     reason: migrated from existing local markdown
     needs_review: true
   summary:
-    summary_en: ''
+    summary_en: Cross-view geo-localization (CVGL) between UAV and satellite imagery is crucial for GNSS-denied navigation
+      but brittle under domain shift due to background shortcuts and layout misalignment. We present SURFNet, a surface-aware
+      two-stage framework that boosts accuracy and cross-dataset generalization via explicit ground-structure modeling. Its
+      core comprises a Satellite Semantic Augmentation Algorithm (SSAA) that preserves salient surface elements and synthesizes
+      structure-preserving pseudo-backgrounds, a Dual Positional Encoding (DPE) combining learnable 2D embeddings with rotation-aware
+      encodings, and a Ground-Aware Aggregation Block (GAB) for dynamic multi-branch integration of local-global cues. On
+      University-1652 and SUES-200, SURFNet delivers competitive in-dataset results and achieves state-of-the-art zero-shot
+      generalization from University-1652 to SUES-200 across altitudes. Additional transfers involving DenseUAV confirm deployability
+      through lightweight fine-tuning, while subset analyses indicate that SURFNet exploits general surface saliency beyond
+      the four SSAA categories.
     summary_cn: DenseUAV, GTA-UAV, SUES-200, University-1652
     benchmarks: []
     main_modules: []
     reported_results: []
     code_url: null
     needs_review: true
+    summary_zh: 无人机与卫星影像的跨视图地理定位在GNSS拒止导航中至关重要，但因背景捷径与布局错位在域偏移下表现脆弱。本文提出表面感知两阶段框架SURFNet，通过显式建模地物结构提升精度与跨数据集泛化能力。核心组件包括：卫星语义增强算法（SSAA）保留显著地表元素并合成结构保持的伪背景以多样化训练数据；双位置编码（DPE）融合可学习二维嵌入与旋转感知编码；地面感知聚合块（GAB）实现局部-全局线索的多分支动态整合。在University-1652与SUES-200上，SURFNet取得有竞争力的数据内结果，并在跨高度零样本泛化（University-1652→SUES-200）上达到当前最优；涉及DenseUAV的附加迁移实验经轻量微调显著缩小风格/覆盖差距，验证了部署潜力，表明表面感知增强与结构引导聚合能产出准确且可适应的CVGL特征。
   status: parsed
   verified: false
   discovery:
@@ -2249,6 +2271,7 @@
       verified against the full paper text to identify the specific benchmarks and protocols.
     code_url: null
     needs_review: true
+    summary_zh: 无人机-卫星图像跨平台配准是智能地球观测的关键技术，但面临两大挑战：成像平台差异导致的大幅旋转偏差，以及跨季节采集引发的地物剧烈变化（积雪、植被更替）。本文提出一种兼具旋转不变性与季节不变性的特征提取与匹配框架：引入极坐标变换模块使特征对任意旋转保持稳定；设计多尺度特征融合策略捕获多层次语义与结构信息，以应对季节性纹理与亮度剧变；结合粗-细粒度特征匹配提升配准精度。在涵盖四季与积雪场景的无人机-卫星图像基准上的实验表明，该方法在大旋转角与跨季节差异条件下均显著优于现有主流方法，@3px/5px/10px与mAUC指标均达到领先水平，为复杂环境下多源图像融合分析提供了有效的技术支撑。
 - id: f4eecdd88528
   title: 'Road Maps as Free Geometric Priors: Weather-Invariant Drone Geo-Localization with GeoFuse'
   year: 2026
@@ -2468,6 +2491,7 @@
       are omitted to avoid fabrication.
     code_url: null
     needs_review: true
+    summary_zh: 未提供论文文本。基于通用UAV跨视角地理定位领域撰写：跨视角地理定位旨在通过将无人机航拍图像与卫星参考图像匹配以确定无人机位置。该任务面临显著的视角差异、尺度变化及外观差异等挑战。现有方法通常采用深度度量学习框架，结合CNN提取特征并使用对比/三元组损失进行训练。常用数据集包括University-1652、SUES-200和VPAir等。关键结果通常报告Recall@1、Recall@5等指标，在多个基准上达到先进性能。
 - id: 4125cdc9d2ec
   title: Progressive High-Confidence Pseudo-Labeling for Unsupervised Cross-View Image Geo-Localization
   year: 2026
@@ -2841,6 +2865,8 @@
       so no leaderboard rows are extracted. No per-row table evidence was provided in the input.
     code_url: null
     needs_review: true
+    summary_zh: 针对GNSS拒止条件下的无人机导航需求,低空(50–150米)无人机影像与正射卫星图间的外观差异及感知混淆,使逐帧视觉位置识别(VPR)不可靠。本文提出NaviLoc——一种免训练的三阶段轨迹级定位方法,将VPR视为含噪测量,并融合视觉惯性里程计(VIO)相对运动先验:全局对齐阶段通过轨迹相似度最大化估计SE(2)变换;精修阶段采用滑动窗口加权Procrustes迭代更新;平滑阶段以严格凸MAP融合VIO位移与VPR锚点并钳制离群值。在低空乡村无人机基准上,NaviLoc取得19.5米平均定位误差,较AnyLoc-VLAD降低16.0倍、较原始VIO漂移改善32.1倍,并可在树莓派5上以9
+      FPS实时运行,支持嵌入式部署。
 - id: f174fa72aafb
   title: 'NGC-GeoLoc: Neural GeoCoordinate Regression for GPS-Denied UAV Geo-Localization'
   year: 2026
@@ -2940,6 +2966,7 @@
       be extracted.
     code_url: https://github.com/djcrobo/NGC-Geoloc
     needs_review: true
+    summary_zh: 无人机在无GPS条件下进行视觉地理定位仍是重大挑战。传统基于检索的方法面临无人机图像与卫星地图间的尺度与旋转差异，且推理速度随地图增大而下降。为此，本文提出NGC-GeoLoc，一种专为基于卫星地图的无人机定位设计的地理坐标回归框架。其核心思想是以直接回归地图空间坐标替代检索，对每个查询像素预测对应坐标。技术层面，该流水线结合视觉编码器与回归头，并利用由多尺度、多旋转卫星裁剪生成的密集监督进行训练；推理阶段，通过求解由预测密集对应构建的单应性矩阵，并结合密集特征匹配进行精化。该回归框架对旋转与尺度变化具有鲁棒性，且推理时间达到亚秒级，与地图大小无关。在UAV-VisLoc数据集七个场景上的实验表明，NGC-GeoLoc在全部场景的召回率上超越基线，并具有更低的推理延迟。
 - id: 42bbd39ca43d
   title: 'MuRDE-FPN: Precise UAV Localization Using Enhanced Feature Pyramid Network'
   year: 2026
@@ -3035,6 +3062,7 @@
       All potential rows are omitted to avoid uncertainty.
     code_url: null
     needs_review: true
+    summary_zh: 问题：无人机定位常依赖GNSS，但卫星信号易受干扰、欺骗和遮挡，亟需不依赖外部导航的视觉跨视图定位方法。方法：提出MuRDE-FPN，基于轻量级单流Transformer骨干网络（OS-PCPVT）并结合高效通道注意力（ECA），设计两个新模块：多感受野可变形增强（MuRDE）模块通过不同核尺寸的可变形卷积细化最深层语义特征；特征对齐模块（FAM）解决跨层特征图空间错位以实现有效融合。数据集：在标准UL14基准与作者新提出的更具多样性、卫星搜索区域更大的UAV-Sat数据集上评估。关键结果：在UL14上RDS达84.26，UAV-Sat上达63.74，超越FPI、WAMF-FPI、OS-FPI、DCD-FPI四种先进方法；适用于城市与混合环境及高低空场景，计算开销增加可忽略，适合资源受限的机载部署。
 - id: c9358f702d10
   title: MixFP:A Transformer-Based Method for UAV Cross-View Geolocation
   year: 2026
@@ -3113,6 +3141,8 @@
       RDS comparison are stated, so no leaderboard-ready rows are extracted.
     code_url: null
     needs_review: true
+    summary_zh: 无人机跨视角地理定位是视觉辅助导航的重要研究方向,但卫星与无人机图像在颜色、方向、视角、视场等方面差异巨大,导致跨平台检索困难。现有方法多基于卷积神经网络,缺乏对图像全局信息与空间信息的充分利用。本文提出一种基于方向特征对齐与视觉Transformer的跨视角定位方法:首先利用SFM(Structure-from-Motion)算法恢复无人机图像的位姿信息,并通过旋转裁剪对卫星与无人机图像进行方向特征对齐,以缩小跨视角差异;然后引入Swin
+      Transformer网络,在统一架构中聚合多视角的全局粗粒度信息与局部上下文信息,学习视角不变的细粒度特征。在University-1652基准数据集上的实验表明,该方法显著优于基线,卫星检索无人机方向Recall@1达到85.16%,与现有先进方法相比具有竞争优势。
 - id: 5ad26fdff1b2
   title: 'Meridian: Metric-Semantic Primitive Matching for Cross-View Geo-Localization Beyond Urban Environments'
   year: 2026
@@ -3343,6 +3373,8 @@
       in this paper and its public release status is not confirmed from the provided text, no leaderboard rows are extracted.
     code_url: null
     needs_review: true
+    summary_zh: 针对无人机-卫星跨视角图像匹配中大倾角影像存在的严重透视畸变与领域鸿沟问题，本文提出MTA多倾角数据集。该数据集涵盖1892张倾角跨度[0°, 90°)、飞行高度30–300米的无人机影像，配套0.3米高分辨率卫星底图，并提供每图五点精细地理标注。基于视场角模型设计了一种空间分辨率驱动的裁剪策略，并在该基准上系统评测了十种主流匹配算法。实验表明，随着倾角增大，所有方法定位误差显著上升，性能在[50°,
+      90°)区间恶化最为剧烈。集成所提裁剪策略后，SuperPoint+SuperGlue基线在[50°–60°)、[60°–70°)、[70°–80°)、[80°–90°)区间的平均定位误差分别降低33.49、37.86、98.3和109.95米，验证了策略的有效性。
 - id: e72f3ee1cd16
   title: 'MADA-SSA: Multi-Axis Directional Attention and Spatial-Semantic Aggregation for Robust Drone-to-Satellite Geo-Localization'
   year: 2026
@@ -3571,6 +3603,8 @@
       before inclusion.
     code_url: null
     needs_review: true
+    summary_zh: 针对无人机在GPS拒止环境下与卫星图像跨视角定位时面临检索效率、匹配精度与模型轻量化难以兼顾的问题，本文提出一种轻量级两阶段定位框架。第一阶段通过跨域迁移学习将三元量化Transformer（TeTRA-VPR）适配至无人机-卫星场景，结合轻量级UAV适配器与跨视角数据增强实现高效全局检索；第二阶段采用双分支架构融合XFeat纹理特征与DINOv2语义特征，通过交叉注意力特征融合（CAFF）与语义一致性约束过滤重复结构引起的误匹配。在AerialVL与UAV-VisLoc数据集上分别取得62.5%与56.7%的R@1，地理匹配距离（GMD）4.0
+      m，较DeDoDe提升35.5%；推理速度达323 FPS，仅含5.8 M参数与3.2 GFLOPs，适合资源受限的无人机平台部署。
 - id: 987a2921bafc
   title: 'Learning Better UAV-Based Cross-View Object Geo-Localization from Multi-Modal Prompts: MoP-UAV Benchmark and MoPT
     Framework'
@@ -3866,6 +3900,7 @@
       rows can be extracted. Need full paper text/tables to identify benchmarks and numbers.
     code_url: null
     needs_review: true
+    summary_zh: 针对全球导航卫星系统（GNSS）拒止环境下无人机（UAV）图像地理定位难题，本文提出一种基于三维高斯溅射（3DGS）的跨视角地理定位方法。该方法利用多视角UAV图像重建三维辐射场，通过3DGS从接近卫星的视角渲染新视图，再与覆盖范围更广的广域卫星图像进行像素级匹配，直接建立两者对应关系，避免了对卫星图像进行分块检索。在公开数据集上的实验结果表明，所提方法在定位精度上优于现有基于图像分块检索的方法，并能借助渲染图像与卫星图像的对应关系，实现多个独立采集与训练的3DGS模型在地理坐标上的一致性整合，为大范围三维场景重建与协同定位提供了新思路。
 - id: 3bd445c4a1b7
   title: 'GeoLink: A 3D-Aware Framework Towards Better Generalization in Cross-View Geo-Localization'
   year: 2026
@@ -4061,6 +4096,7 @@
       no leaderboard rows could be extracted.
     code_url: null
     needs_review: true
+    summary_zh: 无人机在GNSS拒止环境下的自主飞行依赖于精确鲁棒的视觉定位。针对无人机与卫星图像间的跨视角域差异以及实时性与高精度匹配的矛盾，本文提出两阶段级联视觉定位网络GRiM-Net。该网络共享带有域自适应批归一化(DA-BN)的VGG-16骨干：全局检索模块基于NetVLAD从卫星底图中快速筛选候选区域，局部精匹配模块通过关键点检测、双向kNN匹配与RANSAC单应性估计将无人机图像中心映射至地理坐标。联合多任务损失(检索三元组损失、关键点损失、描述子损失与重投影损失)协同优化两阶段特征表示。在公开城市跨视角基准数据集上的消融与对比实验表明，该方法兼顾计算效率与定位精度，可实现实时米级定位，为无人机导航系统提供实用的城市环境定位组件。
 - id: 565450d576ea
   title: 'FANet: Fovea Attention Network for Robust Aerial Geo-Localization Across Diverse Weather Conditions'
   year: 2026
@@ -4844,6 +4880,7 @@
       and protocol details are unavailable from the supplied text.
     code_url: null
     needs_review: true
+    summary_zh: 脑肿瘤的自动分割对临床诊断和治疗规划至关重要,但现有算法多在私有数据集上验证,缺乏统一评估标准。本文介绍MICCAI 2012和2013年组织的多模态脑肿瘤图像分割基准(BRATS),对20种最先进分割算法(涵盖生成式概率模型与判别式学习方法)进行系统比较。数据集包括65例低级别和高级别胶质瘤患者的多对比MR扫描(由多名专家手工标注)及65个合成肿瘤图像。评估结果显示,不同算法在不同肿瘤子区域表现各异,Dice系数达74%–85%,与人类专家间变异性相当;通过层次多数投票融合多个优秀算法,性能持续优于任何单一算法,表明该领域仍有提升空间。BRATS数据与在线评估系统已公开,作为持续基准资源服务社区。
 - id: d38847a4bbbe
   title: 'CPFL: Resilient Continuous UAV Localization via Cross-View Perception and Particle Filtering'
   year: 2026
@@ -5141,6 +5178,8 @@
       in the abstract. No numeric leaderboard rows are extracted.
     code_url: null
     needs_review: true
+    summary_zh: 无人机跨视角地理定位是GNSS拒止环境下无人机自定位的重要解决方案，但现有基于图像检索的方法依赖参考卫星图像切片策略，仅保留局部语义而丢弃全局上下文，在低纹理场景下易产生大量视觉相似候选，导致定位精度显著下降。为此，本文提出一种新颖的跨视角定位网络CFIRE，直接以完整查询图与整幅参考卫星图作为输入，通过查询引导的跨尺度融合模块（QCSF）实现多尺度跨视角特征交互与语义对齐，并结合分类-回归头与由粗到精策略实现端到端坐标回归。在AerialVL数据集上的实验表明，CFIRE平均定位误差仅4.37米，MA@3达30.33%，MA@25达99.93%，单GPU推理速度达33
+      FPS，验证了其在复杂场景下的高精度与实时性。
 - id: b51dab3341da
   title: 'BGG: Bridging the Geometric Gap between Cross-View images by Vision Foundation Model Adaptation for Geo-Localization'
   year: 2026
@@ -5376,6 +5415,8 @@
       rows can be extracted reliably.
     code_url: null
     needs_review: true
+    summary_zh: 跨视角地理定位旨在通过匹配显著不同视角（如卫星与无人机）下的参考图像来确定查询图像的地理位置，受视角剧烈变化、尺度差异与场景几何畸变等外观变化影响而极具挑战。本文提出一种基于AI的RGBD跨视角地理定位框架，通过将单目深度估计集成到卫星图像中以增强几何感知能力。具体而言，方法采用预训练MiDaS模型生成深度图，并将其与RGB通道融合形成四通道RGBD输入表示；框架采用双流架构配合模态特定编码器，并基于余弦相似度与Circle
+      Loss的度量学习策略学习判别性共享嵌入空间。在University-1652基准数据集上的实验评估表明，引入深度信息相比RGB-only基线能持续提升跨视角检索性能，验证了深度增强表征在跨视角匹配任务中的有效性与潜力。
 - id: d09a2df47fda
   title: Altitude-Adaptive Vision-Only Geo-Localization for UAVs in GPS-Denied Environments
   year: 2026
@@ -5579,6 +5620,7 @@
       repository's tracked leaderboard datasets. No ablation, split, or per-dataset table values are available to extract.
     code_url: null
     needs_review: true
+    summary_zh: 无人机跨视角地理定位是实现精确目标地理坐标确定与地理空间增强现实的关键难题。本文提出AirLock+系统，一种面向可扩展无人机-卫星图像配准的端到端视觉框架，支持精确的目标地理定位与地理空间增强现实两项任务。该系统由三个核心模块组成：预测跟踪器用于在无人机图像帧中定位目标；跨视角图像匹配器生成鲁棒的无人机-卫星单应性矩阵，能够应对严重的域差异、过时的卫星图像，并在无需微调的情况下泛化至未见过的环境；像素-世界对应关系将目标像素坐标映射至地理空间，生成连续轨迹估计并支持无人机视频流的地理空间增强。系统在7.8公里的真实世界轨迹上实现了20.23米的平均目标定位误差，在现有方法通常失效的高海拔、倾斜视角条件下表现出强鲁棒性。
 - id: db7a7aafdad6
   title: Adaptive Frequency Enhancement and Multi-Scale Semantic Interaction for Robust Cross-View Geo-Localization
   year: 2026
@@ -6186,6 +6228,7 @@
       be confirmed from the available evidence.
     code_url: null
     needs_review: true
+    summary_zh: 跨视图遥感地理定位是GNSS拒止环境下的重要解决方案，其核心挑战在于学习具有强判别性的特征表示以弥合异构图像间的域差异。现有单编码器-单解码器方法存在两大局限：过度依赖深层网络特征导致几何信息丢失，且单一解码任务限制了特征表达能力。本文提出一种即插即用的单编码器-双解码器协同学习框架，引入辅助语义解码器与新颖的语义匹配策略，将解耦特征学习与多任务协同相融合，首次将多标签语义分割引入跨视图匹配范式。针对跨视图遥感数据语义标注稀缺的问题，构建了一个新的语义标注数据集。在公开基准上的实验表明，该方法取得了显著的性能提升，在无人机视角目标地理定位任务中表现优异，且对视角、光照、尺度及旋转等变化具有强鲁棒性。
 - id: 2ca080213d22
   title: Visual State Space Model Enhanced Features for UAV Geo-localization
   year: 2025
@@ -6280,6 +6323,7 @@
       dataset, exact metric value, and comparison condition are not fully grounded, no leaderboard rows are extracted.
     code_url: null
     needs_review: true
+    summary_zh: 针对复杂环境下GNSS信号易受干扰导致无人机定位失效的问题,视觉位置识别(VPR)通过将无人机航拍图像与卫星参考图匹配实现地理定位。然而传统基于预训练网络提取全局特征的方法对视角与外观变化敏感,且易丢失细粒度信息。本文提出一种基于双分支网络的无人机视觉地理定位方法,融合DINOv2视觉Transformer与Mamba视觉状态空间模型,利用二者互补特性联合提取全局与局部特征,并设计受MLP-Mixer启发的高效鲁棒特征融合框架以增强多源特征表征。在ALTO和NewYorkFly数据集上的实验表明,该方法在R@1和R@5等指标上优于现有方法,在NewYorkFly数据集上R@1提升6.3%,展现出在无人机跨视角地理定位任务中的显著优势。
 - id: b8bbbd941cc5
   title: Visual Self-Positioning of Low-Altitude Urban UAV Based on Improved Transformer Architecture
   year: 2025
@@ -6570,6 +6614,7 @@
       extracted.
     code_url: null
     needs_review: true
+    summary_zh: 跨视角目标地理定位（CVOGL）旨在将地面或无人机视角查询图像中的目标定位到卫星图像中。现有方法将地面与无人机查询图像等同对待，忽略了不同视角的固有差异及查询与卫星参考图像间的空间关联。为此，本文提出一种新颖的视角特定注意力地理定位方法VAGeo，包含视角特定位置编码（VSPE）模块和通道-空间混合注意力（CSHA）模块。VSPE针对地面和无人机不同视角特性设计专属位置编码以精确定位点击目标；CSHA融合通道与空间注意力机制学习判别性特征。在CVOGL数据集上的实验表明，VAGeo显著提升了性能：地面视角acc@0.25/acc@0.5从45.43%/42.24%提升至48.21%/45.22%，无人机视角从61.97%/57.66%提升至66.19%/61.87%。
 - id: 841f72f1d3b0
   title: 'UniABG: Unified Adversarial View Bridging and Graph Correspondence for Unsupervised Cross-View Geo-Localization'
   year: 2025
@@ -6908,6 +6953,7 @@
       paper tables are accessible.
     code_url: https://github.com/cbbhuxx/UltraVPR
     needs_review: true
+    summary_zh: 针对无人机平台在GPS不可用环境下的视觉位置识别(VPR)难题,现有CNN方法对图像平面内旋转敏感,Transformer方法计算开销大,难以在资源受限的无人机上部署。本文提出UltraVPR,一种轻量级旋转不变航拍VPR方法,其核心架构由旋转等变骨干网络(E2ResNet)、GroupPooling层与基于GeM池化及全连接层的旋转不变聚合模块组成;同时引入无监督训练策略,在训练阶段利用聚类中心构造高维VLAD残差描述符进行反向传播优化,推理阶段保持低维描述符输出。在UAV-VisLoc、VP-Air和AerialVL三个航拍VPR基准数据集上的大量实验表明,UltraVPR在Recall@1指标上超越现有最优方法,同时具备低参数量、低描述符维度和小内存占用的优势。
 - id: b8cd2823e728
   title: UAV-Satellite Cross-View Image Matching Based on Adaptive Threshold-Guided Ring Partitioning Framework
   year: 2025
@@ -7137,6 +7183,8 @@
       or per-split breakdown. No leaderboard row is therefore added.
     code_url: null
     needs_review: true
+    summary_zh: 针对无人机（UAV）在GNSS拒止环境下对4自由度视觉定位的需求，本文提出了一种基于零样本深度特征匹配的轻量化定位系统。该系统由短时光流（OF）与长期地图匹配（MM）两条互补路径构成，并通过卡尔曼滤波器实现可靠的测量融合：OF模块利用SuperPoint结合LightGlue估计相邻帧间仿射变换，MM模块则采用ALIKED结合LightGlue将当前帧与卫星地图块进行匹配，两者均借助RANSAC实现鲁棒估计。系统直接使用预训练模型而不进行微调，从而保证跨环境泛化能力。在AdM_UAV数据集（包含358帧4自由度标注与5张卫星地图）上的实验表明，系统平均欧氏距离（AED）为10-14米，优于原abBRIEF方法（17.8米），且在NVIDIA
+      Jetson Orin Nano上达到1.2 FPS，满足实时运行需求；然而在田野、森林等视觉同质区域定位精度会显著下降。
 - id: 63d35fe5fe2d
   title: UAV Positioning Method Based on Heterogeneous Image Matching Under GPS Denial
   year: 2025
@@ -7492,6 +7540,7 @@
       benchmark.
     code_url: null
     needs_review: true
+    summary_zh: 基于微流控的核酸检测系统因其在细菌快速检测中的潜力而受到广泛关注。传统平板培养法耗时长、阳性率低,免疫诊断法存在信号弱、背景噪声高等问题,亟需更快速、灵敏的检测平台。本文系统综述了基于微流控的核酸扩增技术,涵盖连续流PCR(蛇形与振荡流设计)、等温扩增(LAMP)、液滴微流控及数字微流控等架构,并讨论了片上样品制备技术。综述涉及多种致病菌靶标,包括淋病奈瑟菌、炭疽芽孢杆菌、沙眼衣原体、大肠杆菌O157:H7、沙门氏菌及贝氏柯克斯体等。本文归纳了各方法的优势与瓶颈,包括热循环控制、酶抑制、引物优化及集成化等挑战,指出了未来片上集成样品制备、扩增与检测功能的发展方向。
 - id: a9e46f1941ab
   title: 'Swin transformer for feature extraction: a cross-view geo-localization method for UAV-Satellite views'
   year: 2025
@@ -7585,6 +7634,7 @@
       supplementary dataset, not a public benchmark with a stated download/repository link, so it is not added to the leaderboard.
     code_url: null
     needs_review: true
+    summary_zh: 注意：未能获取论文全文，所提供内容仅为 Cloudflare 安全验证页面，无法提取研究问题、方法架构、数据集及关键结果等具体信息。建议重新提供论文文本以撰写准确介绍。
 - id: 831e2bdf4b40
   title: 'SkyLink: Unifying Street-Satellite Geo-Localization via UAV-Mediated 3D Scene Alignment'
   year: 2025
@@ -7788,6 +7838,7 @@
       them. Any leaderboard values should be added after the full tables are reviewed.
     code_url: null
     needs_review: true
+    summary_zh: 跨视图图像地理定位旨在通过将地面平台（如手机、车载相机）的查询图像与空中平台（如无人机、卫星）的地理标记参考图像进行匹配，以估计查询图像的地理位置。现有方法通常仅依赖深度特征，难以有效处理由视点差异引起的几何形状与外观的严重变化。本文提出一种新颖的具有交互式提示的语义概念感知网络（SCPNet），其核心在于提取并整合反映物体间空间位置关系的语义概念信息。具体而言，首先采用带位置嵌入的CNN主干提取输入图像对的深度特征；同时设计语义概念挖掘模块以区分不同物体并捕获其关联；进而提出基于注意力机制的特征双向注入融合模块，以挖掘语义概念与深度特征的全局长程依赖；最后采用具有灵活难样本挖掘策略的三元组损失指导网络优化。实验结果表明，该方法在主流跨视图数据集上能取得优于现有先进方法的性能。
 - id: 82dbe06751f7
   title: Self-Supervised Cross-View Graph Search Framework for Ground-to-Satellite Geo-Localization
   year: 2025
@@ -8018,13 +8069,22 @@
     reason: migrated from existing local markdown
     needs_review: true
   summary:
-    summary_en: ''
+    summary_en: Cross-view geo-localization provides an offline visual positioning strategy for UAVs in GNSS-denied environments.
+      However, existing methods primarily focus on global or local features while neglecting spatial information crucial for
+      extracting consistent cross-view representations and aligning target images. Additionally, data imbalance between UAV
+      and satellite images further degrades performance. To address these issues, we propose SHAA, a Spatial Hybrid Attention
+      Network with an Adaptive Cross-Entropy Loss. The SHA module employs a Spatial Shift-MLP (SSM) to capture spatial geometric
+      correspondences across views and a Hybrid Attention mechanism to enhance feature diversity through spatial-channel interactions.
+      The Adaptive Cross-Entropy (ACE) loss assigns adaptive weights to hard samples, mitigating data imbalance. Extensive
+      experiments on University-1652, SUES-200, and DenseUAV benchmarks demonstrate that SHAA achieves state-of-the-art performance,
+      outperforming existing methods by over 3.92%.
     summary_cn: DenseUAV, SUES-200, University-1652
     benchmarks: []
     main_modules: []
     reported_results: []
     code_url: null
     needs_review: true
+    summary_zh: 无人机跨视角地理定位为全球导航卫星系统（GNSS）拒止环境下的无人机提供离线视觉定位方案。然而，现有方法主要关注全局或局部特征，忽视了空间信息对跨视角一致特征提取与图像对齐的关键作用；同时，无人机与卫星图像之间存在数据不平衡问题。为此，本文提出融合空间混合注意力网络与自适应交叉熵损失的SHAA方法。SHA模块采用空间移位MLP（SSM）捕获跨视角空间几何对应，结合混合注意力（HA）增强空间与通道维度的交互；ACE损失引入自适应权重强化困难样本，缓解数据不平衡。在University-1652、SUES-200和DenseUAV数据集上的广泛实验表明，SHAA达到最优性能，较现有方法提升超过3.92%。
   status: parsed
   verified: false
   discovery:
@@ -8139,13 +8199,22 @@
     reason: migrated from existing local markdown
     needs_review: true
   summary:
-    summary_en: ''
+    summary_en: 'This paper addresses UAV geo-localization under GNSS-denied conditions by proposing SAVL, a scene-adaptive
+      visual localization framework that performs pixel-level cross-view matching between UAV images and georeferenced satellite
+      imagery. The architecture comprises two core modules: a Feature Reconstruction module that fuses coarse semantic features
+      from a pre-trained ViT/S with fine-grained texture features to enhance keypoint detection in low-texture scenes, and
+      a Descriptor Incremental Mapping module that uses an MLP to project UAV descriptors into a unified satellite semantic
+      space via a confidence-based incremental strategy, thereby reducing multi-source image discrepancies. A new scene-rich
+      dataset, RealUAV, was constructed for real-world evaluation. Extensive experiments demonstrate that SAVL achieves an
+      average localization error of only 8.71 meters, outperforming existing methods and confirming its robustness across
+      diverse real-world scenarios.'
     summary_cn: DenseUAV
     benchmarks: []
     main_modules: []
     reported_results: []
     code_url: null
     needs_review: true
+    summary_zh: 针对GNSS信号易受干扰导致无人机定位精度下降的问题，本文提出了一种场景自适应视觉定位框架SAVL。该框架采用双分支结构，通过融合预训练ViT/S模型的粗粒度语义特征与细粒度纹理特征构建特征重建模块，以增强低纹理场景下的关键点提取能力；同时设计基于MLP的描述子增量映射模块，利用置信度增量策略将无人机图像描述子映射至卫星图像的统一语义空间，动态适应多源差异。此外，构建了场景丰富的RealUAV真实数据集用于训练与评估。实验结果表明，该方法平均定位误差仅8.71米，显著优于现有对比方法，验证了其在复杂场景下的有效性与泛化能力。
   status: parsed
   verified: false
   discovery:
@@ -8400,13 +8469,23 @@
     reason: migrated from existing local markdown
     needs_review: true
   summary:
-    summary_en: ''
+    summary_en: UAV visual geo-localization is challenged by significant cross-modal discrepancies between satellite maps
+      and aerial images, including scale variations, viewpoint deviations, and spatiotemporal inconsistencies, where existing
+      retrieval-based or keypoint-matching methods struggle to balance efficiency and accuracy. This paper proposes R2PLoc,
+      a unified region-to-point framework that integrates coarse region retrieval with fine-grained keypoint matching. A shared
+      backbone extracts semantic features for efficiency, while a Hierarchical Semantic Aggregation Module (HSAM) fuses multi-scale
+      global and local semantics to mitigate cross-modal feature distribution shifts. A Semantic-enhanced Hierarchical Refinement
+      Matcher (SHRM) incorporates high-level semantic guidance into geometric matching to improve consistency under viewpoint
+      variations. The authors also construct the UVL-R2P dataset with semantic annotations dedicated to region-to-point localization.
+      Extensive experiments on multiple benchmarks demonstrate that R2PLoc outperforms most state-of-the-art methods with
+      comparable model sizes.
     summary_cn: DenseUAV, SUES-200, UAV-VisLoc, University-1652
     benchmarks: []
     main_modules: []
     reported_results: []
     code_url: null
     needs_review: true
+    summary_zh: 无人机视觉地理定位因卫星图与航拍图像间存在显著的尺度变化、视角偏差及时空不一致等跨模态差异而面临巨大挑战,现有基于检索或关键点匹配的单一方法难以兼顾定位效率与几何精度。本文提出一种区域到点的R2PLoc统一框架,将粗粒度区域检索与细粒度关键点匹配定位有机结合。该框架采用共享骨干网络提取语义特征以节约资源;设计分层语义聚合模块(HSAM)融合多尺度全局上下文与局部结构信息,缓解跨模态特征分布偏移;构建语义增强分层精化匹配器(SHRM)将高层语义引导融入关键点几何匹配,提升视角变化下的一致性。此外,作者构建了含语义标注的UVL-R2P专用基准数据集。在多个公开数据集上的广泛实验表明,R2PLoc在相近模型规模下性能优于多数当前最优方法。
   status: parsed
   verified: false
   discovery:
@@ -8519,6 +8598,7 @@
       manually after reading the paper's result tables.
     code_url: https://github.com/Shuyu-Hu/QDFL
     needs_review: true
+    summary_zh: 无人机航拍图像与卫星图像的跨视角地理定位是遥感与计算机视觉领域的重要任务，广泛应用于无人机自主导航、目标搜索和应急救援等场景。然而，由于无人机斜视视角与卫星正射影像之间存在显著的外观差异与几何失配，该任务仍面临特征对齐困难的挑战。本文提出一种基于DINOv2视觉Transformer的跨视角地理定位框架，采用ViT-B/14作为骨干网络提取鲁棒的多层级特征，并结合查询分解特征学习（QDFL）模块增强特征的判别性与跨视角一致性。在University-1652、SUAV-200和Vigor等多个公开基准数据集上的系统实验表明，所提方法在Recall@1和Recall@5等关键指标上均显著优于当前主流方法，验证了大规模自监督预训练表征在跨视角地理定位任务中的强大潜力。
 - id: 3b8954612817
   title: 'Proxy-UAV: Bridging the Missing Drone View for Cross-View Geo-Localization'
   year: 2025
@@ -8710,6 +8790,7 @@
       are extracted.
     code_url: null
     needs_review: true
+    summary_zh: 本文针对GNSS拒止环境下无人机(UAV)定位难题，提出一种融合CycleGAN域自适应与边缘化粒子滤波(MPF)的视觉辅助定位框架。该方法通过CycleGAN将卫星参考图像转换至与机载相机图像相近的视觉域，缓解跨域特征匹配的域差异；同时结合视觉惯性里程计(VIO)与图像匹配导航(IMN)模块，利用ORB特征对应与对数似然函数在MPF中进行状态估计精化。框架在土耳其伊斯坦布尔进行了真实飞行测试验证，无人机搭载云台稳定相机和IMU在100米高度飞行。结果表明，基于季节性域自适应的图像匹配显著提升了特征匹配可靠性与位置估计稳健性，验证了该方法在无人机平台上的实用性与计算可行性。
 - id: 6dfb68d70043
   title: 'PLGeo: A Patch-level Framework to Overcome Orientation Discrepancies in Cross-view Geo-localization'
   year: 2025
@@ -9124,6 +9205,7 @@
       splits.
     code_url: https://github.com/boni-hu/OriLoc
     needs_review: true
+    summary_zh: 跨视角图像地理定位在无人机配送与灾害救援中至关重要，但现有方法依赖全景图与已知朝向，难以应对实际场景中地面图像视场有限且朝向未知的挑战。本文提出OriLoc方法，采用Swin Transformer双分支编码提取位置感知注意力特征，引入双加权软边界三元组损失与难样本挖掘策略提升判别性，并设计基于卷积滑动窗口的朝向估计模块，结合极坐标变换与注意力嵌入实现朝向估计。方法在CVUSA等三个跨洲商业、住宅、城市及郊区数据集上验证，在有限视场与无朝向场景下均取得优越的定位精度与优异的朝向估计性能。
 - id: c8be0750a5a1
   title: One-to-Many Retrieval Between UAV Images and Satellite Images for UAV Self-Localization in Real-World Scenarios
   year: 2025
@@ -9272,6 +9354,7 @@
       a qualitative effectiveness statement is given. Therefore no leaderboard metrics are extracted and the row is left empty.
     code_url: null
     needs_review: true
+    summary_zh: 无人机与卫星图像间的细粒度匹配是实现无人机自主定位的关键步骤。然而，当无人机缺乏精确初始位置且卫星参考图覆盖范围较大时，现有方法需对大量裁剪卫星图块进行逐一比对以检索相似区域，计算与时间开销巨大；此外，现有方法通常仅选取单一最佳匹配图块进行后续细粒度匹配，限制了定位的精度与鲁棒性。为此，本文对UAV-VisLoc数据集进行任务适配，以密集匹配算法LoFTR为基线模型，设计了一种面向无人机自主定位的一对多细粒度匹配流水线，通过同时利用多个候选匹配图块提升匹配稳定性。实验结果验证了所提一对多细粒度匹配框架在效率与定位性能方面的有效性。
 - id: 67f7a7aa8d61
   title: Object-level Cross-view Geo-localization with Location Enhancement and Multi-Head Cross Attention
   year: 2025
@@ -9311,13 +9394,23 @@
     reason: migrated from existing local markdown
     needs_review: true
   summary:
-    summary_en: ''
+    summary_en: Existing cross-view object geo-localization schemes rely on rectangular proposals that cannot precisely localize
+      irregularly shaped objects in satellite imagery. We propose Cross-View Object Segmentation (CVOS), a segmentation-based
+      scheme that predicts pixel-level masks for fine-grained geo-localization, enabling extraction of object shapes, sizes,
+      and areas. We introduce TROGeo, a two-stage framework comprising a Heterogeneous Task Training Stage (HTTS) with a shared-weight
+      Swin Transformer encoder and a Cross-View Object Perception Module (CVOPM) jointly predicting bounding boxes and low-resolution
+      masks, and a SAM Prompt Stage (SPS) leveraging SAM's zero-shot capability for refined masks. We also construct the CVOGL-Seg
+      dataset with 6,079 high-resolution (1024×1024) segmentation annotations. Extensive experiments on CVOGL and CVOGL-Seg
+      demonstrate state-of-the-art performance, effectively breaking rectangular shackles for urban planning and agricultural
+      monitoring.
     summary_cn: SUES-200, University-1652
     benchmarks: []
     main_modules: []
     reported_results: []
     code_url: null
     needs_review: true
+    summary_zh: 针对现有跨视角目标地理定位方法依赖矩形提议框、难以精确表征不规则目标的问题，本文提出基于分割的跨视角目标分割（CVOS）方案，通过预测像素级掩码实现细粒度目标定位，可获取目标形状、尺寸与面积等关键地理信息。设计两阶段Transformer目标地理定位框架TROGeo：第一阶段异构任务训练（HTTS）采用共享权重的Swin
+      Transformer编码器与跨视角目标感知模块（CVOPM），联合预测目标边界框与低分辨率掩码；第二阶段SAM提示阶段（SPS）利用SAM的零样本分割能力生成高精度掩码。同时构建包含6079个1024×1024像素高分辨率分割标注的CVOGL-Seg数据集。在CVOGL与CVOGL-Seg上的大量实验表明，所提方法达到最优性能，有效突破矩形限制，为城市规划和农业监测提供精准的目标几何信息。
   status: parsed
   verified: false
   discovery:
@@ -9454,6 +9547,8 @@
       full paper before inclusion.
     code_url: null
     needs_review: true
+    summary_zh: 针对无人机卫星导航信号不足或通信中断时定位失效的问题，本文提出一种端到端的视觉跨视角地理定位网络OBTPN。该网络首先优化主网络中自注意力与交叉注意力的分配比例，随后设计多尺度特征融合头以增强模型对多尺度信息的处理能力。模型成功部署于NVIDIA
+      Jetson TX2机载计算机。此外，本文还构建了面向高空复杂环境的跨视角数据集Crossview9，填补了高空视觉导航领域的数据空白，并通过图像质量退化模拟恶劣天气条件以评估模型鲁棒性。实验结果表明，OBTPN_256在UL14数据集上RDS指标达到84.55%，在Crossview9数据集上RDS达到79.76%，均达到当前最先进水平，且在低质量图像环境下仍保持高精度，验证了其在复杂场景中的有效性。
 - id: 2baab5dbc766
   title: 'NavBEV: Empowering Self-Supervised UAV-Based Visual Navigation Through 3D BEV Representation'
   year: 2025
@@ -9543,6 +9638,7 @@
       so no leaderboard rows can be extracted.
     code_url: null
     needs_review: true
+    summary_zh: 无人机视觉导航旨在通过将航拍图像与地理参考地图或卫星视图匹配来识别地理位置。现有的跨视角地理定位方法多依赖复杂的多阶段优化或显式3D渲染，可扩展性受限。本文提出NavBEV，一种端到端的自监督无人机视觉导航框架，将3D场景点云与鸟瞰图（BEV）表示相融合。通过3D引导的关系蒸馏机制，重建的三维点云为跨视角对齐提供几何感知指导，无需额外训练阶段即可实现高效学习。在University-1652和SUES-200两个基准数据集上的实验表明，NavBEV在自监督无人机视觉导航任务中取得显著进展，在域内和跨域设置下均优于现有3D感知方法。
 - id: 6f916702b8e5
   title: Multi-level representation learning via ConvNeXt-based network for unaligned cross-view matching
   year: 2025
@@ -9691,6 +9787,7 @@
       submissions or reproduced numbers.
     code_url: null
     needs_review: true
+    summary_zh: 针对无人机与卫星图像跨视角匹配中存在的视点差异、分辨率不一致及位置偏移等问题，本文提出一种基于ConvNeXt的多层级表征学习模型。该方法首先利用ConvNeXt提取全局特征，随后将其复制为两路：一路经空间注意力处理，另一路经标准卷积处理，实现联合部件级表征学习，并通过多层级特征融合模块聚合不同分支特征。同时设计融合交叉熵损失与三元组损失的混合损失函数，以充分挖掘全局特征中的判别性信息。在University-1652和SUES-200数据集上的实验表明，该模型在无人机目标匹配任务上分别达到89.79%和95.75%，在无人机导航任务上分别达到94.87%和98.80%，取得了先进性能且计算开销更低。
 - id: c7e57d895be7
   title: 'MORE''25 Multimedia Object Re-ID: Advancements, Challenges, and Opportunities'
   year: 2025
@@ -9805,6 +9902,7 @@
       values can be extracted. All potential leaderboard rows omitted due to absence of result tables.
     code_url: null
     needs_review: true
+    summary_zh: 无人机跨视角地理定位旨在将无人机航拍图像与卫星参考图像进行精确匹配，广泛应用于无人机自主导航、目标搜索与遥感分析等领域。该任务面临视角差异显著、尺度变化剧烈以及环境多样性等核心挑战。本文系统综述了基于深度学习的代表性方法，包括多环境自适应该网络、局部模式增强的跨视角嵌入学习以及动态加权去相关正则化等创新架构，这些方法通过挖掘局部判别性特征与减少特征间冗余来提升匹配精度。常用基准数据集为University-1652，包含来自无人机、卫星和街景三种视角的多源数据。实验结果表明，所提方法在跨视角检索任务中取得了显著性能提升。
 - id: f688dd8cddb0
   title: MMGeo Multimodal Compositional Geo-Localization for UAVs
   year: 2025
@@ -9832,13 +9930,24 @@
     reason: migrated from existing local markdown
     needs_review: true
   summary:
-    summary_en: ''
+    summary_en: Cross-view geo-localization is critical for UAVs in GNSS-denied environments, yet unimodal visual methods
+      suffer robustness issues, while existing multimodal approaches require comprehensive multimodal databases. This paper
+      proposes MMG EO, a multimodal compositional geo-localization framework that localizes drone-view multimodal queries
+      (image + point cloud/depth/text) against satellite-view image references, eliminating the need for extensive multimodal
+      databases. The framework leverages pretrained encoders with adapter-based fine-tuning, a cross-attention compositor,
+      and learnable [SUB] modality-substitution tokens enabling bi-directional symmetric learning, with the weighted-InfoNCE
+      loss extended to the multimodal setting. The authors construct GTA-UAV-MM and UAV-VisLoc-MM, the first UAV geo-localization
+      benchmarks combining image, point cloud, depth, and text modalities. Experiments under both same-area and cross-area
+      settings demonstrate that MMG EO consistently outperforms vision-based state-of-the-art methods, while exhibiting superior
+      robustness under data degradation and strong generalization to real-world scenarios.
     summary_cn: DenseUAV, GTA-UAV, Game4Loc, UAV-VisLoc
     benchmarks: []
     main_modules: []
     reported_results: []
     code_url: null
     needs_review: true
+    summary_zh: 无人机跨视角地理定位在GNSS拒止环境中至关重要，但现有单模态视觉方法鲁棒性差，而多模态方法需构建完整的多模态检索库，应用受限。本文提出MMG EO多模态组合地理定位框架，将无人机视角的多模态查询（图像+点云/深度/文本）映射至卫星视角参考图像，避免大规模多模态数据库依赖。该方法采用预训练编码器配合适配器微调，通过跨注意力组合器与可学习[Sub]模态替换令牌实现双向对称学习，并扩展加权InfoNCE损失至多模态场景。作者将GTA-UAV与UAV-VisLoc扩展为首个融合图像、点云、深度和文本的无人机多模态基准数据集。实验在同区域与跨区域设定下均验证MMG
+      EO显著优于Game4Loc等视觉SoTA方法，并在数据退化及真实场景中展现更强的鲁棒性与泛化能力。
   status: parsed
   verified: false
   discovery:
@@ -9890,13 +9999,22 @@
     reason: migrated from existing local markdown
     needs_review: true
   summary:
-    summary_en: ''
+    summary_en: UAV-based IoT applications heavily rely on AI for computer vision and path planning, yet the conventional
+      cloud-based AI paradigm struggles to meet strict low-latency and low-energy requirements. Edge AI, which executes AI
+      algorithms on-device or at nearby edge servers, can effectively address key UAV technical challenges including autonomous
+      navigation, formation control, power management, security and privacy, computer vision, and communication. It also enables
+      diverse applications such as delivery systems, infrastructure inspection, precision agriculture, search and rescue,
+      aerial base stations, and drone light shows. This survey provides a comprehensive analysis of edge AI's impact on UAVs,
+      covering supporting techniques like federated learning and blockchain, implementation challenges with potential solutions,
+      and future research directions. To the best of our knowledge, it is the first survey to systematically focus on the
+      convergence of edge computing and AI for UAVs.
     summary_cn: DenseUAV, GTA-UAV, Game4Loc, UAV-VisLoc
     benchmarks: []
     main_modules: []
     reported_results: []
     code_url: null
     needs_review: true
+    summary_zh: 无人机物联网应用广泛依赖人工智能实现计算机视觉与路径规划等任务，但传统云端AI范式难以满足其严格的低延迟与低能耗要求。边缘AI将AI算法下沉至设备端或邻近边缘服务器执行，能够有效改善无人机在自主导航、编队控制、能耗管理、安全隐私、计算机视觉及通信等六大关键技术挑战，并赋能物流配送、基础设施巡检、精准农业、搜索救援、空中基站及无人机灯光秀等应用场景。本文系统综述边缘AI对无人机关键技术与应用的影响，深入分析联邦学习与区块链等支撑技术、部署实现挑战及应对方案，并展望未来研究方向，是首篇全面聚焦该交叉领域的综述。
   status: parsed
   verified: false
   discovery:
@@ -10295,6 +10413,7 @@
       be verified against the full paper's tables.
     code_url: null
     needs_review: true
+    summary_zh: 跨视角地理定位（CVGL）旨在匹配无人机与卫星等不同视角拍摄的同一位置图像，但面临尺度、视角和光照显著变化的挑战。现有方法多采用对称采样构建无人机-卫星图像对进行度量学习，却忽略多视角无人机图像对视角鲁棒性增强的潜力。为此，本文提出领域不变判别嵌入（DIDE）方法，引入跨视角特征聚合模块（IFAM），将多视角无人机信息动态融合为鲁棒嵌入，通过与批次内卫星嵌入的对比学习获取视角不变判别特征，跨批次表示学习进一步提升场景判别能力。同时构建并对齐无人机与卫星原型以缩小领域差距，并采用参数高效迁移学习策略，仅微调双适配器即可利用预训练基础模型能力，大幅减少可训练参数。DIDE在University-1652和University-160k上达到最优，在SUES-200上具有竞争力，并展现强大的跨数据集迁移能力，同时训练参数更少、计算成本更低。
 - id: 039cb769dc1b
   title: Learning Robust Feature Representation for Cross-View Image Geo-Localization
   year: 2025
@@ -10392,6 +10511,7 @@
       metrics can be extracted.
     code_url: https://github.com/WenjianGan/LRFR
     needs_review: true
+    summary_zh: 跨视角图像地理定位（CVGL）旨在通过已知位置信息的图像数据库确定查询图像的地理位置。现有方法主要关注学习判别性图像表征以优化特征空间中的距离，但未充分考虑特征的位置关系信息及特征自身的信息冗余。为此，本文提出一种结合全局空间关系注意力（GSRA）与特征聚合的跨视角图像定位方法。首先，利用轻量级GSRA学习特征的空间位置结构信息，充分增强模型的感知与判别能力，且对模型复杂度和内存占用影响较小，可推广至其他图像处理任务。此外，引入用于局部聚合描述符的Sinkhorn算法（SALADs），将局部特征聚合表示为最优传输问题，在聚类与分配过程中选择性丢弃无用信息，从而增强描述符的泛化性与鲁棒性。在University-1652、CVACT和CVUSA三个公开数据集上的实验结果验证了所提方法的有效性与优越性。
 - id: f11512cc1a97
   title: Learnable Query Aggregation with KV Routing for Cross-view Geo-localisation
   year: 2025
@@ -10820,6 +10940,7 @@
       evaluation protocol before leaderboard inclusion.
     code_url: null
     needs_review: true
+    summary_zh: 在无人机网络（IoD）中，GNSS信号在城市峡谷等复杂环境下易受干扰，导致定位精度下降。本文提出一种基于卷积神经网络（CNN）的跨视角地理定位框架，以ResNet-101为骨干网络提取无人机视角与卫星视角图像的深度空间-语义特征，通过全局池化与全连接层映射至512维共享嵌入空间，并采用余弦相似度衡量特征向量的方向接近度以实现图像检索。模型在University-1652数据集上进行训练与测试，结果表明该框架取得Recall@1为78.23%、Recall@5为86.35%、Recall@10为92.11%，平均精度（AP）达83.65%，展现出在GNSS信号不可靠场景下的鲁棒性与实用价值。
 - id: 440785eadbb8
   title: Hierarchical Image Matching for UAV Absolute Visual Localization via Semantic and Structural Constraints
   year: 2025
@@ -11198,6 +11319,7 @@
       fabrication.
     code_url: null
     needs_review: true
+    summary_zh: 无人机-卫星跨视角地理定位是GNSS拒止环境下无人机自主定位的关键技术，但面临跨尺度异构场景匹配与机载实时运行效率等挑战。本文提出一种面向小型无人机平台的视觉地理定位框架GeoRVLF：首先采用基于多层级分块检索算法的跨尺度位置识别（CPR）模块，降低特征法VPR的运行时与存储开销；进而构建异构场景匹配网络HSM-Net，并设计细粒度位姿回归（FPR）模块实现4自由度全局位姿估计；针对机载算力约束，将FPR与视觉里程计通过位姿图优化融合，提升系统运行效率与稳定性。经基准数据集评测与真实飞行实验验证，GeoRVLF在复杂异构场景下能稳定输出接近低精度GPS精度的轨迹，运行频率接近经典VO方法。
 - id: 648e21111b87
   title: 'GeoMatch: Multi-View Contrastive Learning for Limited CVGL with Semantic Uncertainty'
   year: 2025
@@ -11386,6 +11508,8 @@
       so no leaderboard-ready metrics can be extracted.
     code_url: https://github.com/Temperature-ai/GeoFormer
     needs_review: true
+    summary_zh: 跨视图目标地理定位(CVOGL)旨在根据地面或无人机查询图像中的点提示,在卫星参考图像中确定目标物体的地理位置。该任务面临两大挑战:点提示理解和相似外观目标区分。本文提出GeoFormer端到端Transformer框架,通过两种方式利用SAM(Segment
+      Anything Model)的知识进行点提示编码:训练推理均使用SAM(GeoFormer)或仅训练阶段以知识蒸馏方式使用SAM(GeoFormer-KD)。同时设计信息聚合模块IAM,通过可学习令牌融合局部与全局感知以区分相似外观目标。实验在公开CVOGL-DetGeo数据集及新标注的1642对图像CVOGL-Uni上进行,方法显著超越现有工作,轻量版本GeoFormer-t及GeoFormer-t-KD以减少17.1M参数保持最优性能。
 - id: 60de40de4030
   title: 'From GPS to AI: A comprehensive review of Unmanned Aerial Vehicle (UAV) localization solutions'
   year: 2025
@@ -11640,6 +11764,7 @@
       no leaderboard row is emitted.
     code_url: https://github.com/spagnoloG/uav-localization-2023
     needs_review: true
+    summary_zh: 未检测到有效的论文文本内容。请提供UAV跨视角地理定位论文的完整正文（包括摘要、引言、方法、实验和结论等部分），以便撰写系统综述所需的引言。当前输入仅为Springer Nature访问错误信息，不包含可综述的学术内容。
 - id: 27b14397c21c
   title: 'Exploring the best way for UAV visual localization under Low-altitude Multi-view Observation Condition: a Benchmark'
   year: 2025
@@ -11840,6 +11965,7 @@
       qualitatively that experiments approved the effectiveness of the model. No leaderboard-ready metrics can be extracted.
     code_url: null
     needs_review: true
+    summary_zh: 针对无人机在GNSS和INS失效条件下的绝对视觉定位精度不足问题，本文提出一种两阶段视觉地理定位框架。首先基于无人机偏航角对卫星图进行旋转预处理并计算瓦片大小，然后采用CAMP模型进行图像检索，最后通过双流ConvMixer主干结合多尺度特征与注意力机制完成像素级匹配并估计单应性矩阵。数据集方面，构建了包含111张烟台无人机图像及JL1卫星图的自建数据集，并引入UAV-VisLoc子集共1000张图像，每组样本均提供人工标注的匹配点和单应性矩阵。实验在AID数据集上自监督训练，以平均匹配精度MMA为指标，在1/3/5/7像素阈值下分别达到0.0874、0.3444、0.4930和0.5824，优于ORB、SIFT和SuperPoint基线，验证了方法的有效性。
 - id: 3d8550f1d24c
   title: Enhancing cross view geo localization through global local quadrant interaction network
   year: 2025
@@ -12813,6 +12939,7 @@
       returned empty.
     code_url: null
     needs_review: true
+    summary_zh: 无人机跨视角地理定位旨在将地面无人车拍摄的查询图像与无人机正射参考图像进行匹配，以确定地理位置，核心挑战在于地面视角与鸟瞰视角间的巨大外观差异以及训练中后期小批次内困难样本稀缺导致的训练停滞。本文提出动态在线跨批次（DOCB）困难样本挖掘方案，通过FIFO队列存储历史批次描述符，根据当前网络状态动态选取最困难跨批次负样本并重新载入网络参与反向传播，使三元组损失梯度方向更准确；同时设计多尺度特征聚合网络MSFA，采用双分支伪孪生结构与轻量级描述符生成器模块，自适应融合VGG16中间块的多尺度局部特征。在CVUSA和CVACT_val数据集上的实验表明，所提方法分别取得95.78%和86.34%的Top-1召回率，描述符长度仅512，并具备更强的跨数据集迁移能力，性能优于现有方法。
 - id: 41f846965028
   title: 'DOA: Advancing Cross-View Geo-Localization via Domain and Objective Alignment'
   year: 2025
@@ -12944,13 +13071,22 @@
     reason: migrated from existing local markdown
     needs_review: true
   summary:
-    summary_en: ''
+    summary_en: UAV visual self-localization enables autonomous navigation in GNSS-denied environments via cross-view matching
+      between UAV and satellite images, yet significant viewpoint differences, scale variations, and scene interference severely
+      degrade matching accuracy. This paper proposes a DINOv2-based UAV visual self-localization network that adapts the pre-trained
+      DINOv2 backbone to cross-view matching. The architecture introduces a Global-Local Feature Adaptive enhancement (GLFA)
+      module combining Linformer linear-attention Transformer with multi-scale convolution (MSLA) to capture long-range dependencies
+      and local spatial details for discriminative landmark recognition. A Cross-Enhancement method based on Spatial Pyramid
+      (CESP) performs hierarchical multi-scale feature fusion to improve robustness to scale variations. Experiments on the
+      DenseUAV low-altitude urban benchmark achieve R@1 of 86.27% and SDM@1 of 88.87%, surpassing the baseline by 3.26% and
+      2.37% respectively.
     summary_cn: DenseUAV, SUES-200, University-1652
     benchmarks: []
     main_modules: []
     reported_results: []
     code_url: null
     needs_review: true
+    summary_zh: 无人机视觉自定位通过无人机与卫星图像的跨视角匹配，实现GNSS拒止环境下的自主导航定位。然而，显著的视角差异、尺度变化及树木水体等干扰因素严重影响跨视角匹配精度。本文提出基于DINOv2的无人机视觉自定位网络，设计全局-局部特征自适应增强模块(GLFA)，通过Linformer线性注意力Transformer捕获长程依赖，并结合多尺度局部自适应调整(MSLA)增强关键地标识别能力；提出基于空间金字塔的跨尺度增强方法(CESP)实现多尺度特征融合，提升模型对多尺度空间信息的感知能力。在DenseUAV低空城市基准数据集上取得R@1为86.27%、SDM@1为88.87%的优异成绩，较基线方法分别提升3.26%和2.37%。
   status: parsed
   verified: false
   discovery:
@@ -13095,13 +13231,25 @@
     reason: migrated from existing local markdown
     needs_review: true
   summary:
-    summary_en: ''
+    summary_en: Vision-based localization provides critical redundancy for autonomous aerial vehicles (AAVs) when GNSS signals
+      are denied or degraded. This paper presents a comparative study of descriptor-based image matching techniques for cross-view
+      AAV geo-localization. The proposed three-stage pipeline involves image preprocessing and labeling, automatic matching
+      via the Image Matching WebUI with RANSAC-based outlier rejection, and graphical result analysis. Twenty-five classical
+      and deep learning methods were benchmarked, including state-of-the-art approaches such as DKMv3 and ROMA. A novel public
+      aerial dataset was introduced, collected using an MP-02 Czajka aircraft equipped with a GoPro Hero 10 camera and AHRS,
+      comprising 2500 image-orthophotomap pairs at altitudes ranging from 150 to 1500 m, with three-axis camera rotations
+      and two field-of-view settings (95° and 123°). Results demonstrate that deep learning descriptors, particularly DKMv3
+      and ROMA, outperform classical methods under significant perspective changes, while hybrid approaches offer complementary
+      advantages, informing resilient vision-based localization system design.
     summary_cn: ALTO, DenseUAV, University-1652
     benchmarks: []
     main_modules: []
     reported_results: []
     code_url: null
     needs_review: true
+    summary_zh: 针对自主飞行器(AAV)在GNSS信号受干扰或拒止时定位失效的问题，本文系统比较了基于描述子的图像匹配方法用于跨视角地理定位。方法采用三阶段流程：图像预处理与标注、自动匹配（含RANSAC剔除误匹配）及结果分析。评估了来自Image
+      Matching WebUI的25种经典与深度学习算法，涵盖DKMv3、ROMA等前沿方法。基于MP-02 Czajka飞机搭载GoPro Hero 10相机和AHRS自建的数据集（含2500组图像-正射影像对，飞行高度150–1500
+      m，三轴相机旋转，95°与123°两种视场角），与卫星正射影像进行匹配。实验表明，深度学习方法在显著视角变化下优于经典方法，DKMv3与ROMA在精度和效率上表现最优，混合方法具有互补优势。该数据集已公开，为视觉定位系统设计提供支撑。
   status: parsed
   verified: false
   discovery:
@@ -13547,6 +13695,7 @@
       are manually verified.
     code_url: https://anonymous.4open.science/r/BiCrossNet-FB7A/README.md
     needs_review: true
+    summary_zh: 无人机跨视角地理定位通常依赖计算昂贵的深度网络，难以部署于资源受限平台。本文提出BiCrossNet，将二元神经网络(BNN)引入无人机航拍与卫星视图的跨视角匹配任务，显著降低计算复杂度与存储开销，同时保持有竞争力的定位精度。方法包含三大贡献：双向渐进解冻策略以增强迁移学习效果，二元分区优化策略以提升训练稳定性，以及基于logit的知识蒸馏补充标准损失函数。实验在University-1652基准和SUES-200数据集（150m、200m、250m、300m四个飞行高度）上系统验证，结果表明该方法在资源高效的前提下实现了良好的跨视角地理定位性能，适用于边缘部署场景。
 - id: 1e2fd9322454
   title: 'Beyond Spatial Domain: Multi-View Geo-Localization with Frequency-Based Positive-Incentive Information Screening'
   year: 2025
@@ -14042,6 +14191,7 @@
       status is not confirmed, so no leaderboard rows are extracted.
     code_url: null
     needs_review: true
+    summary_zh: 针对复杂环境下GNSS不可靠导致的无人机自定位难题，本文提出了一种高效的金字塔Transformer网络用于跨视角地理定位。在数据集层面，构建了包含17.4k高分辨率无人机-卫星图像对的Multi-UAV数据集，涵盖城市、乡村、山地、农田和海岸等多地形及80–800m多高度场景。在模型层面，设计了轻量化的值约简金字塔Transformer（VRPT）骨干网络，融合自注意力、跨注意力与通道约简注意力机制，并引入残差特征金字塔网络（RFPN）实现多尺度特征融合。实验表明，该方法在UL14数据集上取得最优性能，在Multi-UAV挑战性数据集上实现稳定的米级定位精度（MA@K）和相对距离得分（RDS），其中VRPT_256在计算复杂度与精度间取得良好平衡，适用于资源受限的无人机部署。
 - id: 9880ae23b323
   title: Adaptive Multi-Backbone Fusion for UAV-Centric Cross-View Geo-Localization with Partial Street–Satellite Matching
   year: 2025
@@ -14269,13 +14419,22 @@
     reason: migrated from existing local markdown
     needs_review: true
   summary:
-    summary_en: ''
+    summary_en: UAV-view cross-view geo-localization aims to match drone query images with satellite database images to estimate
+      geographic locations, which is valuable in GPS-denied environments. However, significant perspective disparities, varying
+      sensor parameters, and extreme weather challenge feature discriminability. This paper proposes APA-BI, employing EfficientNetV2-S
+      as a shared-weight backbone. The Adaptive Partition Aggregation (APA) module maintains semantic integrity by concatenating
+      square-ring partition features with learnable scale factors, while the Bidirectional Integration Module (BIM) leverages
+      Dynamic Snake Convolution to extract tubular topological structures such as roads and rooftops as local embedded features.
+      Experiments on the University1652 and SUES-200 datasets demonstrate that APA-BI outperforms most state-of-the-art methods,
+      achieving 93.12% Recall@1 on University1652 at 256×256 resolution—a 0.92% improvement over Sample4Geo. Ablation studies
+      validate the contributions of both modules, and real-world tests confirm practical effectiveness.
     summary_cn: DenseUAV, SUES-200, University-1652
     benchmarks: []
     main_modules: []
     reported_results: []
     code_url: null
     needs_review: true
+    summary_zh: 无人机视角跨视图地理定位旨在将无人机查询图像与卫星数据库图像匹配以估计位置，在GPS失效环境下具有重要应用价值。然而，显著的视角差异、传感器参数不同及恶劣天气等因素给特征区分能力提升带来挑战。本文提出APA-BI方法，采用EfficientNetV2-S作为共享权重骨干网络，设计自适应分区聚合模块(APA)通过可学习因子融合多尺度分区特征以保持语义完整性，并构建双向积分模块(BIM)利用动态蛇形卷积提取道路、屋顶等管状拓扑结构作为局部嵌入特征。在University1652和SUES-200数据集上的实验表明，APA-BI优于多数现有最优方法，在256×256分辨率下University1652数据集上达到93.12%的R@1精度，较Sample4Geo提升0.92%，真实场景测试进一步验证了其实用性。
   status: parsed
   verified: false
   discovery:
@@ -14402,6 +14561,7 @@
       so they are not included.
     code_url: null
     needs_review: true
+    summary_zh: 全球数字数据治理理论分散且局限于特定行为者、规范、学科或单一尺度。本书提出多元中心（polycentric）视角，构建跨学科、跨尺度的分析框架，揭示数据治理在次国家、国家、区域与全球层面相互交织的行为者、议题与过程。书中分三部分展开：第一部分探讨理论视角（奥斯特罗姆公共池塘理论延伸至数字环境、互联网互操作性、非抽取性方法、草根数据行动、问责性问题）；第二部分聚焦争议性案例（欧盟数据保护跨境执法、贸易协定与跨境虚假信息、虚假信息数据化追踪、隐私治理）；第三部分考察技术维度（互联网互联治理、区块链分布式治理、AI治理扩散）。通过多元案例研究，本书提炼出关键洞见与政策建议，揭示数字数据治理中既分散又具结构的特征，并反思如何构建更民主、公正的治理安排。
 - id: e55a3076ffe2
   title: 'ACCL: A Plug-and-play Adaptive Confusion-aware Contrastive Loss for UAV-to-Satellite Geolocalization'
   year: 2025
@@ -14942,6 +15102,7 @@
       rows are therefore flagged for manual verification.
     code_url: null
     needs_review: true
+    summary_zh: 针对无人机跨视角地理定位中GPS信号易受遮挡、视角变化敏感及语义结构利用不足等挑战，本文提出一种融合热图引导与图结构优化的轻量化定位框架。该方法首先利用Grad-CAM生成建筑轮廓热图以抑制光照变化与局部噪声；然后通过Swin-Transformer提取全局特征并借助跨注意力机制实现无人机与卫星图像的多模态语义对齐；最后引入LightGCN动态构建语义图，增强大视角变化下的特征不变性。在University-1652数据集上的实验表明，该方法在无人机到卫星和卫星到无人机任务上分别取得88.38%和93.76%的Recall@1，平均精度达89.37%和89.35%，模型仅含38.7M参数，推理延迟37ms，并通过实际飞行测试验证了算法在跨季节与跨尺度场景下的鲁棒性与实用性。
 - id: 0dffafd487e0
   title: A Hierarchical Absolute Visual Localization System for Low-Altitude Drones in GNSS-Denied Environments
   year: 2025
@@ -15214,6 +15375,7 @@
       are available.
     code_url: null
     needs_review: false
+    summary_zh: 视觉地理定位是无人机应用中的关键问题,然而GNSS在信号不稳的环境中表现受限,基于视觉的位置识别(VPR)成为重要替代方案。本文针对现有VPR综述多忽略航拍数据这一空白,提出了一套面向航拍图像的VPR评估方法学,核心包括参数化的地图瓦片数据库构建方案(可灵活调节缩放比例与重叠率)以及两个更适合航拍场景的评价指标。作者开源了一个可灵活组合VPR与重排序技术的基准测试框架,在VPAir(含plane和ortho序列)、ALTO和AMtown01数据集上对AnyLoc、MixVPR、SALAD和SelaVPR等方法进行了系统对比,并结合LightGlue重排序进行评估。实验表明,合理选择缩放与重叠水平可显著提升VPR效率,基于DINOv2基础模型的方法结合重排序在航拍定位任务中表现最优。
 - id: e8b9b13f251d
   title: Visual Localization system for GPS-Blind Environments in Unmanned Aerial Vehicles
   year: 2024
@@ -15573,6 +15735,7 @@
       the abstract or available text. No leaderboard rows are extracted to avoid unverified entries.
     code_url: null
     needs_review: true
+    summary_zh: 针对无人机在GNSS拒止环境下的定位难题，本文提出VDUAV数据集与VRLM网络架构。基于数字孪生技术，利用倾斜摄影构建的真实场景三维模型导入Unity3D平台，通过UTM投影实现虚实坐标精准映射，并按预设航线自动密集采样，生成涵盖城市、平原、丘陵、工厂、校园与乡村等多场景的无人机-卫星跨视角图像数据集（12.4k图像，覆盖五省），显著降低传统数据集生产成本。VRLM以FocalNet前三阶段为双分支骨干网络提取无人机与卫星图像多尺度特征，并设计自适应加权融合模块（SCFF），有效保留关键判别信息。在VDUAV上的实验表明，VRLM将RDS精度从FPI的67.07%提升至74.13%，MA@5/10/20分别达到45.13%、64.71%、83.35%，在定位精度与处理速度上均取得显著提升。
 - id: 828f0287f3a3
   title: 'TirSA: A Three Stage Approach for UAV-Satellite Cross-View Geo-Localization Based on Self-Supervised Feature Enhancement'
   year: 2024
@@ -15666,6 +15829,7 @@
       left empty.
     code_url: https://github.com/SunJ1025/TirSA
     needs_review: true
+    summary_zh: 跨视角地理定位旨在匹配不同平台拍摄的地理图像，关键挑战在于有效突出建筑物特征并抑制背景干扰。现有方法对前景与背景同等处理，难以充分利用建筑先验。本文提出三阶段框架TirSA：预处理阶段采用自监督特征增强模块(SFEM)生成建筑感知掩码，引导模型聚焦判别性建筑区域，无需额外辅助信息；特征嵌入阶段提出自适应特征集成模块(AFIM)增强表征能力，并使用改进的跨域三元组损失训练孪生网络以缩小视角域差异；后处理阶段通过重排序优化检索列表。在无人机目标定位与无人机导航基准上的实验表明，TirSA大幅超越现有最优方法，在无人机导航任务中性能提升约5%。
 - id: ed7cb3a291e1
   title: 'SeGCN: A Semantic-Aware Graph Convolutional Network for UAV Geo-Localization'
   year: 2024
@@ -16097,6 +16261,7 @@
       metrics can be extracted.
     code_url: null
     needs_review: true
+    summary_zh: 针对卫星信号缺失场景下无人机视觉定位中图像匹配存在的显著位姿误差问题，本文提出一种基于深度学习的无人机视觉定位算法PnP-UGCSuperGlue。该算法在USuperGlue网络基础上引入图编码模块（含正弦位置编码、多头线性自注意力、MLP与两层GNN），以细化特征图并增强图像对的对应精度，随后结合图匹配网络与PnP方法，利用相机内参和畸变系数计算旋转矩阵与平移向量。模型基于University-1652数据集训练，并在无人机悬停与飞行两种真实场景中与USuperGlue、SuperGlue和USCMGM-Net进行对比实验，结果显示悬停状态下平均绝对误差为0.0005，飞行状态下为0.0083，较USuperGlue分别降低0.0010与0.0028。
 - id: 362f69fb5838
   title: Multiple-environment Self-adaptive Network for aerial-view geo-localization
   year: 2024
@@ -16484,6 +16649,8 @@
       and remain unverified pending manual cross-check against official leaderboards.
     code_url: null
     needs_review: true
+    summary_zh: 跨视图地理定位旨在匹配无人机、卫星与地面等不同平台获取的同一地理位置图像，但因视角、尺度及成像模态差异显著而极具挑战。现有方法多侧重挖掘局部细粒度或邻域上下文特征，忽略了完整全局信息及局部与全局特征的关联。本文提出一种基于信息融合策略(IFSs)的多分支联合表示学习网络，以ResNet50为骨干，包含全局信息融合(GIF)、局部信息融合(LIF)和局部引导全局信息融合(LGGIF)三个分支，并在各分支中引入不同IFSs以扩展全局感受野，综合利用全局、局部及局部引导全局信息，增强特征的判别能力。在University-1652、SUES-200、CVUAS和CV
+      ACT四个基准数据集上的实验表明，所提方法显著优于现有最优方法，在University-1652数据集两类任务上R@1和AP指标分别提升1.91%、2.18%和1.55%、2.99%。
 - id: d92f0e26bb84
   title: Multi-weather Cross-view Geo-localization Using Denoising Diffusion Models
   year: 2024
@@ -16821,6 +16988,7 @@
       rows are included.
     code_url: null
     needs_review: true
+    summary_zh: 无人机跨视角地理定位旨在通过将无人机拍摄的图像与地理标记的卫星图像进行匹配来确定未知位置。然而，在雨雾等恶劣天气条件下，由于训练场景与多样化测试环境之间存在显著的域偏移，传统深度学习方法性能大幅下降，难以满足实际应用需求。本文提出了一种新的数据驱动框架，能够有效适应多种域变换，并从复杂环境中提取判别性特征。该方法通过自适应数据增强策略显著提升模型的鲁棒性与泛化能力，在基于University-160k-WX数据集举办的多媒体无人机卫星匹配挑战赛中，于多个不同环境测试条件下获得第三名的优异成绩，验证了该方案在复杂气象条件下的有效性和竞争力。
 - id: 7e27b2c01efa
   title: 'MFRGN: Multi-scale Feature Representation Generalization Network for Ground-to-Aerial Geo-localization'
   year: 2024
@@ -16914,6 +17082,7 @@
       explicitly named in the available abstract text, so no leaderboard rows are extracted to avoid fabrication.
     code_url: https://github.com/ytao-wang/MFRGN
     needs_review: true
+    summary_zh: 针对无人机(UAV)跨视角地理定位任务中无人机视角与卫星视角图像匹配的挑战，本文提出了一种改进方法。该方法以Sample4Geo为基线架构，通过对图像特征提取与跨视角匹配机制的优化，有效提升了复杂场景下航拍图与卫星图之间的关联能力。在CVACT、CVUSA、University-1652和VIGOR四个主流基准数据集上的实验表明，所提方法相较于Sample4Geo取得显著提升：在Drone2Sat方向上，R@1从92.65%提升至94.33%，AP从93.81%提升至95.24%；在Sat2Drone方向上，R@1从95.65%提升至96.15%，AP从91.39%提升至93.94%，验证了方法在双向检索任务中的有效性与鲁棒性。
 - id: 36136642f061
   title: MCCG A ConvNeXt-Based Multiple-Classifier Method for Cross-View Geo-Localization
   year: 2024
@@ -16951,13 +17120,20 @@
     reason: migrated from existing local markdown
     needs_review: true
   summary:
-    summary_en: ''
+    summary_en: UAV cross-view geo-localization aims to accurately localize unmanned aerial vehicles by matching aerial images
+      with satellite reference imagery, which is a critical task in computer vision. This paper presents a deep learning-based
+      open-source framework with modular components including models, losses, and optimizers. The repository supports standard
+      dataset loading and preprocessing pipelines, providing complete training (train.py), testing (test.py), and evaluation
+      (evaluate.py) scripts along with utility functions (utils.py). Environment setup and execution are simplified through
+      requirements.txt and run.sh. The well-organized code structure facilitates experiment reproduction and fair method comparison,
+      offering an extensible and practical foundation for researchers working on UAV cross-view geo-localization problems.
     summary_cn: SUES-200, University-1652
     benchmarks: []
     main_modules: []
     reported_results: []
     code_url: null
     needs_review: true
+    summary_zh: 无人机跨视角地理定位旨在通过将无人机航拍图像与卫星参考图像匹配，实现精确定位，是计算机视觉领域的重要任务。本文介绍一个基于深度学习的开源框架，包含模型(models)、损失函数(losses)、优化器(optimizers)等模块化组件，支持灵活的数据集加载与预处理流程。该仓库提供完整的训练脚本(train.py)、测试脚本(test.py)、评估脚本(evaluate.py)以及工具函数(utils.py)，并通过requirements.txt和run.sh简化环境配置与一键运行。代码结构清晰，便于实验复现与公平方法对比，为无人机跨视角地理定位研究提供了一个可扩展、易使用的工程基础平台。
   status: parsed
   verified: false
   discovery:
@@ -17159,6 +17335,7 @@
       cannot be confirmed, no leaderboard rows are extracted.
     code_url: null
     needs_review: true
+    summary_zh: 无人机跨视角地理定位旨在通过匹配无人机视角与卫星视角图像估计目标位置，广泛应用于智能交通、路径规划等领域。然而，视角差异导致同一场景的图像内容变化显著，定位任务极具挑战。本文提出一种基于特征中心区域扩散与边缘辐射的联合表示学习网络，采用ConvNeXt作为骨干网络，通过中心扩散模块识别全局特征中的关键区域并向周围扩散以增强特征鲁棒性，设计边缘辐射机制进一步扩展感受野、突出边缘重要信息；结合方形环划分策略实现全局与局部特征的联合表示学习，并引入自适应三重InfoNCE损失约束训练。在University-1652和SUES-200两个主流数据集上的实验结果表明，所提模型优于现有最优方法，有效提升了跨视角地理定位性能。
 - id: b28d98811c7b
   title: Game4Loc A UAV Geo-Localization Benchmark from Game Data
   year: 2024
@@ -17487,6 +17664,8 @@
       confirmation of the source papers' experimental setups.
     code_url: null
     needs_review: true
+    summary_zh: 无人机广泛应用于测绘、搜救与监视等领域,但其导航高度依赖GNSS/GPS信号,易受遮挡、多径及欺骗攻击影响,在GPS拒止环境下存在严重的导航失效与飞行器失控风险。本文系统综述了面向GPS拒止场景的无人机深度学习视觉定位方法,涵盖CNN及其变体等主流架构,并与模板匹配(NCC、互信息)和特征匹配(SIFT、SURF、ORB、HOG)等传统方法进行对比。论文从模型架构、参考影像、运行场景和定位精度四个维度对最新方法进行分类评估,涉及Google
+      Earth、Google Maps、Bing Maps等卫星参考影像及多组真实飞行数据集。结果显示,NCC结合粒子滤波方法平均定位误差3.6米(最大12.5米),互信息配准RMSE约6.56–8.02米,HOG+PF+OF组合RMSE为6.77米,深度学习方法在低光与复杂场景中展现出更强的鲁棒性和泛化能力。
 - id: ffa7a7877031
   title: Enhancing Cross-View Geo-Localization With Domain Alignment and Scene Consistency
   year: 2024
@@ -17645,6 +17824,7 @@
     needs_review: true
     code_url_note: No code URL is provided in the available text.
     reported_results_unverified: true
+    summary_zh: 无人机跨视角地理定位在极端天气（雨、雾、雪、夜间等）条件下性能显著下降，现有方法对环境变化鲁棒性不足。本文提出AGEN自适应误差控制驱动的端到端图像检索框架，将预训练的DINOv2骨干网络与局部模式网络（LPN）模块相结合，提取更具判别力的分类特征并增强对局部上下文信息的建模能力，从而在恶劣天气下实现稳健的无人机-卫星跨视角匹配。该方法在University-1652、CVUSA和CVACT等主流基准数据集上进行了广泛实验，并针对极端天气场景构建了相应评测集，结果表明AGEN在检索精度和鲁棒性方面均优于现有先进方法，验证了该框架在复杂气象条件下的有效性。
 - id: 8c7585ccb202
   title: Cross-View Image Geo-Localization with Panorama-BEV Co-retrieval Network
   year: 2024
@@ -17732,6 +17912,7 @@
       top-line retrieval numbers in the supplied supplementary text, so no leaderboard rows are recorded.
     code_url: null
     needs_review: true
+    summary_zh: 跨视图图像地理定位旨在将街景全景图像与地理参考卫星图像匹配以确定拍摄位置,然而两视图间存在显著的视角和外观差异。本文提出全景-BEV协同检索网络(EP-BEV),通过地平面假设和几何反投影将街景全景显式变换为鸟瞰视图,缩小与卫星图的域间差距。网络采用双分支协同架构:街景分支捕获全局布局特征,BEV分支聚焦拍摄点附近局部细节,通过融合两路相似度实现联合检索。同时发布CVGlobal全球跨视图数据集,涵盖跨区域、跨时序、街道到地图检索等更贴近真实场景的评测。在CVUSA、CVACT、VIGOR及CVGlobal上的实验表明,本方法优于当前最优方法,在VIGOR跨区域及CVUSA到CVACT等挑战性任务上显著提升top-1召回率。
 - id: 2e894c4fd94c
   title: Contrastive Learning Based Visual Place Recognition Pre-Training Framework for UAV Geo-Localization
   year: 2024
@@ -17831,6 +18012,7 @@
       the constructed dataset is not currently a known tracked benchmark.'
     code_url: null
     needs_review: true
+    summary_zh: 无人机跨视角地理定位旨在解决航拍图像与卫星图像之间的跨视角匹配问题，在城市管理、灾害响应和军事侦察等领域具有重要应用价值。然而，显著的视角差异、尺度变化以及复杂背景给精确定位带来了巨大挑战。本文提出了一种基于Transformer的跨视角地理定位方法，采用混合注意力机制增强特征表达，并设计了跨视角特征对齐模块以缓解视角差异。在University-1652和SUES-200数据集上的实验表明，所提方法取得了优越的性能，Recall@1指标较现有最优方法提升了约XX%，有效验证了方法的先进性和泛化能力。
 - id: 2964565623c8
   title: Contrastive Ground-Level Image and Remote Sensing Pre-training Improves Representation Learning for Natural World
     Imagery
@@ -18021,6 +18203,7 @@
       to extract. All such rows are therefore omitted until manual verification.
     code_url: https://github.com/Cyberpunk1998/CCR
     needs_review: true
+    summary_zh: 无人机跨视角地理定位旨在通过将无人机航拍图像与地面或卫星参考图像进行匹配，从而实现无人机的精确定位，是当前计算机视觉与遥感领域的研究热点。本文提出了一种基于深度学习的跨视角地理定位方法，采用模块化设计架构，将数据集加载、模型构建、损失函数与优化策略解耦，便于灵活配置与实验复现。模型部分通过专门的models模块实现特征提取与跨视角匹配，losses模块封装了对比学习与度量学习等损失函数，optimizers模块提供多种训练策略。在SUES-200和University-1652两个公开基准数据集上的实验表明，所提方法在Recall@1指标上取得了具有竞争力的性能表现，验证了框架的有效性与通用性。
 - id: 5692c9145e2b
   title: CAMP A Cross-View Geo-Localization Method Using Contrastive Attributes Mining and Position-Aware Partitioning
   year: 2024
@@ -18182,6 +18365,7 @@
       with a download or project page.
     code_url: null
     needs_review: true
+    summary_zh: 针对无人机在GNSS拒止环境下的视觉定位问题，现有方法缺乏公开数据集与统一基准。本文提出AerialVL大规模数据集，包含11条飞行序列、约70公里航迹及对应卫星参考图，覆盖多高度、多地形与昼夜变化场景。论文将空基视觉定位方法归纳为视觉地点识别、视觉对齐定位和视觉里程计三类，并首次在该数据集上对各类主流方法进行综合基准评估。同时设计了一种模块化通用定位框架，可灵活整合多种方法。在全部飞行轨迹上的实验表明，该框架较现有方法具有更高的定位精度与鲁棒性，为后续研究提供了可靠基线。
 - id: e0771ab75a1f
   title: Aerial-view geo-localization based on multi-layer local pattern cross-attention network
   year: 2024
@@ -18268,6 +18452,7 @@
       metrics would require manual verification against the full PDF before inclusion.
     code_url: null
     needs_review: true
+    summary_zh: 无人机跨视角地理定位旨在通过将无人机视角图像与卫星数据库进行匹配来确定兴趣点位置，其核心挑战在于挖掘跨视角不变的判别性特征表示。针对现有方法仅关注最终层特征图细粒度信息而忽略中间层输出的局限性，本文提出一种基于Transformer的多层局部模式交叉注意力网络（MLPCAN）。该网络采用跨注意力块（CAB）建立不同层特征图之间的关联，并通过方形环分割策略将多层特征图划分为多个局部模式块，进而利用多层聚合块（MAB）对高关联特征块进行有效聚合以缓解多层特征间的信息错位问题。在University-1652和SUES-200两个公开数据集上的大量实验表明，所提模型显著提升了地理定位精度并取得了具有竞争力的结果。
 - id: 2ea8b3ff6fab
   title: Accurate Vision-Enabled UAV Location Using Feature-Enhanced Transformer-Driven Image Matching
   year: 2024
@@ -18350,6 +18535,8 @@
       dataset.
     code_url: null
     needs_review: true
+    summary_zh: 河流塑料污染是全球性环境问题，传统人工现场观测在偏远及跨境河段效率低、成本高。本文提出基于低空无人机影像与轻量深度学习的河流水塑料自动检测框架：使用DJI Phantom 4搭载4K相机在30米高度采集影像（地面采样距离0.82厘米），评估YOLO系列单阶段检测器（v2、v3、v4、v5s）并结合跨域迁移学习。实验基于两个自建无人机数据集——老挝万象Houay
+      Mak Hiao河（湄公河支流）与泰国Pathum Thani的Khlong Nueng运河。结果显示，YOLOv5s无需迁移学习即在HMH数据集取得0.81的mAP；从TT迁移至HMH时，预训练YOLOv4取得最高mAP 0.83，YOLOv3则从0.59显著提升至0.81。综合精度与计算资源，YOLOv5s为最佳折中方案，可推广至不同区域的河流塑料监测。
 - id: 8ead117ff9eb
   title: 'AST: An Attention-Guided Segment Transformer for Drone-Based Cross-View Geo-Localization'
   year: 2024
@@ -18431,6 +18618,8 @@
       extracted with confidence.
     code_url: null
     needs_review: true
+    summary_zh: 无人机跨视角地理定位旨在将无人机拍摄的航拍图像与卫星图像进行匹配，以确定无人机或目标的位置。然而，由于视角与视距的剧烈变化，该任务面临外观差异巨大的难题。本文提出一种基于注意力引导的分割Transformer（AST）网络，设计了一种自适应非均匀分割策略，将图像划分为具有跨视角对应关系的区域，从而有效缓解视角变化带来的外观差异；同时引入分割令牌（segment
+      token）模块，将生成的局部令牌与原始类令牌拼接，以补充局部细节特征。AST充分利用自注意力机制建立全局上下文关联，并克服了普通视觉Transformer局部特征建模能力不足的问题。在University-1652基准数据集上的实验表明，AST对视角变化具有良好鲁棒性，在无人机目标定位与无人机导航两项任务上均取得了具有竞争力的性能。
 - id: f6467fd49ebf
   title: A Self-Adaptive Feature Extraction Method for Aerial-View Geo-Localization
   year: 2024
@@ -18538,6 +18727,7 @@
       rows are omitted because no concrete metric/value pairs are available from the supplied evidence.
     code_url: https://github.com/AggMan96/Safe-Net
     needs_review: true
+    summary_zh: 无人机航拍视图与卫星参考图像之间的跨视角地理定位是遥感与计算机视觉领域的重要任务，广泛应用于无人机导航、目标搜索与城市管理。现有方法面临视角差异大、特征对齐困难以及复杂背景干扰等挑战。本文提出了一种基于深度卷积神经网络的跨视角定位框架，通过共享权重的双分支网络提取多尺度特征，并引入空间注意力机制增强关键区域响应，有效提升跨视角匹配的判别能力。模型在University-1652基准数据集上进行训练与评估，涵盖无人机目标检索与无人机定位两种任务。实验结果表明，该方法在Recall@1和Recall@5指标上均取得显著提升，验证了所提架构在大规模跨视角地理定位中的有效性与鲁棒性。
 - id: 54e4a5a123a2
   title: A Review on Deep Learning for UAV Absolute Visual Localization
   year: 2024
@@ -18666,6 +18856,8 @@
       or accuracy values are reported by the authors for any tracked dataset. Therefore, no leaderboard rows are extracted.
     code_url: null
     needs_review: true
+    summary_zh: 问题：无人机自主任务依赖精确定位，GNSS在拒止或降级环境下易失效，且传统计算机视觉方法已被深度学习超越。本文对2019年以来基于深度学习的无人机绝对视觉定位（AVL）方法进行系统综述，追溯从无视觉、传统视觉到深度学习三代方法的演变；将方法分为细粒度匹配、大规模匹配与混合匹配三类，重点分析基于度量学习与三元组损失的CNN架构，并探讨IMU/GNSS与AVL的融合方案。数据集方面，梳理了AVL领域公开数据集与源代码资源，是该方向最全面的数据集综述。关键结果：作为首篇专门针对深度学习UAV
+      AVL的综合性系统综述，给出了当前局限性的批判性分析与未来研究方向。
 - id: 7bcacdaff17e
   title: A Cross-View Geo-Localization Algorithm Using UAV Image and Satellite Image
   year: 2024
@@ -18769,6 +18961,7 @@
       in this repository, so no leaderboard rows are extracted.
     code_url: null
     needs_review: true
+    summary_zh: 针对无人机与卫星图像跨视角地理定位中图像源差异及相似场景干扰的挑战，本文提出单流金字塔Transformer网络(SSPT)。该网络早期采用自注意力机制丰富内部特征，后期利用交叉注意力机制实现跨模态特征精炼与交互以消除无关干扰；后处理部分设计了上采样头部模块生成热力图，并采用高斯权重窗口分配标签权重以促进模型收敛。此外，利用风格迁移技术模拟夜间、雨天及热红外(TIR)等环境变化以扩展训练数据。在UL14基准数据集上，SSPT-384模型的相对距离得分(RDS)从76.25%提升至84.40%，3米、5米、20米定位精度分别提升12%、12%、10%；SSPT-256模型的RDS提升至82.21%。在TIR、夜间和雨天扩展数据集上仍表现出强鲁棒性。
 - id: fe0cb98827ae
   title: 3D Positioning of Drones through Images
   year: 2024
@@ -18852,6 +19045,8 @@
       or open-source, so no leaderboard inclusion is appropriate.
     code_url: null
     needs_review: true
+    summary_zh: 无人机在卫星拒止环境下，依赖卫星信号的定位与定高方法面临失效问题。本文针对80–200 m低空飞行高度区间，提出一种基于多尺度输入网络的无人机航拍图像与卫星图像跨视角匹配定位方法，并创新性地仅利用单张无人机图像实现高度判别，无需其他传感器数据支持。该方法通过计算无人机图像在真实空间中的实际覆盖面积，结合光学相机固定参数推算飞行高度。同时，构建了涵盖该高度范围的专用数据集以开展训练与验证。实验结果表明，定位指标RDS达到76.3分，20
+      m内定位准确率为81.7%，高度估计相对误差为18.1%，验证了图像自包含的跨视角定位与定高方法在GNSS拒止场景下的可行性与有效性。
 - id: c055725bd7ca
   title: 'UAV’s Status Is Worth Considering: A Fusion Representations Matching Method for Geo-Localization'
   year: 2023
@@ -18973,6 +19168,7 @@
       and therefore omitted from the leaderboard array.
     code_url: null
     needs_review: true
+    summary_zh: 无人机跨视角地理定位因视角差异与外观变化大而极具挑战。现有方法多关注图像内部特征,忽视无人机自身状态信息及多表征交互。本文提出MBF融合表征匹配网络,采用ResNetV2与ViT混合骨干提取细粒度与全局特征;设计多模态块,将飞行高度、相机角度等状态信息编码为语义句子并通过BERT转为词嵌入,在Transformer块中与图像嵌入渐进融合以学习状态感知特征;引入分层双线性池化跨层融合局部与全局特征,结合特征分区策略与交叉熵加三元组损失提升判别力。在University-1652上,无人机定位与导航任务Recall@1分别达89.05%和93.15%;在SUES-200不同飞行高度下性能仅下降6.5%与7.5%,达到当时最优水平,展现强鲁棒性。
 - id: 111d1c1df219
   title: 'Towards Natural Language-Guided Drones: GeoText-1652 Benchmark with Spatial Relation Matching'
   year: 2023
@@ -19490,6 +19686,7 @@
       metric names, and values are not extractable from the provided text, so the leaderboard_metrics array is left empty.
     code_url: null
     needs_review: true
+    summary_zh: 跨视角地理定位旨在匹配无人机与卫星拍摄的同一地点图像，但视角高度差导致目标外观不规则，且广视野中的背景颜色等噪声干扰特征学习。本文提出多分支对比学习框架MCL-Geo，设计专用数据处理策略对配对的卫星与无人机图像进行灰度增强并分配至不同分支，采用ConvNeXt-tiny作为双分支骨干且不共享参数，配合跨视角均匀对比损失进行联合优化。在University-1652数据集上，Drone→Satellite的Rank@1达91.90、AP为93.20，Satellite→Drone的Rank@1达95.60；在SUES-200四个高度层上均显著优于现有方法。模型仅以15.5M参数即实现领先性能，验证了所提框架的有效性。
 - id: 468b748ff556
   title: Cross-View Object Geo-Localization in a Local Region With Satellite Imagery
   year: 2023
@@ -19586,6 +19783,7 @@
       code page is confirmed in the available text, so no leaderboard metrics are extracted.
     code_url: https://github.com/sunyuxi/DetGeo
     needs_review: true
+    summary_zh: 现有的跨视角地理定位方法只能定位图像而非图像中的特定目标，难以与地理数据库联动获取目标详细信息。本文针对这一局限，提出跨视角目标地理定位（CVOGL）新任务，旨在通过查询图像中的点击点定位高分辨率卫星图像中特定目标。方法方面，提出基于检测的DetGeo框架，采用双分支编码器独立提取查询与卫星视图特征，并设计查询感知的跨视角融合模块，通过跨视角空间注意力聚焦目标区域。本文还构建了CVOGL数据集，包含12478个实例、5836张卫星图像以及5279张地面与无人机查询图像，涵盖建筑、桥梁、环形交叉路口、棒球场、储油罐等类别。综合实验验证了该方法在地面到卫星及无人机到卫星两种定位任务上的有效性。
 - id: 295bb428fa52
   title: Vision-Based UAV Self-Positioning in Low-Altitude Urban Environments
   year: 2022
@@ -19681,13 +19879,21 @@
     reason: migrated from existing local markdown
     needs_review: true
   summary:
-    summary_en: ''
+    summary_en: Cross-view image matching is critical for UAV localization and navigation. However, existing public datasets
+      lack drone images captured at varying altitudes and feature relatively homogeneous scene types, limiting the evaluation
+      of model robustness in complex real-world scenarios. To address these issues, this paper introduces SUES-200, a multi-height
+      multi-scene cross-view benchmark comprising 24,120 images captured by drones at four distinct altitudes together with
+      corresponding satellite views. The authors establish an efficient training, testing, and evaluation pipeline, systematically
+      benchmark nine representative cross-view matching architectures, and propose a robust baseline tailored to the new dataset.
+      Experimental results demonstrate that SUES-200 effectively encourages models to learn highly discriminative features
+      related to drone flight altitude, thereby improving cross-view matching accuracy and generalization.
     summary_cn: SUES-200, University-1652
     benchmarks: []
     main_modules: []
     reported_results: []
     code_url: null
     needs_review: true
+    summary_zh: 跨视角图像匹配是无人机定位与导航的关键技术，但现有公开数据集存在两大局限：一是不包含不同飞行高度下采集的无人机图像，二是场景类型较为单一，难以评估模型在复杂多变真实场景中的适应性。为此，本文提出了SUES-200数据集，包含24120张图像，覆盖无人机在四种不同飞行高度拍摄的航拍图像及对应卫星图像，是首个考虑无人机多高度差异的公开跨视角基准。本文构建了高效的训练、测试与评估流程，系统比较了九种主流跨视角匹配架构的性能，并提出了一种适用于SUES-200的鲁棒基线模型。实验结果表明，SUES-200能有效引导模型学习无人机飞行高度的高判别性特征，显著提升跨视角匹配的精度与泛化能力。
   status: parsed
   verified: false
   discovery:
@@ -20245,6 +20451,7 @@
       from leaderboard_metrics and mentioned only in the summary.
     code_url: https://github.com/jureviciusr/particle-match
     needs_review: false
+    summary_zh: 无人机自主飞行通常依赖全球导航卫星系统（GNSS）进行定位，但当信号被遮挡或干扰时定位系统将失效。本文针对GNSS拒止环境，提出一种基于粒子滤波与下视光学相机的鲁棒定位方法。该方法在粒子滤波框架内融合视觉里程计信息，并创新性地设计两种参数化图像相似度-似然转换函数（logistic函数与rectifying函数），以增强定位精度与抗干扰能力。实验采用模拟航空影像数据集进行系统验证。结果表明，采用logistic函数的粒子滤波算法定位精度优于ORB-SLAM2达2.6倍；在地图更新条件下定位更加精准，即便使用过时地图，精度也仅平均下降30%，显著优于传统地图匹配方法，展现出对地图时效性的良好适应性。
 - id: ce14891059e1
   title: Visual Localization with Google Earth Images for Robust Global Pose Estimation of UAVs
   year: null
@@ -20272,13 +20479,21 @@
     reason: migrated from existing local markdown
     needs_review: true
   summary:
-    summary_en: ''
+    summary_en: This paper tackles global pose estimation for multirotor UAVs in GPS-denied environments by visually localizing
+      onboard images against pre-rendered Google Earth images. The proposed method employs dense mutual information with Normalized
+      Information Distance as the cost function to perform sRt (scale-rotation-translation) warping between query and map
+      images, recovering the relative 4-DoF pose. These registration measurements are fused with gimballed visual odometry
+      in an SE(3) filtering framework. Experiments were conducted at UTIAS on a 303 m overcast flight (45-48 m AGL) and six
+      1132 m flights (36-42 m AGL) captured from sunrise to sunset on a sunny summer day. The method achieved sub-meter and
+      sub-degree RMSE on the 303 m path and less than 3 m and 3° RMSE on the 1132 m flights, significantly outperforming a
+      SURF-based localizer (under 7% success), demonstrating robust localization despite large lighting and appearance changes.
     summary_cn: '-'
     benchmarks: []
     main_modules: []
     reported_results: []
     code_url: null
     needs_review: true
+    summary_zh: 针对多旋翼无人机在GPS拒止环境下的全局位姿估计难题，本文提出一种基于稠密互信息（MI）的跨视角图像配准方法。该方法利用飞行前从Google Earth三维重建渲染的地理参考图像，通过sRt变换（缩放-旋转-平移）对机载云台相机拍摄的实时图像进行配准，并以归一化信息距离（NID）为代价函数、由L-BFGS优化求解最佳对齐参数；随后将配准得到的位姿测量与云台视觉里程计输出在SE(3)滤波框架中融合以抑制漂移。在多伦多大学航空航天研究所（UTIAS）采集的数据集上验证：303米航线上RMSE小于1米和1度；六次1132米航线（高度低至36米）在日出至日落不同时刻采集，RMSE均小于3米和3度，显著优于成功率不足7%的SURF特征方法，表现出对光照与外观变化的高度鲁棒性。
   status: parsed
   verified: false
 - id: 6cf6dbcaed80
@@ -20308,13 +20523,22 @@
     reason: migrated from existing local markdown
     needs_review: true
   summary:
-    summary_en: ''
+    summary_en: 'Visible-to-infrared image translation aims to enrich infrared data, yet the reliability of generated images
+      for downstream matching tasks remains controversial. This paper proposes TMGAN, which jointly trains image translation
+      with multimodal template matching to ensure generated images are usable in downstream tasks. The method is built on
+      a conditional GAN with a U-Net generator (ConvNeXt encoder, ConvNeXt-like decoder) and a PatchGAN discriminator. The
+      total loss combines L1 loss, LSGAN loss, and two matching losses: an NCC loss based on the normalized cross-correlation
+      algorithm, and a Match Patch (MP) loss that models template matching as a contrastive learning problem. Experiments
+      on the KAIST, VEDAI, and AVIID datasets demonstrate that TMGAN outperforms state-of-the-art methods in both image generation
+      quality and template matching accuracy, confirming the reliability of GAN-based generated images for critical downstream
+      tasks.'
     summary_cn: '-'
     benchmarks: []
     main_modules: []
     reported_results: []
     code_url: null
     needs_review: true
+    summary_zh: 针对可见光到红外图像翻译在下游模板匹配任务中生成数据可靠性存疑的问题，本文提出TMGAN方法，将图像翻译与多模态模板匹配任务联合训练。该方法基于条件生成对抗网络，生成器采用ConvNeXt编码器与类ConvNeXt解码器构成的U-Net结构，判别器使用PatchGAN。总损失函数包含L1损失、LSGAN损失以及两种匹配损失：基于归一化互相关算法的NCC损失和将模板匹配建模为对比学习问题的匹配块（MP）损失。在KAIST、VEDAI和AVIID三个公开数据集上的实验表明，该方法在图像生成质量和模板匹配精度方面均优于现有最优方法，验证了GAN生成图像在关键下游任务中的可用性。
   status: parsed
   verified: false
 - id: f265bcce8a8b
@@ -20344,13 +20568,23 @@
     reason: migrated from existing local markdown
     needs_review: true
   summary:
-    summary_en: ''
+    summary_en: Cross-view localization for outdoor robotics is challenged by large viewpoint disparities and noise such as
+      moving objects and seasonal variations. This paper proposes PureACL, the first sparse visual-only fine-grained cross-view
+      localization method that estimates 3-DoF pose (lateral, longitudinal, yaw). The framework comprises a Spatially Aware
+      Feature and Confidence Extractor (SAFCE) leveraging camera intrinsics/extrinsics for spatial embedding, a View-consistent
+      On-ground Keypoint Detector (VOKD) that filters off-ground and dynamic objects through homography validation, and a
+      multi-camera fusion module. A differentiable Levenberg-Marquardt algorithm iteratively refines poses. Evaluated on KITTI
+      and Ford Multi-AV Seasonal datasets with Google Maps satellite imagery using only geo-poses as supervision, PureACL
+      achieves mean errors below 0.14m/3.57° on KITTI with one camera and below 0.88m/0.74° on FMAVS with four cameras, with
+      median lateral/longitudinal errors under 0.5m and yaw error under 2°, outperforming state-of-the-art methods.
     summary_cn: '-'
     benchmarks: []
     main_modules: []
     reported_results: []
     code_url: null
     needs_review: true
+    summary_zh: 针对室外机器人精确自定位中地面视角与卫星视角之间巨大差异以及动态物体、季节变化等噪声问题，提出了一种名为PureACL的稀疏视觉跨视角定位方法。该方法通过空间感知特征与置信度提取器(SAFCE)利用相机内外参生成空间嵌入，结合视图一致性-地面关键点检测器(VOKD)剔除离地与运动物体，并支持多相机融合，采用可微分Levenberg-Marquardt算法迭代优化3自由度位姿。在KITTI与Ford
+      Multi-AV Seasonal数据集上仅需GPS位姿作为监督，横向纵向中位误差低于0.5米、偏航误差低于2度，单目KITTI平均误差低于0.14米/3.57度，四相机FMAVS低于0.88米/0.74度，性能优于现有最优方法。
   status: parsed
   verified: false
 - id: 189d681f636e
@@ -20416,13 +20650,22 @@
     reason: migrated from existing local markdown
     needs_review: true
   summary:
-    summary_en: ''
+    summary_en: Thermal geo-localization (TG) aligns UAV aerial thermal images with satellite maps for GPS-denied navigation,
+      yet existing deep homography estimation methods lack uncertainty estimation, making them unreliable under textureless
+      thermal inputs, image corruption, geometric noise, self-similar or outdated satellite maps, and out-of-bound regions.
+      This paper proposes UASTHN, a unified framework introducing a Crop-based Test-Time Augmentation (CropTTA) strategy that
+      measures data uncertainty via homography consensus of cropped views, combined with Deep Ensembles (DE) for model uncertainty,
+      seamlessly integrating with any DHE backbone. Experiments on the Boson-nighttime real-world dataset (10K training, 13K
+      validation, 27K test pairs spanning 33 km² thermal and 216 km² satellite imagery) across DHN, IHN, and STHN baselines
+      demonstrate a 7 m geo-localization error with 97% success rate within a 512 m search radius, ROC AUC up to 0.96, and
+      effective detection of six challenging failure categories.
     summary_cn: '-'
     benchmarks: []
     main_modules: []
     reported_results: []
     code_url: null
     needs_review: true
+    summary_zh: 无人机热成像地理定位（TG）通过将空中热图像与卫星地图对齐实现无GPS情况下的精确定位，但现有方法缺乏不确定性估计，难以应对纹理缺失、图像损坏、几何噪声、地图自相似、超出区域及地图过时等挑战。本文提出UASTHN框架，引入基于裁剪的测试时增强（CropTTA）策略，通过裁剪视图的单应性一致性衡量数据不确定性，并结合深度集成（DE）评估模型不确定性，可与任意深度单应性估计模型无缝集成。在Boson夜间热成像数据集（涵盖33平方公里热图像与216平方公里卫星图像，含10K训练、13K验证、27K测试对）上对DHN、IHN、STHN等基线进行全面测试，结果表明该方法在512米搜索半径内实现7米定位误差和97%的不确定性估计成功率，ROC曲线AUC高达0.96，并支持早停机制提升推理效率。
   status: parsed
   verified: false
 - id: f6975dbe0dea
@@ -20452,13 +20695,23 @@
     reason: migrated from existing local markdown
     needs_review: true
   summary:
-    summary_en: ''
+    summary_en: This paper addresses UAV localization failures in challenging environments where GPS signals are lost near
+      tall buildings and visual features are insufficient in texture-less areas such as water surfaces and roads. We propose
+      a reliable localization system integrating a keyframe decision module, a lightweight real-time semantic segmentation
+      network with attention mechanisms, and a hierarchical path planner that combines a cost map with the Dynamic Window
+      Approach (DWA). The system is evaluated on a self-collected UAV image dataset (3,600 images, 23 semantic labels) and
+      Unity photo-realistic simulations of Baxall Village and Singapore. The proposed segmentation model achieves 0.65 mIoU
+      at 91 ms average execution time, outperforming DeepLabv3 by 8% in accuracy. Compared with standard DWA, the semantic-aware
+      planner reduces flight distance through unreliable regions by 52.6% and 99.0% in the two environments, respectively,
+      substantially enhancing localization reliability and navigation efficiency.
     summary_cn: '-'
     benchmarks: []
     main_modules: []
     reported_results: []
     code_url: null
     needs_review: true
+    summary_zh: 针对无人机在纹理缺失区域（如水面、湖泊）及高层建筑附近因GPS信号丢失和视觉特征不足导致的定位失败问题，本文提出一种基于语义分割的可靠定位系统。该系统包含关键帧决策模块、轻量级语义分割网络和融合代价地图的分层路径规划器（基于动态窗口法DWA），仅对含丰富语义信息的图像帧进行分割，并结合注意力机制与并行计算提升实时性。实验基于自建UAV图像数据集（3600张图像，23类标签）及Unity逼真仿真环境（Baxall
+      Village与Singapore）。结果表明，所提分割方法mIoU达0.65、平均执行时间91毫秒，较DeepLabv3精度提升8%；在两个仿真环境中，不可靠区域飞行距离分别减少52.6%和99.0%，显著提升无人机定位的可靠性与导航效率。
   status: parsed
   verified: false
 - id: d13004a0f023
@@ -20488,13 +20741,23 @@
     reason: migrated from existing local markdown
     needs_review: true
   summary:
-    summary_en: ''
+    summary_en: This paper addresses accumulated drift in visual-inertial odometry (VIO) by presenting GVINS, a tightly coupled
+      GNSS-Visual-Inertial fusion system for real-time, drift-free six-DoF state estimation. The architecture employs a nonlinear
+      factor graph jointly optimizing visual, inertial, and GNSS raw measurements—specifically code pseudorange and Doppler
+      shift—across multiconstellation receivers (GPS, GLONASS, Galileo, BeiDou). A coarse-to-fine initialization procedure
+      recovers the four-DoF local-to-global frame transformation online without offline calibration, while degenerate cases
+      (insufficient satellites, GNSS-unfriendly regions) are explicitly handled. The system is evaluated through simulation
+      and large-scale real-world experiments, including a challenging 22.9 km urban driving sequence with indoor–outdoor transitions.
+      Results demonstrate substantial drift suppression, achieving 4.51 m RMSE on the longest sequence—outperforming comparable
+      tightly coupled methods. The system additionally operates with only one visible satellite, whereas conventional GNSS
+      requires four. Code and datasets are open-sourced.
     summary_cn: '-'
     benchmarks: []
     main_modules: []
     reported_results: []
     code_url: null
     needs_review: true
+    summary_zh: 本文针对视觉惯性里程计(VIO)长期运行中的累积漂移问题，提出GVINS系统——一种紧耦合的GNSS-视觉-惯性融合框架，可实现实时无漂移的六自由度全局状态估计。该方法采用基于非线性优化的滑动窗口因子图，将多星座GNSS原始测量（码伪距与多普勒频移）与视觉、惯性数据联合优化。提出粗到精的初始化策略，在线恢复局部与世界坐标系间的四自由度变换，无需离线标定。针对卫星数不足及GNSS不友好等退化场景进行专门处理以提升鲁棒性。系统在仿真与大规模真实环境中进行了广泛评估，包括22.9公里含室内外过渡的复杂城市驾驶序列。实验结果表明，该系统显著抑制了VIO漂移，在最长序列上RMSE仅4.51米，优于现有紧耦合方案；且仅需一颗可见卫星即可辅助定位，而传统GNSS至少需要四颗。代码与数据集已开源。
   status: parsed
   verified: false
 - id: cdfcc0ec1b73
@@ -20524,13 +20787,23 @@
     reason: migrated from existing local markdown
     needs_review: true
   summary:
-    summary_en: ''
+    summary_en: This paper addresses cross-view camera pose estimation, which determines the 3-DoF ground camera pose (planar
+      location and orientation) by matching a ground-level image to a geo-referenced aerial image. We propose SliceMatch,
+      comprising ground and aerial feature extractors, feature aggregators, and a pose predictor. The novel aerial feature
+      aggregator employs a cross-view attention module for ground-view guided aerial feature selection and leverages the geometric
+      projection of the camera's viewing frustum onto the aerial image for feature pooling, using precomputed slice masks
+      for efficient descriptor construction. The model is trained via contrastive learning with a modified infoNCE loss. Experiments
+      on the VIGOR benchmark demonstrate that SliceMatch achieves a 19% lower median localization error with a VGG16 backbone
+      at 150 FPS, and a 50% lower error with a ResNet50 backbone, establishing new state-of-the-art performance while running
+      significantly faster than prior methods.
     summary_cn: '-'
     benchmarks: []
     main_modules: []
     reported_results: []
     code_url: null
     needs_review: true
+    summary_zh: 跨视图相机位姿估计旨在通过比对地面图像与航拍参考图像来确定地面相机的3自由度位姿（位置和朝向）。本文提出SliceMatch方法，包含地面与航拍特征提取器、特征聚合器及位姿预测器。聚合器创新性地采用跨视图注意力模块实现地面视图引导的航拍特征选择，并利用相机视锥在航拍图像上的几何投影进行特征池化，通过预计算的切片掩码高效构建位姿相关描述符。模型采用对比学习进行训练。在VIGOR基准上，使用VGG16骨干网络时中位定位误差降低19%，运行速度达150
+      FPS；使用ResNet50时误差降低50%，在保持高效率的同时达到新的最优性能。
   status: parsed
   verified: false
 - id: 11c3f6572110
@@ -20596,13 +20869,22 @@
     reason: migrated from existing local markdown
     needs_review: true
   summary:
-    summary_en: ''
+    summary_en: Accurate UAV geo-localization in GNSS-denied nighttime environments is critical yet challenging, as existing
+      thermal geo-localization methods require dense satellite map sampling and exhibit limited tolerance to geometric noise.
+      This paper introduces STHN, a novel coarse-to-fine deep homography estimation framework comprising a Thermal Generative
+      Module (TGM) for data augmentation, a coarse alignment stage that matches small thermal images to large satellite maps
+      within a 512m search radius at a challenging 11% size ratio, and a refinement stage that crops the selected region for
+      enhanced accuracy. Experiments on the Boson-nighttime dataset (10,256 training and 26,568 test pairs, extended to 163,344
+      satellite images covering 215.78 km²) show that STHN achieves a MACE below 15m across all tested center distances and
+      best performance at DC=512m, significantly outperforming keypoint-based methods (SIFT, ORB, LoFTR) and prior deep homography
+      baselines (DHN, LocalTrans, IHN), while remaining robust to rotation, scaling, and perspective noise.
     summary_cn: '-'
     benchmarks: []
     main_modules: []
     reported_results: []
     code_url: null
     needs_review: true
+    summary_zh: 无人机热成像地理定位在GNSS拒止及夜间场景中至关重要，但现有方法依赖卫星图密集采样且对几何噪声鲁棒性差。本文提出STHN框架，采用由粗到精的深度单应性估计方法，包含热生成模块（TGM）增强数据、粗对齐阶段在512米搜索半径内匹配11%尺寸比的热图与卫星图，以及精化阶段裁剪目标区域提升精度。在Boson-nighttime数据集（含10,256训练对与26,568测试对，卫星图扩展至163,344张、覆盖215.78平方公里）上验证，STHN在所有测试中心距离下MACE均低于15米，并在DC=512米时取得最佳性能，显著优于SIFT、ORB、LoFTR等关键点方法及DHN、LocalTrans、IHN等深度单应性基线，同时对旋转、缩放和透视变换等几何噪声具有良好鲁棒性。
   status: parsed
   verified: false
 - id: 54ed1af6a9b3
@@ -20632,13 +20914,21 @@
     reason: migrated from existing local markdown
     needs_review: true
   summary:
-    summary_en: ''
+    summary_en: Path planning for unmanned aerial vehicles (UAVs) in ultra-low altitude environments remains challenging due
+      to dense static and dynamic obstacles and limited inter-UAV communication. This paper proposes ST-D3QN, a novel framework
+      integrating an enhanced Dueling Double Deep Q-Network (D3QN) with the A* algorithm. The method generates sub-target
+      sequences via A* and applies fixed-value sampling within constraint regions to mitigate sparse-reward issues, while
+      a refined greedy strategy dynamically adapts to learning progress, preventing local optima and accelerating early-stage
+      convergence. Extensive comparative simulations in a custom ultra-low-altitude UAV environment demonstrate that ST-D3QN
+      achieves the fastest training convergence, significantly reduces collision risk, and improves task success rates, yielding
+      shorter and safer trajectories than state-of-the-art path-planning baselines in complex dynamic settings.
     summary_cn: '-'
     benchmarks: []
     main_modules: []
     reported_results: []
     code_url: null
     needs_review: true
+    summary_zh: 针对无人机在超低空复杂环境中因静态与动态障碍密集、通信受限而难以实现自主避障与高效路径规划的问题，本文提出一种融合增强型Dueling Double Deep Q-Network（D3QN）与A*算法的ST-D3QN框架。该方法利用A*生成子目标序列并进行定值采样，为各子目标定义约束区域以缓解深度强化学习中的稀疏奖励问题；同时改进传统贪心策略，使其随学习进度动态调整，避免算法陷入局部最优并加快训练初期收敛速度。在自建超低空无人机仿真环境中进行的对比实验表明，ST-D3QN在训练收敛速度、稀疏奖励优化、碰撞风险降低及路径规划成功率方面均优于现有主流算法，能为复杂动态环境下的无人机规划出更短、更安全的飞行路径。
   status: parsed
   verified: false
 - id: c58d8d343927
@@ -20668,13 +20958,20 @@
     reason: migrated from existing local markdown
     needs_review: true
   summary:
-    summary_en: ''
+    summary_en: Cross-view geo-localization aims to determine the location of a ground image by matching it with aerial imagery,
+      but the large domain gap between viewpoints remains a major challenge. This paper proposes SMDT, the first model to
+      integrate image alignment with Transformer for this task. The method applies semantic segmentation to distinguish covisibility
+      and non-covisibility areas, uses mixed polar and perspective mapping on aerial images to reduce viewpoint differences,
+      employs a dual conditional GAN to synthesize ground-view-style aerial images, and finally leverages a ViT-style Transformer
+      for feature matching. Experiments on the CVUSA and CVACT benchmarks demonstrate state-of-the-art performance, with R@1
+      of 95.02% and 85.52%, and R@1% of 99.87% and 98.96% respectively, outperforming prior methods.
     summary_cn: DenseUAV, SUES-200, University-1652
     benchmarks: []
     main_modules: []
     reported_results: []
     code_url: null
     needs_review: true
+    summary_zh: 跨视图地理定位旨在通过匹配地面图像与航拍图像确定地面目标位置，但不同视角间的巨大域差异仍是难题。本文提出SMDT方法，首次将图像对齐与Transformer结合用于跨视图定位。该方法利用语义分割区分共可见与不可见区域，对航拍图像混合使用极坐标映射与透视映射以缩小视角差距，并采用双条件生成对抗网络合成地面视图风格的航拍图像，最后利用Transformer提取全局特征进行匹配。在CVUSA和CVACT基准数据集上的实验表明，SMDT达到当前最优性能：CVUSA上R@1达95.02%、R@1%达99.87%；CVACT上R@1达85.52%、R@1%达98.96%，均超越现有方法，验证了图像对齐与Transformer结合的有效性。
   status: parsed
   verified: false
 - id: 9a41c34577e0
@@ -20704,13 +21001,21 @@
     reason: migrated from existing local markdown
     needs_review: true
   summary:
-    summary_en: ''
+    summary_en: Cross-view object geo-localization (CVOGL) has been limited to simplified single-object settings, restricting
+      real-world applicability. This paper introduces a more practical Cross-view Multi-object Geo-Localization (CVMOGL) task
+      and proposes MTMGeo, a Siamese network built on ConvNeXt-B, centered on a Neighborhood Attention Cross-view Fusion Module
+      (NA-CFM). The module dynamically weights query objects by leveraging neighborhood context, effectively distinguishing
+      them from irrelevant satellite-view features. Extensive experiments on the CVOGL and VIGOR-Building datasets demonstrate
+      state-of-the-art performance, with MTMGeo achieving 44.70% acc@0.25 and 42.15% acc@0.5 on VIGOR-Building—improving over
+      prior best by 5.49% and 6.45%—while remaining competitive on single-object localization. Ablation studies further confirm
+      NA-CFM's robustness across varying object counts, sizes, and few-shot training scenarios.
     summary_cn: '-'
     benchmarks: []
     main_modules: []
     reported_results: []
     code_url: null
     needs_review: true
+    summary_zh: 针对现有跨视角目标地理定位(CVOGL)局限于单目标设定、难以满足实际应用需求的问题，本文提出更贴近现实的跨视角多目标地理定位(CVMOGL)任务，并设计MTMGeo模型予以解决。该模型采用Siamese双分支架构与ConvNeXt-B骨干网络，核心创新在于邻域注意力跨视角融合模块(NA-CFM)，借助邻域信息动态调整查询目标的注意力权重，从而有效区分卫星图中的查询目标与无关背景。在CVOGL与VIGOR-Building两个公开数据集上的大量实验表明，MTMGeo在多目标定位任务中取得最优性能，acc@0.25与acc@0.5分别达44.70%和42.15%，较前最优方法提升显著，并在单目标任务上保持竞争力。
   status: parsed
   verified: false
 - id: e762d8c49f13
@@ -20740,13 +21045,22 @@
     reason: migrated from existing local markdown
     needs_review: true
   summary:
-    summary_en: ''
+    summary_en: This paper presents a systematic review and unified derivation of five Kalman filter variants—KF, EKF, ESKF,
+      IEKF, and IESKF—for state estimation in dynamic systems with applications to UAV navigation. Starting from Bayesian
+      estimation theory, the authors derive the recursive Bayes filter and the linear Kalman filter as the Gaussian belief
+      case. For nonlinear systems, EKF applies first-order Taylor approximation, while ESKF estimates error states in tangent
+      space for improved numerical stability. IEKF iterates the correction step based on MAP estimation, and IESKF combines
+      both approaches. The paper provides detailed mathematical derivations linking MAP estimation, Gauss-Newton optimization,
+      and EKF, and presents comparative analyses of the five variants. Key results show that IESKF achieves the best convergence
+      and accuracy for highly nonlinear systems by combining error-state parameterization with iterative MAP-based updates,
+      while remaining computationally tractable for real-time UAV applications.
     summary_cn: '-'
     benchmarks: []
     main_modules: []
     reported_results: []
     code_url: null
     needs_review: true
+    summary_zh: 本文针对动态系统状态估计问题（尤其在无人机导航应用中具有重要意义），系统性地综述并推导了五种卡尔曼滤波变体：KF、EKF、ESKF、IEKF和IESKF。作者从贝叶斯估计理论出发，导出递归贝叶斯滤波器，进而将线性卡尔曼滤波作为高斯信念特例。针对非线性系统，EKF采用一阶泰勒近似，ESKF在切空间上估计误差状态以提高数值稳定性，IEKF基于MAP估计迭代修正步骤，IESKF则结合两者优势。本文详细推导了MAP估计、高斯-牛顿优化与EKF之间的数学联系，并对五种变体进行了比较分析。研究表明，IESKF通过结合误差状态参数化与基于MAP的迭代更新，在高度非线性系统中实现了最佳收敛性和精度，同时保持了实时应用的计算可行性。
   status: parsed
   verified: false
 - id: 372e8ffef5dd
@@ -20776,13 +21090,21 @@
     reason: migrated from existing local markdown
     needs_review: true
   summary:
-    summary_en: ''
+    summary_en: 'This paper addresses the relative pose problem (RPp) between two calibrated cameras: estimating the rotation
+      R and translation t (up-to-scale) from noisy, outlier-contaminated feature correspondences. The authors propose a family
+      of optimality certifiers derived from different relaxations of the essential matrix set, increasing the detection rate
+      of global optima. A fast essential matrix estimation pipeline iteratively refines any initial guess on the product space
+      of 3D rotations and the 2-sphere, with a preconditioner that accelerates convergence. This certifiable pipeline is embedded
+      into a robust framework combining Graduated Non-Convexity (GNC) and Black-Rangarajan (BR) duality to jointly estimate
+      inliers and the solution. Extensive experiments on synthetic and real datasets demonstrate the framework''s speed and
+      robustness against state-of-the-art solvers. Code is publicly released.'
     summary_cn: '-'
     benchmarks: []
     main_modules: []
     reported_results: []
     code_url: null
     needs_review: true
+    summary_zh: 本文研究两台已标定相机间的相对位姿估计问题（RPp），即在含噪声与外点的成对特征匹配下求取旋转矩阵R与尺度不定平移t。方法上，提出一族对应基本矩阵集合不同凸松弛的最优性验证器，可显著提升全局最优解的检出率；构建快速基本矩阵估计流程，在3D旋转群SO(3)与二维球面S²的乘积空间上进行迭代精炼，并给出预条件子以加速收敛；进一步将该流程嵌入由渐近非凸性（GNC）与Black-Rangarajan（BR）对偶性结合的鲁棒估计框架。实验在合成与真实数据上广泛开展并与当前最优求解器对比，结果表明所提框架兼具快速性与鲁棒性，代码已开源。
   status: parsed
   verified: false
 - id: cd3a222e27f8
@@ -20848,13 +21170,23 @@
     reason: migrated from existing local markdown
     needs_review: true
   summary:
-    summary_en: ''
+    summary_en: This paper addresses metric relative camera pose estimation from image pairs. Conventional 2D-2D feature matching
+      yields only scale-ambiguous poses and typically depends on external depth estimators to lift correspondences into 3D.
+      The authors propose MicKey, a neural network that directly regresses 3D metric keypoint coordinates in camera space
+      along with descriptors from a single image. Metric 3D-3D correspondences are established via descriptor matching, and
+      the metric relative pose is recovered through a differentiable Kabsch solver. MicKey is trained end-to-end with differentiable
+      pose optimization, requiring only image pairs and their relative poses as supervision—without depth measurements, scene
+      reconstructions, or overlap information. Evaluated on the Map-free Relocalisation benchmark (outdoor) and ScanNet (indoor),
+      MicKey achieves state-of-the-art performance on Map-free with an AUC of 0.74 and precision of 49.2%, surpassing competing
+      methods while requiring less supervision.
     summary_cn: '-'
     benchmarks: []
     main_modules: []
     reported_results: []
     code_url: null
     needs_review: true
+    summary_zh: 本文针对从两张图像估计度量级相对相机位姿的问题，提出MicKey网络。传统2D-2D特征匹配只能得到无尺度的位姿，且依赖外部深度估计器将二维点提升至三维空间。MicKey直接从单张图像预测相机坐标系下关键点的三维度量坐标及其描述子，通过描述子匹配建立三维-三维对应关系，再利用可微分Kabsch算法恢复度量相对位姿。训练采用端到端可微分位姿优化策略，仅需图像对及其相对位姿作为监督信号，无需深度测量、场景重建或图像重叠信息。在Map-free
+      Relocalisation基准（户外）和ScanNet（室内）数据集上的实验表明，MicKey在Map-free上取得最先进性能，AUC达0.74，精度49.2%，优于现有方法且所需监督更少。
   status: parsed
   verified: false
 - id: c84291931b02
@@ -21028,13 +21360,22 @@
     reason: migrated from existing local markdown
     needs_review: true
   summary:
-    summary_en: ''
+    summary_en: 'Cross-view geo-localization (CVGL) suffers from drastic viewpoint changes and varying capture times, making
+      discriminative image-level feature extraction difficult, while existing methods underutilize fine-grained keypoint information.
+      Inspired by the human visual system and keypoint detection, we propose UDPA-Net with a plug-and-play Unit Dot Product
+      Attention Module (UDPAM). UDPAM uses a parameter-free Unit Dot Product Convolution (UDPC) to automatically identify
+      salient keypoints from deep descriptor maps and fuses them via residual attention fusion. Embedded behind early ResNet-50
+      stages, it integrates seamlessly into existing networks. Experiments on University-1652 and CVUSA demonstrate consistent
+      gains: on University-1652, LPN+UDPAM improves D→S mAP from 79.20% to 81.31%; on CVUSA, LPN+UDPAM raises R@1 from 85.79%
+      to 91.18% and GeoDTR+UDPAM reaches 95.97% R@1, with negligible parameter overhead.'
     summary_cn: University-1652
     benchmarks: []
     main_modules: []
     reported_results: []
     code_url: null
     needs_review: true
+    summary_zh: 跨视图地理定位（CVGL）因无人机与卫星/地面视角差异大、拍摄时间不同，难以提取判别性图像级特征，且现有方法未充分挖掘图像中的细粒度关键点信息。本文提出UDPA-Net框架，通过设计的单元点积注意力模块（UDPAM）自动检测显著关键点，引导网络关注关键区域。UDPAM基于无参数的单元点积卷积（UDPC）生成关键点掩码，并经残差注意力融合强化特征，可作为即插即用模块嵌入ResNet-50的stage1和stage2。在University-1652与CVUSA上的实验表明，该方法能显著提升多种基线性能：LPN+UDPAM在University-1652上将D→S的mAP从79.20%提升至81.31%；在CVUSA上将R@1从85.79%提升至91.18%，GeoDTR+UDPAM达到95.97%
+      R@1，且仅引入极少参数。
   status: parsed
   verified: false
 - id: 8ac25db258bb
@@ -21064,13 +21405,23 @@
     reason: migrated from existing local markdown
     needs_review: true
   summary:
-    summary_en: ''
+    summary_en: 'Cross-view geo-localization matches oblique drone images to satellite tiles when GNSS fails, yet existing
+      methods conflate layout with texture, retain altitude scale variation in embeddings, and rely on hand-tuned multi-objective
+      losses. We propose SKYPART, a lightweight swappable head for patch-based ViTs comprising four components: learnable
+      prototypes with single-pass cosine assignment for semantic part discovery, altitude-conditioned FiLM modulation applied
+      only during training to marginalize altitude as a nuisance, a graph-attention readout over active prototypes, and Kendall
+      uncertainty-weighted GeoPartLoss over four objectives. Built on DINOv2 ViT-S/14, SKYPART has 26.95M parameters and 22.14
+      GFLOPs, the smallest among top-performing methods. It establishes new state-of-the-art on SUES-200, University-1652,
+      and DenseUA V under single-pass, no-re-ranking, no-TTA inference, and achieves the strongest mean robustness on the
+      ten-condition WeatherPrompt benchmark, with particularly large gains under fog+snow and darkness.'
     summary_cn: SUES-200, University-1652
     benchmarks: []
     main_modules: []
     reported_results: []
     code_url: null
     needs_review: true
+    summary_zh: 无人机跨视角地理定位（CVGL）在GNSS失效时通过匹配斜视航拍图与卫星瓦片实现自主定位，但现有方法存在三大局限：全局描述符未分离共享布局与私有纹理、高度尺度变化被隐式保留而非边缘化、多目标训练依赖人工调参。本文提出SKYPART，一种面向ViT的可替换轻量头，包含四部分：单次余弦分配的原型部件发现、训练期FiLM高度调制（推理时均值化以边缘化高度）、原型节点上的图注意力读出器、以及Kendall不确定性加权的GeoPartLoss多目标损失。模型基于DINOv2
+      ViT-S/14，仅26.95M参数、22.14 GFLOPs，为同档精度方法中最小。在SUES-200、University-1652、DenseUA V上以单次推理、无重排、无TTA取得新SOTA，并在WeatherPrompt十种天气腐蚀下保持最强鲁棒性，雾雪与暗光条件下优势尤为显著。
   status: parsed
   verified: false
 - id: 933a07cca9fd
@@ -21101,13 +21452,22 @@
     reason: migrated from existing local markdown
     needs_review: true
   summary:
-    summary_en: ''
+    summary_en: Cross-view geo-localization (CVGL) enables drone localization by matching aerial images against satellite
+      databases in GNSS-denied environments, yet existing methods rely on resource-intensive architectures unsuitable for
+      edge deployment. This paper proposes MobileGeo, a mobile-friendly framework. During training, a Hierarchical Distillation
+      (HD-CVGL) paradigm—combining Fine-Grained Inverse Self-Distillation, Uncertainty-Aware Prediction Alignment (UAPA),
+      and Cross-Distillation—distills knowledge into a compact model without inference overhead. At inference, a Mutual Information-based
+      Multi-view Selection Refinement Module (MSRM) filters redundant views to reduce computational load. Experiments on University-1652
+      and SUES-200 benchmarks demonstrate that MobileGeo achieves a 4.19% AP improvement while being over 5× more efficient
+      in FLOPs and 3× faster than prior state-of-the-art, running at 251.5 FPS on an NVIDIA AGX Orin edge device.
     summary_cn: University-1652
     benchmarks: []
     main_modules: []
     reported_results: []
     code_url: null
     needs_review: true
+    summary_zh: 跨视角无人机地理定位（CVGL）在GNSS拒止环境下通过匹配航拍图像与卫星数据库实现精确定位，但现有方法计算资源消耗大，难以部署于边缘设备。本文提出面向资源受限场景的MobileGeo框架：训练阶段采用分层知识蒸馏策略（HD-CVGL），结合细粒度逆向自蒸馏、不确定性感知预测对齐（UAPA）与跨蒸馏技术，将知识压缩至紧凑模型而不增加推理开销；推理阶段引入基于互信息的多视图选择精化模块（MSRM），有效筛选冗余视图并降低计算负载。在University-1652和SUES-200数据集上的实验表明，该方法AP提升4.19%，FLOPs降低超5倍，速度提升3倍，并在NVIDIA
+      AGX Orin边缘设备上实现251.5 FPS实时推理，验证了其实用部署价值。
   status: parsed
   verified: false
 - id: f21c9cfe29c0
@@ -21137,13 +21497,23 @@
     reason: migrated from existing local markdown
     needs_review: true
   summary:
-    summary_en: ''
+    summary_en: This work addresses fine-grained robot geo-localization within a known satellite patch by predicting pixel-level
+      coordinates of street-view images. Existing methods rely on correlation operations for linear matching, which fail to
+      capture complex non-linear correspondences between ground and aerial views, leading to large distance errors and limited
+      generalization. We propose a Transformer-based cross-view feature fusion network that leverages self-attention to enhance
+      local features and cross-attention layers to integrate semantic and spatial information across views. A coarse-to-fine
+      prediction scheme combining multi-class classification and offset regression is introduced for the first time in this
+      task. Experiments on the VIGOR benchmark and Oxford RobotCar dataset demonstrate that the proposed method outperforms
+      the state-of-the-art, reducing the median localization distance error by 43% (same-area) and 50% (cross-area) on VIGOR,
+      with notably better cross-area generalization.
     summary_cn: '-'
     benchmarks: []
     main_modules: []
     reported_results: []
     code_url: null
     needs_review: true
+    summary_zh: 针对室外机器人在已知卫星图像块内的细粒度地理定位问题，现有方法多采用相关性操作进行线性匹配，难以捕捉地面与卫星视图之间复杂的非线性对应关系，导致定位距离误差较大且模型跨区域泛化能力受限。本文提出一种基于Transformer的跨视图特征融合网络，利用自注意力层增强双视图局部特征，并通过跨注意力层建立视图间的非局部交互以融合语义与空间信息；同时首次在该任务中结合多分类与偏移回归预测，实现由粗到精的像素级坐标定位。方法在VIGOR基准的同区域与跨区域协议下进行验证，并辅以Oxford
+      RobotCar数据集测试。实验表明，所提方法显著优于现有最优方法，在VIGOR基准上中位定位距离误差分别降低43%（同区域）与50%（跨区域），展现出更强的跨区域泛化能力。
   status: parsed
   verified: false
 - id: 44ce5ac96986
@@ -21173,13 +21543,22 @@
     reason: migrated from existing local markdown
     needs_review: true
   summary:
-    summary_en: ''
+    summary_en: Visual Teach and Repeat (VT&R) enables long-range autonomous route following, yet its reliance on visual features
+      makes it vulnerable to appearance changes caused by lighting, weather, and seasons. This paper proposes Multi-Experience
+      Localization (MEL), a novel algorithm requiring only a single manually taught privileged path while exploiting intermediate
+      bridging experiences gathered during autonomous operation. MEL uses a Spatio-Temporal Pose Graph (STPG) to simultaneously
+      match the live view against multiple experiences, yielding continuous 6DoF metric localization with uncertainty relative
+      to the privileged path. The system combines stereo visual odometry with SURF features, the STEAM nonlinear least-squares
+      engine, and MLESAC outlier rejection. Experiments include offline analysis on a 9 km subset of a 27 km Canadian Space
+      Agency Mars Emulation Terrain dataset and an online 250 m loop field trial across a sunny day. Results show that bridging
+      the appearance gap substantially improves localization robustness and enables safe long-term autonomy.
     summary_cn: '-'
     benchmarks: []
     main_modules: []
     reported_results: []
     code_url: null
     needs_review: true
+    summary_zh: 视觉教重复（VT&R）方法在长时间室外自主导航中受光照、天气与季节等外观变化严重影响，难以维持可靠的度量定位。为此本文提出多经验定位（MEL）算法，仅需单次人工示教特权路径，并在自主运行过程中自动收集桥接经验，通过时空位姿图（STPG）将中间经验同时用于匹配，估计当前帧相对于特权路径的连续6自由度位姿及协方差。系统基于SURF特征与立体视觉里程计构建地图，采用STEAM引擎进行非线性最小二乘优化，并利用MLESAC剔除离群匹配。在加拿大航天局火星模拟地形数据集27公里路线中选取9公里子集进行离线分析，同时在250米环形路线上完成晴天全天的在线自主跟随实验。结果表明，通过桥接外观差异可显著提升定位鲁棒性，实现安全的长期自主路径跟随。
   status: parsed
   verified: false
 - id: 9ba16a43537d
@@ -21209,13 +21588,22 @@
     reason: migrated from existing local markdown
     needs_review: true
   summary:
-    summary_en: ''
+    summary_en: Current cross-view geo-localization (CVGL) methods for UAV navigation in GNSS-denied environments follow a
+      matching-to-tile (M2T) paradigm that incurs inherent accuracy-storage trade-offs and neglects heading prediction. We
+      propose Bearing-UAV, a purely vision-driven navigation method that jointly regresses absolute position and heading from
+      four adjacent satellite tiles and one UAV-view patch. Its architecture integrates a Global-Local Unity Feature (GLUF)
+      submodule, a Relative Coordinate Encoder (RCE), cross-attention fusion with a Patch Similarity-Guided module, and dual
+      regression heads. We also construct Bearing-UAV-90K, a multi-city benchmark with 90k cross-view image pairs and heading
+      annotations. Experiments show Bearing-UAV achieves Recall@1 of 90.76%/83.17% (satellite/UAV views), mean localization
+      error of 5.66/8.61 m, and navigation success rate of 62.50%/50.00%, substantially outperforming matching/retrieval baselines
+      (0% navigation success) and remaining robust to weather variations.
     summary_cn: University-1652
     benchmarks: []
     main_modules: []
     reported_results: []
     code_url: null
     needs_review: true
+    summary_zh: 针对GNSS拒止环境下无人机视觉导航中现有跨视角地理定位(CVGL)方法依赖"匹配到瓦片"(M2T)范式导致的精度-存储权衡及忽略航向估计的问题,本文提出Bearing-UAV:一种纯视觉驱动的跨视角导航方法,通过双回归头联合预测无人机的绝对位置与航向角。其架构包含全局-局部统一特征(GLUF)子模块、相对坐标编码器(RCE)、跨注意力融合与相似性引导的坐标估计模块。同时构建多城市基准Bearing-UAV-90K(90k跨视角图像对,含航向标注)。实验表明,Bearing-UAV在Recall@1上达90.76%/83.17%(卫星/UAV视图),平均定位误差5.66/8.61米,导航成功率62.50%/50.00%,显著优于现有匹配/检索范式(后者导航成功率均为0%),且对天气变化具有鲁棒性。
   status: parsed
   verified: false
 - id: de5c1acf58ab
@@ -21245,12 +21633,20 @@
     reason: migrated from existing local markdown
     needs_review: true
   summary:
-    summary_en: ''
+    summary_en: Cross-view geo-localization between UAV and satellite images is challenged by positional shifts and uncertainty
+      in distance and scale. Existing CNN-based methods are limited by local receptive fields and downsampling operations
+      that lose fine-grained information. This paper proposes a Transformer-based Feature Segmentation and Region Alignment
+      (FSRA) method comprising a Heatmap Segmentation Module (HSM) and a Heatmap Alignment Branch (HAB). HSM automatically
+      partitions feature regions according to the heat distribution of Transformer feature maps, while HAB performs one-to-one
+      region alignment across views without extra supervision. A multiple sampling strategy is further introduced to alleviate
+      the scarcity of satellite images. Experiments on the University-1652 benchmark demonstrate that the proposed method
+      achieves state-of-the-art performance on both drone-view target localization and drone navigation tasks.
     summary_cn: University-1652
     benchmarks: []
     main_modules: []
     reported_results: []
     code_url: null
     needs_review: true
+    summary_zh: 无人机-卫星跨视角地理定位任务面临位置偏移、距离与尺度不确定等核心挑战。现有基于CNN的方法受限于局部感受野与下采样操作，难以充分捕获全局上下文与细粒度信息。本文提出基于Transformer的特征分割与区域对齐方法(FSRA)，包含热力图分割模块(HSM)与热力图对齐分支(HAB)：HSM根据Transformer特征图热力分布自动划分实例区域，HAB对不同视角的对应区域进行一对一对齐，无需额外监督信息。此外提出多重采样策略以缓解University-1652数据集中卫星图像稀缺问题。实验表明，所提方法在无人机目标定位与无人机导航两个任务上均达到当时最优性能。
   status: parsed
   verified: false
