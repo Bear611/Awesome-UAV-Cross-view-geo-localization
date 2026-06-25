@@ -8,11 +8,11 @@ Rows: **18** (one per paper).
 
 | Method | R@1 | AP | Paper | Source |
 | --- | ---: | ---: | --- | --- |
-| VISION-LANGUAGE | 93.37 | 95.03 | SkyLink: A Large Vision-Language Model Driven Re-ranking Framework for Cross-View UAV geolocalization | Table 1 |
+| SDPL | 93.37 | 95.03 | SkyLink: A Large Vision-Language Model Driven Re-ranking Framework for Cross-View UAV geolocalization | Table 1 |
 | SCOF (Ours) | 90.75 | 92.32 | SCOF Supervised Contrastive Orthogonal Fusion for Robust Cross-View Geolocalization | Table IX |
 | Proposed (Joint Representation Learning with Feature Center Region Diffusion and Edge Radiation) | 85.30 | 87.58 | Joint Representation Learning Based on Feature Center Region Diffusion and Edge Radiation for Cross-View Geo-Localization | Table III |
-| ENVIRONMENT-INDEPENDENT | 78.64 | 82.44 | P2FCN: Environment-Independent UAV-View Geo-Localization via Pixel-to-Feature Co-Enhancement | Table IV summary (text) |
-| PARAMETER-EFFICIENT | 78.53 | - | AdaptGeo: Parameter-Efficient Cross-View Geo-Localization via Frozen Foundation Model and Transformer Adapter | Table IV / Section IV-C2 |
+| P2FCN (proposed, ConvNeXt-B) | 78.64 | 82.44 | P2FCN: Environment-Independent UAV-View Geo-Localization via Pixel-to-Feature Co-Enhancement | Table IV summary (text) |
+| AdaptGeo (DINOv2-Base) | 78.53 | - | AdaptGeo: Parameter-Efficient Cross-View Geo-Localization via Frozen Foundation Model and Transformer Adapter | Table IV / Section IV-C2 |
 | Proposed (Multibranch Joint Representation Learning with IFSs) | 77.57 | 81.30 | Multibranch Joint Representation Learning Based on Information Fusion Strategy for Cross-View Geo-Localization | Table III, Section IV-D-2 |
 | LPN (block=4) (Wang et al. 2019, migrated) | 61.58 | 67.23 | Vision-Based UAV Self-Positioning in Low-Altitude Urban Environments (Zhu et al. 2022 — SUES-200 paper) | Table VII (LPN row), p.11 |
 | SUES-200 Baseline (ResNet-50, no chunking) | 59.32 | 64.93 | Vision-Based UAV Self-Positioning in Low-Altitude Urban Environments (Zhu et al. 2022 — SUES-200 paper) | Table VII (SUES-200 baseline row), p.11 |
@@ -33,7 +33,7 @@ Rows: **9** (one per paper).
 
 | Method | R@1 | AP | Paper | Source |
 | --- | ---: | ---: | --- | --- |
-| VISION-LANGUAGE | 95.67 | 97.36 | SkyLink: A Large Vision-Language Model Driven Re-ranking Framework for Cross-View UAV geolocalization | Table 1 |
+| SDPL | 95.67 | 97.36 | SkyLink: A Large Vision-Language Model Driven Re-ranking Framework for Cross-View UAV geolocalization | Table 1 |
 | Proposed (Joint Representation Learning with Feature Center Region Diffusion and Edge Radiation) | 93.23 | 94.66 | Joint Representation Learning Based on Feature Center Region Diffusion and Edge Radiation for Cross-View Geo-Localization | Table III |
 | Proposed (Multibranch Joint Representation Learning with IFSs) | 89.50 | 91.40 | Multibranch Joint Representation Learning Based on Information Fusion Strategy for Cross-View Geo-Localization | Table III, Section IV-D-2 |
 | LPN (block=4) (Wang et al. 2019, migrated) | 70.85 | 75.96 | Vision-Based UAV Self-Positioning in Low-Altitude Urban Environments (Zhu et al. 2022 — SUES-200 paper) | Table VII (LPN row), p.11 |
@@ -49,7 +49,7 @@ Rows: **9** (one per paper).
 
 | Method | R@1 | AP | Paper | Source |
 | --- | ---: | ---: | --- | --- |
-| VISION-LANGUAGE | 96.50 | 97.78 | SkyLink: A Large Vision-Language Model Driven Re-ranking Framework for Cross-View UAV geolocalization | Table 1 |
+| SDPL | 96.50 | 97.78 | SkyLink: A Large Vision-Language Model Driven Re-ranking Framework for Cross-View UAV geolocalization | Table 1 |
 | Proposed (Joint Representation Learning with Feature Center Region Diffusion and Edge Radiation) | 96.48 | 97.28 | Joint Representation Learning Based on Feature Center Region Diffusion and Edge Radiation for Cross-View Geo-Localization | Table III |
 | Proposed (Multibranch Joint Representation Learning with IFSs) | 92.58 | 94.21 | Multibranch Joint Representation Learning Based on Information Fusion Strategy for Cross-View Geo-Localization | Table III, Section IV-D-2 |
 | LPN (block=4) (Wang et al. 2019, migrated) | 80.38 | 83.80 | Vision-Based UAV Self-Positioning in Low-Altitude Urban Environments (Zhu et al. 2022 — SUES-200 paper) | Table VII (LPN row), p.11 |
@@ -66,10 +66,10 @@ Rows: **9** (one per paper).
 | Method | R@1 | AP | Paper | Source |
 | --- | ---: | ---: | --- | --- |
 | SCOF (Ours) | 97.85 | 98.10 | SCOF Supervised Contrastive Orthogonal Fusion for Robust Cross-View Geolocalization | Table IX |
-| VISION-LANGUAGE | 97.52 | 98.52 | SkyLink: A Large Vision-Language Model Driven Re-ranking Framework for Cross-View UAV geolocalization | Table 1 |
+| SDPL | 97.52 | 98.52 | SkyLink: A Large Vision-Language Model Driven Re-ranking Framework for Cross-View UAV geolocalization | Table 1 |
 | Proposed (Joint Representation Learning with Feature Center Region Diffusion and Edge Radiation) | 97.50 | 98.09 | Joint Representation Learning Based on Feature Center Region Diffusion and Edge Radiation for Cross-View Geo-Localization | Table III |
 | Proposed (Multibranch Joint Representation Learning with IFSs) | 97.40 | 97.92 | Multibranch Joint Representation Learning Based on Information Fusion Strategy for Cross-View Geo-Localization | Table III, Section IV-D-2 |
-| PARAMETER-EFFICIENT | 93.28 | - | AdaptGeo: Parameter-Efficient Cross-View Geo-Localization via Frozen Foundation Model and Transformer Adapter | Table IV / Section IV-C2 |
+| AdaptGeo (DINOv2-Base) | 93.28 | - | AdaptGeo: Parameter-Efficient Cross-View Geo-Localization via Frozen Foundation Model and Transformer Adapter | Table IV / Section IV-C2 |
 | LPN (block=4) (Wang et al. 2019, migrated) | 81.47 | 84.53 | Vision-Based UAV Self-Positioning in Low-Altitude Urban Environments (Zhu et al. 2022 — SUES-200 paper) | Table VII (LPN row), p.11 |
 | SUES-200 Baseline (ResNet-50, no chunking) | 77.17 | 80.67 | Vision-Based UAV Self-Positioning in Low-Altitude Urban Environments (Zhu et al. 2022 — SUES-200 paper) | Table VII, p.11 |
 | LCM (Ding et al. 2019, migrated) | 60.43 | 65.78 | Vision-Based UAV Self-Positioning in Low-Altitude Urban Environments (Zhu et al. 2022 — SUES-200 paper) | Table VII (LCM row), p.11 |
@@ -83,9 +83,9 @@ Rows: **10** (one per paper).
 | --- | ---: | ---: | --- | --- |
 | SCOF (Ours) | 95.00 | - | SCOF Supervised Contrastive Orthogonal Fusion for Robust Cross-View Geolocalization | Table IX |
 | Proposed (Multibranch Joint Representation Learning with IFSs) | 93.75 | 79.49 | Multibranch Joint Representation Learning Based on Information Fusion Strategy for Cross-View Geo-Localization | Table III, Section IV-D-2 |
-| PARAMETER-EFFICIENT | 92.50 | - | AdaptGeo: Parameter-Efficient Cross-View Geo-Localization via Frozen Foundation Model and Transformer Adapter | Table IV / Section IV-C2 |
+| AdaptGeo (DINOv2-Base) | 92.50 | - | AdaptGeo: Parameter-Efficient Cross-View Geo-Localization via Frozen Foundation Model and Transformer Adapter | Table IV / Section IV-C2 |
 | RESOURCE-EFFICIENT | 92.50 | 83.81 | MobileGeo Exploring Hierarchical Knowledge Distillation for Resource-Efficient Cross-view Drone Geo-Localization | MobileGeo (Sun et al., 2025), Table II |
-| ENVIRONMENT-INDEPENDENT | 91.50 | 82.49 | P2FCN: Environment-Independent UAV-View Geo-Localization via Pixel-to-Feature Co-Enhancement | Table IV summary (text) |
+| P2FCN (proposed, ConvNeXt-B) | 91.50 | 82.49 | P2FCN: Environment-Independent UAV-View Geo-Localization via Pixel-to-Feature Co-Enhancement | Table IV summary (text) |
 | LPN (block=4) (Wang et al. 2019, migrated) | 83.75 | 66.78 | Vision-Based UAV Self-Positioning in Low-Altitude Urban Environments (Zhu et al. 2022 — SUES-200 paper) | Table VII (LPN row), p.11 |
 | SUES-200 Baseline (ResNet-50, no chunking) | 82.50 | 58.95 | Vision-Based UAV Self-Positioning in Low-Altitude Urban Environments (Zhu et al. 2022 — SUES-200 paper) | Table VII, p.11 |
 | LCM (Ding et al. 2019, migrated) | 57.50 | 38.11 | Vision-Based UAV Self-Positioning in Low-Altitude Urban Environments (Zhu et al. 2022 — SUES-200 paper) | Table VII (LCM row), p.11 |
@@ -125,7 +125,7 @@ Rows: **8** (one per paper).
 | Method | R@1 | AP | Paper | Source |
 | --- | ---: | ---: | --- | --- |
 | Proposed (Multibranch Joint Representation Learning with IFSs) | 100.00 | 97.66 | Multibranch Joint Representation Learning Based on Information Fusion Strategy for Cross-View Geo-Localization | Table III, Section IV-D-2 |
-| PARAMETER-EFFICIENT | 97.50 | - | AdaptGeo: Parameter-Efficient Cross-View Geo-Localization via Frozen Foundation Model and Transformer Adapter | Table IV / Section IV-C2 |
+| AdaptGeo (DINOv2-Base) | 97.50 | - | AdaptGeo: Parameter-Efficient Cross-View Geo-Localization via Frozen Foundation Model and Transformer Adapter | Table IV / Section IV-C2 |
 | SCOF (Ours) | 97.50 | - | SCOF Supervised Contrastive Orthogonal Fusion for Robust Cross-View Geolocalization | Table IX |
 | RESOURCE-EFFICIENT | 97.50 | 96.04 | MobileGeo Exploring Hierarchical Knowledge Distillation for Resource-Efficient Cross-view Drone Geo-Localization | MobileGeo (Sun et al., 2025), Table II |
 | SUES-200 Baseline (ResNet-50, no chunking) | 96.25 | 84.16 | Vision-Based UAV Self-Positioning in Low-Altitude Urban Environments (Zhu et al. 2022 — SUES-200 paper) | Table VII, p.11 |
