@@ -485,10 +485,20 @@ def should_skip_candidate_url(url: str) -> Tuple[bool, str]:
     lowered = clean(url).lower()
     if not lowered:
         return True, "empty URL"
+    if os.getenv("LEADERBOARD_SKIP_IEEE_DOI", "1").strip().lower() not in {"0", "false", "no", "off"}:
+        if re.search(r"https?://(?:dx\.)?doi\.org/10\.1109/", lowered):
+            return True, "IEEE DOI redirects are unstable for non-browser requests"
     if os.getenv("LEADERBOARD_SKIP_IEEE_STAGING", "1").strip().lower() not in {"0", "false", "no", "off"}:
         if "xplorestaging.ieee.org" in lowered:
             return True, "IEEE staging PDF endpoint is unstable for non-browser requests"
     return False, ""
+
+
+def likely_pdf_candidate_url(url: str) -> bool:
+    lowered = clean(url).lower()
+    parsed = urllib.parse.urlparse(lowered)
+    path = parsed.path
+    return auto.likely_pdf_url(url) or any(token in path for token in ["/pdf", "/download/", "/content/pdf"]) or "stamp.jsp" in path
 
 
 def candidate_url_priority(url: str) -> int:
@@ -531,7 +541,7 @@ def search_duckduckgo_query(query: str, limit: int = 8) -> List[dict]:
         with requests.get(
             "https://html.duckduckgo.com/html/",
             params={"q": query},
-            timeout=auto.DEFAULT_TIMEOUT,
+            timeout=min(15, resolve_url_timeout()),
             headers={"User-Agent": "Mozilla/5.0", "Accept": "text/html,*/*;q=0.8"},
         ) as r:
             r.raise_for_status()
@@ -553,6 +563,50 @@ def search_duckduckgo_query(query: str, limit: int = 8) -> List[dict]:
     return results
 
 
+def search_bing_query(query: str, limit: int = 8) -> List[dict]:
+    if not clean(query):
+        return []
+    results: List[dict] = []
+    try:
+        with requests.get(
+            "https://www.bing.com/search",
+            params={"q": query},
+            timeout=min(15, resolve_url_timeout()),
+            headers={"User-Agent": "Mozilla/5.0", "Accept": "text/html,*/*;q=0.8"},
+        ) as r:
+            r.raise_for_status()
+            page = r.text
+        pattern = re.compile(
+            r'<li[^>]+class=["\'][^"\']*b_algo[^"\']*["\'][^>]*>.*?<a[^>]+href=["\']([^"\']+)["\'][^>]*>(.*?)</a>',
+            flags=re.I | re.S,
+        )
+        for match in pattern.finditer(page):
+            url = html.unescape(match.group(1))
+            title = clean(re.sub(r"<.*?>", " ", html.unescape(match.group(2))))
+            if not url or any(block in url.lower() for block in ["bing.com", "javascript:", "mailto:"]):
+                continue
+            results.append({"title": title, "url": url})
+            if len(results) >= limit:
+                break
+    except Exception as e:
+        log(f"Bing query search skipped: {e}")
+    return results
+
+
+def search_web_query(query: str, limit: int = 8) -> List[dict]:
+    results = search_duckduckgo_query(query, limit=limit)
+    if len(results) >= limit:
+        return results[:limit]
+    seen = {row.get("url") for row in results}
+    for row in search_bing_query(query, limit=limit):
+        if row.get("url") not in seen:
+            results.append(row)
+            seen.add(row.get("url"))
+        if len(results) >= limit:
+            break
+    return results
+
+
 def execute_minimax_tool_call(call: dict) -> dict:
     function = call.get("function") or {}
     name = clean(function.get("name")) or "plugin_web_search"
@@ -563,7 +617,7 @@ def execute_minimax_tool_call(call: dict) -> dict:
         args = {}
     query = clean(args.get("query_key") or args.get("query") or args.get("q"))
     log(f"MiniMax requested web search: {query}")
-    results = search_duckduckgo_query(query, limit=int(os.getenv("MINIMAX_TOOL_SEARCH_RESULTS", "8")))
+    results = search_web_query(query, limit=int(os.getenv("MINIMAX_TOOL_SEARCH_RESULTS", "8")))
     log(f"MiniMax web search results returned: {len(results)}")
     content = json.dumps({"query": query, "results": results}, ensure_ascii=False)
     return {
@@ -743,7 +797,7 @@ def extract_text_from_url(url: str, paper: dict) -> Tuple[str, dict]:
     landing_max_bytes = int(os.getenv("MINIMAX_PDF_LANDING_MAX_BYTES", str(5 * 1024 * 1024)))
     current_url, content_type, content = fetch_url_with_session(
         url,
-        max_bytes if auto.likely_pdf_url(url) else landing_max_bytes,
+        max_bytes if likely_pdf_candidate_url(url) else landing_max_bytes,
         accept="text/html,application/pdf;q=0.9,*/*;q=0.8",
     )
     if auto.response_looks_like_pdf(current_url, content_type, content):
@@ -773,27 +827,24 @@ def extract_text_from_url(url: str, paper: dict) -> Tuple[str, dict]:
     return "", {"url": current_url, "kind": "unknown", "content_type": content_type, "chars": 0}
 
 
-def discover_accessible_fulltext(paper: dict, *, force: bool = False) -> dict:
-    cache = load_fulltext_cache()
-    pid = paper_id(paper)
-    if pid in cache and not force:
-        return cache[pid]
-
-    candidates: List[str] = []
-    for url in base_url_candidates_for_paper(paper):
-        auto.add_url_candidate(candidates, url)
-    try:
-        for url in minimax_fulltext_candidates(paper):
-            auto.add_url_candidate(candidates, url)
-    except Exception as e:
-        log(f"MiniMax full-text discovery failed for {paper.get('title', '')[:80]}: {e}")
-    add_ezproxy_candidates(candidates)
+def validate_fulltext_candidates(
+    paper: dict,
+    candidates: List[str],
+    attempted: List[dict],
+    attempted_urls: set[str],
+    cache: Dict[str, dict],
+    pid: str,
+    *,
+    label: str,
+) -> Optional[dict]:
     candidates = order_url_candidates(candidates)
-
-    attempted: List[dict] = []
-    log(f"URL candidates to validate: {min(len(candidates), ACCESS_ATTEMPT_LIMIT)}")
+    pending = [url for url in candidates if url not in attempted_urls]
+    if not pending:
+        return None
+    log(f"{label} URL candidates to validate: {min(len(pending), ACCESS_ATTEMPT_LIMIT)}")
     attempts = 0
-    for url in candidates:
+    for url in pending:
+        attempted_urls.add(url)
         skip, reason = should_skip_candidate_url(url)
         if skip:
             log(f"  skipped candidate: {url}; reason={reason}")
@@ -826,6 +877,38 @@ def discover_accessible_fulltext(paper: dict, *, force: bool = False) -> dict:
         except Exception as e:
             log(f"  result: error; url={url}; error={str(e)[:220]}")
             attempted.append({"url": url, "ok": False, "error": str(e)[:500]})
+    return None
+
+
+def discover_accessible_fulltext(paper: dict, *, force: bool = False) -> dict:
+    cache = load_fulltext_cache()
+    pid = paper_id(paper)
+    if pid in cache and not force:
+        return cache[pid]
+
+    base_candidates: List[str] = []
+    for url in base_url_candidates_for_paper(paper):
+        auto.add_url_candidate(base_candidates, url)
+    add_ezproxy_candidates(base_candidates)
+
+    attempted: List[dict] = []
+    attempted_urls: set[str] = set()
+    base_first = os.getenv("LEADERBOARD_VALIDATE_BASE_FIRST", "1").strip().lower() not in {"0", "false", "no", "off"}
+    if base_first:
+        record = validate_fulltext_candidates(paper, base_candidates, attempted, attempted_urls, cache, pid, label="base")
+        if record:
+            return record
+
+    candidates: List[str] = list(base_candidates)
+    try:
+        for url in minimax_fulltext_candidates(paper):
+            auto.add_url_candidate(candidates, url)
+    except Exception as e:
+        log(f"MiniMax full-text discovery failed for {paper.get('title', '')[:80]}: {e}")
+    add_ezproxy_candidates(candidates)
+    record = validate_fulltext_candidates(paper, candidates, attempted, attempted_urls, cache, pid, label="MiniMax-expanded")
+    if record:
+        return record
 
     needs_browser = any(
         (a.get("kind") == "html_no_extract")
@@ -1173,6 +1256,44 @@ def save_reviews(reviews: Dict[str, dict]) -> None:
     write_yaml(REVIEW_PATH, rows)
 
 
+def filter_papers_by_review_decision(papers: List[dict], review_decision: str) -> List[dict]:
+    wanted = clean(review_decision).lower()
+    if not wanted:
+        return papers
+    reviews = load_reviews()
+    out: List[dict] = []
+    for paper in papers:
+        review = reviews.get(paper_id(paper)) or {}
+        if clean(review.get("overall_decision")).lower() == wanted:
+            out.append(paper)
+    return out
+
+
+def filter_papers_by_fulltext_status(papers: List[dict], fulltext_status: str) -> List[dict]:
+    wanted = {clean(s).lower() for s in re.split(r"[,;]\s*", fulltext_status or "") if clean(s)}
+    if not wanted:
+        return papers
+    cache = load_fulltext_cache()
+    return [
+        paper
+        for paper in papers
+        if clean((cache.get(paper_id(paper)) or {}).get("status")).lower() in wanted
+    ]
+
+
+def filter_papers_by_reviewed_before(papers: List[dict], reviewed_before: str) -> List[dict]:
+    cutoff = clean(reviewed_before)
+    if not cutoff:
+        return papers
+    reviews = load_reviews()
+    out: List[dict] = []
+    for paper in papers:
+        reviewed_at = clean((reviews.get(paper_id(paper)) or {}).get("reviewed_at"))
+        if not reviewed_at or reviewed_at < cutoff:
+            out.append(paper)
+    return out
+
+
 def cmd_review(args: argparse.Namespace) -> None:
     require_env(["MINIMAX_API_KEY"])
     if args.require_accessible_fulltext:
@@ -1186,6 +1307,9 @@ def cmd_review(args: argparse.Namespace) -> None:
     if args.title_regex:
         pattern = re.compile(args.title_regex, flags=re.I)
         papers = [p for p in papers if pattern.search(p.get("title") or "")]
+    papers = filter_papers_by_review_decision(papers, getattr(args, "review_decision", ""))
+    papers = filter_papers_by_fulltext_status(papers, getattr(args, "fulltext_status", ""))
+    papers = filter_papers_by_reviewed_before(papers, getattr(args, "reviewed_before", ""))
     reviews = load_reviews()
     total = len(papers)
     limit = args.limit if args.limit and args.limit > 0 else total
@@ -1223,6 +1347,11 @@ def cmd_review(args: argparse.Namespace) -> None:
                         log(f"review progress: new_reviews={done}, cached_or_total={len(reviews)}")
                     continue
             reviews[pid] = review_one_paper(paper, specs, use_pdf=args.use_pdf, fulltext_record=fulltext_record)
+            reviews[pid]["paper_id"] = pid
+            if paper.get("title"):
+                reviews[pid]["paper_title"] = paper.get("title")
+            if fulltext_record:
+                reviews[pid]["fulltext_access"] = strip_fulltext(fulltext_record)
         except Exception as e:
             reviews[pid] = {
                 "paper_id": pid,
@@ -1249,12 +1378,25 @@ def cmd_discover(args: argparse.Namespace) -> None:
     if args.title_regex:
         pattern = re.compile(args.title_regex, flags=re.I)
         papers = [p for p in papers if pattern.search(p.get("title") or "")]
+    papers = filter_papers_by_review_decision(papers, args.review_decision)
+    papers = filter_papers_by_fulltext_status(papers, getattr(args, "fulltext_status", ""))
+    retry_statuses = {clean(s).lower() for s in re.split(r"[,;]\s*", args.retry_status or "") if clean(s)}
+    if args.missing_fulltext_only:
+        cache = load_fulltext_cache()
+        papers = [
+            p
+            for p in papers
+            if paper_id(p) not in cache
+            or clean((cache.get(paper_id(p)) or {}).get("status")).lower() in retry_statuses
+        ]
     total = len(papers)
     limit = args.limit if args.limit and args.limit > 0 else total
     done = 0
     for idx, paper in enumerate(papers[:limit], 1):
         log(f"full-text discovery [{idx}/{total}]: {paper.get('title', '')[:110]}")
-        discover_accessible_fulltext_with_timeout(paper, force=args.force, paper_timeout=args.paper_timeout)
+        cached = load_fulltext_cache().get(paper_id(paper)) or {}
+        force = args.force or clean(cached.get("status")).lower() in retry_statuses
+        discover_accessible_fulltext_with_timeout(paper, force=force, paper_timeout=args.paper_timeout)
         done += 1
         if args.progress_every and done % args.progress_every == 0:
             cache = load_fulltext_cache()
@@ -1311,10 +1453,23 @@ def cmd_validate(args: argparse.Namespace) -> None:
     specs = read_yaml(SPEC_PATH, {}) or {}
     reviews = load_reviews()
     included, excluded = build_rows(reviews, specs)
+    candidate_papers = select_papers(DEFAULT_DATASETS, include_surveys=False)
+    candidate_ids = {paper_id(paper) for paper in candidate_papers}
+    missing_review_ids = [
+        pid
+        for pid in sorted(candidate_ids)
+        if not clean((reviews.get(pid) or {}).get("overall_decision"))
+    ]
+    if missing_review_ids:
+        errors.append(f"Candidate papers missing review decisions: {len(missing_review_ids)} ({', '.join(missing_review_ids[:8])})")
 
     dense_methods = {row.get("method") for row in included if row.get("dataset") == "DenseUAV"}
     if "DINO-GFSA" not in dense_methods:
         errors.append("DINO-GFSA is missing from the DenseUAV included rows.")
+
+    blank_methods = [row for row in included if not clean(row.get("method"))]
+    if blank_methods:
+        errors.append(f"Included rows contain blank method names: {len(blank_methods)}")
 
     ambiguous = [
         row
@@ -1347,6 +1502,14 @@ def cmd_validate(args: argparse.Namespace) -> None:
         text = page.read_text(encoding="utf-8")
         if "| Method / Training Setting | Method / Training Setting |" in text:
             errors.append(f"{page.name} has a duplicate Method / Training Setting metric column.")
+
+    public_outputs = [CSV_PATH] + sorted((ROOT / "leaderboards").glob("*.md"))
+    for path in public_outputs:
+        if not path.exists():
+            continue
+        text = path.read_text(encoding="utf-8")
+        if any("\u4e00" <= ch <= "\u9fff" for ch in text):
+            errors.append(f"{path.relative_to(ROOT)} contains CJK characters; public leaderboard output should be English-only.")
 
     access_cache = load_fulltext_cache()
     status_counts = Counter(row.get("status", "unknown") for row in access_cache.values())
@@ -1567,6 +1730,19 @@ def rows_for_protocol(dataset_rows: List[dict], protocol: dict, all_protocols: L
     return []
 
 
+def _build_paper_url_lookup() -> Dict[str, str]:
+    """Map paper title -> best external URL (paper_url() of the paper record)."""
+    lookup: Dict[str, str] = {}
+    for paper in all_source_papers():
+        title = clean(paper.get("title"))
+        if not title:
+            continue
+        url = paper_url(paper)
+        if url:
+            lookup.setdefault(title, url)
+    return lookup
+
+
 def write_dataset_page(dataset: str, spec: dict, rows: List[dict], sort_metric: Optional[str]) -> None:
     slug = {
         "University-1652": "university1652",
@@ -1590,6 +1766,7 @@ def write_dataset_page(dataset: str, spec: dict, rows: List[dict], sort_metric: 
     ]
     dataset_rows = [r for r in rows if r["dataset"] == dataset]
     protocols = protocol_specs_for_dataset(spec)
+    paper_url_lookup = _build_paper_url_lookup()
     for protocol in protocols:
         name = clean(protocol.get("name")) or "Main"
         columns = metric_columns(protocol.get("columns") or [])
@@ -1611,10 +1788,11 @@ def write_dataset_page(dataset: str, spec: dict, rows: List[dict], sort_metric: 
             if row.get("training_setting"):
                 method_cell += f"<br><sub>{md_escape(row['training_setting'])}</sub>"
             metric_cells = [md_escape(metric_value(row.get("metrics") or {}, col) or "-") for col in columns]
+            paper_link = md_link(row["paper"], paper_url_lookup.get(row["paper"], ""))
             cells = [
                 method_cell,
                 *metric_cells,
-                md_escape(row["paper"]),
+                paper_link,
                 md_escape(row["source"]),
                 md_escape(row["verified"]),
                 md_escape(row["notes"] or "-"),
@@ -1823,6 +2001,9 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--force", action="store_true")
     p.add_argument("--limit", type=int, default=0)
     p.add_argument("--title-regex", default="")
+    p.add_argument("--review-decision", default="", help="only review papers whose cached overall_decision matches this value")
+    p.add_argument("--fulltext-status", default="", help="only review papers whose cached full-text access status matches these comma-separated value(s)")
+    p.add_argument("--reviewed-before", default="", help="only review papers with no cached reviewed_at or reviewed_at lexically before this ISO timestamp")
     p.add_argument("--progress-every", type=int, default=25)
     p.add_argument("--paper-timeout", type=int, default=0, help="per-paper wall-clock timeout in seconds; defaults to LEADERBOARD_DISCOVERY_TIMEOUT or 300")
     p.set_defaults(func=cmd_review)
@@ -1832,6 +2013,10 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--force", action="store_true")
     p.add_argument("--limit", type=int, default=0)
     p.add_argument("--title-regex", default="")
+    p.add_argument("--review-decision", default="", help="only discover full text for papers whose cached overall_decision matches this value")
+    p.add_argument("--fulltext-status", default="", help="only discover full text for papers whose cached full-text access status matches these comma-separated value(s)")
+    p.add_argument("--missing-fulltext-only", action="store_true", help="skip papers already present in the full-text access cache")
+    p.add_argument("--retry-status", default="", help="with --missing-fulltext-only, also retry cached records with these comma-separated statuses")
     p.add_argument("--progress-every", type=int, default=25)
     p.add_argument("--paper-timeout", type=int, default=0, help="per-paper wall-clock timeout in seconds; defaults to LEADERBOARD_DISCOVERY_TIMEOUT or 300")
     p.set_defaults(func=cmd_discover)

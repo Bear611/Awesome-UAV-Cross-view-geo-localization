@@ -10,6 +10,7 @@ from browser_session_utils import (
     ensure_paths,
     export_netscape_cookies,
     import_playwright,
+    launch_persistent_browser,
     print_cookie_domain_summary,
 )
 
@@ -38,21 +39,17 @@ def main() -> None:
 
     print(f"Persistent profile: {args.profile}")
     print(f"Cookie export path: {args.cookie_output}")
-    print("A visible Chromium window will open. Complete CARSI/CAS login manually there.")
+    channel_label = args.browser_channel or "bundled Chromium"
+    print(f"A visible browser window will open ({channel_label}). Complete CARSI/CAS login manually there.")
     print("After login, open a publisher paper/PDF page and confirm access, then return here.")
 
     with sync_playwright() as p:
-        context = p.chromium.launch_persistent_context(
-            args.profile,
-            headless=False,
-            accept_downloads=True,
-            downloads_path=args.download_dir,
-        )
+        context = launch_persistent_browser(p, args.profile, args.download_dir, args.browser_channel)
         page = context.new_page()
         for idx, url in enumerate(urls):
             target = page if idx == 0 else context.new_page()
             target.goto(url, wait_until="domcontentloaded", timeout=90000)
-        input("When login/access checks are complete, press Enter to export cookies and close Chromium...")
+        input("When login/access checks are complete, press Enter to export cookies and close the browser...")
         cookies = context.cookies()
         count = export_netscape_cookies(cookies, args.cookie_output)
         print(f"Exported {count} cookies to {args.cookie_output}")

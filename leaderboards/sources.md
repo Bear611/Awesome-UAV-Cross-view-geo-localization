@@ -15,15 +15,18 @@ The rebuilt leaderboards are generated from:
 |---|---:|
 | DenseUAV | 5 |
 | GTA-UAV | 2 |
-| SUES-200 | 15 |
-| University-1652 | 51 |
+| SUES-200 | 17 |
+| University-1652 | 54 |
 
 ## Excluded Row Counts
 
 | Dataset | Rows |
 |---|---:|
-| DenseUAV | 26 |
-| GTA-UAV | 11 |
-| SUES-200 | 50 |
-| UAV-VisLoc | 23 |
+| DenseUAV | 29 |
+| GTA-UAV | 13 |
+| Nardo-Air | 5 |
+| SUES-200 | 49 |
+| UAV-GeoLoc | 5 |
+| UAV-VisLoc | 25 |
 | University-1652 | 116 |
+| World-UAV | 5 |

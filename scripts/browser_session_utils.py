@@ -9,6 +9,7 @@ from typing import Iterable
 DEFAULT_PROFILE = r"D:\agent_browser_profile"
 DEFAULT_COOKIE_FILE = r"C:\tmp\uav_cvgl_cookies.txt"
 DEFAULT_DOWNLOAD_DIR = r"C:\tmp\uav_cvgl_downloads"
+DEFAULT_BROWSER_CHANNEL = ""
 
 
 def default_profile() -> str:
@@ -23,10 +24,26 @@ def default_download_dir() -> str:
     return os.getenv("UAV_CVGL_DOWNLOAD_DIR", DEFAULT_DOWNLOAD_DIR)
 
 
+def default_browser_channel() -> str:
+    return os.getenv("UAV_CVGL_BROWSER_CHANNEL", DEFAULT_BROWSER_CHANNEL)
+
+
 def add_common_browser_args(parser: argparse.ArgumentParser) -> None:
-    parser.add_argument("--profile", default=default_profile(), help="Persistent Chromium profile directory.")
+    parser.add_argument("--profile", default=default_profile(), help="Persistent browser profile directory.")
     parser.add_argument("--cookie-output", default=default_cookie_file(), help="Netscape cookie export path for requests.")
     parser.add_argument("--download-dir", default=default_download_dir(), help="Browser download directory.")
+    parser.add_argument("--browser-channel", default=default_browser_channel(), help="Optional Playwright browser channel, e.g. msedge or chrome.")
+
+
+def launch_persistent_browser(playwright, profile: str, download_dir: str, browser_channel: str = ""):
+    kwargs = {
+        "headless": False,
+        "accept_downloads": True,
+        "downloads_path": download_dir,
+    }
+    if browser_channel:
+        kwargs["channel"] = browser_channel
+    return playwright.chromium.launch_persistent_context(profile, **kwargs)
 
 
 def ensure_paths(profile: str, cookie_output: str | None = None, download_dir: str | None = None) -> None:
