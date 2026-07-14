@@ -1,0 +1,762 @@
+{
+  "generated_at": "2026-07-14T15:29:27",
+  "mode": "weekly",
+  "start_date": "2026-06-15",
+  "end_date": "2026-07-14",
+  "raw_records": 68,
+  "current_unique_candidates": 32,
+  "deduplicated_candidates": 32,
+  "search_stats": {
+    "semantic_scholar": 0,
+    "openalex": 32,
+    "arxiv": 26,
+    "citation:openalex": 10
+  },
+  "successful_calls": 73,
+  "failed_calls": 1,
+  "details": [
+    {
+      "phase": "weekly",
+      "source": "semantic_scholar",
+      "query": "UAV cross-view geo-localization",
+      "count": 0,
+      "error": "429 Client Error:  for url: https://api.semanticscholar.org/graph/v1/paper/search?query=UAV+cross-view+geo-localization&limit=1&fields=title%2Cabstract%2Cyear%2Cvenue%2Curl%2CexternalIds%2Cauthors%2CpublicationDate%2CcitationCount%2CisOpenAccess%2CopenAccessPdf"
+    },
+    {
+      "phase": "weekly",
+      "source": "openalex",
+      "query": "UAV cross-view geo-localization",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "arxiv",
+      "query": "UAV cross-view geo-localization",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "semantic_scholar",
+      "query": "drone cross-view geo-localization",
+      "count": 0,
+      "error": "skipped after an earlier rate-limit failure in this run"
+    },
+    {
+      "phase": "weekly",
+      "source": "openalex",
+      "query": "drone cross-view geo-localization",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "arxiv",
+      "query": "drone cross-view geo-localization",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "semantic_scholar",
+      "query": "drone satellite geo-localization",
+      "count": 0,
+      "error": "skipped after an earlier rate-limit failure in this run"
+    },
+    {
+      "phase": "weekly",
+      "source": "openalex",
+      "query": "drone satellite geo-localization",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "arxiv",
+      "query": "drone satellite geo-localization",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "semantic_scholar",
+      "query": "UAV-view geo-localization",
+      "count": 0,
+      "error": "skipped after an earlier rate-limit failure in this run"
+    },
+    {
+      "phase": "weekly",
+      "source": "openalex",
+      "query": "UAV-view geo-localization",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "arxiv",
+      "query": "UAV-view geo-localization",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "semantic_scholar",
+      "query": "drone-view geo-localization",
+      "count": 0,
+      "error": "skipped after an earlier rate-limit failure in this run"
+    },
+    {
+      "phase": "weekly",
+      "source": "openalex",
+      "query": "drone-view geo-localization",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "arxiv",
+      "query": "drone-view geo-localization",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "semantic_scholar",
+      "query": "UAV visual geo-localization",
+      "count": 0,
+      "error": "skipped after an earlier rate-limit failure in this run"
+    },
+    {
+      "phase": "weekly",
+      "source": "openalex",
+      "query": "UAV visual geo-localization",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "arxiv",
+      "query": "UAV visual geo-localization",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "semantic_scholar",
+      "query": "UAV satellite image retrieval",
+      "count": 0,
+      "error": "skipped after an earlier rate-limit failure in this run"
+    },
+    {
+      "phase": "weekly",
+      "source": "openalex",
+      "query": "UAV satellite image retrieval",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "arxiv",
+      "query": "UAV satellite image retrieval",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "semantic_scholar",
+      "query": "drone satellite image retrieval",
+      "count": 0,
+      "error": "skipped after an earlier rate-limit failure in this run"
+    },
+    {
+      "phase": "weekly",
+      "source": "openalex",
+      "query": "drone satellite image retrieval",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "arxiv",
+      "query": "drone satellite image retrieval",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "semantic_scholar",
+      "query": "UAV visual localization satellite",
+      "count": 0,
+      "error": "skipped after an earlier rate-limit failure in this run"
+    },
+    {
+      "phase": "weekly",
+      "source": "openalex",
+      "query": "UAV visual localization satellite",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "arxiv",
+      "query": "UAV visual localization satellite",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "semantic_scholar",
+      "query": "UAV self-positioning satellite",
+      "count": 0,
+      "error": "skipped after an earlier rate-limit failure in this run"
+    },
+    {
+      "phase": "weekly",
+      "source": "openalex",
+      "query": "UAV self-positioning satellite",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "arxiv",
+      "query": "UAV self-positioning satellite",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "semantic_scholar",
+      "query": "UAV geo-localization satellite imagery",
+      "count": 0,
+      "error": "skipped after an earlier rate-limit failure in this run"
+    },
+    {
+      "phase": "weekly",
+      "source": "openalex",
+      "query": "UAV geo-localization satellite imagery",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "arxiv",
+      "query": "UAV geo-localization satellite imagery",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "semantic_scholar",
+      "query": "cross-view UAV localization",
+      "count": 0,
+      "error": "skipped after an earlier rate-limit failure in this run"
+    },
+    {
+      "phase": "weekly",
+      "source": "openalex",
+      "query": "cross-view UAV localization",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "arxiv",
+      "query": "cross-view UAV localization",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "semantic_scholar",
+      "query": "aerial cross-view geo-localization",
+      "count": 0,
+      "error": "skipped after an earlier rate-limit failure in this run"
+    },
+    {
+      "phase": "weekly",
+      "source": "openalex",
+      "query": "aerial cross-view geo-localization",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "arxiv",
+      "query": "aerial cross-view geo-localization",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "semantic_scholar",
+      "query": "UAV satellite image matching",
+      "count": 0,
+      "error": "skipped after an earlier rate-limit failure in this run"
+    },
+    {
+      "phase": "weekly",
+      "source": "openalex",
+      "query": "UAV satellite image matching",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "arxiv",
+      "query": "UAV satellite image matching",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "semantic_scholar",
+      "query": "UAV satellite homography localization",
+      "count": 0,
+      "error": "skipped after an earlier rate-limit failure in this run"
+    },
+    {
+      "phase": "weekly",
+      "source": "openalex",
+      "query": "UAV satellite homography localization",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "arxiv",
+      "query": "UAV satellite homography localization",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "semantic_scholar",
+      "query": "coarse-to-fine UAV geo-localization",
+      "count": 0,
+      "error": "skipped after an earlier rate-limit failure in this run"
+    },
+    {
+      "phase": "weekly",
+      "source": "openalex",
+      "query": "coarse-to-fine UAV geo-localization",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "arxiv",
+      "query": "coarse-to-fine UAV geo-localization",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "semantic_scholar",
+      "query": "region-to-point UAV visual geo-localization",
+      "count": 0,
+      "error": "skipped after an earlier rate-limit failure in this run"
+    },
+    {
+      "phase": "weekly",
+      "source": "openalex",
+      "query": "region-to-point UAV visual geo-localization",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "arxiv",
+      "query": "region-to-point UAV visual geo-localization",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "semantic_scholar",
+      "query": "GNSS-denied UAV visual localization",
+      "count": 0,
+      "error": "skipped after an earlier rate-limit failure in this run"
+    },
+    {
+      "phase": "weekly",
+      "source": "openalex",
+      "query": "GNSS-denied UAV visual localization",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "arxiv",
+      "query": "GNSS-denied UAV visual localization",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "semantic_scholar",
+      "query": "cross-view UAV",
+      "count": 0,
+      "error": "skipped after an earlier rate-limit failure in this run"
+    },
+    {
+      "phase": "weekly",
+      "source": "openalex",
+      "query": "cross-view UAV",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "arxiv",
+      "query": "cross-view UAV",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "semantic_scholar",
+      "query": "DenseUAV",
+      "count": 0,
+      "error": "skipped after an earlier rate-limit failure in this run"
+    },
+    {
+      "phase": "weekly",
+      "source": "openalex",
+      "query": "DenseUAV",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "arxiv",
+      "query": "DenseUAV",
+      "count": 0,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "semantic_scholar",
+      "query": "SUES-200",
+      "count": 0,
+      "error": "skipped after an earlier rate-limit failure in this run"
+    },
+    {
+      "phase": "weekly",
+      "source": "openalex",
+      "query": "SUES-200",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "arxiv",
+      "query": "SUES-200",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "semantic_scholar",
+      "query": "University-1652",
+      "count": 0,
+      "error": "skipped after an earlier rate-limit failure in this run"
+    },
+    {
+      "phase": "weekly",
+      "source": "openalex",
+      "query": "University-1652",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "arxiv",
+      "query": "University-1652",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "semantic_scholar",
+      "query": "UAV-VisLoc",
+      "count": 0,
+      "error": "skipped after an earlier rate-limit failure in this run"
+    },
+    {
+      "phase": "weekly",
+      "source": "openalex",
+      "query": "UAV-VisLoc",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "arxiv",
+      "query": "UAV-VisLoc",
+      "count": 0,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "semantic_scholar",
+      "query": "UAV-GeoLoc",
+      "count": 0,
+      "error": "skipped after an earlier rate-limit failure in this run"
+    },
+    {
+      "phase": "weekly",
+      "source": "openalex",
+      "query": "UAV-GeoLoc",
+      "count": 0,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "arxiv",
+      "query": "UAV-GeoLoc",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "semantic_scholar",
+      "query": "GTA-UAV",
+      "count": 0,
+      "error": "skipped after an earlier rate-limit failure in this run"
+    },
+    {
+      "phase": "weekly",
+      "source": "openalex",
+      "query": "GTA-UAV",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "arxiv",
+      "query": "GTA-UAV",
+      "count": 0,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "semantic_scholar",
+      "query": "Game4Loc",
+      "count": 0,
+      "error": "skipped after an earlier rate-limit failure in this run"
+    },
+    {
+      "phase": "weekly",
+      "source": "openalex",
+      "query": "Game4Loc",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "arxiv",
+      "query": "Game4Loc",
+      "count": 0,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "semantic_scholar",
+      "query": "World-UAV",
+      "count": 0,
+      "error": "skipped after an earlier rate-limit failure in this run"
+    },
+    {
+      "phase": "weekly",
+      "source": "openalex",
+      "query": "World-UAV",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "arxiv",
+      "query": "World-UAV",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "semantic_scholar",
+      "query": "Nardo-Air",
+      "count": 0,
+      "error": "skipped after an earlier rate-limit failure in this run"
+    },
+    {
+      "phase": "weekly",
+      "source": "openalex",
+      "query": "Nardo-Air",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "arxiv",
+      "query": "Nardo-Air",
+      "count": 0,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "semantic_scholar",
+      "query": "R2PLoc",
+      "count": 0,
+      "error": "skipped after an earlier rate-limit failure in this run"
+    },
+    {
+      "phase": "weekly",
+      "source": "openalex",
+      "query": "R2PLoc",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "arxiv",
+      "query": "R2PLoc",
+      "count": 0,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "semantic_scholar",
+      "query": "UAV-R2P",
+      "count": 0,
+      "error": "skipped after an earlier rate-limit failure in this run"
+    },
+    {
+      "phase": "weekly",
+      "source": "openalex",
+      "query": "UAV-R2P",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "arxiv",
+      "query": "UAV-R2P",
+      "count": 0,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "semantic_scholar",
+      "query": "UAV cross-view geo-localization survey",
+      "count": 0,
+      "error": "skipped after an earlier rate-limit failure in this run"
+    },
+    {
+      "phase": "weekly",
+      "source": "openalex",
+      "query": "UAV cross-view geo-localization survey",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "arxiv",
+      "query": "UAV cross-view geo-localization survey",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "semantic_scholar",
+      "query": "cross-view geo-localization survey UAV",
+      "count": 0,
+      "error": "skipped after an earlier rate-limit failure in this run"
+    },
+    {
+      "phase": "weekly",
+      "source": "openalex",
+      "query": "cross-view geo-localization survey UAV",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "arxiv",
+      "query": "cross-view geo-localization survey UAV",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "semantic_scholar",
+      "query": "survey drone geo-localization satellite",
+      "count": 0,
+      "error": "skipped after an earlier rate-limit failure in this run"
+    },
+    {
+      "phase": "weekly",
+      "source": "openalex",
+      "query": "survey drone geo-localization satellite",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly",
+      "source": "arxiv",
+      "query": "survey drone geo-localization satellite",
+      "count": 1,
+      "error": ""
+    },
+    {
+      "phase": "weekly_citation",
+      "source": "openalex",
+      "query": "University-1652",
+      "count": 3,
+      "error": ""
+    },
+    {
+      "phase": "weekly_citation",
+      "source": "openalex",
+      "query": "SUES-200",
+      "count": 3,
+      "error": ""
+    },
+    {
+      "phase": "weekly_citation",
+      "source": "openalex",
+      "query": "DenseUAV",
+      "count": 2,
+      "error": ""
+    },
+    {
+      "phase": "weekly_citation",
+      "source": "openalex",
+      "query": "UAV-VisLoc",
+      "count": 0,
+      "error": ""
+    },
+    {
+      "phase": "weekly_citation",
+      "source": "openalex",
+      "query": "GTA-UAV",
+      "count": 2,
+      "error": ""
+    },
+    {
+      "phase": "weekly_citation",
+      "source": "openalex",
+      "query": "UAV-GeoLoc",
+      "count": 0,
+      "error": ""
+    },
+    {
+      "phase": "weekly_citation",
+      "source": "openalex",
+      "query": "UAV-R2P",
+      "count": 0,
+      "error": ""
+    }
+  ],
+  "output": "data/weekly_candidates.yml"
+}

@@ -1,0 +1,1463 @@
+- id: 53b083fe9653
+  title: 'URF-Loc: Uncertainty-Aware Frequency-Spatial Network for GNSS-Denied UAV Geo-Localization'
+  year: 2026
+  venue: Lecture notes in computer science
+  authors:
+  - Yifan Yang
+  - Xiaogang Zhao
+  - Xuekai Chen
+  - Chu He
+  abstract: ''
+  publication_date: '2026-07-13'
+  urls:
+    paper: https://doi.org/10.1007/978-981-92-3504-9_20
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: 10.1007/978-981-92-3504-9_20
+    arxiv_id: ''
+    openalex_id: https://openalex.org/W7168143736
+  discovery:
+    found_date: '2026-07-14'
+    found_by:
+    - source: openalex
+      keyword: UAV cross-view geo-localization
+    - source: openalex
+      keyword: UAV-view geo-localization
+    - source: openalex
+      keyword: cross-view UAV localization
+    - source: openalex
+      keyword: coarse-to-fine UAV geo-localization
+    - source: openalex
+      keyword: UAV-VisLoc
+    last_seen_date: '2026-07-14'
+  status: parsed
+  verified: false
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: retrieval
+    relevance_score: 0.95
+    tags:
+    - uncertainty-aware
+    - frequency-spatial
+    - GNSS-denied
+    - geo-localization
+    datasets:
+    - University-1652
+    - SUES-200
+    - DenseUAV
+    - UAV-VisLoc
+    - UAV-GeoLoc
+    - GTA-UAV
+    - Game4Loc
+    - World-UAV
+    - Nardo-Air
+    - ALTO
+    - UAV-R2P
+    - UVL-R2P
+    - Boson-nighttime
+    - Thermal-UAV
+    possible_leaderboard: true
+    reason: The paper title explicitly mentions UAV geo-localization under GNSS-denied conditions, and the abstract likely
+      addresses cross-view matching. The listed datasets are standard benchmarks for UAV cross-view geo-localization.
+    needs_review: true
+    minimax_main_category: unified_global_to_local
+  summary:
+    summary_en: URF-Loc addresses cross-view geo-localization for UAVs operating under GNSS-denied conditions, where severe
+      appearance variations, large search spaces, and ambiguous structural correspondence make robust localization difficult.
+      The paper observes that prior approaches either rely on global retrieval with limited spatial precision or on deterministic
+      dense prediction without modeling prediction reliability, leading to unstable localization. To address this, the authors
+      propose a coarse-to-fine framework. The coarse stage employs a spatial-frequency joint (FSJ) representation that injects
+      high-frequency residuals into multi-scale features to enhance view-invariant structural cues for robust global matching.
+      The refinement stage introduces an uncertainty-aware regression (UAR) module that formulates localization as heteroscedastic
+      probabilistic regression, enabling adaptive handling of ambiguous regions and providing reliable uncertainty estimates.
+      Experiments are conducted on the UAV-VisLoc benchmark, where URF-Loc is reported to achieve state-of-the-art performance,
+      significantly improving meter-level accuracy and bounding-box quality while providing reliable uncertainty estimation.
+      Specific numerical values are not available from the provided preview text.
+    main_category: unified_global_to_local
+    category_confirmed: false
+    classification_reason: The paper presents a coarse-to-fine framework combining global retrieval (FSJ-based matching) with
+      uncertainty-aware regression for fine localization, which aligns with unified global-to-local geo-localization methods
+      for UAVs.
+    benchmarks:
+    - UAV-VisLoc
+    main_modules:
+    - Spatial-Frequency Joint (FSJ) representation
+    - Uncertainty-Aware Regression (UAR) module
+    - Coarse-to-fine localization framework
+    reported_results:
+    - State-of-the-art performance on UAV-VisLoc benchmark
+    - Significantly improved meter-level accuracy
+    - Improved bounding-box quality
+    - Reliable uncertainty estimation
+    leaderboard_metrics: []
+    table_evidence_notes: The provided text is a Springer preview with no numerical results table. Specific metric values
+      (e.g., R@1, distance error, IoU) are not available. No leaderboard metrics can be extracted.
+    code_url: null
+    needs_review: true
+  automation:
+    last_processed_date: '2026-07-14'
+- id: d47ae50c7bee
+  title: The inhibition of pathological IgE in allergic diseases by natural compounds
+  year: 2026
+  venue: Natural Products and Bioprospecting
+  authors:
+  - Michelle Carnazza
+  - Morgan Begley
+  - Raj K. Tiwari
+  - Jan Geliebter
+  - Nan Yang
+  - Jixun Zhan
+  - Xiu-Min Li
+  abstract: IgE-mediated allergic diseases are common and greatly affect quality of life. Current therapeutic strategies include
+    avoidance, which is unreliable, and unspecific symptom management, which causes adverse effects and are expensive. This
+    urges the need for safe, effective, and affordable treatment options for infants, children, adolescents, and adults. This
+    narrative review discusses naturally occurring compounds that have been researched in animal models, in vitro cell lines,
+    and clinical trials to inhibit pathological IgE. These include Food Allergy Herbal Formula (FAHF)-1 and -2 and the derivatives
+    B-FAHF-2, EBF-2, and berberine; Rubia cordifolia and its isolate xanthopurpurin; arctigenin; Anti-Asthma Herbal Medicine
+    Intervention and its isolate formononetin; apigenin; luteolin; resveratrol; pterostilbene; and ginsenoside Rh1. Natural
+    compounds largely work through reduction of IgE production of B cells through modulation of genes involved in B cell activation,
+    differentiation and proliferation, and cell cycle. There is a resulting reduction of Th2 responses and mast cell degranulation,
+    and hence allergic disease pathology and symptomology. There are rich resources of natural compounds, including those
+    with the capacity to restore immunity to that seen in non-allergic individuals. Natural compounds are promising, novel
+    treatment strategies for the vast sufferers of food allergy, allergic asthma, allergic rhinitis, and allergic eczema.
+  publication_date: '2026-07-13'
+  urls:
+    paper: https://doi.org/10.1007/s13659-026-00596-1
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: 10.1007/s13659-026-00596-1
+    arxiv_id: ''
+    openalex_id: https://openalex.org/W7168089805
+  discovery:
+    found_date: '2026-07-14'
+    found_by:
+    - source: openalex
+      keyword: SUES-200
+  status: rejected
+  verified: false
+  classification:
+    is_cvgl: false
+    is_uav_related: false
+    main_category: unrelated
+    relevance_score: 0.0
+    tags:
+    - allergic diseases
+    - IgE
+    - natural compounds
+    - review
+    datasets: []
+    possible_leaderboard: false
+    reason: The paper discusses natural compounds for treating IgE-mediated allergic diseases, with no relation to UAV cross-view
+      geo-localization.
+    needs_review: false
+  automation:
+    last_processed_date: '2026-07-14'
+- id: ab929cada617
+  title: Text-Prompt-Based AI-Generated Virtual Image Augmentation for Data-Scarce Flood Detection in Urban Flood-Prone Areas
+  year: 2026
+  venue: Urban Science
+  authors:
+  - Hanseon Joo
+  - Ook Lee
+  abstract: Urban flood detection requires visual examples of flooded streets and alleys, but such event-state images are
+    difficult to collect at scale. This study examines whether sparse real-image training sets can be strengthened using text-prompt-only
+    AI-generated virtual imagery for ground-level flood detection in flood-prone urban areas. Building on AlleyFloodNet, the
+    generated images were used only as condition-specific training augmentation, while validation and testing were conducted
+    exclusively on real images. Across eight ImageNet-pretrained architectures and three random seeds, the results show that
+    virtual imagery is not a substitute for real flood observations. When virtual images dominated the training set, performance
+    declined. However, when a sufficient real-image anchor was available, virtual augmentation improved the highest observed
+    fixed-test performance. The strongest mixed-condition result was obtained by EfficientNet-B2 under Real30_Aug70, reaching
+    91.00% accuracy, 89.48% flooded-class recall, and 90.79% macro-F1. These findings suggest that prompt-only virtual imagery
+    can help mitigate real-image scarcity in selected training conditions, but its benefit depends on the real-to-virtual
+    composition and model architecture.
+  publication_date: '2026-07-10'
+  urls:
+    paper: https://doi.org/10.3390/urbansci10070398
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: 10.3390/urbansci10070398
+    arxiv_id: ''
+    openalex_id: https://openalex.org/W7167911063
+  discovery:
+    found_date: '2026-07-14'
+    found_by:
+    - source: openalex
+      keyword: UAV visual geo-localization
+    - source: openalex
+      keyword: region-to-point UAV visual geo-localization
+    last_seen_date: '2026-07-14'
+  status: rejected
+  verified: false
+  classification:
+    is_cvgl: false
+    is_uav_related: false
+    main_category: unrelated
+    relevance_score: 0.0
+    tags:
+    - flood detection
+    - data augmentation
+    - AI-generated images
+    - urban flood-prone areas
+    datasets: []
+    possible_leaderboard: false
+    reason: The paper focuses on flood detection using AI-generated virtual images for data augmentation, not on UAV cross-view
+      geo-localization. It does not involve matching UAV images to satellite views or any geo-localization task.
+    needs_review: false
+  automation:
+    last_processed_date: '2026-07-14'
+- id: 4d3ddda992ab
+  title: THE ARCHITECTURE OF AMBIGUITY. ELEMENTS AND EVOLUTION OF RUSSIAN HYBRID WARFARE IN UKRAINE
+  year: 2026
+  venue: SCIENTIFIC RESEARCH AND EDUCATION IN THE AIR FORCE
+  authors:
+  - Catalin Bucurel BAIU
+  - Daniel ȘTEFĂNESCU
+  abstract: 'This study examines Russian hybrid warfare as operationalized in Ukraine between 2013 and 2024, arguing that
+    it represents the most comprehensive and empirically documented case of integrated grey-zone conflict in the contemporary
+    era. Drawing on open-source intelligence reports, security studies scholarship, and legal analysis, the paper analyzes
+    six core dimensions of Russia''s hybrid approach: theoretical doctrine, information and cognitive operations, cyber warfare,
+    electronic warfare, unconventional proxy forces, economic coercion, and lawfare. The analysis reveals a deliberate strategy
+    of ambiguity — combining plausible deniability with escalation dominance — designed to undermine target-state cohesion,
+    fracture Western alliances, and achieve strategic objectives below the threshold of conventional warfare. Crucially, however,
+    the Ukrainian case also illuminates the conditions under which hybrid strategies can fail: when the target state exhibits
+    ''whole-of-society'' resilience and when adversary coercion inadvertently accelerates the opposing coalition''s cohesion
+    and capability development. The paper concludes with implications for NATO posture, democratic resilience, and the evolving
+    character of 21st-century conflict.'
+  publication_date: '2026-07-13'
+  urls:
+    paper: https://doi.org/10.19062/2247-3173.2026.27.2
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: 10.19062/2247-3173.2026.27.2
+    arxiv_id: ''
+    openalex_id: https://openalex.org/W7168170387
+  discovery:
+    found_date: '2026-07-14'
+    found_by:
+    - source: openalex
+      keyword: UAV-R2P
+  status: raw
+  verified: false
+- id: df8c7e9f844e
+  title: 'SwarmFly: A simulation platform for UAV swarm experiment design and validation'
+  year: 2026
+  venue: arXiv
+  authors:
+  - Abhishek Phadke
+  - Karthik Kumar Vasudeva
+  - Abhishek Joshi
+  abstract: The initial development phase of UAV swarms largely depends on simulation for experimental design and validation,
+    yet existing open-source tools are often unmaintained, have steep learning curves, or are built around a single fixed
+    scenario. The need for a comprehensive, modular simulation platform is a recognized research gap. This paper presents
+    SwarmFly, a MATLAB-based simulation and test platform for multi- UAV swarms that addresses these gaps. SwarmFly combines
+    a real-time operational map, four swarm coordination modes (leader-follower, decentralized, heterogeneous relay, and heterogeneous
+    speed), simulated IMU telemetry, and IP-based geolocation with a plugin architecture that lets researchers add behaviors,
+    fault models, and analysis tools without touching the core code. Eight bundled plugins extend the base simulator into
+    a full test harness. The SwarmFly platform exposes multi-agent aerial swarms to a wide range of internal and external
+    disruptions, enabling observation and quantification of underlying swarm control and behavioral mechanisms. This study
+    verifies and characterizes each subsystem through eight experiments that measure formation accuracy, wind tolerance, fault
+    recovery, energy endurance, and airspace compliance. The platform runs entirely in MATLAB. Its modular design supports
+    straightforward extension toward hardware-in-the-loop testing, larger swarms, and higher-fidelity dynamics. An open-source
+    release is available at [https://github.com/abhishekphadke/SwarmFly.git]
+  publication_date: '2026-06-23'
+  urls:
+    paper: http://arxiv.org/abs/2606.25146v1
+    pdf: http://arxiv.org/pdf/2606.25146v1
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: 2606.25146v1
+    openalex_id: ''
+  discovery:
+    found_date: '2026-07-14'
+    found_by:
+    - source: arxiv
+      keyword: UAV-GeoLoc
+  status: raw
+  verified: false
+- id: 9545cbb07897
+  title: 'STEAM: Stable Self-Training with Elastic Matching and Adaptive Purification'
+  year: 2026
+  venue: arXiv
+  authors:
+  - Shaoxiang Wang
+  - Kejia Zhang
+  - Haiwei Pan
+  - Lan Zhang
+  abstract: Cross-view geo-localization (CVGL) aims to achieve GPS-free localization by matching drone-view images with corresponding
+    satellite-view images. Existing supervised methods rely on large-scale manually annotated cross-view image pairs, making
+    them costly and difficult to scale. In contrast, existing unsupervised approaches typically depend on generative models
+    or clustering-based stage-wise optimization, which are prone to distribution bias and the accumulation of noisy pseudo-labels.
+    To address these limitations, we propose STEAM (Stable Self-Training with Elastic Matching and Adaptive Purification),
+    an end-to-end unsupervised cross-view geo-localization framework that performs self-training directly on real drone and
+    satellite images. Specifically, the proposed Stable Spatial-Aware Module enhances the stability of feature representations,
+    Elastic Matching discovers high-quality cross-view pseudo-labels, and Adaptive Purification dynamically maintains a reliable
+    pseudo-label repository throughout the self-training process. Extensive experiments on the University-1652 and SUES-200
+    benchmarks demonstrate that STEAM achieves state-of-the-art performance among all existing unsupervised methods and delivers
+    performance comparable to supervised approaches, validating the effectiveness and superiority of the proposed framework.
+    The source code is available at https://github.com/wsx-heu/STEAM.git.
+  publication_date: '2026-07-10'
+  urls:
+    paper: http://arxiv.org/abs/2607.09057v1
+    pdf: http://arxiv.org/pdf/2607.09057v1
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: 2607.09057v1
+    openalex_id: ''
+  discovery:
+    found_date: '2026-07-14'
+    found_by:
+    - source: arxiv
+      keyword: SUES-200
+    - source: arxiv
+      keyword: University-1652
+    last_seen_date: '2026-07-14'
+  status: raw
+  verified: false
+- id: 94215171798b
+  title: 'SFL-YOLO: an improved YOLOv11-based model for underwater object detection'
+  year: 2026
+  venue: Scientific Reports
+  authors:
+  - Xiaokang Wang
+  - Yuanjiang Li
+  - Qingzhi Zu
+  - Chuanjin Zu
+  abstract: Object detection in complex underwater environments remains challenging due to low contrast, light scattering,
+    noise interference, and indistinct texture and boundary information of small objects. To improve the representation capability
+    for small objects, weak-texture objects, and objects with blurred boundaries, this study proposes an improved underwater
+    object detection model, SFL-YOLO, based on YOLOv11n. First, a Spatial Channel Transform Convolution module (SCTC) is designed
+    to replace conventional strided downsampling. By integrating spatial-channel rearrangement, local detail response, and
+    detail selection gating, SCTC preserves more edge, texture, and contour information while reducing the feature map resolution.
+    Second, a Feature-Aware Reassembly Upsampling module (FARU) is introduced. By combining content-aware reassembly, local
+    detail guidance, and degradation-aware modulation, FARU alleviates semantic misalignment and background noise diffusion
+    caused by fixed-interpolation upsampling. Finally, a Lightweight Detail Modeling Detection Head (LDMDH) is proposed to
+    enhance fine-grained feature representation in the detection head while reducing parameter redundancy. Experimental results
+    show that SFL-YOLO achieves 85.4% mAP@0.5 on the URPC2020 dataset, improving YOLOv11n by 1.6% points. The model has 4.50
+    M parameters and 11.4G FLOPs, with a complete inference speed of 142 FPS. On the RUOD dataset, SFL-YOLO achieves 85.7%
+    mAP@0.5, outperforming YOLOv11n by 1.1% points. Ablation experiments and controlled degradation experiments further verify
+    the effectiveness of each module and the robustness of the model on degraded underwater images. These results demonstrate
+    that SFL-YOLO improves object detection accuracy in complex underwater environments while maintaining real-time performance.
+  publication_date: '2026-06-29'
+  urls:
+    paper: https://doi.org/10.1038/s41598-026-60347-7
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: 10.1038/s41598-026-60347-7
+    arxiv_id: ''
+    openalex_id: https://openalex.org/W7166542083
+  discovery:
+    found_date: '2026-07-14'
+    found_by:
+    - source: openalex
+      keyword: R2PLoc
+  status: raw
+  verified: false
+- id: 0c1690c680e1
+  title: 'Read It Back: Pretrained MLLMs Are Zero-Shot Reward Models for Text-to-Image Generation'
+  year: 2026
+  venue: arXiv
+  authors:
+  - Runhui Huang
+  - Qihui Zhang
+  - Zhe Liu
+  - Yu Gao
+  - Jie Wu
+  - Hengshuang Zhao
+  abstract: 'In this paper, we propose SpectraReward, a training-free reward function that turns pretrained MLLMs into off-the-shelf
+    reward models for image-generation reinforcement learning. Instead of asking the MLLM to judge a generated image or answer
+    decomposed verification questions, SpectraReward measures how well the original prompt can be recovered from the generated
+    image through a single image-conditioned, teacher-forced forward pass. We use the average image-conditioned prompt log-likelihood
+    as the reward, directly reusing the MLLM''s pretrained image-text alignment ability without preference labels, reward-model
+    fine-tuning. We further introduce Self-SpectraReward, a special case for unified multimodal models where the policy''s
+    own understanding branch serves as the reward model for its generation branch, forming a closed-loop self-improving framework
+    without external reward models or external knowledge. Extensive experiments validate SpectraReward through a broad image-generation
+    RL study covering two diffusion models, three RL algorithms, nine reward MLLM backbones from four MLLM families spanning
+    4B to 235B parameters, and five out-of-distribution text-to-image benchmarks. Results show that both SpectraReward and
+    Self-SpectraReward significantly and consistently improve generation performance and outperform prior MLLM-derived reward
+    training methods. Further analysis reveals that larger reward MLLMs are not always better, while Self-SpectraReward can
+    match or surpass much larger external reward models, suggesting that reward-policy alignment is a key factor for effective
+    image-generation RL. Project Page: https://huangrh99.github.io/SpectraReward/'
+  publication_date: '2026-07-13'
+  urls:
+    paper: http://arxiv.org/abs/2607.11886v1
+    pdf: http://arxiv.org/pdf/2607.11886v1
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: 2607.11886v1
+    openalex_id: ''
+  discovery:
+    found_date: '2026-07-14'
+    found_by:
+    - source: arxiv
+      keyword: UAV satellite image retrieval
+    - source: arxiv
+      keyword: drone satellite image retrieval
+    - source: arxiv
+      keyword: UAV satellite image matching
+    last_seen_date: '2026-07-14'
+  status: raw
+  verified: false
+- id: 0d5e0a0d061e
+  title: Optimization of aerial image stitching for garbage identification
+  year: 2026
+  venue: An International Journal of Optimization and Control Theories & Applications (IJOCTA)
+  authors:
+  - Cheng-Chien Su
+  - Jih‐Gau Juang
+  abstract: To improve the environmental quality and protect local ecosystems, riverine waste monitoring systems are needed
+    to identify waste along riverbanks. Since most riverbank areas are wide, a single unmanned aerial vehicle (UAV) camera
+    cannot capture the entire area. Hence, the use of multiple UAVs and image stitching for river scene reconstruction is
+    required. This study applies image processing with multiple UAVs to identify garbage. First, image stitching employed
+    the scale-invariant feature transform, Oriented Features from Accelerated Segment Test and Rotated Binary Robust Independent
+    Elementary Features, and accelerated KAZE for feature detection and description. Real-time scene stitching was performed
+    using feature point matching and filtering, and seam removal was achieved with an averaging-weighted mask. Two image-stitching
+    datasets were tested, and the proposed method preserves 100% of the content of the original images. The computation time
+    was reduced by 60% compared to the conventional method. Secondly, the optimized stitching results were used to further
+    identify marine pollution using the You Only Look Once (YOLO) model. &amp;nbsp;Different types of YOLO networks were used
+    to identify waste pollution. An optimal YOLO model that identified waste items with 100% recognition and accuracy was
+    obtained. The current coordinates, waste types, area size, and real-time images of the waste pollution were sent to the
+    monitoring terminal. This enabled the analysis of waste distribution and facilitated attempts to trace the source of the
+    waste by comparing training results and the identification effectiveness of different models.
+  publication_date: '2026-07-08'
+  urls:
+    paper: https://doi.org/10.36922/ijocta026170066
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: 10.36922/ijocta026170066
+    arxiv_id: ''
+    openalex_id: https://openalex.org/W7167783841
+  discovery:
+    found_date: '2026-07-14'
+    found_by:
+    - source: openalex
+      keyword: UAV satellite homography localization
+  status: raw
+  verified: false
+- id: fc389609401b
+  title: Optical metasurfaces for general vision processing on the edge
+  year: 2026
+  venue: Nature
+  authors:
+  - Jiayong Peng
+  - Mingcheng Luo
+  - Yuxi Han
+  - Siying Wu
+  - Hui Li
+  - Bhavin J. Shastri
+  - Chester Shu
+  - Qi Dou
+  - Yang Chai
+  - Chaoran Huang
+  abstract: ''
+  publication_date: '2026-06-17'
+  urls:
+    paper: https://doi.org/10.1038/s41586-026-10635-z
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: 10.1038/s41586-026-10635-z
+    arxiv_id: ''
+    openalex_id: https://openalex.org/W7165000453
+  discovery:
+    found_date: '2026-07-14'
+    found_by:
+    - source: openalex
+      citation_of: University-1652
+      seed_title: 'University-1652: A Multi-view Multi-source Benchmark for Drone-based Geo-localization'
+  status: raw
+  verified: false
+- id: 5a980669b48c
+  title: Novel Ethylene-Propylene-Diene Monomer rubber panels filled with Phase Change Material and expanded graphite for
+    energy efficiency of buildings
+  year: 2026
+  venue: Journal of Energy Storage
+  authors:
+  - Sereno Sacchet
+  - Alessandro Pizzato
+  - Francesco Valentini
+  - M. Grigiante
+  - Riccardo Pó
+  - Luca Fambri
+  abstract: The integration of organic Phase Change Materials (PCMs) in building walls has become essential to surpassing
+    the limitations of conventional insulation. Within this scope, we developed novel Ethylene-Propylene-Diene Monomer (EPDM)
+    composite materials incorporating paraffin as PCM. To achieve this, Expanded Graphite (EG) was introduced via a preliminary
+    vacuum impregnation process. This carbonaceous filler acts as a multifunctional support, ensuring shape stability and
+    enhancing the structural integrity of the rubber matrix. The resulting composites exhibit an outstanding melting enthalpy
+    of 167 J/g—a record-high value for EPDM-based systems within the 22–31 °C range—while the percolative EG network raises
+    thermal conductivity to 1.7 W/m·K (a ten-fold increase over the neat PCM). Dynamic thermal tests in a climatic chamber
+    confirmed a significant thermal lag and the ability to dampen temperature peaks effectively. Furthermore, mechanical characterization
+    at 21 °C and 40 °C demonstrated that the panels maintain a compressive strength exceeding 0.1 MPa even when the PCM is
+    molten, ensuring structural reliability during storage and transport. In summary, leveraging a superior synergy between
+    heat storage and thermal transport validated by Figure of Merit (FoM) analysis, these novel PCM/EG-based panels offer
+    a high-performance solution for passive cooling applications in sustainable architecture.
+  publication_date: '2026-07-10'
+  urls:
+    paper: https://doi.org/10.1016/j.est.2026.123425
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: 10.1016/j.est.2026.123425
+    arxiv_id: ''
+    openalex_id: https://openalex.org/W7167839565
+  discovery:
+    found_date: '2026-07-14'
+    found_by:
+    - source: openalex
+      keyword: Nardo-Air
+  status: raw
+  verified: false
+- id: e3aaebd2119c
+  title: 'Multi-sensor integration and cloud-native AI for climate-smart agricultural monitoring: A systems framework'
+  year: 2026
+  venue: Computers and Electronics in Agriculture
+  authors:
+  - Bojana Petrović
+  - Hynek Roubík
+  - László Csambalik
+  - Turgay Dindaroğlu
+  - Jan Staš
+  - Jan Banout
+  abstract: Climate change intensifies drought, heat stress, and production instability, requiring scalable monitoring systems
+    to support climate-smart agriculture. Remote sensing has evolved into operational decision-support infrastructure enabled
+    by open-access satellite archives, multi-sensor integration, cloud-native computing, and machine learning. This review
+    synthesizes peer-reviewed literature (2000–2025) and proposes a unified five-layer computational framework for agricultural
+    climate adaptation. The framework integrates data acquisition, cloud processing, machine learning analytics, data fusion,
+    and decision-support outputs into end-to-end workflows. The synthesis is based on a structured review of 120 core peer-reviewed
+    studies, complemented by additional foundational and methodological references to ensure technical depth. Comparative
+    evidence indicates that multi-sensor fusion enhances robustness relative to single-source approaches. Optical-radar integration
+    using Sentinel-1 and Sentinel-2 has achieved classification accuracies of up to 89 % in cloud-prone regions, compared
+    to approximately 76 % using optical data alone. ML-based yield prediction models frequently improve performance by 5–20
+    % in R 2 relative to empirical regression under data-rich conditions, while multi-temporal ML approaches enable detection
+    of crop stress 2–4 weeks before visible symptoms occur. However, ML superiority over process-based models is conditional
+    on calibration quality, data availability, and cross-regional transferability. Cloud-based platforms have reduced computational
+    barriers and enabled large-scale time-series analysis, supporting operational monitoring from field to regional scales.
+    Despite these advances, reproducibility limitations, ground-truth data scarcity, and reduced transferability across agroecological
+    zones remain significant constraints, particularly in smallholder-dominated systems. Advancing climate-smart agricultural
+    monitoring therefore depends not only on improved sensing technologies, but on interoperable, reproducible, and transferable
+    computational frameworks capable of delivering reliable decision support across heterogeneous agricultural landscapes.
+  publication_date: '2026-07-10'
+  urls:
+    paper: https://doi.org/10.1016/j.compag.2026.112182
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: 10.1016/j.compag.2026.112182
+    arxiv_id: ''
+    openalex_id: https://openalex.org/W7167926346
+  discovery:
+    found_date: '2026-07-14'
+    found_by:
+    - source: openalex
+      keyword: drone cross-view geo-localization
+    - source: openalex
+      keyword: drone satellite geo-localization
+    - source: openalex
+      keyword: UAV geo-localization satellite imagery
+    - source: openalex
+      keyword: UAV cross-view geo-localization survey
+    - source: openalex
+      keyword: cross-view geo-localization survey UAV
+    - source: openalex
+      keyword: survey drone geo-localization satellite
+    last_seen_date: '2026-07-14'
+  status: raw
+  verified: false
+- id: ed52caa7c094
+  title: 'MSAL-YOLO: a YOLOv8-based detector for small and densely distributed object detection in UAV aerial imagery'
+  year: 2026
+  venue: Research Square
+  authors:
+  - Fei Ding
+  - Xiufu Du
+  - Haining Zhang
+  - Haibin Liu
+  - Liguo Han
+  abstract: ''
+  publication_date: '2026-07-13'
+  urls:
+    paper: https://doi.org/10.21203/rs.3.rs-10147699/v1
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: 10.21203/rs.3.rs-10147699/v1
+    arxiv_id: ''
+    openalex_id: https://openalex.org/W7168181083
+  discovery:
+    found_date: '2026-07-14'
+    found_by:
+    - source: openalex
+      keyword: World-UAV
+  status: raw
+  verified: false
+- id: 23310bb77f5b
+  title: 'MIRA: A Modular Open-Source Micro-UAV for Indoor Research'
+  year: 2026
+  venue: arXiv
+  authors:
+  - Lucas K. de Oliveira
+  - Felipe A. G. Tommaselli
+  - João Aires Marsicano
+  - Marco S. Tayar
+  - Pedro A. R. Saraiva
+  - Ricardo V. Godoy
+  - Marcelo Becker
+  abstract: Indoor robotics research increasingly relies on micro-UAVs whose airframe, electronics, and control software are
+    fully open to modification. Off-the-shelf platforms rarely expose the low-level access required for such modifications,
+    while building a custom alternative typically requires substantial engineering effort before flight testing can begin,
+    leaving many laboratories to work within constraints that limit the scope of their research. We present MIRA (Modular
+    Indoor Research Architecture), a low-cost, open-source micro-UAV for indoor research built around a replicable 3D-printed
+    PLA airframe and a containerized low-level software package managing the companion-to-autopilot communication bridge via
+    Micro XRCE-DDS. Designed as a white-box architecture, core subsystems are individually replaceable without firmware refactoring,
+    supporting local fabrication and component substitution from existing lab inventory. We characterize MIRA through manual
+    flight in position-control mode within an optical motion-capture volume, where the communication pipeline sustains a median
+    companion-to-autopilot latency of 0.02 ms and power spectral density analysis confirms the structural vibration energy
+    stays concentrated in a narrow 90 to 110 Hz band, isolated from the sub-20 Hz control bandwidth and within the autopilot
+    safety thresholds.
+  publication_date: '2026-07-13'
+  urls:
+    paper: http://arxiv.org/abs/2607.11785v1
+    pdf: http://arxiv.org/pdf/2607.11785v1
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: 2607.11785v1
+    openalex_id: ''
+  discovery:
+    found_date: '2026-07-14'
+    found_by:
+    - source: arxiv
+      keyword: UAV cross-view geo-localization
+    - source: arxiv
+      keyword: cross-view UAV
+    last_seen_date: '2026-07-14'
+  status: raw
+  verified: false
+- id: 15af49ee1ded
+  title: MICROCLIMATE CONDITIONS AND URBAN FORM IMPACTS ON FLOOD AND HEAT VULNERABILITY IN LAGOS INFORMAL SETTLEMENTS
+  year: 2026
+  venue: International Journal of Innovation Research and Advanced Studies
+  authors:
+  - OBI PAUL
+  - Adebamowo Michael
+  - ADEBANJI KAYODE SUNDAY
+  - ANDREW AKINNUBI
+  abstract: 'Rapid urbanization and climate change have increased heat stress and flooding in Lagos coastal informal settlements,
+    yet the role of urban form in driving microclimate risk remains under-studied. This study examined the influence of urban
+    form on microclimate conditions and flood vulnerability in three Lagos slums: Makoko, Iwaya, and Ago-Egun Bariga. Using
+    twelve months of field measurements from 24 HOBO loggers, GIS spatial analysis of sky view factor, street width, vegetation,
+    and building density, and ENVI-met microclimate modeling, the research addressed four questions on microclimate variation,
+    urban form constraints, statistical relationships, and design solutions. Results show significant microclimate injustice
+    within settlements. Makoko core recorded 32.4°C mean temperature and 44.8°C heat index, 3.2°C higher than the better-ventilated
+    Makoko edge. All settlements scored 24–37% on a six-indicator resilience grading scale due to sky view factor below 0.35,
+    street width under 3 meters, vegetation under 6%, and density above 75%. Regression analysis revealed that sky view factor,
+    street width, and vegetation explained 74% of temperature variation, with a 0.1 increase in sky view factor reducing night
+    temperature by 0.48°C. ENVI-met scenario testing demonstrated that creating 4-meter ventilation corridors every 50 meters
+    combined with 15% vegetation increase can reduce temperature by 2.4°C and flood depth by 35% without demolition. The study
+    concludes that Lagos coastal slums are not unfixable; incremental “microclimate surgery” can improve resilience while
+    preserving communities. Findings provided an evidence base for no-eviction climate upgrading policy.'
+  publication_date: '2026-07-11'
+  urls:
+    paper: https://doi.org/10.70382/hijiras.v012i2.079
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: 10.70382/hijiras.v012i2.079
+    arxiv_id: ''
+    openalex_id: https://openalex.org/W7168021043
+  discovery:
+    found_date: '2026-07-14'
+    found_by:
+    - source: openalex
+      keyword: drone-view geo-localization
+  status: raw
+  verified: false
+- id: 4519ec24f5c4
+  title: Latent-Identity Tuning in Text-to-Image Personalization Models
+  year: 2026
+  venue: arXiv
+  authors:
+  - Daniel Garibi
+  - Ronen Kamenetsky
+  - Hadar Averbuch-Elor
+  - Daniel Cohen-Or
+  - Or Patashnik
+  abstract: 'Generating and editing a person''s face demands high precision, as even minor modifications can significantly
+    alter a subject''s perceived identity. Current personalization and editing methods built on general-purpose text-to-image
+    models, however, often lack the precision required for fine-grained facial edits. We present a method for fine-grained
+    identity tuning in text-to-image personalization models. Unlike standard image editing, which operates on a given image,
+    identity tuning modifies the latent representation of a specific identity, enabling the generation of diverse images that
+    consistently depict the same edited identity. To enable fine-grained latent identity tuning, we explore the latent space
+    of a pre-trained, frozen encoder for text-to-image personalization. Our approach requires no additional training. Instead,
+    it leverages the existing architecture of a frozen encoder to uncover latent semantic directions. This space consists
+    of a set of latent tokens that play distinct roles in capturing different aspects of an identity and often correspond
+    to specific spatial or semantic facial regions. We show that meaningful directions can be identified within this space
+    and within subspaces defined by selected tokens, enabling localized, fine-grained, and semantically coherent edits. We
+    validate our approach through qualitative and quantitative experiments that demonstrate diverse localized facial edits
+    while preserving cross-image identity consistency. Project page at: https://garibida.github.io/IdentityTuning/'
+  publication_date: '2026-07-13'
+  urls:
+    paper: http://arxiv.org/abs/2607.11885v1
+    pdf: http://arxiv.org/pdf/2607.11885v1
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: 2607.11885v1
+    openalex_id: ''
+  discovery:
+    found_date: '2026-07-14'
+    found_by:
+    - source: arxiv
+      keyword: UAV visual localization satellite
+    - source: arxiv
+      keyword: cross-view UAV localization
+    - source: arxiv
+      keyword: UAV satellite homography localization
+    - source: arxiv
+      keyword: GNSS-denied UAV visual localization
+    last_seen_date: '2026-07-14'
+  status: raw
+  verified: false
+- id: f3f92125e942
+  title: Kriging-accelerated worst-case search for envelope-wide flight control law optimization
+  year: 2026
+  venue: Aerospace Systems
+  authors:
+  - Cedric Kotitschke
+  - Tim Rupprecht
+  - Elyes Bouhlel
+  - Florian Holzapfel
+  abstract: 'Abstract Robust flight control design requires satisfying stability and performance requirements across a continuous
+    flight envelope. Embedding this verification within a gain tuning loop creates a bi-level optimization: an outer optimizer
+    searches for controller parameters while an inner worst-case search identifies the most critical envelope condition. Each
+    evaluation in the inner loop demands nonlinear simulation, trimming, and linearization, driving the total computational
+    cost to prohibitive levels. A surrogate-assisted framework is proposed in which Kriging models trained on the joint space
+    of controller gains and envelope parameters replace direct simulation in the inner loop. Multiple worst-case candidates
+    are determined by the surrogate using an Upper Confidence Bound criterion at varying confidence levels, guarding against
+    surrogate inaccuracy. Only these candidates are passed to the true model, limiting costly evaluations to a small fixed
+    number per outer iteration. Simulation failures at envelope boundaries are handled robustly without disrupting the optimization.
+    The approach is demonstrated on the robust gain tuning of a large co-axial multicopter, achieving envelope-wide requirement
+    satisfaction at a fraction of the direct simulation cost.'
+  publication_date: '2026-07-13'
+  urls:
+    paper: https://doi.org/10.1007/s42401-026-00498-7
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: 10.1007/s42401-026-00498-7
+    arxiv_id: ''
+    openalex_id: https://openalex.org/W7168160103
+  discovery:
+    found_date: '2026-07-14'
+    found_by:
+    - source: openalex
+      keyword: cross-view UAV
+  status: raw
+  verified: false
+- id: ffb364f49abb
+  title: 'KoSim-GL: A Large-Scale Simulation-Based Dataset for UAV Cross-View Geo-Localization in Korean Urban Environments'
+  year: 2026
+  venue: Electronics
+  authors:
+  - Heejin Ahn
+  - C S Lee
+  - S H Lee
+  - Hyeonjoong Wi
+  - Insung Jang
+  - Dong‐Geol Choi
+  abstract: We propose KoSim-GL, a large-scale vision-based geo-localization dataset for drone positioning in GPS-denied environments.
+    Geo-localization estimates a drone’s location by matching drone-view imagery against a geo-referenced satellite image
+    database, offering a reliable alternative to GPS under conditions such as signal jamming, spoofing, or degradation in
+    dense urban canyons. Although this task is challenging due to the domain gap between drone-view and satellite-view imagery,
+    existing benchmarks are built predominantly around urban environments in the United States and China, leaving South Korea
+    largely unrepresented, despite its distinctive landscape in which mountainous terrain coexists with dense high-rise districts
+    and low-rise residential neighborhoods. To address this gap, we introduce KoSim-GL, constructed from drone-view images
+    captured via an AirSim- and ROS-based flight simulator and satellite images collected through the Google Maps Tile API,
+    covering the urban area of Daejeon, South Korea. Its key feature is a multi-view configuration that simultaneously captures
+    five views, one nadir and four oblique, at each flight position across altitudes from 100 m to 600 m, enabling robust
+    localization even in feature-sparse environments where nadir-only matching is prone to fail. In total, KoSim-GL comprises
+    2,450,315 drone images and 1704 satellite images. We further provide systematic comparisons against five existing benchmarks
+    and baseline evaluations of ten representative geo-localization models under single- and multi-view settings. Experimental
+    results show that the multi-view configuration substantially improves localization performance; for example, FSRA improves
+    Recall@1 from 44.08% (single-view) to 65.37% (multi-view), a gain of 21.29 percentage points. The dataset is publicly
+    available.
+  publication_date: '2026-06-19'
+  urls:
+    paper: https://doi.org/10.3390/electronics15122720
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: 10.3390/electronics15122720
+    arxiv_id: ''
+    openalex_id: https://openalex.org/W7165145298
+  discovery:
+    found_date: '2026-07-14'
+    found_by:
+    - source: openalex
+      keyword: DenseUAV
+    - source: openalex
+      keyword: Game4Loc
+    - source: openalex
+      citation_of: University-1652
+      seed_title: 'University-1652: A Multi-view Multi-source Benchmark for Drone-based Geo-localization'
+    - source: openalex
+      citation_of: SUES-200
+      seed_title: 'SUES-200: A Multi-height Multi-scene Cross-view Image Benchmark Across Drone and Satellite'
+    - source: openalex
+      citation_of: DenseUAV
+      seed_title: Vision-Based UAV Self-Positioning in Low-Altitude Urban Environments
+    - source: openalex
+      citation_of: GTA-UAV
+      seed_title: 'Game4Loc: A UAV Geo-Localization Benchmark from Game Data'
+    last_seen_date: '2026-07-14'
+  status: raw
+  verified: false
+- id: e0d6726cee48
+  title: 'HASTE: A Platform for Rapid Post-Disaster Building Damage Assessment'
+  year: 2026
+  venue: arXiv
+  authors:
+  - Caleb Robinson
+  - Anthony Ortiz
+  - Simone Fobi Nsutezo
+  - Cameron Birge
+  - Meygha Machado
+  - Marcelo Duarte
+  - Joaquin Rivero Rodriguez
+  - Anthony Cintron Roman
+  - Kevin White
+  - Inbal Becker-Reshef
+  - Juan M. Lavista Ferres
+  abstract: When a large disaster strikes, responders need a map of which buildings are damaged within hours. The models that
+    do well on public benchmarks assume matched before-and-after imagery and a training set drawn from similar past events,
+    and neither is usually available for a new disaster in its first day. We present HASTE (High-speed Assessment and Satellite
+    Tracking for Emergencies), a no-code web platform that lets analysts who are not machine learning engineers produce per-building
+    damage maps from post-disaster satellite imagery. HASTE implements two methods that share one interface. The first requires
+    the user to label polygons over the post-disaster scene, trains a small semantic segmentation model on that single scene,
+    runs it over the whole image, and joins the per-pixel output to existing building footprints. The second embeds every
+    footprint with a pretrained vision model, requires the user to label a handful of buildings, and fits a logistic regression
+    in the browser that scores the rest of the scene in seconds. We describe the platform, both methods, and the engineering
+    that supports them. We also report preliminary experiments on xBD showing that foundation-model embeddings pooled over
+    footprints separate damaged from intact buildings using post-disaster imagery alone, matching a fully supervised ResNet-50
+    baseline with a twentieth of its labels. HASTE and its predecessors have supported more than thirty real-world disaster
+    responses since 2023, spanning earthquakes, hurricanes, cyclones, floods, wildfires, and tornadoes, delivering results
+    to humanitarian partners within hours to days of imagery becoming available. We close with the directions we think are
+    most promising, including vision-language assessment, active learning, and damage models for roads and other infrastructure.
+    HASTE is open source at https://github.com/microsoft/haste.
+  publication_date: '2026-07-13'
+  urls:
+    paper: http://arxiv.org/abs/2607.11838v1
+    pdf: http://arxiv.org/pdf/2607.11838v1
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: 2607.11838v1
+    openalex_id: ''
+  discovery:
+    found_date: '2026-07-14'
+    found_by:
+    - source: arxiv
+      keyword: UAV self-positioning satellite
+    - source: arxiv
+      keyword: UAV geo-localization satellite imagery
+    last_seen_date: '2026-07-14'
+  status: raw
+  verified: false
+- id: 507f1ead0020
+  title: 'From Sketch Prior to Trajectories: A Mission-Oriented Coordinated Navigation Framework for Indoor UAV Swarm'
+  year: 2026
+  venue: arXiv
+  authors:
+  - Xinhang Xu
+  - Ruiyang Liu
+  - Haotian Jin
+  - Yi Wang
+  - Hongming Shen
+  - Jianping Li
+  - Lihua Xie
+  abstract: UAV swarm for applications, such as indoor inspection, security patrol, and logistics delivery, are often mission-oriented
+    rather than exploration-oriented. In these tasks, UAVs are required to visit task-relevant regions in a prescribed sequence,
+    and such region-level mission information can often be obtained from pre-deployment sketch-map priors, such as floor plans,
+    CAD layouts, or evacuation diagrams. Although these tasks are executed in three-dimensional space, UAVs usually fly within
+    a specific altitude layer or a nearly fixed altitude range on each floor, making mission-level region transitions mainly
+    governed by planar connectivity. Based on these observations, this paper proposes a mission-oriented coordinated navigation
+    framework that exploits sketch-map priors for multi-UAV indoor operations. Onboard observations are used to perform topological
+    alignment, and the aligned prior is fused with online observations to construct a mission-oriented traversability representation.
+    A layered 2D--3D coordinated navigation framework is further developed, where 2D guided path planning generates mission-oriented
+    guide paths and guide-driven 3D trajectory optimization produces dynamically feasible and collision-free trajectories.
+    Simulation and real-world experiments validate the effectiveness of the proposed framework in structured multi-room indoor
+    environments and further demonstrate its coordinated navigation capability under both communication-available and communication-loss
+    conditions. Multi-floor simulation results show the scalability of the system to layered indoor structures.
+  publication_date: '2026-07-13'
+  urls:
+    paper: http://arxiv.org/abs/2607.11386v1
+    pdf: http://arxiv.org/pdf/2607.11386v1
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: 2607.11386v1
+    openalex_id: ''
+  discovery:
+    found_date: '2026-07-14'
+    found_by:
+    - source: arxiv
+      keyword: World-UAV
+  status: raw
+  verified: false
+- id: d4ea6f26ab5b
+  title: Foraging mode and social behavior of Arctic charr, Salvelinus alpinus, in lava cave ponds in the Lake Mývatn area,
+    NE-Iceland
+  year: 2026
+  venue: Aquatic Ecology
+  authors:
+  - Stefán Ó. Steingrímsson
+  - Mark R. Roper
+  - Camille A. Leblanc
+  - Gabrielle Ladurée
+  - Bjarni K. Kristjánsson
+  abstract: Abstract Individual variation in foraging and social behavior provides insights into how animals exploit and share
+    local resources and habitats. In this study, we examined the foraging mode and social behavior for 55 Arctic charr (fork
+    length = 5–17 cm) during summer in four freshwater lava cave ponds in the subarctic Lake Mývatn area in NE-Iceland. As
+    expected for lentic waters, cave-living Arctic charr were highly mobile when searching for prey (mean proportion of mobile
+    search = 0.748; SD = 0.251). Foraging attempts were mostly directed towards the water surface (mean proportion = 0.730;
+    SD = 0.358), and rarely toward prey on the bottom (mean = 0.164; SD = 0.291) and in the water column (mean = 0.106; SD
+    = 0.225). Although most fish foraged primarily on surface prey, with small subsidies from the other two locations, some
+    individual fish fed almost exclusively on either benthos or prey in the water column. Aggression among fish suggests that
+    size-related dominance hierarchies occur within the lava caves. Specifically, larger fish typically chased other fish
+    more often than smaller fish did, whereas smaller fish were more likely to be chased. These findings add to our understanding
+    of behaviors that may contribute to the survival and local adaptation of these unique populations of cave-living Arctic
+    charr in North Iceland. The study also gives insights into the variable natural history of aquatic cave animals and expands
+    the limited knowledge that exists on foraging mode and social behavior in salmonids in lentic waters.
+  publication_date: '2026-07-13'
+  urls:
+    paper: https://doi.org/10.1007/s10452-026-10327-w
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: 10.1007/s10452-026-10327-w
+    arxiv_id: ''
+    openalex_id: https://openalex.org/W7168156233
+  discovery:
+    found_date: '2026-07-14'
+    found_by:
+    - source: openalex
+      keyword: University-1652
+  status: raw
+  verified: false
+- id: ffc331fe9b06
+  title: Evidence-Backed Video Question Answering
+  year: 2026
+  venue: arXiv
+  authors:
+  - Shijie Wang
+  - Honglu Zhou
+  - Ziyang Wang
+  - Ran Xu
+  - Caiming Xiong
+  - Silvio Savarese
+  - Chen Sun
+  - Juan Carlos Niebles
+  abstract: 'Current Video Large Language Models (Video LLMs) excel in question answering (QA) but largely operate as black
+    boxes, providing textual answers without verifiable visual grounding. Existing explainability efforts rely on textual
+    rationales or sparse bounding boxes, which struggle to capture complex video dynamics such as occlusions and non-rigid
+    deformations. We propose Evidence-Backed Video Question Answering (E-VQA), a novel task requiring models to jointly output
+    a semantic answer and precise spatio-temporal evidence: temporal segments and dense, tracked object segmentation masklets.
+    To support this, we introduce ST-Evidence, the first human-verified benchmark for both discriminative and generative pixel-level
+    grounding. Evaluations of state-of-the-art models reveal a critical decoupling between QA accuracy and true visual perception
+    that scaling alone fails to bridge. To address this, we develop scalable, automated generation pipelines to create ST-Evidence-Instruct,
+    a 160k-scale dataset bridging high-level reasoning with fine-grained grounding. Fine-tuning grounded Video LLMs on this
+    data yields substantial gains over the corresponding size-matched UniPixel baselines (e.g., +27.2 t-mean and +13.8 J&F
+    on a 7B model), establishing a robust baseline for explainable, evidence-backed video understanding. Code and data are
+    available at https://github.com/SalesforceAIResearch/EVQA.'
+  publication_date: '2026-07-13'
+  urls:
+    paper: http://arxiv.org/abs/2607.11862v1
+    pdf: http://arxiv.org/pdf/2607.11862v1
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: 2607.11862v1
+    openalex_id: ''
+  discovery:
+    found_date: '2026-07-14'
+    found_by:
+    - source: arxiv
+      keyword: UAV visual geo-localization
+  status: raw
+  verified: false
+- id: 13bcc7be8e81
+  title: 'Electron Density of Ionized Gas Outflows: Insights from the MaNGA Survey'
+  year: 2026
+  venue: arXiv
+  authors:
+  - Andrew Weldon
+  - Casey Papovich
+  - Justin Spilker
+  - Robert C. Kennicutt
+  abstract: We investigate the properties of ionized gas outflows in nearby star-forming galaxies from the final Data Release
+    of the Mapping Nearby Galaxies at Apache Point Observatory (MaNGA) Survey. Using spatially resolved spectroscopy, we search
+    for signatures of ionized outflows within physically motivated outflow apertures. We find significant evidence for additional
+    broad H$α$, [N II]$λλ$6550,6584, and [S II]$λλ$6718,6733 emission-line components in 115 galaxies, $\sim$3% of star-forming
+    MaNGA galaxies. Our analysis suggests that outflow electron densities ($n_{\text{e, out}}$), mass-loss rates, and mass-loading
+    factors are related to both the properties of the regions that launch and global galactic properties. In particular, we
+    find correlations between $n_{\text{e, out}}$ and both the enclosed ($-$3.4$σ$) and global ($-$2.4$σ$) star-formation-rate
+    surface densities, such that lower surface density regions tend to drive denser ionized gas outflows. We find several
+    $>$$2σ$ correlations between the mass-loading factor and galactic properties using individual $n_{\text{e, out}}$ estimates,
+    while more significant correlations ($>$$3σ$) only emerge when $n_{\text{e, out}}$ is fixed to the median value of the
+    sample. Combining with literature $n_{\text{e, out}}$ measurements out to $z \sim 1.9$, $n_{\text{e, out}}$ exhibits no
+    significant redshift evolution, in contrast to the strong evolution observed for gas electron densities of the interstellar
+    medium (ISM). Ionized outflows remain denser than the ISM by a factor of $\sim$8.5 at $z \sim 0$ and $\sim$1.6 at $z \sim
+    1.9$. These results provide new constraints for feedback models and highlight the need for high-resolution IFU observations
+    and synthetic line diagnostics from simulations to investigate the connection between outflow properties and local ISM
+    conditions.
+  publication_date: '2026-07-13'
+  urls:
+    paper: http://arxiv.org/abs/2607.11870v1
+    pdf: http://arxiv.org/pdf/2607.11870v1
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: 2607.11870v1
+    openalex_id: ''
+  discovery:
+    found_date: '2026-07-14'
+    found_by:
+    - source: arxiv
+      keyword: region-to-point UAV visual geo-localization
+    - source: arxiv
+      keyword: UAV cross-view geo-localization survey
+    - source: arxiv
+      keyword: cross-view geo-localization survey UAV
+    - source: arxiv
+      keyword: survey drone geo-localization satellite
+    last_seen_date: '2026-07-14'
+  status: raw
+  verified: false
+- id: 42911251e746
+  title: Detection of sUAS in Urban Environments using Multi-Antenna Micro-Doppler Radar
+  year: 2026
+  venue: arXiv
+  authors:
+  - Chamindu Liyanage
+  - Chirantha Kurukulasuriya
+  - Chathuni Wijegunawardana
+  - Wikum Kumara
+  - Chamira U. S. Edussooriya
+  - Arjuna Madanayake
+  abstract: Sensing and early detection of small unmanned aerial systems (sUAS) are critically important in modern-day defense.
+    In dense urban and indoor environments, detection becomes extremely challenging due to dense multipath, fading, low-altitude
+    flight, and non-line-of-sight (NLOS) radio-frequency propagation. This paper presents a continuous-wave multiple-input
+    multiple-output radar and a deep learning model for sUAS detection using NLOS signals. The radar operates at 2.47 GHz,
+    and spectral correlation densities derived from rotational micro-Doppler signatures from the rotor blades are used as
+    inputs to the deep learning model. Experimental results demonstrate an overall detection accuracy of $86.11\%$ across
+    a dataset of five drone types, confirming the feasibility of sUAS detection in dense urban environments without direct
+    line-of-sight conditions.
+  publication_date: '2026-07-13'
+  urls:
+    paper: http://arxiv.org/abs/2607.11868v1
+    pdf: http://arxiv.org/pdf/2607.11868v1
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: 2607.11868v1
+    openalex_id: ''
+  discovery:
+    found_date: '2026-07-14'
+    found_by:
+    - source: arxiv
+      keyword: drone cross-view geo-localization
+    - source: arxiv
+      keyword: drone satellite geo-localization
+    - source: arxiv
+      keyword: aerial cross-view geo-localization
+    last_seen_date: '2026-07-14'
+  status: raw
+  verified: false
+- id: c449c7026c92
+  title: Cross-view visual positioning of unmanned aerial vehicle based on the hierarchical feature guided fusion pyramid
+    network
+  year: 2026
+  venue: Engineering Applications of Artificial Intelligence
+  authors:
+  - Bolong Yu
+  - Xuexian Geng
+  - Zhixiang Fang
+  - Shengwu Xiong
+  - Jiaming Qin
+  abstract: ''
+  publication_date: '2026-06-25'
+  urls:
+    paper: https://doi.org/10.1016/j.engappai.2026.115520
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: 10.1016/j.engappai.2026.115520
+    arxiv_id: ''
+    openalex_id: https://openalex.org/W7165892440
+  discovery:
+    found_date: '2026-07-14'
+    found_by:
+    - source: openalex
+      citation_of: SUES-200
+      seed_title: 'SUES-200: A Multi-height Multi-scene Cross-view Image Benchmark Across Drone and Satellite'
+    - source: openalex
+      citation_of: DenseUAV
+      seed_title: Vision-Based UAV Self-Positioning in Low-Altitude Urban Environments
+    - source: openalex
+      citation_of: GTA-UAV
+      seed_title: 'Game4Loc: A UAV Geo-Localization Benchmark from Game Data'
+    last_seen_date: '2026-07-14'
+  status: raw
+  verified: false
+- id: 6ffcec057ba1
+  title: Classification of Ecosystem-based Disaster Risk Reduction (Eco-DRR) in Bangladesh
+  year: 2026
+  venue: Progress in Disaster Science
+  authors:
+  - Shakila Kayum
+  - Yukihiro SHIMATANI
+  - Tomoko MINAGAWA
+  abstract: 'Ecosystem-based Disaster Risk Reduction (Eco-DRR) is a new concept and yet to have a well-established classification
+    system. While widely applied in developed countries, there is a pressing need to introduce and implement Eco-DRR in disaster-prone
+    developing nations like Bangladesh. This approach could enhance the resilience while preserving environmental health of
+    the country. The primary objective of this study is to classify existing Eco-DRR elements in Bangladesh based on their
+    natural characteristics, geographical context, and disaster mitigation functions. The study results showed that the Eco-DRR
+    of Bangladesh can be classified into four major groups: Coastal or Marine Eco-DRR, Inland Freshwater Eco-DRR, Terrestrial
+    Forest Eco-DRR, and Manmade or Agri-based Eco-DRR for miscellaneous functions. This study proposes a reproducible methodological
+    framework for the spatial classification of Eco-DRR elements, tailored to the deltaic context of Bangladesh. The emphasis
+    of this research is to move beyond conceptual reviews by providing a spatially-explicit, functional classification that
+    can be operationalized for disaster management. This study will help future research works on the Eco-DRR sector in Bangladesh
+    and its neighboring countries.'
+  publication_date: '2026-07-11'
+  urls:
+    paper: https://doi.org/10.1016/j.pdisas.2026.100641
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: 10.1016/j.pdisas.2026.100641
+    arxiv_id: ''
+    openalex_id: https://openalex.org/W7168041363
+  discovery:
+    found_date: '2026-07-14'
+    found_by:
+    - source: openalex
+      keyword: aerial cross-view geo-localization
+  status: raw
+  verified: false
+- id: 602912f2b0b3
+  title: 'Banshee: Target Switch Attacks on Gimbal-Stabilized Visual Tracking Systems via Acoustic Injection'
+  year: 2026
+  venue: arXiv
+  authors:
+  - Jiarui Li
+  - Joseph Brewington
+  - Qingzhao Zhang
+  - Z. Morley Mao
+  abstract: 'Gimbal-stabilized visual tracking is critical for modern autonomous systems such as Unmanned Aerial Vehicles
+    (UAVs). While prior work shows acoustic signals can disturb gimbal internals, the impact of such attacks on real-world
+    applications like UAV tracking and following remains underexplored. Existing demonstrations largely overlook practical
+    challenges for real-world attacks, such as object-motion uncertainty and runtime latency. To bridge this gap, we present
+    Banshee, the first physically realizable attack that induces target switching in UAV visual tracking systems by exploiting
+    acoustic vulnerabilities in gimbal-camera systems. Banshee generates carefully crafted acoustic waveforms that induce
+    optimized adversarial gimbal oscillations, causing directionally biased camera-view drifts that break inter-frame target
+    associations. Consequently, the onboard tracker is driven to switch from the original target to an attacker-selected object
+    with high probability, with occasional target loss. Banshee achieves a 93.6% success rate in simulation across two commercial
+    gimbal systems and five trackers. Real-world benchtop and in-flight black-box attacks against a commercial drone across
+    varied scenarios show an overall 95.5% attack success rate. Our results reveal a practical cross-domain vulnerability
+    between acoustics and vision, highlighting the need for robust designs of gimbal systems and applications. Our code is
+    available at: https://github.com/U1ltra/Banshee.'
+  publication_date: '2026-07-10'
+  urls:
+    paper: http://arxiv.org/abs/2607.09930v1
+    pdf: http://arxiv.org/pdf/2607.09930v1
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: 2607.09930v1
+    openalex_id: ''
+  discovery:
+    found_date: '2026-07-14'
+    found_by:
+    - source: arxiv
+      keyword: UAV-view geo-localization
+    - source: arxiv
+      keyword: drone-view geo-localization
+    last_seen_date: '2026-07-14'
+  status: raw
+  verified: false
+- id: b06f219461c4
+  title: Automatic acquisition method of ground vegetation conditions based on U-Net and clustering algorithm in remote sensing
+    monitoring
+  year: 2026
+  venue: Frontiers in Environmental Science
+  authors:
+  - Haoran Zhang
+  - Melanka Periyapperuma
+  abstract: The current agricultural and forestry remote sensing monitoring relies on low-level features to obtain information
+    about the specific conditions of ground vegetation, and the quality of the obtained information is not high. In response
+    to this situation, the study proposes an automatic acquisition method for ground vegetation conditions based on the U-shaped
+    Network (U-Net) and clustering algorithm. The study first employs an improved U-Net model to classify and predict remote
+    sensing images, distinguishing between vegetation areas and non-vegetation areas. Subsequently, the simple linear iterative
+    clustering algorithm is utilized to perform fine-grained segmentation on the remote sensing images. Finally, the classification
+    prediction results are combined with the fine-grained segmentation results to generate label values for each pixel within
+    the segmentation area. This process yields a more precise vegetation distribution map. The outcomes revealed that the
+    classification accuracy of the improved U-Net reached 95.46%, and the fine-grained segmentation accuracy was improved
+    to 89.32%. In practical applications, the information extraction efficiency of this method was relatively fast, reaching
+    25.4 frames per second. Furthermore, the intersection over union and F1 score of the extracted results were 0.89 and 0.93,
+    respectively. This indicates that while improving the quality of vegetation information acquisition, this method significantly
+    enhances the processing speed, providing efficient and accurate technical support for agricultural and forestry vegetation
+    management.
+  publication_date: '2026-07-13'
+  urls:
+    paper: https://doi.org/10.3389/fenvs.2026.1707781
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: 10.3389/fenvs.2026.1707781
+    arxiv_id: ''
+    openalex_id: https://openalex.org/W7168174296
+  discovery:
+    found_date: '2026-07-14'
+    found_by:
+    - source: openalex
+      keyword: UAV satellite image retrieval
+    - source: openalex
+      keyword: drone satellite image retrieval
+    - source: openalex
+      keyword: UAV satellite image matching
+    last_seen_date: '2026-07-14'
+  status: raw
+  verified: false
+- id: 41ae698b0fb2
+  title: 'AdvancedMathBench: A Benchmark Suite for Advanced Mathematical Proof Generation and Verification'
+  year: 2026
+  venue: arXiv
+  authors:
+  - Lingkai Kong
+  - Zijian Wu
+  - Yuzhe Gu
+  - Haiteng Zhao
+  - Wenyong Huang
+  - Shuang Sun
+  - Zhicheng Xiong
+  - Xiaotian Zhang
+  - Shuya Zhao
+  - Yan Wang
+  - Disheng Xu
+  - Wenwei Zhang
+  - Kai Chen
+  abstract: 'Large language models (LLMs) have achieved remarkable performance on high-school and olympiad-style mathematics,
+    yet their capabilities on advanced mathematics remain poorly understood. Existing benchmarks, however, fall short in both
+    scope and evaluation granularity: they provide limited disciplinary coverage and often rely on final-answer correctness
+    or coarse judgments, leaving the validity of the reasoning process inadequately assessed. To bridge this gap, we introduce
+    AdvancedMathBench, a benchmark suite designed to evaluate advanced mathematical reasoning capabilities. Its core proof-generation
+    benchmark, ProverBench, contains 296 problems spanning undergraduate and doctoral qualifying-exam levels. To provide reliable
+    evaluation of the proofs, we develop a dedicated automatic verification pipeline trained on large-scale expert annotations
+    to produce both correctness verdicts and fine-grained assessments of proof errors, which exhibits strong agreement with
+    human experts on held-out proof trajectories. We further introduce VerifierBench, consisting of 888 model-generated proof
+    trajectories paired with expert ground truth, to evaluate whether models can correctly judge proof validity and provide
+    sound verification rationales. Experiments show that AdvancedMathBench remains challenging for frontier models. On proof
+    generation, the best-performing model, GPT-5.5-xhigh, achieves only 75.8 and 66.1 on the UGD and QE splits, respectively,
+    indicating substantial room for improvement on advanced mathematical proof construction. On proof verification, the best
+    model attains a Balanced F1 of only 65.1, and models generally exhibit low true negative rates, suggesting that critical
+    error detection remains a major bottleneck.'
+  publication_date: '2026-07-13'
+  urls:
+    paper: http://arxiv.org/abs/2607.11849v1
+    pdf: http://arxiv.org/pdf/2607.11849v1
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: 2607.11849v1
+    openalex_id: ''
+  discovery:
+    found_date: '2026-07-14'
+    found_by:
+    - source: arxiv
+      keyword: coarse-to-fine UAV geo-localization
+  status: raw
+  verified: false
+- id: b84535f9b452
+  title: 'AFGL-Net: adversarial frequency geo-localization network for robust cross-view geo-localization alignment'
+  year: 2026
+  venue: The Journal of Supercomputing
+  authors:
+  - He Xiao
+  - Guang Yang
+  - Q Y Liu
+  abstract: ''
+  publication_date: '2026-06-19'
+  urls:
+    paper: https://doi.org/10.1007/s11227-026-08664-6
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: 10.1007/s11227-026-08664-6
+    arxiv_id: ''
+    openalex_id: https://openalex.org/W7165133671
+  discovery:
+    found_date: '2026-07-14'
+    found_by:
+    - source: openalex
+      citation_of: University-1652
+      seed_title: 'University-1652: A Multi-view Multi-source Benchmark for Drone-based Geo-localization'
+    - source: openalex
+      citation_of: SUES-200
+      seed_title: 'SUES-200: A Multi-height Multi-scene Cross-view Image Benchmark Across Drone and Satellite'
+    last_seen_date: '2026-07-14'
+  status: raw
+  verified: false
+- id: c6c0e806e5df
+  title: 'AERONAUTICAL DRONES, PART 1: CURRENT STATUS AND TRENDS'
+  year: 2026
+  venue: SCIENTIFIC RESEARCH AND EDUCATION IN THE AIR FORCE
+  authors:
+  - Andrei BENCZE
+  abstract: Unmanned aerial vehicles (UAVs), commonly referred to as drones, have become an essential component of modern
+    aerospace systems due to their fast expansion across civil, commercial and military applications. Advances in lightweight
+    materials, miniaturized electronics, navigation systems and manufacturing technologies have enabled the development of
+    increasingly capable platforms ranging from small multirotor drones to high-altitude long- endurance aircrafts. This paper
+    reviews the current status of the global drone sector by examining market evolution, industrial development and the principal
+    regulatory frameworks governing UAV operations. A technical classification of drone configurations is presented, including
+    fixed-wing, rotary-wing, hybrid VTOL and mission-oriented categories, highlighting their operational characteristics and
+    engineering trade-offs. Representative civil and military platforms are comparatively analyzed in terms of range, payload,
+    endurance, cost and mission capability in order to illustrate current technological trends. Attention is also given to
+    structural materials and manufacturing technologies employed in modern UAV design (composite materials, lightweight alloys,
+    additive manufacturing and modular construction concepts). The analysis shows that progress in materials engineering and
+    airframe design, together with the diversification of operational requirements, is driving the development of increasingly
+    efficient, specialized and adaptable unmanned aircraft. These trends confirm the importance of UAV technologies within
+    the evolving aerospace industry.
+  publication_date: '2026-07-13'
+  urls:
+    paper: https://doi.org/10.19062/2247-3173.2026.27.21
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: 10.19062/2247-3173.2026.27.21
+    arxiv_id: ''
+    openalex_id: https://openalex.org/W7168170657
+  discovery:
+    found_date: '2026-07-14'
+    found_by:
+    - source: openalex
+      keyword: UAV visual localization satellite
+    - source: openalex
+      keyword: UAV self-positioning satellite
+    - source: openalex
+      keyword: GNSS-denied UAV visual localization
+    last_seen_date: '2026-07-14'
+  status: raw
+  verified: false
+- id: 0228d0c0f367
+  title: 3D Reconstruction of deciduous Trees using low-cost UAV- and Crane-based Photogrammetry for Monitoring Shoot Elongation
+    across entire Canopies
+  year: 2026
+  venue: arXiv (Cornell University)
+  authors:
+  - Stephan Nebiker
+  - Micha Tschanz
+  - Nando Amport
+  - Frederik Baumgarten
+  abstract: Tree growth determines how much CO2 is sequestered from the atmosphere and temporarily stored in woody biomass.
+    At the same time tree growth is affected by increasing temperatures, more frequent drought periods, late frosts and other
+    extreme events associated with climate change. While continuous measurements of radial (secondary) tree growth using dendrometers
+    are well established, monitoring of shoot elongation (primary growth) has largely been neglected because suitable measurement
+    techniques are lacking. As a result, the effects of climate change on primary tree growth remain insufficiently understood.
+    This work aims at reconstructing native deciduous trees in 3D as a basis for measuring and monitoring shoot elongation
+    over entire tree canopies. Here we explored the use of low-cost UAV photogrammetry and of a multi-camera CraneCam system
+    under real-world conditions. Data were collected in two study areas over an entire growing season. We present sensor evaluations,
+    photogrammetric data acquisition and processing strategies. A special focus is placed on the analysis of the resulting
+    photogrammetric 3D point clouds in terms of accuracy, resolution and completeness. Results demonstrate 3D point accuracies
+    of 5-6 mm for entire trees using consumer-grade UAVs weighing less than 250 g and a 3D reconstruction completeness between
+    92% and 98% depending on the UAV type. The paper introduces a novel 3Dprinted ground-truth branch to evaluate the capability
+    to reconstructing fine-detail structures such as thin tree shoots. Finally, we discuss operational challenges and initial
+    experiments towards a skeletonization of entire trees based on photogrammetric point clouds.
+  publication_date: '2026-07-08'
+  urls:
+    paper: https://openalex.org/W7168054082
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: https://openalex.org/W7168054082
+  discovery:
+    found_date: '2026-07-14'
+    found_by:
+    - source: openalex
+      keyword: GTA-UAV
+  status: raw
+  verified: false
