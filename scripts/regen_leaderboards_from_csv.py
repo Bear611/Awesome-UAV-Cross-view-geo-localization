@@ -4,7 +4,7 @@ import csv, re
 from pathlib import Path
 import yaml
 
-ROOT = Path(r"D:/download/awesome-uav-cvgl-v0.1/awesome-uav-cvgl-v0.1")
+ROOT = Path(__file__).resolve().parents[1]
 CSV = ROOT / "data/leaderboards.csv"
 OUT = ROOT / "leaderboards"
 PAPERS_YML = ROOT / "data" / "papers.yml"
@@ -50,6 +50,10 @@ SLUG = {
     "Nardo-Air": "nardo_air",
 }
 
+# These four datasets use protocol-aware wide tables.  They are rendered by
+# render_core_leaderboards.py instead of the generic page writer below.
+CORE_DATASETS = {"University-1652", "SUES-200", "DenseUAV", "GTA-UAV"}
+
 # Group by dataset + protocol
 from collections import defaultdict
 groups = defaultdict(list)
@@ -59,6 +63,8 @@ for r in rows:
 # Write per-dataset pages
 for ds in sorted(set(r["dataset"] for r in rows)):
     if not ds: continue
+    if ds in CORE_DATASETS:
+        continue
     slug = SLUG.get(ds, re.sub(r"[^a-z0-9]+","_",ds.lower()).strip("_"))
     path = OUT / f"{slug}.md"
     # Get protocols for this dataset
@@ -72,40 +78,35 @@ for ds in sorted(set(r["dataset"] for r in rows)):
             except: return 0
         group.sort(key=sv, reverse=True)
         lines += [f"## {proto}", "", f"Rows: **{len(group)}**.", "",
-                  "| Method / Training Setting | Paper | Source | Sort | Verified | Notes |",
+                  "| Method / Training Setting | Paper | Source | Metrics / Sort | Verified | Notes |",
                   "|---|---|---|---:|---|---|"]
         for r in group:
             method = md_escape(r.get("method",""))
             ts = r.get("training_setting","")
             if ts: method += f"<br><sub>{md_escape(ts)}</sub>"
             paper_link = md_link(r.get("paper",""), url_by_title.get(r.get("paper",""),""))
-            # Show all metrics from metrics_json
+            # Show all metrics from metrics_json.  Older versions computed
+            # metric_strs but accidentally displayed only the sort field.
             import json as J
             try: metrics = J.loads(r.get("metrics_json","{}"))
             except: metrics = {}
             metric_strs = []
-            for k in ["R@1","R@5","R@10","AP","Recall@1","Recall@1%","mAP","Mean Drone→Satellite R@1","Mean Satellite→Drone R@1"]:
-                if k in metrics: metric_strs.append(f"{md_escape(k)}={md_escape(metrics[k])}")
+            for k, v in metrics.items():
+                if v not in (None, "", "-"):
+                    metric_strs.append(f"{md_escape(k)}={md_escape(v)}")
             # Use sort_value as the primary sort display
             sm = r.get("sort_metric","")
             sv_val = r.get("sort_value","")
             sort_disp = f"{md_escape(sm)}={md_escape(sv_val)}" if sm else ""
-            cells = [method, paper_link, md_escape(r.get("source","")), sort_disp, md_escape(r.get("verified","")), md_escape(r.get("notes","") or "-")]
+            metrics_disp = "; ".join(metric_strs)
+            if sort_disp and not any(sm == key for key in metrics):
+                metrics_disp = "; ".join(part for part in (metrics_disp, sort_disp) if part)
+            cells = [method, paper_link, md_escape(r.get("source","")), metrics_disp, md_escape(r.get("verified","")), md_escape(r.get("notes","") or "-")]
             lines.append("| " + " | ".join(cells) + " |")
         lines.append("")
     path.write_text("\n".join(lines), encoding="utf-8")
     print(f"  wrote {path.name} ({len([r for r in rows if r['dataset']==ds])} rows)")
 
-# Summary
-by_ds = defaultdict(int)
-for r in rows: by_ds[r["dataset"]] += 1
-summary = ["# Leaderboards", "",
-    f"Per-dataset leaderboard pages regenerated from `data/leaderboards.csv` ({len(rows)} rows). Each paper name links to its external page (arXiv, DOI, or OpenAlex).",
-    "", "| Dataset | Page | Rows |", "|---|---|---:|"]
-for ds in sorted(by_ds.keys()):
-    if not ds: continue
-    slug = SLUG.get(ds, re.sub(r"[^a-z0-9]+","_",ds.lower()).strip("_"))
-    summary.append(f"| {md_escape(ds)} | [{slug}.md]({slug}.md) | {by_ds[ds]} |")
-summary.append("")
-(OUT / "leaderboard_summary.md").write_text("\n".join(summary), encoding="utf-8")
-print(f"  wrote leaderboard_summary.md")
+# Render the protocol-aware canonical pages and the authoritative summary last.
+from render_core_leaderboards import render_core_leaderboards
+render_core_leaderboards(ROOT)

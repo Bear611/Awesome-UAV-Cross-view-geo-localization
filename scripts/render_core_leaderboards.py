@@ -1,0 +1,197 @@
+#!/usr/bin/env python3
+"""Render the four canonical leaderboard pages from data/leaderboards.csv."""
+
+from __future__ import annotations
+
+import csv
+import json
+import re
+from collections import Counter, defaultdict
+from pathlib import Path
+from typing import Any
+
+import yaml
+
+
+CONFIG = {
+    "University-1652": {
+        "file": "university1652.md",
+        "title": "University-1652",
+        "intro": (
+            "Cross-view geo-localization benchmark (Zheng et al. 2020, ACM MM'20). "
+            "Two canonical retrieval protocols: **Drone-to-Satellite** (drone-view target "
+            "localization) and **Satellite-to-Drone** (drone navigation). Metrics: "
+            "R@1 / R@5 / R@10 / AP. Multi-weather, ablation, and cross-dataset variants "
+            "are excluded."
+        ),
+        "protocols": ["Drone-to-Satellite", "Satellite-to-Drone"],
+        "metrics": ["R@1", "R@5", "R@10", "AP"],
+    },
+    "SUES-200": {
+        "file": "sues200.md",
+        "title": "SUES-200",
+        "intro": (
+            "Cross-view geo-localization benchmark (Zhu et al. 2022, IEEE TCSVT). "
+            "Drone-to-Satellite and Satellite-to-Drone retrieval are reported separately "
+            "at 150m, 200m, 250m, and 300m."
+        ),
+        "protocols": [
+            "Drone-to-Satellite (150m)", "Drone-to-Satellite (200m)",
+            "Drone-to-Satellite (250m)", "Drone-to-Satellite (300m)",
+            "Satellite-to-Drone (150m)", "Satellite-to-Drone (200m)",
+            "Satellite-to-Drone (250m)", "Satellite-to-Drone (300m)",
+        ],
+        "metrics": ["R@1", "AP"],
+    },
+    "DenseUAV": {
+        "file": "denseuav.md",
+        "title": "DenseUAV",
+        "intro": (
+            "UAV self-positioning benchmark (Dai et al. 2023, IEEE TIP). The canonical "
+            "task retrieves satellite-view gallery images for a drone-view query."
+        ),
+        "protocols": ["UAV Self-Positioning"],
+        "metrics": ["R@1", "R@5", "AP", "SDM@1"],
+    },
+    "GTA-UAV": {
+        "file": "gta_uav.md",
+        "title": "GTA-UAV (Game4Loc)",
+        "intro": (
+            "UAV geo-localization benchmark from game data (Dai et al. 2024, Game4Loc). "
+            "Same-Area and Cross-Area results are kept separate; the canonical tables use "
+            "Positive+Semi-positive training data."
+        ),
+        "protocols": ["Same-Area (Pos+Semi)", "Cross-Area (Pos+Semi)"],
+        "metrics": ["R@1", "R@5", "AP", "SDM@3", "Dis@1"],
+    },
+}
+
+SLUG = {
+    "University-1652": "university1652",
+    "SUES-200": "sues200",
+    "DenseUAV": "denseuav",
+    "UAV-VisLoc": "uav_visloc",
+    "GTA-UAV": "gta_uav",
+    "Game4Loc": "gta_uav",
+    "World-UAV": "world_uav",
+    "UAV-GeoLoc": "world_uav",
+    "Nardo-Air": "nardo_air",
+}
+
+
+def md_escape(value: Any) -> str:
+    if value in (None, ""):
+        return "-"
+    return str(value).replace("|", "\\|").replace("\n", " ").strip()
+
+
+def paper_urls(root: Path) -> dict[str, str]:
+    papers = yaml.safe_load((root / "data" / "papers.yml").read_text(encoding="utf-8")) or []
+    result: dict[str, str] = {}
+    for paper in papers:
+        if not isinstance(paper, dict):
+            continue
+        urls = paper.get("urls") or {}
+        source = paper.get("source") or {}
+        url = (
+            urls.get("paper") or urls.get("pdf") or urls.get("project")
+            or (f"https://doi.org/{source['doi']}" if source.get("doi") else "")
+            or (f"https://arxiv.org/abs/{source['arxiv_id']}" if source.get("arxiv_id") else "")
+            or source.get("openalex_id") or ""
+        )
+        title = str(paper.get("title") or "").strip()
+        if title and url:
+            result.setdefault(title, url)
+    return result
+
+
+def parse_metrics(row: dict[str, str]) -> dict[str, Any]:
+    try:
+        metrics = json.loads(row.get("metrics_json") or "{}")
+    except (TypeError, json.JSONDecodeError):
+        return {}
+    return metrics if isinstance(metrics, dict) else {}
+
+
+def sort_value(row: dict[str, str]) -> float:
+    metrics = parse_metrics(row)
+    raw = metrics.get("R@1", row.get("sort_value"))
+    try:
+        return float(str(raw).replace("%", ""))
+    except (TypeError, ValueError):
+        return float("-inf")
+
+
+def paper_cell(title: str, urls: dict[str, str]) -> str:
+    label = md_escape(title)
+    url = urls.get(title, "")
+    return f"[{label}]({url})" if url else label
+
+
+def dataset_slug(dataset: str) -> str:
+    return SLUG.get(dataset, re.sub(r"[^a-z0-9]+", "_", dataset.lower()).strip("_"))
+
+
+def render_summary(root: Path, rows: list[dict[str, str]]) -> None:
+    counts = Counter(row.get("dataset", "") for row in rows)
+    lines = [
+        "# Leaderboards", "",
+        f"Per-dataset leaderboard pages regenerated from `data/leaderboards.csv` ({len(rows)} rows). "
+        "Each paper name links to its external page (arXiv, DOI, or OpenAlex).",
+        "", "| Dataset | Page | Rows |", "|---|---|---:|",
+    ]
+    for dataset in sorted(item for item in counts if item):
+        slug = dataset_slug(dataset)
+        lines.append(
+            f"| {md_escape(dataset)} | [{slug}.md]({slug}.md) | {counts[dataset]} |"
+        )
+    lines.append("")
+    (root / "leaderboards" / "leaderboard_summary.md").write_text(
+        "\n".join(lines), encoding="utf-8"
+    )
+    print("  wrote leaderboard_summary.md")
+
+
+def render_core_leaderboards(root: Path | None = None) -> None:
+    root = root or Path(__file__).resolve().parents[1]
+    csv_path = root / "data" / "leaderboards.csv"
+    with csv_path.open(encoding="utf-8", newline="") as handle:
+        rows = list(csv.DictReader(handle))
+
+    urls = paper_urls(root)
+    grouped: dict[tuple[str, str], list[dict[str, str]]] = defaultdict(list)
+    for row in rows:
+        grouped[(row.get("dataset", ""), row.get("protocol", ""))].append(row)
+
+    for dataset, cfg in CONFIG.items():
+        lines = [f"# {cfg['title']}", "", str(cfg["intro"]), ""]
+        for protocol in cfg["protocols"]:
+            protocol_rows = sorted(grouped.get((dataset, protocol), []), key=sort_value, reverse=True)
+            lines.extend([
+                f"## {protocol}", "",
+                f"Rows: **{len(protocol_rows)}** (one result row per method/configuration).", "",
+            ])
+            metrics = list(cfg["metrics"])
+            header = ["Method", *metrics, "Paper", "Source"]
+            separator = ["---", *(["---:"] * len(metrics)), "---", "---"]
+            lines.append("| " + " | ".join(header) + " |")
+            lines.append("| " + " | ".join(separator) + " |")
+            for row in protocol_rows:
+                values = parse_metrics(row)
+                cells = [md_escape(row.get("method"))]
+                cells.extend(md_escape(values.get(metric)) for metric in metrics)
+                cells.extend([
+                    paper_cell(row.get("paper", ""), urls),
+                    md_escape(row.get("source")),
+                ])
+                lines.append("| " + " | ".join(cells) + " |")
+            lines.append("")
+
+        output = root / "leaderboards" / str(cfg["file"])
+        output.write_text("\n".join(lines), encoding="utf-8")
+        print(f"  wrote {output.name} ({sum(len(grouped.get((dataset, p), [])) for p in cfg['protocols'])} rows)")
+    render_summary(root, rows)
+
+
+if __name__ == "__main__":
+    render_core_leaderboards()
