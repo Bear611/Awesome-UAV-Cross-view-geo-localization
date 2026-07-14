@@ -4,12 +4,14 @@ UAV self-positioning benchmark (Dai et al. 2023, IEEE TIP). The canonical task r
 
 ## UAV Self-Positioning
 
-Rows: **10** (one result row per method/configuration).
+Rows: **12** (one result row per method/configuration).
 
 | Method | R@1 | R@5 | AP | SDM@1 | Paper | Source |
 | --- | ---: | ---: | ---: | ---: | --- | --- |
 | DINO-GFSA | 97.17 | 99.57 | - | - | [DINO-GFSA: Geo-Localization via Semantic Gated Fusion and Mamba-based Sequential Aggregation](http://arxiv.org/abs/2606.00784v1) | Table 2 (DINO-GFSA / DINOv3-ViT-L row) |
+| MFAF (EVA02-L) | 95.22 | 99.93 | - | 95.23 | [MFAF: An EVA02-Based Multi-scale Frequency Attention Fusion Method for Cross-View Geo-Localization](http://arxiv.org/abs/2509.12673v1) | Table 4, rendered PDF p.11 |
 | G2CL | 94.51 | - | - | 95.77 | [A Deep Learning Framework with Geographic Information Adaptive Loss for Remote Sensing Images based UAV Self-Positioning](http://arxiv.org/abs/2502.16164v1) | Table 1, setting (5), G2CL row |
+| SHAA | 93.69 | 98.76 | - | 94.91 | SHAA: Spatial Hybrid Attention Network With Adaptive Cross-Entropy Loss Function for UAV-View Geo-Localization | Table VI, rendered PDF p.11 |
 | SkyPart | 91.85 | 97.81 | - | - | [Weather-Robust Cross-View Geo-Localization via Prototype-Based Semantic Part Discovery](http://arxiv.org/abs/2605.11654v2) | Table 2(b) |
 | SCOF | 90.56 | 98.03 | - | - | [SCOF Supervised Contrastive Orthogonal Fusion for Robust Cross-View Geolocalization](https://www.semanticscholar.org/search?q=SCOF%20Supervised%20Contrastive%20Orthogonal%20Fusion%20for%20Robust%20Cross-View%20Geolocalization) | Table X |
 | MFFT (proposed) | 88.5 | - | - | 90.51 | [Visual Self-Positioning of Low-Altitude Urban UAV Based on Improved Transformer Architecture](https://doi.org/10.1109/jiot.2025.3599506) | Table II; text Section IV-C |

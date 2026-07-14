@@ -33,6 +33,58 @@
       keyword: UAV-VisLoc
   status: parsed
   verified: false
+- id: paul_cvpr2026
+  title: 'PAUL: Uncertainty-Guided Partition and Augmentation for Robust Cross-View Geo-Localization under Noisy Correspondence'
+  year: 2026
+  venue: CVPR
+  authors:
+  - Zheng Li
+  - Xueyi Zhang
+  - Yanming Guo
+  - Yuxiang Xie
+  - Zhaoyun Ding
+  - Siqi Cai
+  - Haizhou Li
+  - Mingrui Lao
+  abstract: ''
+  urls:
+    paper: https://openaccess.thecvf.com/content/CVPR2026/html/Li_PAUL_Uncertainty-Guided_Partition_and_Augmentation_for_Robust_Cross-View_Geo-Localization_under_CVPR_2026_paper.html
+    pdf: https://openaccess.thecvf.com/content/CVPR2026/papers/Li_PAUL_Uncertainty-Guided_Partition_and_Augmentation_for_Robust_Cross-View_Geo-Localization_under_CVPR_2026_paper.pdf
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: ''
+    openalex_id: ''
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: retrieval
+    relevance_score: 1.0
+    tags:
+    - noisy-correspondence
+    datasets:
+    - GTA-UAV
+    - UAV-VisLoc
+    possible_leaderboard: true
+    reason: Proposed method reports complete GTA-UAV Same-Area and Cross-Area metrics at 0% correspondence noise.
+    needs_review: false
+  summary:
+    summary_en: PAUL introduces uncertainty-guided partition, augmentation, and co-training for robust UAV-satellite retrieval under correspondence noise.
+    summary_cn: PAUL面向训练配对空间错位问题，引入不确定性引导的样本划分、增强与协同训练。
+    benchmarks:
+    - GTA-UAV
+    - UAV-VisLoc
+    main_modules:
+    - Co-partition
+    - Co-augmentation
+    - Co-training
+    reported_results: []
+    code_url: null
+    needs_review: false
+  status: parsed
+  verified: true
   classification:
     is_cvgl: true
     is_uav_related: true
@@ -17356,10 +17408,10 @@
     post-processing matching steps. Experiments demonstrate the effectiveness of our data and training method for UAV geo-localization,
     as well as the generalization capabilities to real-world scenarios.
   urls:
-    paper: https://www.semanticscholar.org/search?q=Game4Loc%20A%20UAV%20Geo-Localization%20Benchmark%20from%20Game%20Data
-    pdf: http://arxiv.org/pdf/2409.16925v2
-    code: ''
-    project: ''
+    paper: https://arxiv.org/abs/2409.16925
+    pdf: https://arxiv.org/pdf/2409.16925
+    code: https://github.com/Yux1angJi/GTA-UAV
+    project: https://yux1angji.github.io/game4loc/
   source:
     semantic_scholar_id: ''
     doi: 10.1609/aaai.v39i4.32409

@@ -6,6 +6,7 @@ from __future__ import annotations
 import csv
 import json
 import re
+from statistics import mean
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import Any
@@ -32,8 +33,9 @@ CONFIG = {
         "title": "SUES-200",
         "intro": (
             "Cross-view geo-localization benchmark (Zhu et al. 2022, IEEE TCSVT). "
-            "Drone-to-Satellite and Satellite-to-Drone retrieval are reported separately "
-            "at 150m, 200m, 250m, and 300m."
+            "Drone-to-Satellite and Satellite-to-Drone retrieval are ranked separately. "
+            "The ranking score is the arithmetic mean of R@1 at 150m, 200m, 250m, and "
+            "300m; entries missing any altitude are shown as unranked."
         ),
         "protocols": [
             "Drone-to-Satellite (150m)", "Drone-to-Satellite (200m)",
@@ -58,10 +60,12 @@ CONFIG = {
         "title": "GTA-UAV (Game4Loc)",
         "intro": (
             "UAV geo-localization benchmark from game data (Dai et al. 2024, Game4Loc). "
-            "Same-Area and Cross-Area results are kept separate; the canonical tables use "
-            "Positive+Semi-positive training data."
+            "Cross-Area is the canonical leaderboard protocol; Same-Area is retained as a "
+            "clearly separated supplementary comparison. Only each paper's complete "
+            "proposed method is ranked; loss, backbone, pre-training, and component ablations "
+            "are excluded."
         ),
-        "protocols": ["Same-Area (Pos+Semi)", "Cross-Area (Pos+Semi)"],
+        "protocols": ["Cross-Area", "Same-Area"],
         "metrics": ["R@1", "R@5", "AP", "SDM@3", "Dis@1"],
     },
 }
@@ -132,6 +136,93 @@ def dataset_slug(dataset: str) -> str:
     return SLUG.get(dataset, re.sub(r"[^a-z0-9]+", "_", dataset.lower()).strip("_"))
 
 
+def render_sues200(
+    lines: list[str],
+    rows: list[dict[str, str]],
+    urls: dict[str, str],
+) -> int:
+    """Render one method per row and rank complete records by four-altitude mean R@1."""
+    heights = ("150", "200", "250", "300")
+    directions = ("Drone-to-Satellite", "Satellite-to-Drone")
+    rendered = 0
+
+    for direction in directions:
+        method_rows: dict[tuple[str, str], dict[str, dict[str, str]]] = defaultdict(dict)
+        for row in rows:
+            protocol = row.get("protocol", "")
+            if not protocol.startswith(direction):
+                continue
+            match = re.search(r"(150|200|250|300)m", protocol)
+            if not match:
+                continue
+            method_rows[(row.get("paper", ""), row.get("method", ""))][match.group(1)] = row
+
+        complete: list[tuple[float, tuple[str, str], dict[str, dict[str, str]]]] = []
+        incomplete: list[tuple[tuple[str, str], dict[str, dict[str, str]]]] = []
+        for key, altitude_rows in method_rows.items():
+            if all(height in altitude_rows for height in heights):
+                average = mean(sort_value(altitude_rows[height]) for height in heights)
+                complete.append((average, key, altitude_rows))
+            else:
+                incomplete.append((key, altitude_rows))
+        complete.sort(key=lambda item: (-item[0], item[1][1].lower()))
+        incomplete.sort(key=lambda item: item[0][1].lower())
+
+        lines.extend([
+            f"## {direction}", "",
+            f"Ranked methods: **{len(complete)}**. Ranking = mean R@1 across all four altitudes.", "",
+            "| Rank | Method | Avg R@1 | 150m R@1 / AP | 200m R@1 / AP | 250m R@1 / AP | 300m R@1 / AP | Paper | Source |",
+            "|---:|---|---:|---:|---:|---:|---:|---|---|",
+        ])
+        for rank, (average, (paper, method), altitude_rows) in enumerate(complete, start=1):
+            altitude_cells = []
+            sources = []
+            for height in heights:
+                row = altitude_rows[height]
+                metrics = parse_metrics(row)
+                altitude_cells.append(
+                    f"{md_escape(metrics.get('R@1'))} / {md_escape(metrics.get('AP'))}"
+                )
+                if row.get("source") and row["source"] not in sources:
+                    sources.append(row["source"])
+            cells = [
+                str(rank), md_escape(method), f"{average:.2f}", *altitude_cells,
+                paper_cell(paper, urls), md_escape("; ".join(sources)),
+            ]
+            lines.append("| " + " | ".join(cells) + " |")
+            rendered += 1
+        lines.append("")
+
+        if incomplete:
+            lines.extend([
+                "### Unranked: incomplete altitude coverage", "",
+                "These entries are retained for evidence, but no four-altitude average or rank is assigned.", "",
+                "| Method | Available altitude(s) | R@1 / AP | Paper | Source |",
+                "|---|---|---|---|---|",
+            ])
+            for (paper, method), altitude_rows in incomplete:
+                available = sorted(altitude_rows, key=int)
+                metric_cells = []
+                sources = []
+                for height in available:
+                    row = altitude_rows[height]
+                    metrics = parse_metrics(row)
+                    metric_cells.append(
+                        f"{height}m: {md_escape(metrics.get('R@1'))} / {md_escape(metrics.get('AP'))}"
+                    )
+                    if row.get("source") and row["source"] not in sources:
+                        sources.append(row["source"])
+                cells = [
+                    md_escape(method), ", ".join(f"{height}m" for height in available),
+                    "; ".join(metric_cells), paper_cell(paper, urls),
+                    md_escape("; ".join(sources)),
+                ]
+                lines.append("| " + " | ".join(cells) + " |")
+                rendered += 1
+            lines.append("")
+    return rendered
+
+
 def render_summary(root: Path, rows: list[dict[str, str]]) -> None:
     counts = Counter(row.get("dataset", "") for row in rows)
     lines = [
@@ -165,10 +256,24 @@ def render_core_leaderboards(root: Path | None = None) -> None:
 
     for dataset, cfg in CONFIG.items():
         lines = [f"# {cfg['title']}", "", str(cfg["intro"]), ""]
+        if dataset == "SUES-200":
+            dataset_rows = [row for row in rows if row.get("dataset") == dataset]
+            rendered = render_sues200(lines, dataset_rows, urls)
+            output = root / "leaderboards" / str(cfg["file"])
+            output.write_text("\n".join(lines), encoding="utf-8")
+            print(f"  wrote {output.name} ({rendered} method rows from {len(dataset_rows)} altitude rows)")
+            continue
         for protocol in cfg["protocols"]:
             protocol_rows = sorted(grouped.get((dataset, protocol), []), key=sort_value, reverse=True)
+            heading = protocol
+            if dataset == "GTA-UAV":
+                heading = (
+                    "Cross-Area (official leaderboard)"
+                    if protocol == "Cross-Area"
+                    else "Same-Area (supplementary)"
+                )
             lines.extend([
-                f"## {protocol}", "",
+                f"## {heading}", "",
                 f"Rows: **{len(protocol_rows)}** (one result row per method/configuration).", "",
             ])
             metrics = list(cfg["metrics"])

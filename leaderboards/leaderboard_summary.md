@@ -1,6 +1,6 @@
 # Leaderboards
 
-Per-dataset leaderboard pages regenerated from `data/leaderboards.csv` (324 rows). Each paper name links to its external page (arXiv, DOI, or OpenAlex).
+Per-dataset leaderboard pages regenerated from `data/leaderboards.csv` (391 rows). Each paper name links to its external page (arXiv, DOI, or OpenAlex).
 
 | Dataset | Page | Rows |
 |---|---|---:|
@@ -12,20 +12,20 @@ Per-dataset leaderboard pages regenerated from `data/leaderboards.csv` (324 rows
 | CVACT_val | [cvact_val.md](cvact_val.md) | 1 |
 | CVGlobal | [cvglobal.md](cvglobal.md) | 7 |
 | CVUSA | [cvusa.md](cvusa.md) | 8 |
-| DenseUAV | [denseuav.md](denseuav.md) | 10 |
-| GTA-UAV | [gta_uav.md](gta_uav.md) | 21 |
+| DenseUAV | [denseuav.md](denseuav.md) | 12 |
+| GTA-UAV | [gta_uav.md](gta_uav.md) | 4 |
 | HollywoodFly | [hollywoodfly.md](hollywoodfly.md) | 3 |
 | LasVegasFly | [lasvegasfly.md](lasvegasfly.md) | 3 |
 | MSDI | [msdi.md](msdi.md) | 1 |
 | Multi-weather University-1652 (Foggy) | [multi_weather_university_1652_foggy.md](multi_weather_university_1652_foggy.md) | 1 |
 | Multi-weather University-1652 (Rainy) | [multi_weather_university_1652_rainy.md](multi_weather_university_1652_rainy.md) | 1 |
 | NewYorkFly | [newyorkfly.md](newyorkfly.md) | 7 |
-| SUES-200 | [sues200.md](sues200.md) | 130 |
+| SUES-200 | [sues200.md](sues200.md) | 186 |
 | UAV-VLL (S-200) | [uav_vll_s_200.md](uav_vll_s_200.md) | 1 |
 | UAV-VLL (U-1652) | [uav_vll_u_1652.md](uav_vll_u_1652.md) | 3 |
 | UAV-VisLoc | [uav_visloc.md](uav_visloc.md) | 6 |
 | UVL-R2P-Benchmark | [uvl_r2p_benchmark.md](uvl_r2p_benchmark.md) | 1 |
-| University-1652 | [university1652.md](university1652.md) | 78 |
+| University-1652 | [university1652.md](university1652.md) | 104 |
 | University-1652 (Dark degradation) | [university_1652_dark_degradation.md](university_1652_dark_degradation.md) | 1 |
 | University-1652 (Fog degradation) | [university_1652_fog_degradation.md](university_1652_fog_degradation.md) | 1 |
 | University-1652 → SUES-200 (300m, Cross-Region) | [university_1652_sues_200_300m_cross_region.md](university_1652_sues_200_300m_cross_region.md) | 1 |

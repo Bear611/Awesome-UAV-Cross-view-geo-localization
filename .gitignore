@@ -10,3 +10,4 @@ data/internal/leaderboard_fulltext_access.yml
 data/snapshots/
 data/reports/*.log
 data/reports/*.err.log
+tmp/

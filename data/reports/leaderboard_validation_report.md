@@ -4,10 +4,10 @@ This report validates repository structure and internal consistency. A `verified
 
 | Dataset | Rows | Empty metrics | Placeholder methods | Verified flag | Inferred/indirect evidence |
 |---|---:|---:|---:|---:|---:|
-| University-1652 | 78 | 0 | 0 | 5 | 0 |
-| SUES-200 | 130 | 0 | 0 | 96 | 8 |
-| DenseUAV | 10 | 0 | 0 | 4 | 0 |
-| GTA-UAV | 21 | 0 | 0 | 21 | 0 |
+| University-1652 | 104 | 0 | 0 | 31 | 0 |
+| SUES-200 | 186 | 0 | 0 | 152 | 8 |
+| DenseUAV | 12 | 0 | 0 | 6 | 0 |
+| GTA-UAV | 4 | 0 | 0 | 4 | 0 |
 
 ## Evidence boundary
 
@@ -24,4 +24,4 @@ Warnings: **0**
 
 ## Result
 
-All core rows have metrics and numeric sort fields; protocol sets, SUES R@1 coverage, rendered/summary row counts, numeric ranges, duplicate keys, and GTA navigation checks passed.
+All core rows have metrics and numeric sort fields; protocol sets, SUES R@1 coverage and four-altitude average ranking, rendered/summary row counts, numeric ranges, duplicate keys, and GTA navigation checks passed.

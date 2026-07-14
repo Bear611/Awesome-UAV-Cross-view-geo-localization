@@ -33,7 +33,7 @@ CORE = {
     "DenseUAV": {"file": "denseuav.md", "protocols": {"UAV Self-Positioning"}},
     "GTA-UAV": {
         "file": "gta_uav.md",
-        "protocols": {"Same-Area (Pos+Semi)", "Cross-Area (Pos+Semi)"},
+        "protocols": {"Same-Area", "Cross-Area"},
     },
 }
 
@@ -75,10 +75,72 @@ def markdown_data_rows(path: Path) -> int:
     for line in path.read_text(encoding="utf-8").splitlines():
         if not line.startswith("| "):
             continue
-        if line.startswith("| Method ") or line.startswith("| ---"):
+        if line.startswith("| Method ") or line.startswith("| Rank ") or line.startswith("| ---"):
             continue
         count += 1
     return count
+
+
+def sues_method_rows(rows: list[dict[str, str]]) -> int:
+    """Count rendered SUES method rows after collapsing altitude rows."""
+    keys: set[tuple[str, str, str]] = set()
+    for row in rows:
+        if row.get("dataset") != "SUES-200":
+            continue
+        protocol = row.get("protocol", "")
+        direction = "Drone-to-Satellite" if protocol.startswith("Drone-to-Satellite") else "Satellite-to-Drone"
+        keys.add((direction, row.get("paper", ""), row.get("method", "")))
+    return len(keys)
+
+
+def validate_sues_average_ranking(rows: list[dict[str, str]], errors: list[str]) -> None:
+    """Check that the rendered SUES rank/order/average matches all four R@1 values."""
+    page_text = (ROOT / "leaderboards" / "sues200.md").read_text(encoding="utf-8")
+    heights = ("150", "200", "250", "300")
+    for direction in ("Drone-to-Satellite", "Satellite-to-Drone"):
+        groups: dict[tuple[str, str], dict[str, float]] = defaultdict(dict)
+        for row in rows:
+            if row.get("dataset") != "SUES-200" or not row.get("protocol", "").startswith(direction):
+                continue
+            match = re.search(r"(150|200|250|300)m", row.get("protocol", ""))
+            metrics = json.loads(row.get("metrics_json") or "{}")
+            r1 = number(metrics.get("R@1"))
+            if match and r1 is not None:
+                groups[(row.get("paper", ""), row.get("method", ""))][match.group(1)] = r1
+        expected = []
+        for (paper, method), values in groups.items():
+            if all(height in values for height in heights):
+                average = sum(values[height] for height in heights) / 4
+                expected.append((method, average))
+        expected.sort(key=lambda item: (-item[1], item[0].lower()))
+
+        try:
+            section = page_text.split(f"## {direction}", 1)[1].split("\n## ", 1)[0]
+        except IndexError:
+            errors.append(f"SUES-200: missing rendered section {direction}")
+            continue
+        actual = []
+        for line in section.splitlines():
+            if not re.match(r"^\| \d+ \|", line):
+                continue
+            cells = [cell.strip() for cell in line.strip("|").split("|")]
+            actual.append((int(cells[0]), cells[1].replace("\\|", "|"), number(cells[2])))
+        if len(actual) != len(expected):
+            errors.append(
+                f"SUES-200 {direction}: ranked rows={len(actual)}, complete four-altitude methods={len(expected)}"
+            )
+            continue
+        for rank, ((actual_rank, actual_method, actual_average), (method, average)) in enumerate(
+            zip(actual, expected), start=1
+        ):
+            if actual_rank != rank or actual_method != method:
+                errors.append(
+                    f"SUES-200 {direction}: rank {rank} mismatch; rendered={actual_method!r}, expected={method!r}"
+                )
+            if actual_average is None or not math.isclose(actual_average, average, rel_tol=0, abs_tol=0.005001):
+                errors.append(
+                    f"SUES-200 {direction}: {method} average mismatch; rendered={actual_average}, expected={average:.4f}"
+                )
 
 
 def validate() -> tuple[list[str], list[str], list[str]]:
@@ -162,10 +224,13 @@ def validate() -> tuple[list[str], list[str], list[str]]:
             errors.append(f"{dataset}: missing rendered page {page.name}")
         else:
             rendered = markdown_data_rows(page)
-            if rendered != rows_by_dataset[dataset]:
+            expected_rendered = sues_method_rows(rows) if dataset == "SUES-200" else rows_by_dataset[dataset]
+            if rendered != expected_rendered:
                 errors.append(
-                    f"{dataset}: rendered rows={rendered}, CSV rows={rows_by_dataset[dataset]}"
+                    f"{dataset}: rendered rows={rendered}, expected rendered rows={expected_rendered}"
                 )
+
+    validate_sues_average_ranking(rows, errors)
 
     if (ROOT / "leaderboards" / "gta-uav.md").exists():
         errors.append("stale duplicate leaderboards/gta-uav.md still exists")
@@ -226,7 +291,7 @@ def validate() -> tuple[list[str], list[str], list[str]]:
         lines.extend(["## Warnings", "", *[f"- {item}" for item in warnings], ""])
     if not errors:
         notes.append(
-            "All core rows have metrics and numeric sort fields; protocol sets, SUES R@1 coverage, "
+            "All core rows have metrics and numeric sort fields; protocol sets, SUES R@1 coverage and four-altitude average ranking, "
             "rendered/summary row counts, numeric ranges, duplicate keys, and GTA navigation checks passed."
         )
         lines.extend(["## Result", "", notes[-1], ""])
