@@ -21702,3 +21702,105 @@
     summary_zh: 无人机-卫星跨视角地理定位任务面临位置偏移、距离与尺度不确定等核心挑战。现有基于CNN的方法受限于局部感受野与下采样操作，难以充分捕获全局上下文与细粒度信息。本文提出基于Transformer的特征分割与区域对齐方法(FSRA)，包含热力图分割模块(HSM)与热力图对齐分支(HAB)：HSM根据Transformer特征图热力分布自动划分实例区域，HAB对不同视角的对应区域进行一对一对齐，无需额外监督信息。此外提出多重采样策略以缓解University-1652数据集中卫星图像稀缺问题。实验表明，所提方法在无人机目标定位与无人机导航两个任务上均达到当时最优性能。
   status: parsed
   verified: false
+- id: 53b083fe9653
+  title: 'URF-Loc: Uncertainty-Aware Frequency-Spatial Network for GNSS-Denied UAV Geo-Localization'
+  year: 2026
+  venue: Lecture notes in computer science
+  authors:
+  - Yifan Yang
+  - Xiaogang Zhao
+  - Xuekai Chen
+  - Chu He
+  abstract: ''
+  publication_date: '2026-07-13'
+  urls:
+    paper: https://doi.org/10.1007/978-981-92-3504-9_20
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: 10.1007/978-981-92-3504-9_20
+    arxiv_id: ''
+    openalex_id: https://openalex.org/W7168143736
+  discovery:
+    found_date: '2026-07-14'
+    found_by:
+    - source: openalex
+      keyword: UAV cross-view geo-localization
+    - source: openalex
+      keyword: UAV-view geo-localization
+    - source: openalex
+      keyword: cross-view UAV localization
+    - source: openalex
+      keyword: coarse-to-fine UAV geo-localization
+    - source: openalex
+      keyword: UAV-VisLoc
+    last_seen_date: '2026-07-14'
+  status: parsed
+  verified: false
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: retrieval
+    relevance_score: 0.95
+    tags:
+    - uncertainty-aware
+    - frequency-spatial
+    - GNSS-denied
+    - geo-localization
+    datasets:
+    - University-1652
+    - SUES-200
+    - DenseUAV
+    - UAV-VisLoc
+    - UAV-GeoLoc
+    - GTA-UAV
+    - Game4Loc
+    - World-UAV
+    - Nardo-Air
+    - ALTO
+    - UAV-R2P
+    - UVL-R2P
+    - Boson-nighttime
+    - Thermal-UAV
+    possible_leaderboard: true
+    reason: The paper title explicitly mentions UAV geo-localization under GNSS-denied conditions, and the abstract likely
+      addresses cross-view matching. The listed datasets are standard benchmarks for UAV cross-view geo-localization.
+    needs_review: true
+    minimax_main_category: unified_global_to_local
+  summary:
+    summary_en: URF-Loc addresses cross-view geo-localization for UAVs operating under GNSS-denied conditions, where severe
+      appearance variations, large search spaces, and ambiguous structural correspondence make robust localization difficult.
+      The paper observes that prior approaches either rely on global retrieval with limited spatial precision or on deterministic
+      dense prediction without modeling prediction reliability, leading to unstable localization. To address this, the authors
+      propose a coarse-to-fine framework. The coarse stage employs a spatial-frequency joint (FSJ) representation that injects
+      high-frequency residuals into multi-scale features to enhance view-invariant structural cues for robust global matching.
+      The refinement stage introduces an uncertainty-aware regression (UAR) module that formulates localization as heteroscedastic
+      probabilistic regression, enabling adaptive handling of ambiguous regions and providing reliable uncertainty estimates.
+      Experiments are conducted on the UAV-VisLoc benchmark, where URF-Loc is reported to achieve state-of-the-art performance,
+      significantly improving meter-level accuracy and bounding-box quality while providing reliable uncertainty estimation.
+      Specific numerical values are not available from the provided preview text.
+    main_category: unified_global_to_local
+    category_confirmed: false
+    classification_reason: The paper presents a coarse-to-fine framework combining global retrieval (FSJ-based matching) with
+      uncertainty-aware regression for fine localization, which aligns with unified global-to-local geo-localization methods
+      for UAVs.
+    benchmarks:
+    - UAV-VisLoc
+    main_modules:
+    - Spatial-Frequency Joint (FSJ) representation
+    - Uncertainty-Aware Regression (UAR) module
+    - Coarse-to-fine localization framework
+    reported_results:
+    - State-of-the-art performance on UAV-VisLoc benchmark
+    - Significantly improved meter-level accuracy
+    - Improved bounding-box quality
+    - Reliable uncertainty estimation
+    leaderboard_metrics: []
+    table_evidence_notes: The provided text is a Springer preview with no numerical results table. Specific metric values
+      (e.g., R@1, distance error, IoU) are not available. No leaderboard metrics can be extracted.
+    code_url: null
+    needs_review: true
+  automation:
+    last_processed_date: '2026-07-14'
