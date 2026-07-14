@@ -91,6 +91,71 @@ def env_value(name: str, default: str) -> str:
     return os.getenv(name, "").strip() or default
 
 
+def _normalized_secret_name(name: str) -> str:
+    return re.sub(r"[^A-Z0-9]", "", str(name).upper())
+
+
+def parse_api_bundle(raw: str) -> Dict[str, str]:
+    """Extract supported API keys from one combined secret without logging its contents."""
+    text = (raw or "").strip()
+    if not text:
+        return {}
+
+    scalar_values: Dict[str, str] = {}
+    try:
+        loaded = yaml.safe_load(text)
+    except yaml.YAMLError:
+        loaded = None
+
+    if isinstance(loaded, dict):
+        for key, value in loaded.items():
+            if isinstance(value, dict):
+                for nested_key, nested_value in value.items():
+                    if isinstance(nested_value, (str, int, float)):
+                        scalar_values[f"{key}_{nested_key}"] = str(nested_value).strip()
+            elif isinstance(value, (str, int, float)):
+                scalar_values[str(key)] = str(value).strip()
+
+    if not scalar_values:
+        for line in re.split(r"[\r\n;]+", text):
+            match = re.match(
+                r"^\s*(?:export\s+)?([A-Za-z][A-Za-z0-9_-]*)\s*(?:=|:)\s*(.*?)\s*$",
+                line,
+            )
+            if not match:
+                continue
+            value = match.group(2).strip()
+            if len(value) >= 2 and value[0] == value[-1] and value[0] in {"'", '"'}:
+                value = value[1:-1].strip()
+            scalar_values[match.group(1)] = value
+
+    aliases = {
+        "DEEPSEEK": "DEEPSEEK_API_KEY",
+        "DEEPSEEKKEY": "DEEPSEEK_API_KEY",
+        "DEEPSEEKTOKEN": "DEEPSEEK_API_KEY",
+        "DEEPSEEKAPIKEY": "DEEPSEEK_API_KEY",
+        "MINIMAX": "MINIMAX_API_KEY",
+        "MINIMAXKEY": "MINIMAX_API_KEY",
+        "MINIMAXTOKEN": "MINIMAX_API_KEY",
+        "MINIMAXAPIKEY": "MINIMAX_API_KEY",
+    }
+    result: Dict[str, str] = {}
+    for key, value in scalar_values.items():
+        target = aliases.get(_normalized_secret_name(key))
+        if target and value:
+            result[target] = value
+    return result
+
+
+def api_secret_value(name: str) -> str:
+    """Prefer a dedicated env var, then fall back to the combined API secret."""
+    direct = os.getenv(name, "").strip()
+    if direct:
+        return direct
+    bundle = os.getenv("API_BUNDLE", "").strip() or os.getenv("API", "").strip()
+    return parse_api_bundle(bundle).get(name, "")
+
+
 def normalize_deepseek_api_key(api_key: str) -> str:
     key = (api_key or "").strip()
     if key.lower().startswith("ds:"):
@@ -685,7 +750,7 @@ def merge_existing_candidates(path: str, new_records: List[dict]) -> List[dict]:
 
 
 def deepseek_classify(paper: dict) -> dict:
-    api_key = normalize_deepseek_api_key(os.getenv("DEEPSEEK_API_KEY", ""))
+    api_key = normalize_deepseek_api_key(api_secret_value("DEEPSEEK_API_KEY"))
     if not api_key:
         raise RuntimeError("DEEPSEEK_API_KEY is not set")
     model = env_value("DEEPSEEK_MODEL", "deepseek-chat")
@@ -754,7 +819,7 @@ Return JSON with exactly these keys:
 
 
 def minimax_summary(paper: dict, use_pdf: bool = False) -> dict:
-    api_key = os.getenv("MINIMAX_API_KEY", "").strip()
+    api_key = api_secret_value("MINIMAX_API_KEY")
     if not api_key:
         raise RuntimeError("MINIMAX_API_KEY is not set")
     model = env_value("MINIMAX_MODEL", "MiniMax-M3")
@@ -1020,7 +1085,7 @@ def verify_new_dataset_open_source(dataset: str, paper: dict) -> bool:
         cache[dataset] = {"is_open_source": False, "reason": "No public evidence page was accessible from the paper metadata."}
         return False
 
-    api_key = normalize_deepseek_api_key(os.getenv("DEEPSEEK_API_KEY", ""))
+    api_key = normalize_deepseek_api_key(api_secret_value("DEEPSEEK_API_KEY"))
     if not api_key:
         cache[dataset] = {"is_open_source": False, "reason": "DEEPSEEK_API_KEY is not set for dataset openness verification."}
         return False
@@ -1593,9 +1658,9 @@ def weekly_digest_records(records: List[dict], target_date: dt.date) -> List[dic
 def cmd_preflight(args: argparse.Namespace) -> None:
     missing = []
     if args.require_llm:
-        if not normalize_deepseek_api_key(os.getenv("DEEPSEEK_API_KEY", "")):
+        if not normalize_deepseek_api_key(api_secret_value("DEEPSEEK_API_KEY")):
             missing.append("DEEPSEEK_API_KEY")
-        if not os.getenv("MINIMAX_API_KEY", "").strip():
+        if not api_secret_value("MINIMAX_API_KEY"):
             missing.append("MINIMAX_API_KEY")
     if missing:
         raise RuntimeError(f"Missing required GitHub Secrets: {', '.join(missing)}")

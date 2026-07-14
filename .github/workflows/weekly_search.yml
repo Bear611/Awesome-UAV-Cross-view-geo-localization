@@ -47,6 +47,7 @@ jobs:
 
       - name: Validate automation configuration
         env:
+          API_BUNDLE: ${{ secrets.API }}
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
           SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
@@ -66,6 +67,7 @@ jobs:
 
       - name: Classify and summarize candidates
         env:
+          API_BUNDLE: ${{ secrets.API }}
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
           SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}

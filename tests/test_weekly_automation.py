@@ -139,11 +139,46 @@ class WeeklyAutomationTests(unittest.TestCase):
     def test_preflight_reports_missing_required_secrets_without_api_calls(self) -> None:
         with mock.patch.dict(
             os.environ,
-            {"DEEPSEEK_API_KEY": "", "MINIMAX_API_KEY": "", "MINIMAX_MODEL": ""},
+            {
+                "API": "",
+                "API_BUNDLE": "",
+                "DEEPSEEK_API_KEY": "",
+                "MINIMAX_API_KEY": "",
+                "MINIMAX_MODEL": "",
+            },
             clear=False,
         ):
             with self.assertRaisesRegex(RuntimeError, "DEEPSEEK_API_KEY, MINIMAX_API_KEY"):
                 auto.cmd_preflight(argparse.Namespace(require_llm=True))
+
+    def test_combined_api_bundle_supports_json_and_provider_aliases(self) -> None:
+        with mock.patch.dict(
+            os.environ,
+            {
+                "API_BUNDLE": '{"deepseek": "ds:test-deepseek", "minimax": "test-minimax"}',
+                "DEEPSEEK_API_KEY": "",
+                "MINIMAX_API_KEY": "",
+                "MINIMAX_MODEL": "",
+            },
+            clear=False,
+        ):
+            self.assertEqual(auto.api_secret_value("DEEPSEEK_API_KEY"), "ds:test-deepseek")
+            self.assertEqual(auto.api_secret_value("MINIMAX_API_KEY"), "test-minimax")
+            auto.cmd_preflight(argparse.Namespace(require_llm=True))
+
+    def test_combined_api_bundle_supports_dotenv_and_direct_override(self) -> None:
+        bundle = "DEEPSEEK_API_KEY=from-bundle\nMINIMAX_API_KEY='minimax-bundle'"
+        with mock.patch.dict(
+            os.environ,
+            {
+                "API_BUNDLE": bundle,
+                "DEEPSEEK_API_KEY": "direct-deepseek",
+                "MINIMAX_API_KEY": "",
+            },
+            clear=False,
+        ):
+            self.assertEqual(auto.api_secret_value("DEEPSEEK_API_KEY"), "direct-deepseek")
+            self.assertEqual(auto.api_secret_value("MINIMAX_API_KEY"), "minimax-bundle")
 
     def test_weekly_search_isolates_one_source_failure(self) -> None:
         today = dt.date.today().isoformat()

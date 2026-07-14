@@ -30,7 +30,7 @@ The scheduled workflow runs every Monday and keeps the existing API chain unchan
 
 `SEMANTIC_SCHOLAR_API_KEY` is passed to the search step. If one search provider is temporarily unavailable, the other providers continue and the failure is recorded in `data/reports/weekly_search_report.md`. The run fails only when every search call fails or required LLM Secrets are missing.
 
-Before searching, the workflow checks that `DEEPSEEK_API_KEY` and `MINIMAX_API_KEY` exist without printing their values. Empty optional repository variables no longer override the built-in defaults (`deepseek-chat`, `MiniMax-M3`, and `https://api.minimaxi.com/v1`).
+Before searching, the workflow checks that `DEEPSEEK_API_KEY` and `MINIMAX_API_KEY` exist without printing their values. Dedicated Secrets remain the preferred configuration. For compatibility, one Repository Secret named `API` may contain both keys as a JSON/YAML mapping (for example, keys named `deepseek` and `minimax`) or as two `KEY=value` lines. Dedicated Secrets take precedence over the combined bundle. Empty optional repository variables no longer override the built-in defaults (`deepseek-chat`, `MiniMax-M3`, and `https://api.minimaxi.com/v1`).
 
 Official benchmark splits such as SUES-200's 150m/200m/250m/300m protocols and GTA-UAV's Cross-Area protocol are allowed through the unverified result extractor. Ablations, backbone sweeps, corruption subsets, and TTA/re-ranking variants remain excluded.
 
