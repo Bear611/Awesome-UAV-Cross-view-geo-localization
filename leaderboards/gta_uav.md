@@ -1,28 +1,38 @@
-# GTA-UAV
+# GTA-UAV (Game4Loc)
 
-Leaderboard for GTA-UAV. Rows are generated from data/leaderboards.csv with paper-name hyperlinks.
+UAV geo-localization benchmark from game data (Dai et al. 2024, Game4Loc). Same-Area and Cross-Area results are kept separate; the canonical tables use Positive+Semi-positive training data.
 
+## Same-Area (Pos+Semi)
 
-## Cross-Area Retrieval
+Rows: **9** (one result row per method/configuration).
 
-Rows: **1**.
+| Method | R@1 | R@5 | AP | SDM@3 | Dis@1 | Paper | Source |
+| --- | ---: | ---: | ---: | ---: | ---: | --- | --- |
+| Ours: Weighted-InfoNCE + MES (Pos+Semi) | 84.95 | 97.59 | 90.15 | 88.03 | 149.07 | Game4Loc: A UAV Geo-Localization Benchmark from Game Data (Dai et al. 2024 — GTA-UAV paper) | Table 2 (Positive+Semi-positive block, Ours row), p.5 |
+| Weighted-InfoNCE + MES (Pos-only) | 75.97 | 94.53 | 83.35 | 82.8 | 325.61 | Game4Loc: A UAV Geo-Localization Benchmark from Game Data (Dai et al. 2024 — GTA-UAV paper) | Table 2 (Positive-only block, Ours row, Same-Area column), p.5 |
+| InfoNCE Loss (Pos-only) | 72.99 | 90.64 | 80.76 | 80.4 | 363.67 | Game4Loc: A UAV Geo-Localization Benchmark from Game Data (Dai et al. 2024 — GTA-UAV paper) | Table 2 (Positive-only block, InfoNCE row, Same-Area column), p.5 |
+| InfoNCE + MES (Pos-only) | 72.34 | 91.42 | 80.86 | 81.57 | 369.59 | Game4Loc: A UAV Geo-Localization Benchmark from Game Data (Dai et al. 2024 — GTA-UAV paper) | Table 2 (Positive-only block, InfoNCE+MES row, Same-Area column), p.5 |
+| Triplet Loss (Pos-only) | 68.22 | 87.99 | 76.73 | 79.17 | 438.38 | Game4Loc: A UAV Geo-Localization Benchmark from Game Data (Dai et al. 2024 — GTA-UAV paper) | Table 2 (Positive-only block, TripletLoss row, Same-Area column), p.5 |
+| InfoNCE + MES (Mutual Exclusive Sampling, Pos+Semi) | 65.89 | 93.09 | 77.84 | 86.52 | 196.59 | Game4Loc: A UAV Geo-Localization Benchmark from Game Data (Dai et al. 2024 — GTA-UAV paper) | Table 2 (Positive+Semi-positive block, InfoNCE+MES row), p.5 |
+| InfoNCE Loss (Pos+Semi) | 52.67 | 90.75 | 67.74 | 85.35 | 204.08 | Game4Loc: A UAV Geo-Localization Benchmark from Game Data (Dai et al. 2024 — GTA-UAV paper) | Table 2 (Positive+Semi-positive block, InfoNCE row), p.5 |
+| Triplet Loss (L_triplet, Pos+Semi) | 46.55 | 85.07 | 62.95 | 83.63 | 252.88 | Game4Loc: A UAV Geo-Localization Benchmark from Game Data (Dai et al. 2024 — GTA-UAV paper) | Table 2 (Positive+Semi-positive block, TripletLoss row), p.5 |
+| Pretrain on ImageNet | 10.65 | 23.9 | 17.15 | 36.82 | 1470.5 | Game4Loc: A UAV Geo-Localization Benchmark from Game Data (Dai et al. 2024 — GTA-UAV paper) | Table 3 (ImageNet row), p.6 |
 
-| Method / Training Setting | Paper | Source | Sort | Verified | Notes |
-|---|---|---|---:|---|---|
-| Game4Loc (weighted-InfoNCE + MES, ViT-Base/16, positive+semipositive)<br><sub>Trained on GTA-UAV with weighted-InfoNCE loss (k=5) and Mutually Exclusive Sampling using positive+semi-positive pairs; ViT-Base/16 backbone, 384x384 input, 20 epochs, batch size 64.</sub> | Game4Loc: A UAV Geo-Localization Benchmark from Game Data | Table 2 (positive+semipositive, cross-area row: Lweighted-InfoNCE w/. MES) | Recall@1=55.91 | false | Flagship GTA-UAV cross-area result using the full partial-matching training set (positive + semi-positive). |
+## Cross-Area (Pos+Semi)
 
-## cross-area
+Rows: **12** (one result row per method/configuration).
 
-Rows: **1**.
-
-| Method / Training Setting | Paper | Source | Sort | Verified | Notes |
-|---|---|---|---:|---|---|
-| RGBD-EMA<br><sub>Shared-weight ViTAdapter backbone with MiDaS v3.1 (DPT-BEiT-Large) depth estimation for UAV inputs, Efficient Multi-scale Attention (EMA) module, IoU-weighted InfoNCE loss; train/test split ~8:2 by region</sub> | [UAV Visual Localization via Multimodal Fusion and Multi-Scale Attention Enhancement](https://doi.org/10.3390/su18094277) | Abstract | R@1=18.12 | false | Additional reported metrics: SDM@3=0.53, Dis@1=1052.73 m. Values are as reported in the abstract; AP stated as 28.01 (unit/percentage not explicitly indicated in text). |
-
-## cross-area (8:2 region split)
-
-Rows: **1**.
-
-| Method / Training Setting | Paper | Source | Sort | Verified | Notes |
-|---|---|---|---:|---|---|
-| RGBD + EMA (proposed)<br><sub>AdamW, batch size 4, lr 5e-5 with cosine annealing + 0.1-epoch warmup, IoU-weighted InfoNCE loss (tau=0.07), 384x384 input, MiDaS depth + EMA module, shared-weight ViTAdapter, embedding dim 768</sub> | [UAV Visual Localization via Multimodal Fusion and Multi-Scale Attention Enhancement](https://doi.org/10.3390/su18094277) | Table 1 & Table 2 | R@1=18.1207 | false | Proposed full framework; SDM@1=0.5549, SDM@3=0.5257, SDM@5=0.5047; Dis@1=1052.73m |
+| Method | R@1 | R@5 | AP | SDM@3 | Dis@1 | Paper | Source |
+| --- | ---: | ---: | ---: | ---: | ---: | --- | --- |
+| Weighted-InfoNCE + MES (Pos-only) | 57.52 | 80.1 | 67.24 | 72.33 | 444.13 | Game4Loc: A UAV Geo-Localization Benchmark from Game Data (Dai et al. 2024 — GTA-UAV paper) | Table 2 (Positive-only block, Ours row, Cross-Area column), p.5 |
+| Ours: Weighted-InfoNCE + MES (Pos+Semi) | 55.91 | 81.07 | 66.56 | 76.35 | 342.05 | Game4Loc: A UAV Geo-Localization Benchmark from Game Data (Dai et al. 2024 — GTA-UAV paper) | Table 2 (Positive+Semi-positive block, Ours row), p.5 |
+| ConvNeXt-Base (backbone) | 55.36 | - | 66.14 | 74.91 | 386.35 | Game4Loc: A UAV Geo-Localization Benchmark from Game Data (Dai et al. 2024 — GTA-UAV paper) | Table 5 (ConvNeXt-Base row), p.6 |
+| Swinv2-B (backbone) | 53.7 | - | - | - | - | Game4Loc: A UAV Geo-Localization Benchmark from Game Data (Dai et al. 2024 — GTA-UAV paper) | Table 5 (Swinv2-B row), p.6 |
+| InfoNCE + MES (Pos-only) | 52.64 | 74.63 | 62.4 | 67.64 | 552.9 | Game4Loc: A UAV Geo-Localization Benchmark from Game Data (Dai et al. 2024 — GTA-UAV paper) | Table 2 (Positive-only block, InfoNCE+MES row, Cross-Area column), p.5 |
+| InfoNCE Loss (Pos-only) | 49.57 | 72.84 | 59.68 | 65.53 | 612.22 | Game4Loc: A UAV Geo-Localization Benchmark from Game Data (Dai et al. 2024 — GTA-UAV paper) | Table 2 (Positive-only block, InfoNCE row, Cross-Area column), p.5 |
+| InfoNCE + MES (Mutual Exclusive Sampling, Pos+Semi) | 45.97 | 71.43 | 57.19 | 71.48 | 460.08 | Game4Loc: A UAV Geo-Localization Benchmark from Game Data (Dai et al. 2024 — GTA-UAV paper) | Table 2 (Positive+Semi-positive block, InfoNCE+MES row), p.5 |
+| Triplet Loss (Pos-only) | 43.41 | 66.7 | 53.56 | 61.26 | 756.95 | Game4Loc: A UAV Geo-Localization Benchmark from Game Data (Dai et al. 2024 — GTA-UAV paper) | Table 2 (Positive-only block, TripletLoss row, Cross-Area column), p.5 |
+| InfoNCE Loss (Pos+Semi) | 35.83 | 63.79 | 48.08 | 68.15 | 576.41 | Game4Loc: A UAV Geo-Localization Benchmark from Game Data (Dai et al. 2024 — GTA-UAV paper) | Table 2 (Positive+Semi-positive block, InfoNCE row), p.5 |
+| Triplet Loss (L_triplet, Pos+Semi) | 24.78 | 46.99 | 35.13 | 58.79 | 879.06 | Game4Loc: A UAV Geo-Localization Benchmark from Game Data (Dai et al. 2024 — GTA-UAV paper) | Table 2 (Positive+Semi-positive block, TripletLoss row), p.5 |
+| ResNet-101 (backbone) | 13.74 | - | 23.06 | 48.06 | 1126.52 | Game4Loc: A UAV Geo-Localization Benchmark from Game Data (Dai et al. 2024 — GTA-UAV paper) | Table 5 (ResNet-101 row), p.6 |
+| Pretrain on ImageNet | 9.74 | 21.73 | 15.74 | 33.58 | 1841.3 | Game4Loc: A UAV Geo-Localization Benchmark from Game Data (Dai et al. 2024 — GTA-UAV paper) | Table 3 (ImageNet row), p.6 |
