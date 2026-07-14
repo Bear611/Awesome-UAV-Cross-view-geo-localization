@@ -46,6 +46,20 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Run automation tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Validate automation configuration
+        env:
+          API_BUNDLE: ${{ secrets.API }}
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
+          SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
+          DEEPSEEK_MODEL: ${{ vars.DEEPSEEK_MODEL }}
+          MINIMAX_MODEL: ${{ vars.MINIMAX_MODEL }}
+          MINIMAX_BASE_URL: ${{ vars.MINIMAX_BASE_URL }}
+        run: python scripts/uav_cvgl_auto.py preflight --require-llm
+
       - name: Search historical candidates
         env:
           SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
@@ -59,6 +73,7 @@ jobs:
 
       - name: Classify candidates
         env:
+          API_BUNDLE: ${{ secrets.API }}
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
           MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
           SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
@@ -79,6 +94,9 @@ jobs:
             $EXTRA
           python scripts/uav_cvgl_auto.py stats --input data/backfill_candidates.yml
 
+      - name: Update paper classification and introduction pages
+        run: python scripts/uav_cvgl_auto.py merge --candidates data/backfill_candidates.yml
+
       - name: Create pull request
         uses: peter-evans/create-pull-request@v8
         with:
@@ -90,8 +108,11 @@ jobs:
 
             Please review before merging:
             - data/backfill_candidates.yml
+            - data/papers.yml
+            - papers/*.md
             - DeepSeek classification
             - MiniMax summaries
 
-            This PR does not verify leaderboard results.
+            Parsed papers are added to the paper classification and introduction pages.
+            Leaderboard metrics remain unverified candidates and are not promoted automatically.
           labels: automated-update, backfill

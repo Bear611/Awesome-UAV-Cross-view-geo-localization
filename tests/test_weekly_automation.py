@@ -208,12 +208,20 @@ class WeeklyAutomationTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp_dir:
             output = str(Path(temp_dir) / "weekly.yml")
             report = str(Path(temp_dir) / "weekly_report.md")
-            args = argparse.Namespace(days=14, limit_per_query=1, output=output, report=report, sleep=0.0)
+            args = argparse.Namespace(
+                days=30,
+                limit_per_query=1,
+                citation_limit=1,
+                output=output,
+                report=report,
+                sleep=0.0,
+            )
             with (
                 mock.patch.object(auto, "load_keywords", return_value=["query"]),
                 mock.patch.object(auto, "search_semantic_keyword", side_effect=RuntimeError("rate limited")),
                 mock.patch.object(auto, "search_openalex_keyword", return_value=[record]),
                 mock.patch.object(auto, "search_arxiv_keyword", return_value=[]),
+                mock.patch.object(auto, "search_openalex_citations", return_value=[]),
             ):
                 auto.cmd_weekly(args)
 
@@ -238,7 +246,14 @@ class WeeklyAutomationTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temp_dir:
             output = str(Path(temp_dir) / "weekly.yml")
             report = str(Path(temp_dir) / "weekly_report.md")
-            args = argparse.Namespace(days=14, limit_per_query=1, output=output, report=report, sleep=0.0)
+            args = argparse.Namespace(
+                days=30,
+                limit_per_query=1,
+                citation_limit=1,
+                output=output,
+                report=report,
+                sleep=0.0,
+            )
             with (
                 mock.patch.object(auto, "load_keywords", return_value=["query one", "query two"]),
                 mock.patch.object(
@@ -246,6 +261,7 @@ class WeeklyAutomationTests(unittest.TestCase):
                 ) as semantic,
                 mock.patch.object(auto, "search_openalex_keyword", return_value=[record]) as openalex,
                 mock.patch.object(auto, "search_arxiv_keyword", return_value=[]) as arxiv,
+                mock.patch.object(auto, "search_openalex_citations", return_value=[]),
             ):
                 auto.cmd_weekly(args)
 
@@ -260,6 +276,74 @@ class WeeklyAutomationTests(unittest.TestCase):
             ]
             self.assertEqual(len(skipped), 1)
             self.assertIn("skipped after", skipped[0]["error"])
+
+    def test_openalex_citation_search_applies_recent_date_window(self) -> None:
+        captured = {}
+
+        def fake_request(url, *, params=None, **kwargs):
+            captured.update(params or {})
+            return {"results": [], "meta": {"next_cursor": None}}
+
+        with (
+            mock.patch.object(auto, "find_openalex_work_id_by_seed", return_value="W123"),
+            mock.patch.object(auto, "request_json", side_effect=fake_request),
+        ):
+            auto.search_openalex_citations(
+                {"dataset": "DenseUAV", "title": "seed"},
+                10,
+                start_date="2026-06-15",
+                end_date="2026-07-14",
+            )
+
+        self.assertEqual(
+            captured["filter"],
+            "cites:W123,from_publication_date:2026-06-15,to_publication_date:2026-07-14",
+        )
+        self.assertEqual(captured["sort"], "publication_date:desc")
+
+    def test_weekly_parser_defaults_to_broad_recent_citation_search(self) -> None:
+        args = auto.build_parser().parse_args(["weekly"])
+        self.assertEqual(args.days, 30)
+        self.assertEqual(args.citation_limit, 100)
+
+    def test_merge_updates_paper_introduction_pages_without_touching_leaderboards(self) -> None:
+        record = {
+            "id": "paper-1",
+            "title": "A New UAV Cross-view Method",
+            "year": 2026,
+            "urls": {"paper": "https://example.org/paper", "code": "https://example.org/code"},
+            "classification": {"main_category": "retrieval", "datasets": ["DenseUAV"]},
+            "summary": {
+                "summary_en": "Introduces a robust UAV-to-satellite retrieval method.",
+                "benchmarks": ["DenseUAV"],
+                "code_url": "https://example.org/code",
+                "leaderboard_metrics": [
+                    {
+                        "dataset": "DenseUAV",
+                        "metric": "R@1",
+                        "value": "99.0",
+                        "verified": False,
+                    }
+                ],
+            },
+            "status": "parsed",
+            "verified": False,
+        }
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            candidate_path = root / "candidate.yml"
+            candidate_path.write_text(yaml.safe_dump([record], sort_keys=False), encoding="utf-8")
+            with mock.patch.object(auto, "ROOT", root):
+                auto.cmd_merge(argparse.Namespace(candidates=str(candidate_path), require_verified=False))
+
+            papers = yaml.safe_load((root / "data" / "papers.yml").read_text(encoding="utf-8"))
+            page = (root / "papers" / "retrieval.md").read_text(encoding="utf-8")
+            self.assertEqual([paper["title"] for paper in papers], [record["title"]])
+            self.assertIn(record["title"], page)
+            self.assertIn(record["summary"]["summary_en"], page)
+            self.assertIn("DenseUAV", page)
+            self.assertFalse((root / "data" / "leaderboards.csv").exists())
+            self.assertFalse((root / "leaderboards").exists())
 
 
 if __name__ == "__main__":

@@ -13,7 +13,8 @@ Pipeline:
 3. Deduplication.
 4. DeepSeek classification, one paper per API call.
 5. MiniMax full-text-assisted English summary and category confirmation, one relevant paper per API call.
-6. Merge parsed candidates into the official paper tables after manual review.
+6. Merge parsed candidates into `data/papers.yml` and rebuild the five paper classification/introduction pages in the automated review PR.
+7. Keep extracted leaderboard metrics as unverified review evidence; public leaderboard files are never modified by this pipeline.
 
 ### Weekly Watch
 
@@ -21,16 +22,20 @@ This mode searches recent papers only. It can run in GitHub Actions and open a p
 
 The scheduled workflow runs every Monday and keeps the existing API chain unchanged:
 
-1. Search Semantic Scholar, OpenAlex, and arXiv using the configured weekly keywords.
-2. Filter all sources to the requested publication window and deduplicate against the cumulative candidate cache.
-3. Use DeepSeek for abstract-level relevance classification.
-4. For relevant candidates, resolve an accessible PDF/HTML full text and send the extracted text and table evidence to MiniMax-M3.
-5. Generate a digest containing only candidates first discovered in the current ISO week.
-6. Open or update the automated review pull request. Nothing is merged into the curated paper list automatically.
+1. Search Semantic Scholar, OpenAlex, and arXiv using the broad configured weekly vocabulary (UAV/drone cross-view terms, benchmark names, and survey terms).
+2. Search recent papers that cite each configured benchmark seed through OpenAlex, including DenseUAV, SUES-200, University-1652, UAV-VisLoc, GTA-UAV/Game4Loc, UAV-GeoLoc, and UAV-R2P/R2PLoc.
+3. Filter all sources to the requested publication window (30 days by default) and deduplicate against the cumulative candidate cache.
+4. Use DeepSeek for abstract-level relevance classification.
+5. For relevant candidates, resolve an accessible PDF/HTML full text and send the extracted text and table evidence to MiniMax-M3.
+6. Merge parsed papers into `data/papers.yml` and rebuild `papers/retrieval.md`, `papers/fine_pose_localization.md`, `papers/unified_global_to_local.md`, `papers/navigation_aided.md`, and `papers/survey.md`.
+7. Generate a digest containing only candidates first discovered in the current ISO week.
+8. Open or update the automated review pull request; maintainers still review the generated paper entries before merging the PR.
+
+Paper discovery and leaderboard curation deliberately have different trust boundaries. A parsed paper can be proposed for the categorized paper list with its English research summary, datasets, and code link. Experimental values extracted by MiniMax stay inside the candidate record with `verified: false`; the workflow does not write `data/leaderboards.csv` or any public leaderboard page.
 
 `SEMANTIC_SCHOLAR_API_KEY` is passed to the search step. If one search provider is temporarily unavailable, the other providers continue and the failure is recorded in `data/reports/weekly_search_report.md`. The run fails only when every search call fails or required LLM Secrets are missing.
 
-Before searching, the workflow checks that `DEEPSEEK_API_KEY` and `MINIMAX_API_KEY` exist without printing their values. Dedicated Secrets remain the preferred configuration. For compatibility, one Repository Secret named `API` may contain both keys as a JSON/YAML mapping (for example, keys named `deepseek` and `minimax`) or as two `KEY=value` lines. Dedicated Secrets take precedence over the combined bundle. Empty optional repository variables no longer override the built-in defaults (`deepseek-chat`, `MiniMax-M3`, and `https://api.minimaxi.com/v1`).
+Before searching, both workflows check that `DEEPSEEK_API_KEY` and `MINIMAX_API_KEY` exist without printing their values. Dedicated Secrets remain the preferred configuration. For compatibility, one Repository Secret named `API` may contain both keys as a JSON/YAML mapping (for example, keys named `deepseek` and `minimax`) or as two `KEY=value` lines. Dedicated Secrets take precedence over the combined bundle. Empty optional repository variables no longer override the built-in defaults (`deepseek-chat`, `MiniMax-M3`, and `https://api.minimaxi.com/v1`).
 
 Official benchmark splits such as SUES-200's 150m/200m/250m/300m protocols and GTA-UAV's Cross-Area protocol are allowed through the unverified result extractor. Ablations, backbone sweeps, corruption subsets, and TTA/re-ranking variants remain excluded.
 

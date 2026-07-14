@@ -602,7 +602,13 @@ def find_openalex_work_id_by_seed(seed: dict) -> Optional[str]:
     return None
 
 
-def search_openalex_citations(seed: dict, limit: int) -> List[dict]:
+def search_openalex_citations(
+    seed: dict,
+    limit: int,
+    *,
+    start_date: Optional[str] = None,
+    end_date: Optional[str] = None,
+) -> List[dict]:
     dataset = seed.get("dataset") or seed.get("title") or "unknown seed"
     work_id = find_openalex_work_id_by_seed(seed)
     if not work_id:
@@ -614,8 +620,13 @@ def search_openalex_citations(seed: dict, limit: int) -> List[dict]:
     cursor = "*"
     per_page = min(200, max(1, limit))
     while len(out) < limit:
+        filters = [f"cites:{work_id}"]
+        if start_date:
+            filters.append(f"from_publication_date:{start_date}")
+        if end_date:
+            filters.append(f"to_publication_date:{end_date}")
         params = openalex_params({
-            "filter": f"cites:{work_id}",
+            "filter": ",".join(filters),
             "sort": "publication_date:desc",
             "per-page": min(per_page, limit - len(out)),
             "cursor": cursor,
@@ -1742,7 +1753,12 @@ def cmd_backfill(args: argparse.Namespace) -> None:
         dataset = seed.get("dataset", "unknown")
         log_step(idx, len(seeds), f"Citation search for benchmark seed: {dataset}")
         try:
-            rows = search_openalex_citations(seed, args.citation_limit)
+            rows = search_openalex_citations(
+                seed,
+                args.citation_limit,
+                start_date=start_date,
+                end_date=end_date,
+            )
         except Exception as e:
             log(f"OpenAlex citation search failed for {dataset}: {e}")
             rows = []
@@ -1842,6 +1858,38 @@ def cmd_weekly(args: argparse.Namespace) -> None:
             detail_rows.append(
                 {"phase": "weekly", "source": source_name, "query": q, "count": len(rows), "error": error}
             )
+        time.sleep(args.sleep)
+
+    seeds = read_yaml("configs/seed_datasets.yml", {}).get("seeds", [])
+    log_section("WEEKLY OPENALEX CITATION EXPANSION")
+    for index, seed in enumerate(seeds, 1):
+        dataset = seed.get("dataset", "unknown")
+        log_step(index, len(seeds), f"Recent citing papers for benchmark seed: {dataset}")
+        error = ""
+        try:
+            rows = search_openalex_citations(
+                seed,
+                args.citation_limit,
+                start_date=start.isoformat(),
+                end_date=end.isoformat(),
+            )
+            successful_calls += 1
+        except Exception as exc:
+            error = str(exc)
+            rows = []
+            failed_calls += 1
+            log(f"OpenAlex citation search failed for {dataset}: {exc}")
+        all_records.extend(rows)
+        search_stats["citation:openalex"] = search_stats.get("citation:openalex", 0) + len(rows)
+        detail_rows.append(
+            {
+                "phase": "weekly_citation",
+                "source": "openalex",
+                "query": dataset,
+                "count": len(rows),
+                "error": error,
+            }
+        )
         time.sleep(args.sleep)
 
     all_records = filter_records_by_date(all_records, start.isoformat(), end.isoformat())
@@ -2249,8 +2297,9 @@ def build_parser() -> argparse.ArgumentParser:
     p.set_defaults(func=cmd_backfill)
 
     p = sub.add_parser("weekly", help="weekly recent search")
-    p.add_argument("--days", type=int, default=14)
+    p.add_argument("--days", type=int, default=30)
     p.add_argument("--limit-per-query", type=int, default=15)
+    p.add_argument("--citation-limit", type=int, default=100)
     p.add_argument("--output", default="data/weekly_candidates.yml")
     p.add_argument("--report", default="data/reports/weekly_search_report.md")
     p.add_argument("--sleep", type=float, default=0.5)

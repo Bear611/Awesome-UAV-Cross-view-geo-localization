@@ -9,7 +9,7 @@ on:
       days:
         description: "Search window in days"
         required: false
-        default: "14"
+        default: "30"
       limit_per_query:
         description: "Result limit per keyword query"
         required: false
@@ -18,6 +18,10 @@ on:
         description: "Max papers to classify in this run, 0 means all"
         required: false
         default: "0"
+      citation_limit:
+        description: "Recent citing papers per benchmark seed"
+        required: false
+        default: "100"
 
 permissions:
   contents: write
@@ -62,8 +66,9 @@ jobs:
           OPENALEX_MAILTO: ${{ vars.OPENALEX_MAILTO }}
         run: |
           python scripts/uav_cvgl_auto.py weekly \
-            --days ${{ github.event.inputs.days || '14' }} \
-            --limit-per-query ${{ github.event.inputs.limit_per_query || '15' }}
+            --days ${{ github.event.inputs.days || '30' }} \
+            --limit-per-query ${{ github.event.inputs.limit_per_query || '15' }} \
+            --citation-limit ${{ github.event.inputs.citation_limit || '100' }}
 
       - name: Classify and summarize candidates
         env:
@@ -82,8 +87,10 @@ jobs:
             --limit ${{ github.event.inputs.classify_limit || '0' }}
           python scripts/uav_cvgl_auto.py stats --input data/weekly_candidates.yml
 
-      - name: Build weekly update page
-        run: python scripts/uav_cvgl_auto.py build-weekly
+      - name: Build weekly update and paper classification pages
+        run: |
+          python scripts/uav_cvgl_auto.py merge --candidates data/weekly_candidates.yml
+          python scripts/uav_cvgl_auto.py build-weekly
 
       - name: Upload weekly diagnostics
         if: always()
@@ -98,6 +105,8 @@ jobs:
             data/reports/weekly_search_report.json
             data/reports/classification_report.md
             data/reports/classification_report.json
+            data/papers.yml
+            papers/*.md
             weekly_updates/*.md
 
       - name: Create pull request
@@ -112,9 +121,12 @@ jobs:
             Please review before merging:
             - data/weekly_candidates.yml
             - data/reports/weekly_search_report.md
+            - data/papers.yml
+            - papers/*.md
             - weekly_updates/*.md
             - DeepSeek classification
             - MiniMax summaries
 
-            This PR does not verify leaderboard results.
+            Parsed papers are added to the paper classification and introduction pages.
+            Leaderboard metrics remain unverified candidates and are not promoted automatically.
           labels: automated-update, weekly
