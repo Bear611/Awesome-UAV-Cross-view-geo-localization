@@ -13,7 +13,7 @@ Pipeline:
 3. Deduplication.
 4. DeepSeek classification, one paper per API call.
 5. MiniMax full-text-assisted English summary and category confirmation, one relevant paper per API call.
-6. Merge parsed candidates into `data/papers.yml` and rebuild the five paper classification/introduction pages in the automated review PR.
+6. Incrementally add parsed candidates to `data/papers.yml` and insert their summaries into the matching paper classification/introduction pages in the automated review PR.
 7. Keep extracted leaderboard metrics as unverified review evidence; public leaderboard files are never modified by this pipeline.
 
 ### Weekly Watch
@@ -27,7 +27,7 @@ The scheduled workflow runs every Monday and keeps the existing API chain unchan
 3. Filter all sources to the requested publication window (30 days by default) and deduplicate against the cumulative candidate cache.
 4. Use DeepSeek for abstract-level relevance classification.
 5. For relevant candidates, resolve an accessible PDF/HTML full text and send the extracted text and table evidence to MiniMax-M3.
-6. Merge parsed papers into `data/papers.yml` and rebuild `papers/retrieval.md`, `papers/fine_pose_localization.md`, `papers/unified_global_to_local.md`, `papers/navigation_aided.md`, and `papers/survey.md`.
+6. Incrementally add parsed papers to `data/papers.yml` and insert their introductions into the matching page among `papers/retrieval.md`, `papers/fine_pose_localization.md`, `papers/unified_global_to_local.md`, `papers/navigation_aided.md`, and `papers/survey.md`. The full-text MiniMax category takes precedence when it differs from the abstract-only DeepSeek category, and the disagreement remains flagged for review.
 7. Generate a digest containing only candidates first discovered in the current ISO week.
 8. Open or update the automated review pull request; maintainers still review the generated paper entries before merging the PR.
 

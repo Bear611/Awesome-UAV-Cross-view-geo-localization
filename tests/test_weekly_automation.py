@@ -345,6 +345,57 @@ class WeeklyAutomationTests(unittest.TestCase):
             self.assertFalse((root / "data" / "leaderboards.csv").exists())
             self.assertFalse((root / "leaderboards").exists())
 
+    def test_incremental_merge_preserves_existing_yaml_and_uses_full_text_category(self) -> None:
+        existing = {
+            "id": "existing",
+            "title": "Existing Paper",
+            "year": 2025,
+            "classification": {"main_category": "retrieval"},
+            "summary": {"summary_en": "Existing summary."},
+            "status": "parsed",
+        }
+        new_record = {
+            "id": "new",
+            "title": "New Coarse-to-Fine Paper",
+            "year": 2026,
+            "classification": {
+                "main_category": "retrieval",
+                "minimax_main_category": "unified_global_to_local",
+            },
+            "summary": {
+                "main_category": "unified_global_to_local",
+                "summary_en": "A full-text-confirmed global-to-local method.",
+            },
+            "status": "parsed",
+            "verified": False,
+        }
+        with tempfile.TemporaryDirectory() as temp_dir:
+            root = Path(temp_dir)
+            (root / "data").mkdir()
+            original_text = "- id: existing\n  title: Existing Paper\n  year: 2025\n  classification: {main_category: retrieval}\n  summary: {summary_en: Existing summary.}\n  status: parsed\n"
+            (root / "data" / "papers.yml").write_text(original_text, encoding="utf-8")
+            candidate_path = root / "candidate.yml"
+            candidate_path.write_text(yaml.safe_dump([new_record], sort_keys=False), encoding="utf-8")
+            for category, path in auto.CATEGORY_TO_FILE.items():
+                target = root / path
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_text(
+                    f"# {category}\n\n| Paper | Research Content | Dataset / Benchmark | Code |\n|---|---|---|---|\n",
+                    encoding="utf-8",
+                )
+
+            with mock.patch.object(auto, "ROOT", root):
+                auto.cmd_merge(argparse.Namespace(candidates=str(candidate_path), require_verified=False))
+
+            merged_text = (root / "data" / "papers.yml").read_text(encoding="utf-8")
+            unified_page = (root / "papers" / "unified_global_to_local.md").read_text(encoding="utf-8")
+            retrieval_page = (root / "papers" / "retrieval.md").read_text(encoding="utf-8")
+            self.assertTrue(merged_text.startswith(original_text))
+            self.assertIn(new_record["title"], merged_text)
+            self.assertIn(new_record["title"], unified_page)
+            self.assertNotIn(new_record["title"], retrieval_page)
+            self.assertEqual(auto.paper_category(new_record), "unified_global_to_local")
+
 
 if __name__ == "__main__":
     unittest.main()

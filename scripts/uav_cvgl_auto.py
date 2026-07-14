@@ -2173,12 +2173,35 @@ def resolve_paper_link(title: str) -> Optional[str]:
     return f"https://www.semanticscholar.org/search?q={urllib.parse.quote(title)}"
 
 
+def paper_category(record: dict) -> str:
+    """Prefer the full-text category when available, then fall back to DeepSeek."""
+    summary = record.get("summary") or {}
+    classification = record.get("classification") or {}
+    category = summary.get("main_category") or classification.get("minimax_main_category")
+    if category not in CATEGORY_TO_FILE:
+        category = classification.get("main_category") or "retrieval"
+    return category if category in CATEGORY_TO_FILE else "retrieval"
+
+
+def paper_markdown_row(record: dict) -> str:
+    summary = record.get("summary") or {}
+    classification = record.get("classification") or {}
+    benchmarks = summary.get("benchmarks") or classification.get("datasets") or []
+    if isinstance(benchmarks, str):
+        benchmarks = [benchmarks]
+    code = summary.get("code_url") or (record.get("urls") or {}).get("code") or ""
+    code_cell = f"[Code]({code})" if code else "-"
+    paper_cell = md_link(record.get("title", "Untitled"), (record.get("urls") or {}).get("paper"))
+    return (
+        f"| {paper_cell} | {md_escape(summary.get('summary_en') or '')} | "
+        f"{md_escape(', '.join(benchmarks) if benchmarks else '-')} | {code_cell} |"
+    )
+
+
 def build_paper_pages(records: List[dict]) -> None:
     grouped: Dict[str, List[dict]] = {k: [] for k in CATEGORY_TO_FILE}
     for r in records:
-        cat = ((r.get("classification") or {}).get("main_category")) or "retrieval"
-        if cat not in grouped:
-            cat = "retrieval"
+        cat = paper_category(r)
         grouped[cat].append(r)
 
     for cat, rows in grouped.items():
@@ -2191,35 +2214,107 @@ def build_paper_pages(records: List[dict]) -> None:
         md.append("| Paper | Research Content | Dataset / Benchmark | Code |")
         md.append("|---|---|---|---|")
         for r in rows:
-            summ = r.get("summary") or {}
-            cls = r.get("classification") or {}
-            benchmarks = summ.get("benchmarks") or cls.get("datasets") or []
-            if isinstance(benchmarks, str):
-                benchmarks = [benchmarks]
-            code = summ.get("code_url") or (r.get("urls") or {}).get("code") or ""
-            code_cell = f"[Code]({code})" if code else "-"
-            paper_cell = md_link(r.get("title", "Untitled"), (r.get("urls") or {}).get("paper"))
-            md.append(
-                f"| {paper_cell} | {md_escape(summ.get('summary_en') or '')} | {md_escape(', '.join(benchmarks) if benchmarks else '-')} | {code_cell} |"
-            )
+            md.append(paper_markdown_row(r))
         md.append("")
         write_text(CATEGORY_TO_FILE[cat], "\n".join(md))
+
+
+def same_paper(left: dict, right: dict) -> bool:
+    left_source = left.get("source") or {}
+    right_source = right.get("source") or {}
+    for field in ["doi", "arxiv_id", "semantic_scholar_id", "openalex_id"]:
+        left_value = str(left_source.get(field) or "").strip().lower()
+        right_value = str(right_source.get(field) or "").strip().lower()
+        if left_value and right_value and left_value == right_value:
+            return True
+    left_title = norm_title(left.get("title", ""))
+    right_title = norm_title(right.get("title", ""))
+    return bool(left_title and right_title and fuzz.ratio(left_title, right_title) >= 96)
+
+
+def append_yaml_records(path: str | Path, records: List[dict]) -> None:
+    if not records:
+        return
+    current = read_text(path, "")
+    addition = yaml.safe_dump(records, allow_unicode=True, sort_keys=False, width=120)
+    if current and not current.endswith("\n"):
+        current += "\n"
+    write_text(path, current + addition)
+
+
+def update_paper_pages(records: List[dict]) -> None:
+    """Insert only new rows so a weekly run does not rewrite historical introductions."""
+    grouped: Dict[str, List[dict]] = {}
+    for record in records:
+        grouped.setdefault(paper_category(record), []).append(record)
+
+    for category, rows in grouped.items():
+        path = CATEGORY_TO_FILE[category]
+        text = read_text(path, "")
+        if not text:
+            lines = [f"# {CATEGORY_NAMES[category]}", ""]
+            if category == "navigation_aided":
+                lines.extend(
+                    [
+                        "> This is a related category. General UAV navigation/SLAM papers are included only when they are directly connected to visual geo-localization or cross-view map association.",
+                        "",
+                    ]
+                )
+            lines.extend(["| Paper | Research Content | Dataset / Benchmark | Code |", "|---|---|---|---|"])
+            lines.extend(paper_markdown_row(record) for record in rows)
+            write_text(path, "\n".join(lines) + "\n")
+            continue
+        lines = text.splitlines()
+        separator_index = next(
+            (index for index, line in enumerate(lines) if line.strip() == "|---|---|---|---|"),
+            None,
+        )
+        if separator_index is None:
+            raise RuntimeError(f"paper page table header is missing: {path}")
+        existing_titles = set()
+        for line in lines:
+            match = re.match(r"^\|\s*\[([^\]]+)\]\(", line)
+            if match:
+                existing_titles.add(norm_title(match.group(1)))
+        new_rows = [
+            paper_markdown_row(record)
+            for record in sorted(rows, key=lambda item: ((item.get("year") or 0), item.get("title") or ""), reverse=True)
+            if norm_title(record.get("title", "")) not in existing_titles
+        ]
+        if new_rows:
+            lines[separator_index + 1:separator_index + 1] = new_rows
+            write_text(path, "\n".join(lines) + "\n")
 
 
 def cmd_merge(args: argparse.Namespace) -> None:
     candidates = read_yaml(args.candidates, []) or []
     existing = read_yaml("data/papers.yml", []) or []
-    to_merge = []
+    eligible = []
     for r in candidates:
         if r.get("status") != "parsed":
             continue
         if args.require_verified and not r.get("verified"):
             continue
-        to_merge.append(r)
-    merged = deduplicate(existing + to_merge)
-    write_yaml("data/papers.yml", merged)
-    build_paper_pages(merged)
-    log(f"merged {len(to_merge)} parsed candidates; data/papers.yml now has {len(merged)} papers")
+        eligible.append(r)
+
+    new_records: List[dict] = []
+    known = list(existing)
+    for record in eligible:
+        if any(same_paper(record, old) for old in known):
+            continue
+        new_records.append(record)
+        known.append(record)
+
+    papers_path = ROOT / "data/papers.yml"
+    if papers_path.exists():
+        append_yaml_records("data/papers.yml", new_records)
+    else:
+        write_yaml("data/papers.yml", new_records)
+    update_paper_pages(new_records)
+    log(
+        f"eligible parsed candidates={len(eligible)}, newly merged={len(new_records)}; "
+        f"data/papers.yml now has {len(existing) + len(new_records)} papers"
+    )
 
 
 def cmd_build_weekly(args: argparse.Namespace) -> None:
