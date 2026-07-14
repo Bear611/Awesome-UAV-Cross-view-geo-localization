@@ -390,6 +390,11 @@ def request_json(url: str, *, params: Optional[dict] = None, headers: Optional[d
     return None
 
 
+def is_rate_limit_error(exc: Exception) -> bool:
+    status_code = getattr(getattr(exc, "response", None), "status_code", None)
+    return status_code == 429 or bool(re.search(r"(?:\b429\b|rate[ -]?limit)", str(exc), flags=re.I))
+
+
 def paper_from_semantic(item: dict, found_by: dict) -> dict:
     external = item.get("externalIds") or {}
     url = item.get("url") or None
@@ -1777,6 +1782,7 @@ def cmd_weekly(args: argparse.Namespace) -> None:
     detail_rows: List[dict] = []
     successful_calls = 0
     failed_calls = 0
+    disabled_sources = set()
     keywords = load_keywords("weekly")
     log_section("WEEKLY SEARCH START")
     log(f"Publication window: {start.isoformat()} to {end.isoformat()}")
@@ -1811,6 +1817,14 @@ def cmd_weekly(args: argparse.Namespace) -> None:
                 ),
             ),
         ]:
+            if source_name in disabled_sources:
+                error = "skipped after an earlier rate-limit failure in this run"
+                rows = []
+                search_stats.setdefault(source_name, 0)
+                detail_rows.append(
+                    {"phase": "weekly", "source": source_name, "query": q, "count": 0, "error": error}
+                )
+                continue
             error = ""
             try:
                 rows = fn()
@@ -1820,6 +1834,9 @@ def cmd_weekly(args: argparse.Namespace) -> None:
                 rows = []
                 failed_calls += 1
                 log(f"{source_name} keyword search failed for {q}: {exc}")
+                if is_rate_limit_error(exc):
+                    disabled_sources.add(source_name)
+                    log(f"{source_name} disabled for remaining weekly queries after exhausted rate-limit retries")
             all_records.extend(rows)
             search_stats[source_name] = search_stats.get(source_name, 0) + len(rows)
             detail_rows.append(

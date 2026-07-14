@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import datetime as dt
+import json
 import os
 import tempfile
 import unittest
@@ -221,6 +222,44 @@ class WeeklyAutomationTests(unittest.TestCase):
             self.assertEqual(len(candidates), 1)
             self.assertEqual(report_json["search_stats"]["openalex"], 1)
             self.assertIn("rate limited", report_json["details"][0]["error"])
+
+    def test_weekly_search_disables_rate_limited_source_for_remaining_keywords(self) -> None:
+        today = dt.date.today().isoformat()
+        record = {
+            "id": "new-paper",
+            "title": "New UAV Paper",
+            "year": dt.date.today().year,
+            "publication_date": today,
+            "source": {"doi": "10.1000/test"},
+            "discovery": {"found_date": today, "found_by": [{"source": "openalex"}]},
+            "status": "raw",
+            "verified": False,
+        }
+        with tempfile.TemporaryDirectory() as temp_dir:
+            output = str(Path(temp_dir) / "weekly.yml")
+            report = str(Path(temp_dir) / "weekly_report.md")
+            args = argparse.Namespace(days=14, limit_per_query=1, output=output, report=report, sleep=0.0)
+            with (
+                mock.patch.object(auto, "load_keywords", return_value=["query one", "query two"]),
+                mock.patch.object(
+                    auto, "search_semantic_keyword", side_effect=RuntimeError("429 rate limited")
+                ) as semantic,
+                mock.patch.object(auto, "search_openalex_keyword", return_value=[record]) as openalex,
+                mock.patch.object(auto, "search_arxiv_keyword", return_value=[]) as arxiv,
+            ):
+                auto.cmd_weekly(args)
+
+            self.assertEqual(semantic.call_count, 1)
+            self.assertEqual(openalex.call_count, 2)
+            self.assertEqual(arxiv.call_count, 2)
+            report_json = json.loads(Path(report).with_suffix(".json").read_text(encoding="utf-8"))
+            skipped = [
+                row
+                for row in report_json["details"]
+                if row["source"] == "semantic_scholar" and row["query"] == "query two"
+            ]
+            self.assertEqual(len(skipped), 1)
+            self.assertIn("skipped after", skipped[0]["error"])
 
 
 if __name__ == "__main__":
