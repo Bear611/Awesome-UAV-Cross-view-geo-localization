@@ -86,6 +86,11 @@ def openalex_params(extra: Optional[dict] = None) -> dict:
     return params
 
 
+def env_value(name: str, default: str) -> str:
+    """Return a stripped environment value without letting an empty Actions var erase a default."""
+    return os.getenv(name, "").strip() or default
+
+
 def normalize_deepseek_api_key(api_key: str) -> str:
     key = (api_key or "").strip()
     if key.lower().startswith("ds:"):
@@ -227,6 +232,52 @@ def semantic_headers() -> Dict[str, str]:
     return {"x-api-key": key} if key else {}
 
 
+def parse_iso_date(value: Any) -> Optional[dt.date]:
+    text = str(value or "").strip()
+    if not text:
+        return None
+    try:
+        return dt.date.fromisoformat(text[:10])
+    except ValueError:
+        return None
+
+
+def record_publication_date(record: dict) -> Optional[dt.date]:
+    value = parse_iso_date(record.get("publication_date"))
+    if value:
+        return value
+    discovery = record.get("discovery") or {}
+    return parse_iso_date(discovery.get("publication_date"))
+
+
+def filter_records_by_date(
+    records: List[dict],
+    start_date: Optional[str],
+    end_date: Optional[str],
+) -> List[dict]:
+    """Filter known publication dates while retaining records whose exact date is unavailable."""
+    start = parse_iso_date(start_date)
+    end = parse_iso_date(end_date)
+    out: List[dict] = []
+    for record in records:
+        published = record_publication_date(record)
+        if published and start and published < start:
+            continue
+        if published and end and published > end:
+            continue
+        if not published:
+            try:
+                year = int(record.get("year"))
+            except (TypeError, ValueError):
+                year = None
+            if year is not None and start and year < start.year:
+                continue
+            if year is not None and end and year > end.year:
+                continue
+        out.append(record)
+    return out
+
+
 def request_json(url: str, *, params: Optional[dict] = None, headers: Optional[dict] = None, method: str = "GET", json_body: Any = None, retries: int = 3, timeout: Optional[float] = None) -> Any:
     request_timeout = DEFAULT_TIMEOUT if timeout is None else timeout
     for attempt in range(1, retries + 1):
@@ -266,6 +317,7 @@ def paper_from_semantic(item: dict, found_by: dict) -> dict:
         "venue": item.get("venue") or "",
         "authors": authors,
         "abstract": item.get("abstract") or "",
+        "publication_date": item.get("publicationDate") or "",
         "urls": {
             "paper": url,
             "pdf": ((item.get("openAccessPdf") or {}).get("url")) or "",
@@ -287,14 +339,21 @@ def paper_from_semantic(item: dict, found_by: dict) -> dict:
     }
 
 
-def search_semantic_keyword(query: str, limit: int) -> List[dict]:
+def search_semantic_keyword(
+    query: str,
+    limit: int,
+    *,
+    start_date: Optional[str] = None,
+    end_date: Optional[str] = None,
+) -> List[dict]:
     log(f"Semantic Scholar keyword search: {query}")
     url = "https://api.semanticscholar.org/graph/v1/paper/search"
     fields = "title,abstract,year,venue,url,externalIds,authors,publicationDate,citationCount,isOpenAccess,openAccessPdf"
     params = {"query": query, "limit": min(limit, 100), "fields": fields}
     data = request_json(url, params=params, headers=semantic_headers())
     items = data.get("data", []) if isinstance(data, dict) else []
-    return [paper_from_semantic(x, {"source": "semantic_scholar", "keyword": query}) for x in items]
+    records = [paper_from_semantic(x, {"source": "semantic_scholar", "keyword": query}) for x in items]
+    return filter_records_by_date(records, start_date, end_date)
 
 
 def find_semantic_paper_id_by_title(title: str) -> Optional[str]:
@@ -371,6 +430,7 @@ def search_openalex_keyword(query: str, limit: int, *, start_date: Optional[str]
             "venue": ((item.get("primary_location") or {}).get("source") or {}).get("display_name", ""),
             "authors": authors,
             "abstract": abstract,
+            "publication_date": item.get("publication_date") or "",
             "urls": {"paper": urlp, "pdf": "", "code": "", "project": ""},
             "source": {"semantic_scholar_id": "", "doi": doi.replace("https://doi.org/", ""), "arxiv_id": "", "openalex_id": item.get("id") or ""},
             "discovery": {"found_date": dt.date.today().isoformat(), "found_by": [{"source": "openalex", "keyword": query}]},
@@ -405,6 +465,7 @@ def paper_from_openalex_item(item: dict, found_by: dict) -> dict:
         "venue": ((item.get("primary_location") or {}).get("source") or {}).get("display_name", ""),
         "authors": authors,
         "abstract": abstract,
+        "publication_date": item.get("publication_date") or "",
         "urls": {"paper": urlp, "pdf": "", "code": "", "project": ""},
         "source": {
             "semantic_scholar_id": "",
@@ -540,6 +601,7 @@ def search_arxiv_keyword(query: str, limit: int, *, start_date: Optional[str] = 
             "venue": "arXiv",
             "authors": [a for a in authors if a],
             "abstract": summary,
+            "publication_date": pub_date.isoformat() if pub_date else "",
             "urls": {"paper": arxiv_url, "pdf": arxiv_url.replace("/abs/", "/pdf/") if "/abs/" in arxiv_url else "", "code": "", "project": ""},
             "source": {"semantic_scholar_id": "", "doi": "", "arxiv_id": arxiv_id, "openalex_id": ""},
             "discovery": {"found_date": dt.date.today().isoformat(), "found_by": [{"source": "arxiv", "keyword": query}]},
@@ -585,12 +647,25 @@ def deduplicate(records: List[dict]) -> List[dict]:
             continue
 
         old = by_key[chosen]
-        old_fb = ((old.get("discovery") or {}).get("found_by") or [])
+        old_discovery = old.setdefault("discovery", {})
+        new_discovery = r.get("discovery") or {}
+        old_fb = (old_discovery.get("found_by") or [])
         new_fb = ((r.get("discovery") or {}).get("found_by") or [])
-        old.setdefault("discovery", {})["found_by"] = old_fb + new_fb
+        combined_found_by: List[dict] = []
+        seen_found_by: set[str] = set()
+        for item in old_fb + new_fb:
+            marker = json.dumps(item, ensure_ascii=False, sort_keys=True)
+            if marker not in seen_found_by:
+                seen_found_by.add(marker)
+                combined_found_by.append(item)
+        old_discovery["found_by"] = combined_found_by
+        if not old_discovery.get("found_date") and new_discovery.get("found_date"):
+            old_discovery["found_date"] = new_discovery["found_date"]
+        if new_discovery.get("found_date"):
+            old_discovery["last_seen_date"] = new_discovery["found_date"]
 
         # Fill missing metadata.
-        for field in ["abstract", "venue", "year"]:
+        for field in ["abstract", "venue", "year", "publication_date"]:
             if not old.get(field) and r.get(field):
                 old[field] = r[field]
         for group in ["urls", "source"]:
@@ -613,7 +688,7 @@ def deepseek_classify(paper: dict) -> dict:
     api_key = normalize_deepseek_api_key(os.getenv("DEEPSEEK_API_KEY", ""))
     if not api_key:
         raise RuntimeError("DEEPSEEK_API_KEY is not set")
-    model = os.getenv("DEEPSEEK_MODEL", "deepseek-chat")
+    model = env_value("DEEPSEEK_MODEL", "deepseek-chat")
     abstract = (paper.get("abstract") or "")[:6000]
     benchmarks = read_yaml("configs/benchmarks.yml", {}).get("benchmarks", [])
     system = (
@@ -682,10 +757,10 @@ def minimax_summary(paper: dict, use_pdf: bool = False) -> dict:
     api_key = os.getenv("MINIMAX_API_KEY", "").strip()
     if not api_key:
         raise RuntimeError("MINIMAX_API_KEY is not set")
-    model = os.getenv("MINIMAX_MODEL", "MiniMax-M3")
+    model = env_value("MINIMAX_MODEL", "MiniMax-M3")
     if model != "MiniMax-M3":
         raise RuntimeError(f"MINIMAX_MODEL must be MiniMax-M3 for this pipeline, got {model!r}")
-    base_url = os.getenv("MINIMAX_BASE_URL", "https://api.minimaxi.com/v1").rstrip("/")
+    base_url = env_value("MINIMAX_BASE_URL", "https://api.minimaxi.com/v1").rstrip("/")
     abstract = (paper.get("abstract") or "")[:5000]
     cls = paper.get("classification") or {}
     known_benchmarks = read_yaml("configs/benchmarks.yml", {}).get("benchmarks", []) or []
@@ -823,18 +898,11 @@ def filter_leaderboard_metrics(metrics: List[dict], known_benchmarks: List[str],
         "dark",
         "night",
         "altitude-only",
-        "150m",
-        "200m",
-        "250m",
-        "300m",
-        "same-area",
-        "cross-area",
         "prompt",
         "tta",
         "re-ranking",
         "reranking",
         "backbone",
-        "module",
     ]
     out: List[dict] = []
     for row in metrics:
@@ -978,7 +1046,7 @@ Return JSON:
 }}
 """.strip()
     payload = {
-        "model": os.getenv("DEEPSEEK_MODEL", "deepseek-chat"),
+        "model": env_value("DEEPSEEK_MODEL", "deepseek-chat"),
         "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}],
         "temperature": 0.0,
         "response_format": {"type": "json_object"},
@@ -1404,7 +1472,7 @@ def write_search_report(report: dict, path: str) -> None:
     json_path = str(path).replace(".md", ".json")
     write_text(json_path, json.dumps(report, ensure_ascii=False, indent=2))
     md = [
-        f"# UAV-CVGL Backfill Search Report",
+        f"# UAV-CVGL {str(report.get('mode') or 'search').title()} Search Report",
         "",
         f"Generated at: `{report.get('generated_at')}`",
         "",
@@ -1421,9 +1489,16 @@ def write_search_report(report: dict, path: str) -> None:
     ]
     for k, v in sorted((report.get("search_stats") or {}).items()):
         md.append(f"| {k} | {v} |")
-    md += ["", "## Detailed Search Steps", "", "| Phase | Source | Query / Seed | Count |", "|---|---|---|---:|"]
+    md += [
+        "", "## Detailed Search Steps", "",
+        "| Phase | Source | Query / Seed | Count | Error |",
+        "|---|---|---|---:|---|",
+    ]
     for row in report.get("details", []):
-        md.append(f"| {md_escape(row.get('phase'))} | {md_escape(row.get('source'))} | {md_escape(row.get('query'))} | {row.get('count', 0)} |")
+        md.append(
+            f"| {md_escape(row.get('phase'))} | {md_escape(row.get('source'))} | "
+            f"{md_escape(row.get('query'))} | {row.get('count', 0)} | {md_escape(row.get('error') or '-')} |"
+        )
     md.append("")
     write_text(path, "\n".join(md))
 
@@ -1482,6 +1557,58 @@ def write_classification_report(records: List[dict], path: str) -> None:
         md.append(f"| {k} | {v} |")
     md.append("")
     write_text(path, "\n".join(md))
+
+def candidate_needs_processing(
+    record: dict,
+    *,
+    force_classification: bool = False,
+    force_summary: bool = False,
+    skip_minimax: bool = False,
+) -> bool:
+    if force_classification or force_summary:
+        return True
+    status = record.get("status")
+    classification = record.get("classification") or {}
+    summary = record.get("summary") or {}
+    if status == "rejected" and classification:
+        return False
+    if status == "parsed" and classification and (skip_minimax or "leaderboard_metrics" in summary):
+        return False
+    return True
+
+
+def weekly_digest_records(records: List[dict], target_date: dt.date) -> List[dict]:
+    week_start = target_date - dt.timedelta(days=target_date.weekday())
+    week_end = week_start + dt.timedelta(days=6)
+    out: List[dict] = []
+    for record in records:
+        if record.get("status") not in {"parsed", "error"}:
+            continue
+        found = parse_iso_date((record.get("discovery") or {}).get("found_date"))
+        if found and week_start <= found <= week_end:
+            out.append(record)
+    return out
+
+
+def cmd_preflight(args: argparse.Namespace) -> None:
+    missing = []
+    if args.require_llm:
+        if not normalize_deepseek_api_key(os.getenv("DEEPSEEK_API_KEY", "")):
+            missing.append("DEEPSEEK_API_KEY")
+        if not os.getenv("MINIMAX_API_KEY", "").strip():
+            missing.append("MINIMAX_API_KEY")
+    if missing:
+        raise RuntimeError(f"Missing required GitHub Secrets: {', '.join(missing)}")
+    minimax_model = env_value("MINIMAX_MODEL", "MiniMax-M3")
+    if minimax_model != "MiniMax-M3":
+        raise RuntimeError(f"MINIMAX_MODEL must be MiniMax-M3, got {minimax_model!r}")
+    log(
+        "preflight passed: required secrets are present; "
+        f"DeepSeek model={env_value('DEEPSEEK_MODEL', 'deepseek-chat')}; MiniMax model={minimax_model}"
+    )
+    if not os.getenv("SEMANTIC_SCHOLAR_API_KEY", "").strip():
+        log("warning: SEMANTIC_SCHOLAR_API_KEY is not set; search will continue with public rate limits")
+
 
 def cmd_backfill(args: argparse.Namespace) -> None:
     all_records: List[dict] = []
@@ -1556,45 +1683,130 @@ def cmd_backfill(args: argparse.Namespace) -> None:
 
 def cmd_weekly(args: argparse.Namespace) -> None:
     end = dt.date.today()
-    start = end - dt.timedelta(days=args.days)
+    start = end - dt.timedelta(days=max(args.days - 1, 0))
     all_records: List[dict] = []
-    for q in load_keywords("weekly"):
-        all_records += search_semantic_keyword(q, args.limit_per_query)
-        all_records += search_openalex_keyword(q, args.limit_per_query, start_date=start.isoformat(), end_date=end.isoformat())
-        all_records += search_arxiv_keyword(q, args.limit_per_query, start_date=start.isoformat(), end_date=end.isoformat())
+    search_stats: Dict[str, int] = {}
+    detail_rows: List[dict] = []
+    successful_calls = 0
+    failed_calls = 0
+    keywords = load_keywords("weekly")
+    log_section("WEEKLY SEARCH START")
+    log(f"Publication window: {start.isoformat()} to {end.isoformat()}")
+    for index, q in enumerate(keywords, 1):
+        log_step(index, len(keywords), f"Keyword search: {q}")
+        for source_name, fn in [
+            (
+                "semantic_scholar",
+                lambda: search_semantic_keyword(
+                    q,
+                    args.limit_per_query,
+                    start_date=start.isoformat(),
+                    end_date=end.isoformat(),
+                ),
+            ),
+            (
+                "openalex",
+                lambda: search_openalex_keyword(
+                    q,
+                    args.limit_per_query,
+                    start_date=start.isoformat(),
+                    end_date=end.isoformat(),
+                ),
+            ),
+            (
+                "arxiv",
+                lambda: search_arxiv_keyword(
+                    q,
+                    args.limit_per_query,
+                    start_date=start.isoformat(),
+                    end_date=end.isoformat(),
+                ),
+            ),
+        ]:
+            error = ""
+            try:
+                rows = fn()
+                successful_calls += 1
+            except Exception as exc:
+                error = str(exc)
+                rows = []
+                failed_calls += 1
+                log(f"{source_name} keyword search failed for {q}: {exc}")
+            all_records.extend(rows)
+            search_stats[source_name] = search_stats.get(source_name, 0) + len(rows)
+            detail_rows.append(
+                {"phase": "weekly", "source": source_name, "query": q, "count": len(rows), "error": error}
+            )
         time.sleep(args.sleep)
 
-    # Keep only recent where a date is known; if date unknown, keep but let DeepSeek decide.
+    all_records = filter_records_by_date(all_records, start.isoformat(), end.isoformat())
+    current_unique = deduplicate(all_records)
     merged = merge_existing_candidates(args.output, all_records)
     write_yaml(args.output, merged)
-    log(f"weekly wrote {len(merged)} candidates to {args.output}")
+    report = {
+        "generated_at": dt.datetime.now().isoformat(timespec="seconds"),
+        "mode": "weekly",
+        "start_date": start.isoformat(),
+        "end_date": end.isoformat(),
+        "raw_records": len(all_records),
+        "current_unique_candidates": len(current_unique),
+        "deduplicated_candidates": len(merged),
+        "search_stats": search_stats,
+        "successful_calls": successful_calls,
+        "failed_calls": failed_calls,
+        "details": detail_rows,
+        "output": args.output,
+    }
+    write_search_report(report, args.report)
+    log_section("WEEKLY SEARCH SUMMARY")
+    log(f"Current-window unique candidates: {len(current_unique)}")
+    log(f"Cumulative candidates: {len(merged)}")
+    log(f"Source counts: {compact_count_table(search_stats)}")
+    log(f"Candidate file: {args.output}")
+    log(f"Search report: {args.report}")
+    if successful_calls == 0:
+        raise RuntimeError("All weekly search API calls failed; see the weekly search report for details")
 
 
 def cmd_classify(args: argparse.Namespace) -> None:
     records = read_yaml(args.input, []) or []
     threshold = {"backfill": 0.60, "weekly": 0.75, "migrate": 0.0}[args.mode]
     total = len(records)
-    limit = args.limit if args.limit and args.limit > 0 else total
+    eligible = sum(
+        candidate_needs_processing(
+            record,
+            force_classification=args.force_classification,
+            force_summary=args.force_summary,
+            skip_minimax=args.skip_minimax,
+        )
+        for record in records
+    )
+    limit = min(args.limit, eligible) if args.limit and args.limit > 0 else eligible
     output_path = args.output or args.input
 
     processed = deepseek_calls = minimax_calls = parsed = rejected = errors = 0
+    deepseek_attempts = deepseek_errors = minimax_attempts = minimax_errors = 0
 
+    selected = 0
     for i, r in enumerate(records):
-        if i >= limit:
-            break
         title = r.get("title") or "Untitled"
-        cached_status = r.get("status")
-        cached_cls = r.get("classification") or {}
-        cached_summary = r.get("summary") or {}
-        if not args.force_classification and not args.force_summary:
-            if cached_status == "rejected" and cached_cls:
-                continue
-            if cached_status == "parsed" and cached_cls and (args.skip_minimax or (cached_summary and "leaderboard_metrics" in cached_summary)):
-                continue
+        if not candidate_needs_processing(
+            r,
+            force_classification=args.force_classification,
+            force_summary=args.force_summary,
+            skip_minimax=args.skip_minimax,
+        ):
+            continue
+        if selected >= limit:
+            break
+        selected += 1
         log(f"[{i + 1}/{total}] Processing: {title[:120]}")
+        stage = ""
         try:
             if args.force_classification or not r.get("classification"):
                 log(f"[{i + 1}/{total}] DeepSeek classify")
+                stage = "deepseek"
+                deepseek_attempts += 1
                 r["classification"] = deepseek_classify(r)
                 deepseek_calls += 1
             else:
@@ -1611,6 +1823,8 @@ def cmd_classify(args: argparse.Namespace) -> None:
                     needs_summary = not summary or "leaderboard_metrics" not in summary
                     if args.force_summary or needs_summary:
                         log(f"[{i + 1}/{total}] MiniMax summary")
+                        stage = "minimax"
+                        minimax_attempts += 1
                         r["summary"] = minimax_summary(r, args.use_pdf)
                         mini_cat = (r.get("summary") or {}).get("main_category")
                         if mini_cat in set(CATEGORY_TO_FILE) | {"unrelated"}:
@@ -1632,12 +1846,17 @@ def cmd_classify(args: argparse.Namespace) -> None:
             r["status"] = "error"
             r["error"] = str(e)
             errors += 1
+            if stage == "deepseek":
+                deepseek_errors += 1
+            elif stage == "minimax":
+                minimax_errors += 1
             log(f"[{i + 1}/{total}] Failed: {e}")
 
         processed += 1
+        r.setdefault("automation", {})["last_processed_date"] = dt.date.today().isoformat()
         write_yaml(output_path, records)
         log(
-            f"Progress: processed={processed}/{min(limit, total)}, parsed={parsed}, rejected={rejected}, "
+            f"Progress: processed={processed}/{limit}, parsed={parsed}, rejected={rejected}, "
             f"errors={errors}, deepseek_calls={deepseek_calls}, minimax_calls={minimax_calls}"
         )
         time.sleep(args.sleep)
@@ -1647,7 +1866,7 @@ def cmd_classify(args: argparse.Namespace) -> None:
     write_classification_report(records, args.report)
     log_section("CLASSIFICATION SUMMARY")
     log(
-        f"Done. processed={processed}, parsed={parsed}, rejected={rejected}, errors={errors}, "
+        f"Done. processed={processed}/{limit}, parsed={parsed}, rejected={rejected}, errors={errors}, "
         f"deepseek_calls={deepseek_calls}, minimax_calls={minimax_calls}"
     )
     log(
@@ -1657,6 +1876,10 @@ def cmd_classify(args: argparse.Namespace) -> None:
         f"error papers={cls_counts['error_papers']}, raw papers={cls_counts['raw_papers']}"
     )
     log(f"Classification report: {args.report}")
+    if deepseek_attempts and deepseek_errors == deepseek_attempts:
+        raise RuntimeError("All attempted DeepSeek classifications failed; inspect candidate errors and API configuration")
+    if minimax_attempts and minimax_errors == minimax_attempts:
+        raise RuntimeError("All attempted MiniMax summaries failed; inspect candidate errors and API configuration")
 
 
 def cmd_migrate_existing(args: argparse.Namespace) -> None:
@@ -1848,15 +2071,17 @@ def cmd_merge(args: argparse.Namespace) -> None:
 
 def cmd_build_weekly(args: argparse.Namespace) -> None:
     records = read_yaml(args.input, []) or []
-    today = dt.date.today()
+    today = parse_iso_date(args.date) or dt.date.today()
     iso = today.isocalendar()
     week_name = args.output or f"weekly_updates/{iso.year}-W{iso.week:02d}.md"
-    rows = [r for r in records if r.get("status") in {"parsed", "error"}]
+    rows = weekly_digest_records(records, today)
     md = [f"# Weekly UAV-CVGL Update: {iso.year}-W{iso.week:02d}", ""]
     md.append("This file is generated by the automated weekly search pipeline. All entries are unverified until manually reviewed.")
     md.append("")
     md.append("| Paper | Category | Dataset / Benchmark | Research Summary | Status |")
     md.append("|---|---|---|---|---|")
+    if not rows:
+        md.append("| No new parsed papers this week | - | - | - | - |")
     for r in rows:
         cls = r.get("classification") or {}
         summ = r.get("summary") or {}
@@ -1904,6 +2129,10 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="UAV-CVGL automation pipeline")
     sub = parser.add_subparsers(dest="cmd", required=True)
 
+    p = sub.add_parser("preflight", help="validate required automation configuration without calling APIs")
+    p.add_argument("--require-llm", action="store_true")
+    p.set_defaults(func=cmd_preflight)
+
     p = sub.add_parser("backfill", help="large-scale historical search")
     p.add_argument("--start-year", type=int, default=2016)
     p.add_argument("--end-year", type=int, default=dt.date.today().year)
@@ -1918,6 +2147,7 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--days", type=int, default=14)
     p.add_argument("--limit-per-query", type=int, default=15)
     p.add_argument("--output", default="data/weekly_candidates.yml")
+    p.add_argument("--report", default="data/reports/weekly_search_report.md")
     p.add_argument("--sleep", type=float, default=0.5)
     p.set_defaults(func=cmd_weekly)
 
@@ -1947,6 +2177,7 @@ def build_parser() -> argparse.ArgumentParser:
     p = sub.add_parser("build-weekly", help="build weekly markdown from weekly candidates")
     p.add_argument("--input", default="data/weekly_candidates.yml")
     p.add_argument("--output", default="")
+    p.add_argument("--date", default="", help="target date in YYYY-MM-DD format (defaults to today)")
     p.set_defaults(func=cmd_build_weekly)
 
     p = sub.add_parser("stats", help="show candidate processing stats")

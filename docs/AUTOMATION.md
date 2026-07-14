@@ -19,6 +19,28 @@ Pipeline:
 
 This mode searches recent papers only. It can run in GitHub Actions and open a pull request.
 
+The scheduled workflow runs every Monday and keeps the existing API chain unchanged:
+
+1. Search Semantic Scholar, OpenAlex, and arXiv using the configured weekly keywords.
+2. Filter all sources to the requested publication window and deduplicate against the cumulative candidate cache.
+3. Use DeepSeek for abstract-level relevance classification.
+4. For relevant candidates, resolve an accessible PDF/HTML full text and send the extracted text and table evidence to MiniMax-M3.
+5. Generate a digest containing only candidates first discovered in the current ISO week.
+6. Open or update the automated review pull request. Nothing is merged into the curated paper list automatically.
+
+`SEMANTIC_SCHOLAR_API_KEY` is passed to the search step. If one search provider is temporarily unavailable, the other providers continue and the failure is recorded in `data/reports/weekly_search_report.md`. The run fails only when every search call fails or required LLM Secrets are missing.
+
+Before searching, the workflow checks that `DEEPSEEK_API_KEY` and `MINIMAX_API_KEY` exist without printing their values. Empty optional repository variables no longer override the built-in defaults (`deepseek-chat`, `MiniMax-M3`, and `https://api.minimaxi.com/v1`).
+
+Official benchmark splits such as SUES-200's 150m/200m/250m/300m protocols and GTA-UAV's Cross-Area protocol are allowed through the unverified result extractor. Ablations, backbone sweeps, corruption subsets, and TTA/re-ranking variants remain excluded.
+
+### Weekly Watch Troubleshooting
+
+- `Validate automation configuration` fails: add the missing repository Secret shown in the error.
+- One provider is rate-limited: inspect the weekly search report; other providers should still complete.
+- `Classify and summarize candidates` reports an item error: inspect `data/weekly_candidates.yml` and the uploaded diagnostics artifact. Successfully processed candidates are checkpointed after each paper.
+- No weekly paper appears: a valid empty digest is generated when the current week has no newly parsed candidate; old candidates are not repeated.
+
 ## Why OpenAlex for Citation Expansion?
 
 arXiv does not provide a citation graph API. OpenAlex supports citation expansion through `filter=cites:<OpenAlexWorkId>`, so it is used for benchmark citation search.

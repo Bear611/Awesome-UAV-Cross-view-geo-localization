@@ -23,9 +23,14 @@ permissions:
   contents: write
   pull-requests: write
 
+concurrency:
+  group: weekly-uav-cvgl-search
+  cancel-in-progress: false
+
 jobs:
   weekly-search:
     runs-on: ubuntu-latest
+    timeout-minutes: 90
 
     steps:
       - uses: actions/checkout@v6
@@ -37,7 +42,23 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Run automation tests
+        run: python -m unittest discover -s tests -v
+
+      - name: Validate automation configuration
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
+          SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
+          DEEPSEEK_MODEL: ${{ vars.DEEPSEEK_MODEL }}
+          MINIMAX_MODEL: ${{ vars.MINIMAX_MODEL }}
+          MINIMAX_BASE_URL: ${{ vars.MINIMAX_BASE_URL }}
+        run: python scripts/uav_cvgl_auto.py preflight --require-llm
+
       - name: Search recent papers
+        env:
+          SEMANTIC_SCHOLAR_API_KEY: ${{ secrets.SEMANTIC_SCHOLAR_API_KEY }}
+          OPENALEX_MAILTO: ${{ vars.OPENALEX_MAILTO }}
         run: |
           python scripts/uav_cvgl_auto.py weekly \
             --days ${{ github.event.inputs.days || '14' }} \
@@ -62,6 +83,21 @@ jobs:
       - name: Build weekly update page
         run: python scripts/uav_cvgl_auto.py build-weekly
 
+      - name: Upload weekly diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: weekly-uav-cvgl-diagnostics-${{ github.run_id }}
+          if-no-files-found: ignore
+          retention-days: 14
+          path: |
+            data/weekly_candidates.yml
+            data/reports/weekly_search_report.md
+            data/reports/weekly_search_report.json
+            data/reports/classification_report.md
+            data/reports/classification_report.json
+            weekly_updates/*.md
+
       - name: Create pull request
         uses: peter-evans/create-pull-request@v8
         with:
@@ -73,6 +109,7 @@ jobs:
 
             Please review before merging:
             - data/weekly_candidates.yml
+            - data/reports/weekly_search_report.md
             - weekly_updates/*.md
             - DeepSeek classification
             - MiniMax summaries
