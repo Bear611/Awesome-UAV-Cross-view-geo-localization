@@ -130,6 +130,9 @@ def parse_api_bundle(raw: str) -> Dict[str, str]:
             scalar_values[match.group(1)] = value
 
     aliases = {
+        "DS": "DEEPSEEK_API_KEY",
+        "DSKEY": "DEEPSEEK_API_KEY",
+        "DSAPIKEY": "DEEPSEEK_API_KEY",
         "DEEPSEEK": "DEEPSEEK_API_KEY",
         "DEEPSEEKKEY": "DEEPSEEK_API_KEY",
         "DEEPSEEKTOKEN": "DEEPSEEK_API_KEY",
@@ -144,6 +147,26 @@ def parse_api_bundle(raw: str) -> Dict[str, str]:
         target = aliases.get(_normalized_secret_name(key))
         if target and value:
             result[target] = value
+
+    # Also accept compact provider-labelled text on one line, including JSON-like
+    # or comma/Chinese-punctuation separated forms. API tokens themselves do not
+    # contain whitespace, commas, semicolons, quotes, or closing braces.
+    provider_patterns = {
+        "DEEPSEEK_API_KEY": (
+            r"(?i)(?:^|[\s,;；{])['\"]?(?:deep\s*seek|ds)['\"]?"
+            r"\s*(?:[_ -]*api)?\s*(?:[_ -]*(?:key|token))?"
+            r"\s*[:=：]\s*['\"]?([^'\"\s,;；}\]]+)"
+        ),
+        "MINIMAX_API_KEY": (
+            r"(?i)(?:^|[\s,;；{])['\"]?mini\s*max['\"]?"
+            r"\s*(?:[_ -]*api)?\s*(?:[_ -]*(?:key|token))?"
+            r"\s*[:=：]\s*['\"]?([^'\"\s,;；}\]]+)"
+        ),
+    }
+    for target, pattern in provider_patterns.items():
+        match = re.search(pattern, text)
+        if match and match.group(1).strip():
+            result[target] = match.group(1).strip()
     return result
 
 

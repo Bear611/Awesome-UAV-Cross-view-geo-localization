@@ -180,6 +180,18 @@ class WeeklyAutomationTests(unittest.TestCase):
             self.assertEqual(auto.api_secret_value("DEEPSEEK_API_KEY"), "direct-deepseek")
             self.assertEqual(auto.api_secret_value("MINIMAX_API_KEY"), "minimax-bundle")
 
+    def test_combined_api_bundle_supports_compact_provider_labels(self) -> None:
+        variants = [
+            "deepseek: deepseek-value, minimax: minimax-value",
+            "DEEPSEEK_API_KEY=deepseek-value；MINIMAX_API_KEY：minimax-value",
+            "ds: deepseek-value minimax-token=minimax-value",
+        ]
+        for bundle in variants:
+            with self.subTest(bundle=bundle):
+                parsed = auto.parse_api_bundle(bundle)
+                self.assertEqual(parsed["DEEPSEEK_API_KEY"], "deepseek-value")
+                self.assertEqual(parsed["MINIMAX_API_KEY"], "minimax-value")
+
     def test_weekly_search_isolates_one_source_failure(self) -> None:
         today = dt.date.today().isoformat()
         record = {
