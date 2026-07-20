@@ -1,20 +1,22 @@
 {
-  "generated_at": "2026-07-14T15:29:43",
+  "generated_at": "2026-07-20T05:55:00",
   "classification_summary": {
-    "algorithm_papers": 1,
+    "algorithm_papers": 14,
     "survey_papers": 0,
-    "unrelated_papers": 2,
+    "unrelated_papers": 281,
     "error_papers": 0,
-    "raw_papers": 29
+    "raw_papers": 0
   },
   "category_counts": {
-    "retrieval": 1,
-    "unrelated": 2,
-    "unclassified": 29
+    "unrelated": 270,
+    "retrieval": 12,
+    "navigation_aided": 4,
+    "survey": 5,
+    "fine_pose_localization": 3,
+    "unified_global_to_local": 1
   },
   "status_counts": {
-    "parsed": 1,
-    "rejected": 2,
-    "raw": 29
+    "rejected": 281,
+    "parsed": 14
   }
 }
