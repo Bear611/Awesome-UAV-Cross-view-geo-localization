@@ -21804,3 +21804,2298 @@
     needs_review: true
   automation:
     last_processed_date: '2026-07-14'
+- id: 7a715e4a9856
+  title: 'WADL: Wide-Area Direct Localizer for Fast and Robust Cross-View UAV Geo-Localization'
+  year: 2026
+  venue: Lecture notes in computer science
+  authors:
+  - Shuo Chen
+  - Yibin Ye
+  - Zhang Li
+  - Xichao Teng
+  - Erting Pan
+  - Qifeng Yu
+  - Banglei Guan
+  abstract: ''
+  publication_date: '2026-09-30'
+  urls:
+    paper: https://doi.org/10.1007/978-3-032-39385-2_35
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: 10.1007/978-3-032-39385-2_35
+    arxiv_id: ''
+    openalex_id: https://openalex.org/W7214981097
+  discovery:
+    found_date: '2026-10-26'
+    found_by:
+    - source: openalex
+      citation_of: University-1652
+      seed_title: 'University-1652: A Multi-view Multi-source Benchmark for Drone-based Geo-localization'
+    - source: openalex
+      citation_of: SUES-200
+      seed_title: 'SUES-200: A Multi-height Multi-scene Cross-view Image Benchmark Across Drone and Satellite'
+    - source: openalex
+      citation_of: DenseUAV
+      seed_title: Vision-Based UAV Self-Positioning in Low-Altitude Urban Environments
+    - source: openalex
+      citation_of: GTA-UAV
+      seed_title: 'Game4Loc: A UAV Geo-Localization Benchmark from Game Data'
+    last_seen_date: '2026-10-26'
+  status: parsed
+  verified: false
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: retrieval
+    relevance_score: 0.9
+    tags:
+    - UAV
+    - cross-view geo-localization
+    - wide-area localization
+    - direct localization
+    datasets: []
+    possible_leaderboard: false
+    reason: Title indicates a wide-area direct localizer for fast and robust cross-view UAV geo-localization, which is a UAV
+      cross-view geo-localization task. Abstract is empty, so datasets and exact task framing (retrieval vs fine pose) cannot
+      be confirmed; categorized as retrieval based on 'localizer' framing but flagged for review.
+    needs_review: true
+    minimax_main_category: retrieval
+  summary:
+    summary_en: WADL addresses fast and robust cross-view UAV geo-localization over wide areas, where a query aerial image
+      must be matched to a geographically corresponding reference image despite substantial viewpoint, scale, and appearance
+      changes. The paper’s title indicates a direct-localization design intended to avoid the computational overhead of exhaustive
+      large-scale retrieval while preserving localization accuracy and robustness. However, no abstract or full-paper text
+      is available in the supplied material, so the specific model components, matching procedure, loss functions, and implementation
+      details cannot be confirmed. No datasets, benchmark protocols, numerical experimental effects, or table evidence are
+      provided. Consequently, the work can be classified broadly as a retrieval-based UAV geo-localization method, but its
+      concrete datasets and main results cannot be extracted without the paper contents. No leaderboard-ready metric is reported
+      from the available evidence, and no code or project URL is stated.
+    main_category: retrieval
+    category_confirmed: false
+    classification_reason: The title explicitly identifies cross-view UAV geo-localization and a wide-area direct localizer,
+      which most directly aligns with the repository’s retrieval category. The category is not fully confirmed because the
+      abstract and full-paper text are absent, preventing inspection of whether the method actually performs image retrieval,
+      direct localization, or a hybrid pipeline.
+    benchmarks: []
+    main_modules:
+    - Wide-area direct UAV localization framework
+    - Cross-view image matching
+    - Localizer intended for fast inference and robustness
+    reported_results: []
+    leaderboard_metrics: []
+    table_evidence_notes: The provided material contains no abstract, full-paper text, result tables, dataset names, metric
+      definitions, numerical values, or download/project links. Therefore, no benchmark rows can be extracted reliably. All
+      would-be leaderboard entries must be omitted rather than inferred from the title.
+    code_url: null
+    needs_review: true
+  automation:
+    last_processed_date: '2026-10-26'
+- id: 4d77072573a3
+  title: 'The Kidnapped UAV Problem: Self-Supervised Detection and Recovery of Localization Failures for GNSS-Denied Navigation'
+  year: 2026
+  venue: Proceedings of the Satellite Division's International Technical Meeting (Online)/Proceedings of the Satellite Division's
+    International Technical Meeting (CD-ROM)
+  authors:
+  - Zhiyun Deng
+  - Luis Sentis
+  abstract: GNSS-denied UAV navigation requires accurate visual localization and the ability to recognize and recover from
+    localization failure. Visual-inertial odometry provides local motion estimates but accumulates drift, especially over
+    textureless, repetitive, or dynamic terrain. Map-referenced localization can correct this drift, but many approaches assume
+    reliable initialization or fail silently when an observation conflicts with the current belief. This limitation is critical
+    in the kidnapped UAV problem, where the vehicle starts without a known global position and must recover from incorrect
+    hypotheses. We present a self-supervised framework for blind-start UAV localization, failure detection, and recovery in
+    large-scale GNSS-denied environments. A cross-domain perceptual encoder uses self-supervised contrastive learning to align
+    onboard observations and satellite map tiles in a shared embedding space without human-labeled correspondences. At runtime,
+    the system compares each onboard embedding with offline-precomputed map embeddings associated with the particles' hypothesized
+    positions. The resulting likelihoods both measure consistency between the observation and the current localization belief
+    and update a neural-augmented particle filter that fuses perceptual evidence with odometry motion priors. By maintaining
+    and reweighting multiple spatial hypotheses, the system can detect an unsupported belief, enter recovery mode, and converge
+    when distinctive visual cues reappear. We evaluate the approach on 19 UAV trajectories collected in Austin, Texas, totaling
+    50.7 km and 1.53 hours of flight, using a 15 km x 15 km reference map and no known initial location. The system converges
+    on all trajectories without selecting a favorable subset. Representative sequences show that the filter replaces initially
+    incorrect blind-start hypotheses after distinctive visual evidence appears, including after water, homogeneous terrain,
+    and repetitive urban structure. The results demonstrate that self-supervised cross-domain perception, belief-consistency
+    monitoring, and multi-hypothesis filtering provide a practical foundation for resilient UAV navigation in GNSS-denied
+    environments. Project materials are available at kidnapped-uav.github.io.
+  publication_date: '2026-10-07'
+  urls:
+    paper: https://doi.org/10.33012/2026.20744
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: 10.33012/2026.20744
+    arxiv_id: ''
+    openalex_id: https://openalex.org/W7220848340
+  discovery:
+    found_date: '2026-10-26'
+    found_by:
+    - source: openalex
+      citation_of: University-1652
+      seed_title: 'University-1652: A Multi-view Multi-source Benchmark for Drone-based Geo-localization'
+  status: parsed
+  verified: false
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: navigation_aided
+    relevance_score: 0.85
+    tags:
+    - GNSS-denied
+    - cross-view
+    - self-supervised
+    - particle-filter
+    - localization-failure-recovery
+    - kidnapped-robot
+    - satellite-map-alignment
+    datasets: []
+    possible_leaderboard: false
+    reason: The paper performs UAV-to-satellite cross-view geo-localization via a self-supervised contrastive encoder aligning
+      onboard observations with satellite map tiles, integrated into a particle filter for GNSS-denied navigation with failure
+      detection and recovery. It is cross-view geo-localization used in a navigation-aided context. No known benchmark from
+      the provided list is used; evaluation is on 19 custom Austin, Texas trajectories, so datasets list is empty.
+    needs_review: false
+    minimax_main_category: navigation_aided
+  summary:
+    summary_en: This paper addresses resilient UAV localization in GNSS-denied environments, particularly the kidnapped-UAV
+      setting in which the vehicle lacks a known initial position and must recognize and recover from incorrect localization
+      hypotheses. The proposed framework combines a self-supervised cross-domain perceptual encoder with contrastive learning
+      to align onboard observations and satellite-map tiles in a shared embedding space. At runtime, onboard embeddings are
+      compared with offline map embeddings linked to particle-filter hypotheses. These likelihoods provide both belief-consistency
+      monitoring for failure detection and perceptual updates to a neural-augmented particle filter that fuses visual evidence
+      with odometry motion priors. Maintaining and reweighting multiple spatial hypotheses enables recovery when distinctive
+      visual cues become available. Evaluation uses 19 real UAV trajectories collected in Austin, Texas, spanning 50.7 km
+      and 1.53 hours of flight, with a 15 km by 15 km reference map and no known initial location. The reported evaluation
+      converges on all 19 trajectories, while representative sequences illustrate replacement of incorrect blind-start hypotheses
+      after water, homogeneous terrain, or repetitive urban structures reappear. The work therefore targets robust navigation
+      and recovery rather than only benchmark-based cross-view place recognition.
+    main_category: navigation_aided
+    category_confirmed: true
+    classification_reason: The paper's central contribution is a localization, failure-detection, and recovery system for
+      GNSS-denied UAV navigation. Although it uses satellite-map visual alignment, this is embedded in a particle-filter navigation
+      framework that fuses perceptual likelihoods with odometry and supports blind-start hypothesis correction, making navigation_aided
+      more appropriate than retrieval or fine_pose_localization.
+    benchmarks:
+    - 19 Austin, Texas UAV trajectories with a 15 km x 15 km reference map
+    main_modules:
+    - Self-supervised cross-domain perceptual encoder
+    - Contrastive onboard-observation and satellite-map embedding alignment
+    - Offline precomputed satellite-map embeddings
+    - Neural-augmented particle filter
+    - Observation-to-particle likelihood computation
+    - Belief-consistency monitoring and failure detection
+    - Multi-hypothesis reweighting and recovery mode
+    - Visual-inertial odometry motion priors
+    reported_results:
+    - The system converged on all 19 evaluated trajectories without selecting a favorable subset.
+    - The evaluation covered 50.7 km and 1.53 hours of flight in Austin, Texas.
+    - Representative sequences recovered from initially incorrect blind-start hypotheses after distinctive evidence appeared
+      over water, homogeneous terrain, and repetitive urban structures.
+    leaderboard_metrics: []
+    table_evidence_notes: No explicit result tables or table-like metric values are available in the provided abstract, and
+      the Austin trajectory collection is not identified as a repository-tracked benchmark or clearly documented as a public
+      dataset with a download page. Although project materials are reported at kidnapped-uav.github.io, no eligible leaderboard
+      dataset, canonical split, metric, or flagship numerical result can be extracted from the supplied evidence.
+    code_url: https://kidnapped-uav.github.io
+    needs_review: true
+  automation:
+    last_processed_date: '2026-10-26'
+- id: 3d379162e5cd
+  title: 'TRACE-Loc: Causal Trajectory-Constrained Cross-View Localization for GNSS-Denied UAVs'
+  year: 2026
+  venue: Drones
+  authors:
+  - 守亿 廖
+  - Haohong Chen
+  - Zehao Li
+  - Zhiguo Liu
+  abstract: UAV-to-satellite visual localization can provide absolute position observations when Global Navigation Satellite
+    System (GNSS) signals are denied or lost. Without a reliable initial position, however, cross-view differences and repetitive
+    textures can cause single-frame retrieval to jump to distant but visually similar regions. This paper presents TRACE-Loc,
+    an online trajectory-constrained cross-view retrieval framework for initial localization. A DINOv3 frontend with view-conditioned
+    low-rank adaptation (VC-LoRA) generates current-frame candidates from a global satellite gallery. The online reranker
+    projects recent location hypotheses using heading, elapsed time, and causal visual speed, then recursively selects a motion-consistent
+    path from the union of current retrievals and historical projections. The path recursion without historical projection
+    coincides with a beam-width-limited Viterbi decode over the retrieval candidates, so the method can be read as beam Viterbi
+    plus causal candidate projection. Experiments use a unified gallery of 15,130 UAV-VisLoc satellite tiles and 1215 queries
+    from two regions excluded from both training and parameter selection. Across three independent training runs, TRACE-Loc
+    raises C@1 from 48.67 ± 0.41% to 58.33 ± 2.84%, a paired gain of 9.66 ± 2.69 percentage points; the single representative
+    run used for detailed comparisons increases C@1 from 49.05% to 61.23%, reduces median localization error from 150.92 m
+    to 93.75 m, and raises D < 300 m from 53.66% to 70.62%. The same reranker improves C@1 across six retrieval frontends.
+    In reset-at-every-start cold-start evaluation, TRACE-Loc increases the Kaplan–Meier probability of obtaining a stable
+    fix within 30 s over single-frame retrieval by 2.33, 9.27, and 5.89 percentage points at the 50, 100, and 300 m thresholds
+    (paired block-bootstrap 95% CIs excluding zero at every threshold), while the particle filter attains statistically indistinguishable
+    early-fix probabilities and recovers faster over longer observation periods; the reported gains therefore concern acquisition
+    from an empty state relative to single-frame retrieval, not an advantage over the particle filter. These results show
+    that candidate-level trajectory constraints improve framewise localization in a large gallery with millisecond-level reranking
+    overhead and increase the probability of an early stable fix.
+  publication_date: '2026-10-22'
+  urls:
+    paper: https://doi.org/10.3390/drones10110794
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: 10.3390/drones10110794
+    arxiv_id: ''
+    openalex_id: https://openalex.org/W7223170273
+  discovery:
+    found_date: '2026-10-26'
+    found_by:
+    - source: openalex
+      keyword: UAV visual localization satellite
+    - source: openalex
+      keyword: cross-view UAV localization
+    - source: openalex
+      keyword: GNSS-denied UAV visual localization
+    - source: openalex
+      keyword: UAV-VisLoc
+    - source: openalex
+      citation_of: University-1652
+      seed_title: 'University-1652: A Multi-view Multi-source Benchmark for Drone-based Geo-localization'
+    - source: openalex
+      citation_of: DenseUAV
+      seed_title: Vision-Based UAV Self-Positioning in Low-Altitude Urban Environments
+    last_seen_date: '2026-10-26'
+  status: parsed
+  verified: false
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: navigation_aided
+    relevance_score: 0.9
+    tags:
+    - UAV-to-satellite
+    - trajectory-constrained
+    - retrieval
+    - GNSS-denied
+    - Viterbi
+    - reranking
+    datasets:
+    - UAV-VisLoc
+    possible_leaderboard: false
+    reason: UAV-to-satellite cross-view localization with trajectory-constrained retrieval reranking for GNSS-denied UAVs;
+      uses UAV-VisLoc gallery. It combines retrieval with motion/trajectory constraints, so navigation_aided is the best fit,
+      though it is fundamentally a cross-view retrieval framework.
+    needs_review: true
+    minimax_main_category: retrieval
+  summary:
+    summary_en: TRACE-Loc addresses UAV-to-satellite visual localization when GNSS is denied, especially the lack of a reliable
+      initial position and the risk that single-frame retrieval selects distant but visually similar locations because of
+      cross-view differences and repetitive textures. The framework uses a DINOv3 visual frontend with view-conditioned low-rank
+      adaptation to generate candidates from a global satellite gallery. Its online reranker projects historical location
+      hypotheses using heading, elapsed time, and causal visual-speed estimates, then recursively selects a motion-consistent
+      path from current retrievals and projected candidates. This design is equivalent to beam-limited Viterbi decoding combined
+      with causal candidate projection. Evaluation uses a unified gallery of 15,130 UAV-VisLoc satellite tiles and 1,215 queries
+      from two held-out regions excluded from training and parameter selection. Across three independent training runs, TRACE-Loc
+      improves C@1 from 48.67 ± 0.41% to 58.33 ± 2.84%. In a representative run, C@1 reaches 61.23%, median localization error
+      decreases from 150.92 m to 93.75 m, and the proportion within 300 m rises from 53.66% to 70.62%. The reranker also improves
+      C@1 across six retrieval frontends. In cold-start evaluation, it increases the probability of a stable fix within 30
+      seconds over single-frame retrieval at 50, 100, and 300 m thresholds, while its early-fix performance is statistically
+      indistinguishable from a particle filter.
+    main_category: retrieval
+    category_confirmed: false
+    classification_reason: The core method is cross-view image retrieval and trajectory-constrained candidate reranking for
+      UAV-to-satellite localization. GNSS denial is the application setting rather than the primary technical category; the
+      paper does not primarily estimate relative pose or fuse explicit navigation measurements into the localization solution.
+    benchmarks:
+    - UAV-VisLoc
+    main_modules:
+    - DINOv3 retrieval frontend
+    - view-conditioned low-rank adaptation (VC-LoRA)
+    - global satellite-gallery candidate retrieval
+    - online trajectory-constrained reranking
+    - heading-based historical hypothesis projection
+    - elapsed-time and causal visual-speed constraints
+    - recursive motion-consistent path selection
+    - beam-width-limited Viterbi decoding
+    reported_results:
+    - Across three independent training runs, C@1 increased from 48.67 ± 0.41% to 58.33 ± 2.84%, a paired gain of 9.66 ± 2.69
+      percentage points.
+    - In the representative run, C@1 increased from 49.05% to 61.23%.
+    - In the representative run, median localization error decreased from 150.92 m to 93.75 m.
+    - In the representative run, D < 300 m increased from 53.66% to 70.62%.
+    - The same reranker improved C@1 across six retrieval frontends.
+    - In reset-at-every-start cold-start evaluation, the Kaplan–Meier probability of a stable fix within 30 s exceeded single-frame
+      retrieval by 2.33, 9.27, and 5.89 percentage points at the 50, 100, and 300 m thresholds, respectively.
+    - Paired block-bootstrap 95% confidence intervals for the reported cold-start gains excluded zero at all three thresholds.
+    - The particle filter had statistically indistinguishable early-fix probabilities and recovered faster over longer observation
+      periods.
+    - The trajectory reranking added millisecond-level overhead.
+    leaderboard_metrics: []
+    table_evidence_notes: No full-paper result tables or table-like evidence were supplied. The included metrics are explicitly
+      reported in the abstract but remain unverified. Baseline values are retained in the narrative summary rather than added
+      as leaderboard rows. The cold-start Kaplan–Meier results are omitted from leaderboard_metrics because the paper does
+      not identify a standard UAV-VisLoc leaderboard protocol for this evaluation and no complete table evidence is available.
+      No code or public repository URL is stated.
+    code_url: null
+    needs_review: true
+  automation:
+    last_processed_date: '2026-10-26'
+- id: 3a526ae1387a
+  title: Structure-Aware Matching for Robust UAV Thermal-to-Satellite Geo-Localization
+  year: 2026
+  venue: arXiv
+  authors:
+  - Chun Liu
+  - Yuxin Wang
+  - Zhenxiang Huo
+  - Linlin Zhu
+  - Tao Xu
+  - Henggang Han
+  abstract: 'UAV thermal-to-satellite geo-localization localizes UAVs by matching real-time thermal images against georeferenced
+    satellite images, enabling autonomous navigation in GNSS-denied and low-visibility conditions. However, substantial cross-modal
+    disparities in color, brightness and viewpoint hinder conventional appearance-based methods from establishing reliable
+    correspondences. While existing approaches predominantly address global modality shifts, they overlook the invariant scene
+    structures inherently shared between thermal and satellite views. To bridge this gap, we propose SAMF, a Structure-Aware
+    Matching Framework that explicitly exploits stable cross-modal structural cues to improve UAV thermal geolocalization.
+    Specifically, the Directional Structure Enhancement Module (DSEM) strengthens robust structural representations by capturing
+    directional and low-frequency spatial patterns, and the Modality-Aware Affine Remapping Module (MARM) subsequently applies
+    affine correction to these enhanced features, further promoting cross-modal alignment. Additionally, we introduce the
+    Thermal-UAV-Paired benchmark derived from the Thermal-UAV dataset. Extensive experiments on both the Boson-nighttime and
+    Thermal-UAV-Paired datasets show that SAMF achieves state-of-the-art performance. Ablation studies further validate the
+    effectiveness and synergistic complementarity of DSEM and MARM. The code and dataset are released at: https://github.com/YuxinWang879/SAMF.git.'
+  publication_date: '2026-10-09'
+  urls:
+    paper: http://arxiv.org/abs/2610.12835v1
+    pdf: http://arxiv.org/pdf/2610.12835v1
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: 2610.12835v1
+    openalex_id: ''
+  discovery:
+    found_date: '2026-10-26'
+    found_by:
+    - source: arxiv
+      keyword: UAV-view geo-localization
+    - source: arxiv
+      keyword: drone-view geo-localization
+    last_seen_date: '2026-10-26'
+  status: parsed
+  verified: false
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: retrieval
+    relevance_score: 0.95
+    tags:
+    - thermal-to-satellite
+    - cross-modal
+    - structure-aware
+    - UAV-geo-localization
+    - image-retrieval
+    datasets:
+    - Boson-nighttime
+    - Thermal-UAV-Paired
+    possible_leaderboard: true
+    reason: The paper addresses UAV thermal-to-satellite geo-localization via cross-modal image matching/retrieval, proposing
+      a structure-aware matching framework and evaluating on Boson-nighttime and Thermal-UAV-Paired benchmarks. It is clearly
+      a UAV cross-view geo-localization retrieval work.
+    needs_review: false
+    minimax_main_category: retrieval
+  dataset_open_source_checks:
+    Thermal-UAV-Paired:
+      is_open_source: true
+      evidence_url: https://huggingface.co/datasets/yuxin-wang1/Thermal-UAV-Paired
+      reason: 'The paper abstract states ''The code and dataset are released at: this https URL.'' A Hugging Face dataset
+        search for ''Thermal-UAV-Paired'' returns a matching public dataset repository ''yuxin-wang1/Thermal-UAV-Paired''
+        (updated 18 days ago), providing a clear data page/download location consistent with the paper''s release claim.'
+  summary:
+    summary_en: This paper addresses UAV geo-localization in GNSS-denied and low-visibility conditions by retrieving georeferenced
+      satellite images that correspond to thermal UAV queries. Because thermal and satellite imagery exhibit large differences
+      in appearance, brightness, texture, viewpoint, and scale, the proposed Structure-Aware Matching Framework (SAMF) emphasizes
+      structural cues that remain consistent across modalities. Its Directional Structure Enhancement Module combines semantic-preserving,
+      eight-direction response, and low-frequency structure branches with adaptive fusion. A subsequent Modality-Aware Affine
+      Remapping Module applies modality-specific channel-wise affine correction, with Gaussian perturbation during training,
+      to align the enhanced thermal and satellite feature distributions while retaining spatial structure. The framework uses
+      a shared Swin Transformer backbone, NetVLAD-style global aggregation, and triplet-loss optimization. Evaluation uses
+      the tracked Boson-nighttime benchmark and the newly released Thermal-UAV-Paired benchmark derived from Thermal-UAV,
+      with one-to-one thermal-to-satellite correspondences and train, validation, and test splits. The paper reports state-of-the-art
+      results on both benchmarks. On Boson-nighttime, SAMF achieves R@1/R@5 of 93.6%/97.4%, R512@1/R512@5 of 98.2%/99.6%,
+      and L2 within 512 m of 12.3 m. On Thermal-UAV-Paired, it achieves 97.0%/99.4% recall, 98.1%/99.8% constrained recall,
+      and 4.8 m constrained localization error. Ablations indicate that DSEM and MARM are complementary and that the low-frequency
+      branch is especially important.
+    main_category: retrieval
+    category_confirmed: true
+    classification_reason: The task is formulated explicitly as global nearest-neighbor retrieval of a satellite reference
+      image for each thermal UAV query using learned global descriptors. The paper does not estimate a continuous camera pose,
+      fuse a coarse localization estimate with local refinement, or address navigation.
+    benchmarks:
+    - Boson-nighttime
+    - Thermal-UAV-Paired
+    main_modules:
+    - Shared Swin Transformer feature backbone
+    - Directional Structure Enhancement Module (DSEM)
+    - Semantic-preserving branch
+    - Eight-branch directional response branch
+    - Low-frequency structure branch
+    - Adaptive branch fusion
+    - Modality-Aware Affine Remapping Module (MARM)
+    - NetVLAD-style global descriptor aggregation
+    - Triplet-loss training
+    reported_results:
+    - 'Boson-nighttime: SAMF reports R@1 93.6%, R@5 97.4%, R512@1 98.2%, R512@5 99.6%, and L2 within 512 m of 12.3 m.'
+    - 'Thermal-UAV-Paired: SAMF reports R@1 97.0%, R@5 99.4%, R512@1 98.1%, R512@5 99.8%, and L2 within 512 m of 4.8 m.'
+    - Ablations report that DSEM and MARM individually do not consistently improve every metric, whereas their joint use yields
+      the strongest performance.
+    - Removing the low-frequency structure branch produces the largest reported internal DSEM degradation among the tested
+      branch ablations.
+    leaderboard_metrics:
+    - dataset: Boson-nighttime
+      task: thermal UAV query to satellite reference image geo-localization with a 512 m prior search radius
+      split: test
+      metric: R512@1
+      method: SAMF
+      value: 98.2
+      source: Table II
+      official_or_reproduced: official
+      verified: false
+      notes: Explicit flagship-method result; percentage value.
+    - dataset: Boson-nighttime
+      task: thermal UAV query to satellite reference image geo-localization with a 512 m prior search radius
+      split: test
+      metric: R512@5
+      method: SAMF
+      value: 99.6
+      source: Table II
+      official_or_reproduced: official
+      verified: false
+      notes: Explicit flagship-method result; percentage value.
+    - dataset: Boson-nighttime
+      task: thermal UAV query to satellite reference image geo-localization with a 512 m prior search radius
+      split: test
+      metric: L2 within 512 m
+      method: SAMF
+      value: 12.3
+      source: Table II
+      official_or_reproduced: official
+      verified: false
+      notes: Explicit flagship-method result; value is in meters and lower is better.
+    - dataset: Thermal-UAV-Paired
+      task: thermal UAV query to satellite reference image geo-localization
+      split: test
+      metric: R@1
+      method: SAMF
+      value: 97.0
+      source: Table III
+      official_or_reproduced: official
+      verified: false
+      notes: The paper states that the code and newly constructed dataset are released; percentage value.
+    - dataset: Thermal-UAV-Paired
+      task: thermal UAV query to satellite reference image geo-localization
+      split: test
+      metric: R@5
+      method: SAMF
+      value: 99.4
+      source: Table III
+      official_or_reproduced: official
+      verified: false
+      notes: The paper states that the code and newly constructed dataset are released; percentage value.
+    - dataset: Thermal-UAV-Paired
+      task: thermal UAV query to satellite reference image geo-localization with a 512 m prior search radius
+      split: test
+      metric: R512@1
+      method: SAMF
+      value: 98.1
+      source: Table III
+      official_or_reproduced: official
+      verified: false
+      notes: The paper states that the code and newly constructed dataset are released; percentage value.
+    - dataset: Thermal-UAV-Paired
+      task: thermal UAV query to satellite reference image geo-localization with a 512 m prior search radius
+      split: test
+      metric: R512@5
+      method: SAMF
+      value: 99.8
+      source: Table III
+      official_or_reproduced: official
+      verified: false
+      notes: The paper states that the code and newly constructed dataset are released; percentage value.
+    - dataset: Thermal-UAV-Paired
+      task: thermal UAV query to satellite reference image geo-localization with a 512 m prior search radius
+      split: test
+      metric: L2 within 512 m
+      method: SAMF
+      value: 4.8
+      source: Table III
+      official_or_reproduced: official
+      verified: false
+      notes: The paper states that the code and newly constructed dataset are released; value is in meters and lower is better.
+    table_evidence_notes: Tables II and III explicitly report the flagship SAMF test results and standard overall metrics.
+      Boson-nighttime is already tracked by the repository. Thermal-UAV-Paired is included because the paper clearly states
+      that the code and dataset are released and provides a repository URL; it is derived from the tracked Thermal-UAV dataset.
+      Backbone baselines, competing methods, and all ablation or parameter-sensitivity rows are excluded. All extracted values
+      remain unverified pending manual comparison with the released dataset and source tables.
+    code_url: https://github.com/YuxinWang879/SAMF.git
+    needs_review: true
+  automation:
+    last_processed_date: '2026-10-26'
+- id: 2b1a9df4133d
+  title: 'ScalLoc: Continuous Oblique Thermal UAV Geo-Localization with a 2D Satellite Map'
+  year: 2026
+  venue: arXiv
+  authors:
+  - Xiaoran Zhang
+  - Yu Liu
+  - Jinyu Liang
+  - Huaxin Xiao
+  abstract: 'Cross-modal Thermal Geo-localization (TG) provides an illumination-robust positioning solution for Unmanned Aerial
+    Vehicles (UAVs) in Global Navigation Satellite System (GNSS)-denied environments. However, existing thermal geo-localization
+    methods mainly focus on near-nadir observations or depend on map-side elevation priors, limiting their applicability to
+    continuous oblique thermal localization with only geo-referenced 2D satellite maps. To address this problem, we propose
+    ScalLoc, a scale-aligned local-to-map localization framework for continuous oblique thermal UAV geo-localization. ScalLoc
+    follows a reconstruction--refinement--anchoring--propagation design: it reconstructs local window geometry from thermal
+    sequences, refines camera poses using track-based pose optimization, adaptively anchors each window to the satellite map,
+    and propagates validated states to recover frame-level global trajectories. To support systematic evaluation, we construct
+    Thermal-Oblique, a real thermal UAV sequence dataset containing 216 urban and rural day--night trajectories and 28,112
+    thermal frames with frame-level annotations. Extensive experiments demonstrate that ScalLoc reduces the mean localization
+    error from 112.69 m to 26.97 m compared with the VGGT-only configuration, corresponding to a 76.07% reduction, and achieves
+    the lowest frame-weighted mean position error among the compared methods. These results demonstrate the feasibility of
+    continuous oblique thermal geo-localization using only lightweight 2D satellite maps, without requiring digital surface
+    models or preconstructed 3D maps. Code and dataset are available at https://github.com/FloralHercules/ScalLoc.'
+  publication_date: '2026-10-10'
+  urls:
+    paper: http://arxiv.org/abs/2610.14866v1
+    pdf: http://arxiv.org/pdf/2610.14866v1
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: 2610.14866v1
+    openalex_id: ''
+  discovery:
+    found_date: '2026-10-26'
+    found_by:
+    - source: arxiv
+      keyword: UAV-view geo-localization
+    - source: arxiv
+      keyword: drone-view geo-localization
+    last_seen_date: '2026-10-26'
+  status: parsed
+  verified: false
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: fine_pose_localization
+    relevance_score: 0.95
+    tags:
+    - thermal
+    - oblique-view
+    - continuous-localization
+    - satellite-map
+    - pose-optimization
+    - sequence-localization
+    datasets:
+    - Thermal-Oblique
+    possible_leaderboard: false
+    reason: ScalLoc performs continuous oblique thermal UAV geo-localization against 2D satellite maps, estimating frame-level
+      global trajectories via pose refinement and map anchoring. This is UAV cross-view geo-localization with a fine pose
+      localization focus. It introduces a new dataset (Thermal-Oblique) not in the known benchmark list; no standard leaderboard
+      metrics are reported.
+    needs_review: false
+    minimax_main_category: fine_pose_localization
+  dataset_open_source_checks:
+    Thermal-Oblique:
+      is_open_source: true
+      evidence_url: https://huggingface.co/datasets?search=Thermal-Oblique
+      reason: The paper abstract states 'Code and dataset are available at this https URL.' A Hugging Face dataset search
+        for 'Thermal-Oblique' returns a matching public dataset 'FloralHercules/Thermal-Oblique' with a Viewer, ~28.3k rows
+        (consistent with the paper's 28,112 thermal frames), updated 11 days ago, indicating a clear public data page/download
+        repository.
+  summary:
+    summary_en: ScalLoc addresses continuous global geo-localization of GNSS-denied UAVs from oblique thermal image sequences
+      when only a geo-referenced 2D satellite map is available. Existing thermal methods commonly assume near-nadir views
+      or require elevation or 3D map priors, which limits deployment and complicates metric trajectory recovery under height-dependent
+      parallax. ScalLoc uses a reconstruction–refinement–anchoring–propagation pipeline. Windowed VGGT reconstructs local
+      point maps and camera poses from thermal sequences; fixed-intrinsic, track-based PnP and Levenberg–Marquardt refinement
+      improve local geometry. A motion-adaptive state machine then anchors windows to the satellite map using either BEV-to-satellite
+      alignment for orbit-like motion or direct multi-frame thermal-to-satellite alignment for forward motion. Anchor corrections
+      are quality-validated, with rescue strategies for rejected direct matches, and accepted states are propagated across
+      windows to recover frame-level UTM positions and headings. The authors introduce Thermal-Oblique, a public benchmark
+      comprising 216 urban and rural day–night trajectories and 28,112 annotated thermal frames across straight, curve, and
+      orbit motion, varied flight heights, and camera pitches. On this dataset, the complete method achieves the lowest reported
+      all-frame mean position error of 26.97 m and reduces it by 76.07% relative to the VGGT-only configuration.
+    main_category: fine_pose_localization
+    category_confirmed: true
+    classification_reason: The paper estimates metric frame-level UAV positions and headings by aligning oblique thermal observations
+      to a geo-referenced 2D satellite map. Its central contributions are fine pose estimation, local-to-global scale/orientation
+      alignment, and validated trajectory recovery, rather than image retrieval, a navigation-only method, a unified architecture,
+      or a survey.
+    benchmarks:
+    - Thermal-Oblique
+    main_modules:
+    - Windowed VGGT thermal-sequence reconstruction
+    - Track-based fixed-intrinsic camera-pose refinement using PnP and Levenberg–Marquardt optimization
+    - Motion-adaptive BEV-to-satellite anchoring for orbit-like trajectories
+    - Direct multi-frame thermal-to-satellite 3D-to-UTM anchoring for forward trajectories
+    - RANSAC-based Sim(2) residual estimation
+    - Anchor quality validation and BEV-guided rescue
+    - Validated window-to-window state propagation for frame-level UTM trajectory recovery
+    reported_results:
+    - On Thermal-Oblique, ScalLoc achieves an all-frame mean position error of 26.97 ± 71.67 m and a median position error
+      of 12.66 m.
+    - ScalLoc reduces mean localization error from 112.69 m for VGGT-only to 26.97 m, a reported 76.07% reduction.
+    - The full method reports Pos. Acc@5/10/20 of 17.81/39.46/69.18 and Yaw Acc@3/5/10 of 45.46/74.68/92.25 on all frames.
+    - Average online runtime is reported as 0.56 seconds per frame for the default ScalLoc configuration.
+    leaderboard_metrics:
+    - dataset: Thermal-Oblique
+      task: Continuous oblique thermal UAV geo-localization
+      split: All Frames
+      metric: Mean position error (ME)
+      method: ScalLoc motion-adaptive
+      value: 26.97 ± 71.67 m
+      source: Table II, All Frames, Motion-adaptive (Ours)
+      official_or_reproduced: official
+      verified: false
+      notes: Flagship method on the paper's newly introduced public benchmark; value is reported by the paper but requires
+        manual repository verification.
+    - dataset: Thermal-Oblique
+      task: Continuous oblique thermal UAV geo-localization
+      split: All Frames
+      metric: Median position error (MedE)
+      method: ScalLoc motion-adaptive
+      value: 12.66 m
+      source: Table II, All Frames, Motion-adaptive (Ours)
+      official_or_reproduced: official
+      verified: false
+      notes: Flagship method on the paper's newly introduced public benchmark; requires manual repository verification.
+    - dataset: Thermal-Oblique
+      task: Continuous oblique thermal UAV geo-localization
+      split: All Frames
+      metric: Pos. Acc@5
+      method: ScalLoc motion-adaptive
+      value: 17.81%
+      source: Table III, VGGT + BA + Anchor (Ours)
+      official_or_reproduced: official
+      verified: false
+      notes: Overall frame-level accuracy for the complete flagship pipeline; requires manual repository verification.
+    - dataset: Thermal-Oblique
+      task: Continuous oblique thermal UAV geo-localization
+      split: All Frames
+      metric: Pos. Acc@10
+      method: ScalLoc motion-adaptive
+      value: 39.46%
+      source: Table III, VGGT + BA + Anchor (Ours)
+      official_or_reproduced: official
+      verified: false
+      notes: Overall frame-level accuracy for the complete flagship pipeline; requires manual repository verification.
+    - dataset: Thermal-Oblique
+      task: Continuous oblique thermal UAV geo-localization
+      split: All Frames
+      metric: Pos. Acc@20
+      method: ScalLoc motion-adaptive
+      value: 69.18%
+      source: Table III, VGGT + BA + Anchor (Ours)
+      official_or_reproduced: official
+      verified: false
+      notes: Overall frame-level accuracy for the complete flagship pipeline; requires manual repository verification.
+    - dataset: Thermal-Oblique
+      task: Continuous oblique thermal UAV geo-localization
+      split: All Frames
+      metric: Yaw Acc@3
+      method: ScalLoc motion-adaptive
+      value: 45.46%
+      source: Table III, VGGT + BA + Anchor (Ours)
+      official_or_reproduced: official
+      verified: false
+      notes: Overall frame-level heading accuracy for the complete flagship pipeline; requires manual repository verification.
+    - dataset: Thermal-Oblique
+      task: Continuous oblique thermal UAV geo-localization
+      split: All Frames
+      metric: Yaw Acc@5
+      method: ScalLoc motion-adaptive
+      value: 74.68%
+      source: Table III, VGGT + BA + Anchor (Ours)
+      official_or_reproduced: official
+      verified: false
+      notes: Overall frame-level heading accuracy for the complete flagship pipeline; requires manual repository verification.
+    - dataset: Thermal-Oblique
+      task: Continuous oblique thermal UAV geo-localization
+      split: All Frames
+      metric: Yaw Acc@10
+      method: ScalLoc motion-adaptive
+      value: 92.25%
+      source: Table III, VGGT + BA + Anchor (Ours)
+      official_or_reproduced: official
+      verified: false
+      notes: Overall frame-level heading accuracy for the complete flagship pipeline; requires manual repository verification.
+    table_evidence_notes: Thermal-Oblique is eligible because the paper explicitly states that code and dataset are publicly
+      available through the project repository. Table II provides the canonical all-frame aggregate for the flagship motion-adaptive
+      method, while Table III provides the complete pipeline's overall accuracy metrics. Only flagship aggregate results were
+      retained; trajectory-pattern splits, baselines, single-branch variants, ablations, and robustness subsets were excluded.
+      All extracted rows remain unverified for manual checking.
+    code_url: https://github.com/FloralHercules/ScalLoc
+    needs_review: true
+  automation:
+    last_processed_date: '2026-10-26'
+- id: e3fd10a1f454
+  title: 'SatFix: Absolute Visual Localization of UAVs in Satellite Maps from a Single Oblique Image'
+  year: 2026
+  venue: arXiv (Cornell University)
+  authors:
+  - Jiarui Zeng
+  - Kun Shi
+  - Chiman Vong
+  - Zhedong Zheng
+  abstract: 'We study absolute metric UAV localization within a provided geo-referenced satellite region, recovering continuous
+    map position and viewing heading from a single oblique image or a short multi-view clip. Existing cross-view geo-localization
+    methods retrieve the most similar satellite tile from a gallery and report Recall@K, but retrieval depends on gallery
+    sampling, provides no heading estimate, and returns a tile index rather than a continuous coordinate. We propose SatFix,
+    a feed-forward UAV--satellite localization framework built on VGGT-$Ω$. Satellite-grid features act as queries that aggregate
+    UAV visual evidence, and two lightweight heads regress a 3-DoF pose in the satellite-map frame: continuous 2D position
+    and heading. SatFix requires no explicit 3D map, rendered bird''s-eye image, auxiliary sensor, or test-time pose alignment.
+    A single model supports both single- and multi-view inputs, with trajectory constraints used during multi-view training.
+    For metric evaluation, we introduce University-Metric, where satellite imagery is re-collected over a region up to 10.7$\times$
+    longer on a side (about 114$\times$ the ground area) than the original University-1652 tiles, with continuous position
+    and heading labels for the original UAV tours. With one UAV view, SatFix localizes 52.08% of test frames within 50 m and
+    17.34% within 10 m, with median position and heading errors of 45.66 m and $20.81^\circ$, respectively. Inference takes
+    under 0.1 s per single-view query on an NVIDIA RTX 4090. With nine UAV views, the median position error falls to 21.96
+    m and the median heading error to $8.73^\circ$. Compared with a fine-tuned VGGT-$Ω$ baseline, SatFix reduces median position
+    error by 34.0% and nine-view median heading error from $25.43^\circ$ to $8.73^\circ$.'
+  publication_date: '2026-10-08'
+  urls:
+    paper: https://doi.org/10.48550/arxiv.2610.11049
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: 10.48550/arxiv.2610.11049
+    arxiv_id: ''
+    openalex_id: https://openalex.org/W7221171002
+  discovery:
+    found_date: '2026-10-26'
+    found_by:
+    - source: openalex
+      keyword: UAV satellite homography localization
+    - source: openalex
+      keyword: DenseUAV
+    - source: openalex
+      keyword: UAV-VisLoc
+    last_seen_date: '2026-10-26'
+  status: parsed
+  verified: false
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: fine_pose_localization
+    relevance_score: 0.95
+    tags:
+    - UAV
+    - satellite
+    - absolute-localization
+    - pose-regression
+    - oblique-view
+    - multi-view
+    - VGGT
+    datasets:
+    - University-1652
+    possible_leaderboard: true
+    reason: SatFix performs absolute UAV-to-satellite cross-view localization, regressing continuous 2D position and heading
+      from oblique UAV images against a geo-referenced satellite map. It is a fine pose localization method (not retrieval),
+      and introduces University-Metric derived from University-1652. Strongly relevant to UAV cross-view geo-localization.
+    needs_review: false
+    minimax_main_category: fine_pose_localization
+  summary:
+    summary_en: SatFix addresses absolute metric UAV localization within a geo-referenced satellite region, estimating a continuous
+      map position and viewing heading from a single oblique UAV image or a short multi-view clip. Unlike conventional cross-view
+      geo-localization systems that retrieve a satellite tile and evaluate Recall@K, it directly performs feed-forward pose
+      regression without an explicit 3D map, rendered bird’s-eye image, auxiliary sensor, or test-time pose alignment. The
+      method builds on VGGT-Ω, using satellite-grid features as queries to aggregate UAV visual evidence and lightweight heads
+      to regress a 3-DoF pose comprising 2D position and heading. One model handles single- and multi-view inputs, while trajectory
+      constraints support multi-view training. Evaluation uses UAV imagery and labels from University-1652, together with
+      newly collected, substantially expanded satellite imagery presented as University-Metric. With one view, the paper reports
+      52.08% of test frames within 50 m and 17.34% within 10 m, with median position and heading errors of 45.66 m and 20.81°.
+      Nine views reduce the median errors to 21.96 m and 8.73°. Relative to a fine-tuned VGGT-Ω baseline, SatFix reduces median
+      position error by 34.0% and improves nine-view median heading error from 25.43° to 8.73°.
+    main_category: fine_pose_localization
+    category_confirmed: true
+    classification_reason: The paper directly regresses continuous metric UAV position and heading in the satellite-map frame
+      from UAV imagery, rather than retrieving a gallery tile or merely providing global coarse localization. Its 3-DoF output
+      and metric error evaluation clearly place it in fine pose localization.
+    benchmarks:
+    - University-Metric
+    - University-1652
+    main_modules:
+    - VGGT-Ω-based feed-forward UAV–satellite feature extraction
+    - Satellite-grid feature queries
+    - Cross-modal aggregation of UAV visual evidence
+    - Lightweight continuous 2D position regression head
+    - Lightweight viewing-heading regression head
+    - Single-view and multi-view inference within one model
+    - Trajectory constraints for multi-view training
+    reported_results:
+    - 'Single-view: 52.08% of test frames are localized within 50 m and 17.34% within 10 m.'
+    - Single-view median position error is 45.66 m.
+    - Single-view median heading error is 20.81°.
+    - Nine-view median position error is 21.96 m.
+    - Nine-view median heading error is 8.73°.
+    - Single-view inference takes under 0.1 s per query on an NVIDIA RTX 4090.
+    - Against a fine-tuned VGGT-Ω baseline, median position error is reduced by 34.0%.
+    - Against the same baseline, nine-view median heading error decreases from 25.43° to 8.73°.
+    leaderboard_metrics:
+    - dataset: University-1652
+      task: Absolute metric UAV localization with one oblique view
+      split: test frames
+      metric: Localization rate within 50 m
+      method: SatFix
+      value: 52.08%
+      source: Abstract and full-paper metadata
+      official_or_reproduced: official
+      verified: false
+      notes: Reported for the newly introduced University-Metric evaluation built from University-1652 UAV tours and re-collected
+        satellite imagery; no explicit result table was supplied.
+    - dataset: University-1652
+      task: Absolute metric UAV localization with one oblique view
+      split: test frames
+      metric: Localization rate within 10 m
+      method: SatFix
+      value: 17.34%
+      source: Abstract and full-paper metadata
+      official_or_reproduced: official
+      verified: false
+      notes: Reported for University-Metric; no explicit result table was supplied.
+    - dataset: University-1652
+      task: Absolute metric UAV localization with one oblique view
+      split: test frames
+      metric: Median position error
+      method: SatFix
+      value: 45.66 m
+      source: Abstract and full-paper metadata
+      official_or_reproduced: official
+      verified: false
+      notes: Reported for University-Metric; no explicit result table was supplied.
+    - dataset: University-1652
+      task: Absolute metric UAV localization with one oblique view
+      split: test frames
+      metric: Median heading error
+      method: SatFix
+      value: 20.81°
+      source: Abstract and full-paper metadata
+      official_or_reproduced: official
+      verified: false
+      notes: Reported for University-Metric; no explicit result table was supplied.
+    - dataset: University-1652
+      task: Absolute metric UAV localization with nine UAV views
+      split: test frames
+      metric: Median position error
+      method: SatFix
+      value: 21.96 m
+      source: Abstract and full-paper metadata
+      official_or_reproduced: official
+      verified: false
+      notes: Reported for University-Metric; no explicit result table was supplied.
+    - dataset: University-1652
+      task: Absolute metric UAV localization with nine UAV views
+      split: test frames
+      metric: Median heading error
+      method: SatFix
+      value: 8.73°
+      source: Abstract and full-paper metadata
+      official_or_reproduced: official
+      verified: false
+      notes: Reported for University-Metric; no explicit result table was supplied.
+    table_evidence_notes: The supplied table evidence contains only arXiv metadata and download remarks, not the paper’s numerical
+      result tables. Metrics were therefore extracted from explicit abstract statements and remain unverified. University-Metric
+      is evaluated using re-collected satellite imagery and University-1652 UAV tours; it is included under the tracked University-1652
+      dataset name, although it is a new metric evaluation protocol. The reported inference speed is not included as a leaderboard
+      metric.
+    code_url: null
+    needs_review: true
+  automation:
+    last_processed_date: '2026-10-26'
+- id: 9545cbb07897
+  title: 'STEAM: Stable Self-Training with Elastic Matching and Adaptive Purification'
+  year: 2026
+  venue: arXiv
+  authors:
+  - Shaoxiang Wang
+  - Kejia Zhang
+  - Haiwei Pan
+  - Lan Zhang
+  abstract: Cross-view geo-localization (CVGL) aims to achieve GPS-free localization by matching drone-view images with corresponding
+    satellite-view images. Existing supervised methods rely on large-scale manually annotated cross-view image pairs, making
+    them costly and difficult to scale. In contrast, existing unsupervised approaches typically depend on generative models
+    or clustering-based stage-wise optimization, which are prone to distribution bias and the accumulation of noisy pseudo-labels.
+    To address these limitations, we propose STEAM (Stable Self-Training with Elastic Matching and Adaptive Purification),
+    an end-to-end unsupervised cross-view geo-localization framework that performs self-training directly on real drone and
+    satellite images. Specifically, the proposed Stable Spatial-Aware Module enhances the stability of feature representations,
+    Elastic Matching discovers high-quality cross-view pseudo-labels, and Adaptive Purification dynamically maintains a reliable
+    pseudo-label repository throughout the self-training process. Extensive experiments on the University-1652 and SUES-200
+    benchmarks demonstrate that STEAM achieves state-of-the-art performance among all existing unsupervised methods and delivers
+    performance comparable to supervised approaches, validating the effectiveness and superiority of the proposed framework.
+    The source code is available at https://github.com/wsx-heu/STEAM.git.
+  publication_date: '2026-07-10'
+  urls:
+    paper: http://arxiv.org/abs/2607.09057v1
+    pdf: http://arxiv.org/pdf/2607.09057v1
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: 2607.09057v1
+    openalex_id: ''
+  discovery:
+    found_date: '2026-07-14'
+    found_by:
+    - source: arxiv
+      keyword: SUES-200
+    - source: arxiv
+      keyword: University-1652
+    last_seen_date: '2026-07-14'
+  status: parsed
+  verified: false
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: retrieval
+    relevance_score: 0.97
+    tags:
+    - unsupervised
+    - self-training
+    - pseudo-label
+    - drone-to-satellite
+    - cross-view-retrieval
+    datasets:
+    - University-1652
+    - SUES-200
+    possible_leaderboard: true
+    reason: The paper proposes an unsupervised cross-view geo-localization framework matching drone-view and satellite-view
+      images, evaluated on University-1652 and SUES-200, which are standard UAV cross-view retrieval benchmarks.
+    needs_review: false
+    minimax_main_category: retrieval
+  summary:
+    summary_en: Cross-view geo-localization seeks GPS-free localization by matching drone-view queries with corresponding
+      satellite images. STEAM addresses the cost of manually labeled drone–satellite pairs and the instability of existing
+      unsupervised pipelines by learning directly from unpaired real images through end-to-end self-training. Its Stable Spatial-Aware
+      Module uses a shared ConvNeXt-Base encoder and nonlinear multi-head spatial attention to stabilize representations.
+      Elastic Matching combines bidirectional Top-K soft matching with dynamic threshold filtering to accommodate many-to-one
+      correspondences while controlling pseudo-label quality. Adaptive Purification maintains a historical pseudo-label repository
+      through confidence-aware replacement, age-aware updating, and removal of expired labels; reliable pairs then supervise
+      symmetric InfoNCE training. Experiments use the University-1652 and SUES-200 benchmarks under drone-to-satellite and
+      satellite-to-drone retrieval. The paper reports that STEAM outperforms the compared unsupervised methods on both benchmarks
+      and approaches the strongest supervised baselines. Ablations indicate that the matching and purification components
+      increase pseudo-label coverage while maintaining high accuracy and improve retrieval performance.
+    main_category: retrieval
+    category_confirmed: true
+    classification_reason: The paper directly formulates drone-to-satellite and satellite-to-drone image matching as cross-view
+      retrieval, evaluates Recall@1 and Average Precision, and compares against supervised and unsupervised retrieval methods
+      on established geo-localization benchmarks.
+    benchmarks:
+    - University-1652
+    - SUES-200
+    main_modules:
+    - Stable Spatial-Aware Module (SSA)
+    - Elastic Matching (ElMa)
+    - Bidirectional Top-K Soft Matching
+    - Dynamic Threshold Filtering
+    - Adaptive Purification (AdPu)
+    - Confidence-aware Update
+    - Age-aware Update
+    - Expired Label Removal
+    - Symmetric InfoNCE optimization
+    reported_results:
+    - On University-1652, the fully unsupervised STEAM method reports 95.26 R@1 and 96.08 AP for drone-to-satellite retrieval
+      and 96.01 R@1 and 94.21 AP for satellite-to-drone retrieval.
+    - On University-1652, STEAM is reported to outperform all compared unsupervised methods and perform on par with the strongest
+      reported supervised baseline.
+    - On SUES-200, direct unsupervised STEAM reports 99.10 R@1 and 99.33 AP for drone-to-satellite retrieval at 300 m and
+      100.00 R@1 and 97.73 AP for satellite-to-drone retrieval at 250 m.
+    - STEAM fine-tuned from University-1652 unsupervised pretrained weights, denoted STEAM*, reports 99.83 R@1 and 99.87 AP
+      for drone-to-satellite retrieval at 300 m and 100.00 R@1 and 99.32 AP for satellite-to-drone retrieval at 300 m.
+    - Ablation results report that introducing Bidirectional Top-K Soft Matching raises University-1652 drone-to-satellite
+      R@1 from 79.57% to 90.55%, while confidence-aware updating and expired-label removal further raise it to 95.26%.
+    leaderboard_metrics:
+    - dataset: University-1652
+      task: Drone-to-Satellite cross-view image retrieval
+      split: Official benchmark aggregate
+      metric: R@1
+      method: STEAM
+      value: 95.26
+      source: Table 1
+      official_or_reproduced: reported by paper authors
+      verified: false
+      notes: Flagship fully unsupervised main result; percentage value omitted from the extracted numeric value.
+    - dataset: University-1652
+      task: Drone-to-Satellite cross-view image retrieval
+      split: Official benchmark aggregate
+      metric: AP
+      method: STEAM
+      value: 96.08
+      source: Table 1
+      official_or_reproduced: reported by paper authors
+      verified: false
+      notes: Flagship fully unsupervised main result; percentage value omitted from the extracted numeric value.
+    - dataset: University-1652
+      task: Satellite-to-Drone cross-view image retrieval
+      split: Official benchmark aggregate
+      metric: R@1
+      method: STEAM
+      value: 96.01
+      source: Table 1
+      official_or_reproduced: reported by paper authors
+      verified: false
+      notes: Flagship fully unsupervised main result; percentage value omitted from the extracted numeric value.
+    - dataset: University-1652
+      task: Satellite-to-Drone cross-view image retrieval
+      split: Official benchmark aggregate
+      metric: AP
+      method: STEAM
+      value: 94.21
+      source: Table 1
+      official_or_reproduced: reported by paper authors
+      verified: false
+      notes: Flagship fully unsupervised main result; percentage value omitted from the extracted numeric value.
+    table_evidence_notes: University-1652 metrics are taken from the aggregate STEAM row in Table 1. SUES-200 is reported
+      by altitude, and the paper distinguishes direct fully unsupervised STEAM from STEAM* fine-tuned from University-1652
+      weights; these altitude-specific and transfer/fine-tuning results are therefore excluded from leaderboard_metrics under
+      the repository rules. All extracted rows remain unverified pending manual checking.
+    code_url: https://github.com/wsx-heu/STEAM.git
+    needs_review: true
+  automation:
+    last_processed_date: '2026-10-26'
+- id: faec8b477c17
+  title: 'S$^3$Geo: Structure-Semantic Synergistic Learning for Cross-View Geo-Localization'
+  year: 2026
+  venue: arXiv
+  authors:
+  - Ziqian Mo
+  - Hill Zhang
+  - Haosheng Tan
+  - Ling Li
+  - Jiaheng Wei
+  abstract: Cross-view geo-localization (CVGL) aims to estimate geographic locations by matching images captured from different
+    viewpoints, such as drone and satellite views. Existing methods mainly rely on visual representations, but often fail
+    to jointly model fine-grained structural correspondences and semantic priors, making them prone to confusion between visually
+    similar but semantically different regions, and thus limiting robustness under large viewpoint variations. To address
+    these challenges, we propose \textbf{S$^3$Geo}, a structure-semantic synergistic learning framework for cross-view matching.
+    Specifically, we first introduce a Decoupled Query Pooling (DQP) module to extract a compact set of region-aware features
+    from dense tokens, enabling explicit modeling of local structural patterns. We then design a query-level contrastive learning
+    scheme with an optimal transport (OT)-based formulation to establish soft correspondences under cross-view spatial misalignment.
+    Furthermore, we incorporate a Semantic Knowledge Distillation (SKD) strategy from a frozen CLIP teacher to transfer semantic
+    priors and relational structures, thereby improving discrimination on hard negatives. By operating synergistically, the
+    semantic priors provide robust contextual filtering, which guides the structural module to establish precise spatial alignments.
+    Experiments on the University-1652 and SUES-200 datasets demonstrate that \textbf{S$^3$Geo} consistently outperforms state-of-the-art
+    approaches without increasing inference complexity, validating the effectiveness of jointly modeling structural and semantic
+    information for CVGL.
+  publication_date: '2026-10-08'
+  urls:
+    paper: http://arxiv.org/abs/2610.11608v1
+    pdf: http://arxiv.org/pdf/2610.11608v1
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: ''
+    arxiv_id: 2610.11608v1
+    openalex_id: ''
+  discovery:
+    found_date: '2026-10-26'
+    found_by:
+    - source: arxiv
+      keyword: drone-view geo-localization
+  status: parsed
+  verified: false
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: retrieval
+    relevance_score: 0.95
+    tags:
+    - cross-view
+    - drone-to-satellite
+    - structure-semantic
+    - contrastive-learning
+    - knowledge-distillation
+    datasets:
+    - University-1652
+    - SUES-200
+    possible_leaderboard: true
+    reason: The paper addresses cross-view geo-localization matching drone and satellite images, evaluated on University-1652
+      and SUES-200, which are standard UAV cross-view retrieval benchmarks.
+    needs_review: false
+    minimax_main_category: retrieval
+  summary:
+    summary_en: Cross-view geo-localization retrieves a geographic location by matching UAV imagery with satellite imagery
+      despite substantial viewpoint, scale, and spatial misalignment. S3Geo addresses this problem with a structure-semantic
+      synergistic framework that combines global image-level alignment, local region-level correspondence, and semantic knowledge
+      transfer. Its Decoupled Query Pooling module converts dense patch tokens into compact region-aware descriptors using
+      learnable queries and multi-head attention. An optimal-transport formulation establishes soft query correspondences,
+      while a symmetric soft-label contrastive objective and attention-diversity regularizer encourage complementary local
+      structures. Semantic Knowledge Distillation transfers feature-level semantic alignment and relation-level ranking consistency
+      from a frozen CLIP teacher, helping distinguish visually similar hard negatives. The model is trained with global bidirectional
+      contrastive loss, identity classification, DQP loss, and SKD loss. Evaluation uses the public University-1652 and SUES-200
+      benchmarks under bidirectional drone-to-satellite and satellite-to-drone retrieval, including multiple drone heights
+      for SUES-200. The paper reports state-of-the-art results on both benchmarks and evaluates zero-shot transfer from University-1652
+      to SUES-200. Ablations indicate complementary gains from DQP and SKD, and the auxiliary modules add no reported inference
+      overhead because only the global branch is retained at retrieval time.
+    main_category: retrieval
+    category_confirmed: true
+    classification_reason: The paper formulates cross-view geo-localization as cross-platform image retrieval and optimizes
+      image embeddings with contrastive, classification, soft-label contrastive, and distillation objectives. Its principal
+      contribution is a stronger retrieval representation rather than pose refinement, navigation assistance, or a global-to-local
+      localization pipeline.
+    benchmarks:
+    - University-1652
+    - SUES-200
+    main_modules:
+    - Shared DINOv3 visual backbone with global average pooling
+    - Bidirectional InfoNCE global alignment
+    - Identity classification head
+    - Decoupled Query Pooling with learnable queries and multi-head cross-attention
+    - Optimal Transport-based soft cross-view correspondence
+    - Symmetric soft-label contrastive learning with attention-diversity regularization
+    - Semantic Knowledge Distillation from a frozen CLIP teacher
+    - Feature-level semantic alignment and relation-level ranking consistency
+    reported_results:
+    - On University-1652, S3Geo reports 96.19% R@1 and 96.86% AP for Drone-to-Satellite, and 96.72% R@1 and 95.10% AP for
+      Satellite-to-Drone.
+    - On SUES-200, the paper reports the best results among the compared methods across all listed drone altitudes in both
+      retrieval directions.
+    - The University-1652-to-SUES-200 zero-shot evaluation reports strong transfer performance in both retrieval directions.
+    - Ablation results show that DQP and SKD each improve the global baseline and that their full combination gives the best
+      reported University-1652 result.
+    - The DQP and SKD modules are used only during training, so the proposed method adds no inference-time branch overhead.
+    leaderboard_metrics:
+    - dataset: University-1652
+      task: Drone-to-Satellite geo-localization retrieval
+      split: Overall
+      metric: R@1
+      method: S3Geo
+      value: 96.19%
+      source: Table 1
+      official_or_reproduced: reproduced
+      verified: false
+      notes: Flagship University-1652 result from the paper's main comparison table; requires manual leaderboard checking.
+    - dataset: University-1652
+      task: Drone-to-Satellite geo-localization retrieval
+      split: Overall
+      metric: AP
+      method: S3Geo
+      value: 96.86%
+      source: Table 1
+      official_or_reproduced: reproduced
+      verified: false
+      notes: Flagship University-1652 result from the paper's main comparison table; requires manual leaderboard checking.
+    - dataset: University-1652
+      task: Satellite-to-Drone geo-localization retrieval
+      split: Overall
+      metric: R@1
+      method: S3Geo
+      value: 96.72%
+      source: Table 1
+      official_or_reproduced: reproduced
+      verified: false
+      notes: Flagship University-1652 result from the paper's main comparison table; requires manual leaderboard checking.
+    - dataset: University-1652
+      task: Satellite-to-Drone geo-localization retrieval
+      split: Overall
+      metric: AP
+      method: S3Geo
+      value: 95.10%
+      source: Table 1
+      official_or_reproduced: reproduced
+      verified: false
+      notes: Flagship University-1652 result from the paper's main comparison table; requires manual leaderboard checking.
+    - dataset: SUES-200
+      task: Drone-to-Satellite geo-localization retrieval
+      split: 150m
+      metric: R@1
+      method: S3Geo
+      value: 99.23%
+      source: Table 2
+      official_or_reproduced: reproduced
+      verified: false
+      notes: Official SUES-200 flight-height split in the main comparison table; requires manual leaderboard checking.
+    - dataset: SUES-200
+      task: Drone-to-Satellite geo-localization retrieval
+      split: 150m
+      metric: AP
+      method: S3Geo
+      value: 99.41%
+      source: Table 2
+      official_or_reproduced: reproduced
+      verified: false
+      notes: Official SUES-200 flight-height split in the main comparison table; requires manual leaderboard checking.
+    - dataset: SUES-200
+      task: Drone-to-Satellite geo-localization retrieval
+      split: 200m
+      metric: R@1
+      method: S3Geo
+      value: 99.63%
+      source: Table 2
+      official_or_reproduced: reproduced
+      verified: false
+      notes: Official SUES-200 flight-height split in the main comparison table; requires manual leaderboard checking.
+    - dataset: SUES-200
+      task: Drone-to-Satellite geo-localization retrieval
+      split: 200m
+      metric: AP
+      method: S3Geo
+      value: 99.72%
+      source: Table 2
+      official_or_reproduced: reproduced
+      verified: false
+      notes: Official SUES-200 flight-height split in the main comparison table; requires manual leaderboard checking.
+    - dataset: SUES-200
+      task: Drone-to-Satellite geo-localization retrieval
+      split: 250m
+      metric: R@1
+      method: S3Geo
+      value: 99.98%
+      source: Table 2
+      official_or_reproduced: reproduced
+      verified: false
+      notes: Official SUES-200 flight-height split in the main comparison table; requires manual leaderboard checking.
+    - dataset: SUES-200
+      task: Drone-to-Satellite geo-localization retrieval
+      split: 250m
+      metric: AP
+      method: S3Geo
+      value: 99.98%
+      source: Table 2
+      official_or_reproduced: reproduced
+      verified: false
+      notes: Official SUES-200 flight-height split in the main comparison table; requires manual leaderboard checking.
+    - dataset: SUES-200
+      task: Drone-to-Satellite geo-localization retrieval
+      split: 300m
+      metric: R@1
+      method: S3Geo
+      value: 100.00%
+      source: Table 2
+      official_or_reproduced: reproduced
+      verified: false
+      notes: Official SUES-200 flight-height split in the main comparison table; requires manual leaderboard checking.
+    - dataset: SUES-200
+      task: Drone-to-Satellite geo-localization retrieval
+      split: 300m
+      metric: AP
+      method: S3Geo
+      value: 100.00%
+      source: Table 2
+      official_or_reproduced: reproduced
+      verified: false
+      notes: Official SUES-200 flight-height split in the main comparison table; requires manual leaderboard checking.
+    - dataset: SUES-200
+      task: Satellite-to-Drone geo-localization retrieval
+      split: 150m
+      metric: R@1
+      method: S3Geo
+      value: 100.00%
+      source: Table 2
+      official_or_reproduced: reproduced
+      verified: false
+      notes: Official SUES-200 flight-height split in the main comparison table; requires manual leaderboard checking.
+    - dataset: SUES-200
+      task: Satellite-to-Drone geo-localization retrieval
+      split: 150m
+      metric: AP
+      method: S3Geo
+      value: 97.87%
+      source: Table 2
+      official_or_reproduced: reproduced
+      verified: false
+      notes: Official SUES-200 flight-height split in the main comparison table; requires manual leaderboard checking.
+    - dataset: SUES-200
+      task: Satellite-to-Drone geo-localization retrieval
+      split: 200m
+      metric: R@1
+      method: S3Geo
+      value: 100.00%
+      source: Table 2
+      official_or_reproduced: reproduced
+      verified: false
+      notes: Official SUES-200 flight-height split in the main comparison table; requires manual leaderboard checking.
+    - dataset: SUES-200
+      task: Satellite-to-Drone geo-localization retrieval
+      split: 200m
+      metric: AP
+      method: S3Geo
+      value: 98.62%
+      source: Table 2
+      official_or_reproduced: reproduced
+      verified: false
+      notes: Official SUES-200 flight-height split in the main comparison table; requires manual leaderboard checking.
+    - dataset: SUES-200
+      task: Satellite-to-Drone geo-localization retrieval
+      split: 250m
+      metric: R@1
+      method: S3Geo
+      value: 100.00%
+      source: Table 2
+      official_or_reproduced: reproduced
+      verified: false
+      notes: Official SUES-200 flight-height split in the main comparison table; requires manual leaderboard checking.
+    - dataset: SUES-200
+      task: Satellite-to-Drone geo-localization retrieval
+      split: 250m
+      metric: AP
+      method: S3Geo
+      value: 98.72%
+      source: Table 2
+      official_or_reproduced: reproduced
+      verified: false
+      notes: Official SUES-200 flight-height split in the main comparison table; requires manual leaderboard checking.
+    - dataset: SUES-200
+      task: Satellite-to-Drone geo-localization retrieval
+      split: 300m
+      metric: R@1
+      method: S3Geo
+      value: 100.00%
+      source: Table 2
+      official_or_reproduced: reproduced
+      verified: false
+      notes: Official SUES-200 flight-height split in the main comparison table; requires manual leaderboard checking.
+    - dataset: SUES-200
+      task: Satellite-to-Drone geo-localization retrieval
+      split: 300m
+      metric: AP
+      method: S3Geo
+      value: 99.35%
+      source: Table 2
+      official_or_reproduced: reproduced
+      verified: false
+      notes: Official SUES-200 flight-height split in the main comparison table; requires manual leaderboard checking.
+    table_evidence_notes: University-1652 values come from the overall rows of Table 1. SUES-200 values come from the standard
+      150m, 200m, 250m, and 300m drone-height splits in Table 2 for both retrieval directions. Table 3 is excluded because
+      it reports zero-shot cross-dataset transfer rather than the standard in-dataset protocol. Tables 4-7 are excluded because
+      they contain ablations or controlled variants rather than flagship main-protocol results. All extracted rows remain
+      unverified pending manual checking.
+    code_url: null
+    needs_review: true
+  automation:
+    last_processed_date: '2026-10-26'
+- id: 5d596544582d
+  title: 'MoVeLoc: Motion-Compensated Voting and Selective Gated Handoff for GNSS-Denied UAV Geo-Localization'
+  year: 2026
+  venue: Zenodo (CERN European Organization for Nuclear Research)
+  authors:
+  - Haohong Chen
+  abstract: 'This archive contains the code, frozen model checkpoint, measurement calibration, and authoritative evaluation
+    artifacts for the article “MoVeLoc: Motion-Compensated Voting and Selective Gated Handoff for GNSS-Denied UAV Geo-Localization.”
+    MoVeLoc is a sequential enhancement system that can be stacked on top of a cross-view image retriever to localize a GNSS-denied
+    UAV by matching downward-looking images against a geo-referenced satellite gallery. The first stage, motion-compensated
+    voting (MoVe), transforms the top-k retrieval hypotheses of consecutive frames into a common map frame using inter-frame
+    relative displacement, so that geometrically consistent candidates reinforce each other through spatial accumulation.
+    The second stage, selective gated handoff (SGH), applies a score-margin gate and an innovation-consistency gate to decide
+    whether the consensus may become an absolute position measurement, which a Bayesian filter then propagates. Contents code/scripts/
+    — full pipeline source: retriever training, featurization, vote-cache construction, MoVe front end, SGH gating, Bayesian
+    recursion, and the frozen replay scripts that regenerate every number in the papercheckpoints/ — the frozen “ours” retriever
+    checkpoint (ViT-B/16, 384 px)calibration/ — DEV-seg10 score–error dumps used to fit the isotonic measurement-noise calibration
+    of each retriever, frozen before TEST evaluationresults/ — the JSON artifacts backing each paper table (mapping table
+    in README.md)docs/RESULTS.md — frozen experiment logDatasets are the public UAV-VisLoc benchmarks (2026 and 2024 editions)
+    and are not redistributed. All evaluation protocols (motion stream, candidate construction, calibration, gates, seeds)
+    are specified in README.md; scripts/e3_nav/plugplay3_unified.py is the single entry point for replaying the main results
+    with built-in self-checks. Released under the MIT license.'
+  publication_date: '2026-10-20'
+  urls:
+    paper: https://doi.org/10.5281/zenodo.23493435
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: 10.5281/zenodo.23493435
+    arxiv_id: ''
+    openalex_id: https://openalex.org/W7223054602
+  discovery:
+    found_date: '2026-10-26'
+    found_by:
+    - source: openalex
+      keyword: UAV cross-view geo-localization
+    - source: openalex
+      keyword: UAV-view geo-localization
+    - source: openalex
+      keyword: GNSS-denied UAV visual localization
+    - source: openalex
+      keyword: UAV-VisLoc
+    last_seen_date: '2026-10-26'
+  status: parsed
+  verified: false
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: navigation_aided
+    relevance_score: 0.9
+    tags:
+    - GNSS-denied
+    - sequential-localization
+    - cross-view-retrieval
+    - Bayesian-filter
+    - motion-compensation
+    - gating
+    datasets:
+    - UAV-VisLoc
+    possible_leaderboard: false
+    reason: Paper presents a sequential enhancement system stacked on a cross-view image retriever to localize a GNSS-denied
+      UAV by matching downward-looking images to a satellite gallery, using motion-compensated voting and gated handoff with
+      a Bayesian filter. It is UAV cross-view geo-localization with a navigation/filtering emphasis. Datasets listed are UAV-VisLoc
+      (2026 and 2024 editions); other known benchmark names were not confirmed in the abstract, so only UAV-VisLoc is included.
+      No leaderboard-style benchmark comparison is clearly indicated.
+    needs_review: false
+    minimax_main_category: navigation_aided
+  summary:
+    summary_en: MoVeLoc addresses sequential geo-localization of GNSS-denied UAVs by enhancing a cross-view image retriever
+      with temporal information. The system matches downward-looking UAV imagery against a geo-referenced satellite gallery,
+      then applies motion-compensated voting to transform the top-k retrieval hypotheses from consecutive frames into a common
+      map frame. Geometrically consistent candidates are spatially accumulated so that mutually reinforcing observations strengthen
+      the estimated location. A selective gated handoff stage uses both score-margin and innovation-consistency gates to determine
+      when the accumulated consensus is reliable enough to serve as an absolute position measurement. This measurement is
+      then propagated with a Bayesian filter. The released pipeline includes retriever training and featurization, vote-cache
+      construction, motion compensation, gating, Bayesian recursion, calibration, and frozen replay scripts. Evaluation uses
+      the public UAV-VisLoc benchmarks, specifically its 2026 and 2024 editions, with DEV-seg10 data used to fit isotonic
+      measurement-noise calibration before test evaluation. The abstract identifies these benchmarks and the calibration protocol
+      but provides no explicit quantitative results, so no performance effects or metric values can be verified from the supplied
+      evidence.
+    main_category: navigation_aided
+    category_confirmed: true
+    classification_reason: The paper is best classified as navigation_aided because it explicitly targets GNSS-denied UAV
+      localization and integrates sequential image retrieval, motion compensation, gated measurement updates, and Bayesian
+      state propagation. Although it depends on cross-view image retrieval, its principal contribution is a navigation-oriented
+      sequential localization and filtering system rather than a standalone retrieval or fine-pose method.
+    benchmarks:
+    - UAV-VisLoc 2026
+    - UAV-VisLoc 2024
+    main_modules:
+    - Cross-view image retriever with a frozen ViT-B/16 384 px checkpoint
+    - Top-k sequential retrieval-hypothesis construction
+    - Motion-compensated voting for frame-to-map transformation and spatial candidate accumulation
+    - Selective gated handoff with score-margin and innovation-consistency gates
+    - Isotonic measurement-noise calibration using DEV-seg10
+    - Bayesian filter for absolute-position measurement propagation
+    reported_results: []
+    leaderboard_metrics: []
+    table_evidence_notes: The supplied abstract states that the repository contains JSON artifacts supporting the paper tables
+      and a frozen experiment log, but no explicit result table, split definition, metric name, numerical value, or flagship-result
+      row is present in the provided evidence. Therefore, no leaderboard metrics can be extracted or safely associated with
+      a canonical UAV-VisLoc protocol. The UAV-VisLoc 2026 and 2024 editions are confirmed as the public benchmarks used,
+      and DEV-seg10 is identified only as calibration data rather than a reported leaderboard evaluation.
+    code_url: null
+    needs_review: true
+  automation:
+    last_processed_date: '2026-10-26'
+- id: ffb364f49abb
+  title: 'KoSim-GL: A Large-Scale Simulation-Based Dataset for UAV Cross-View Geo-Localization in Korean Urban Environments'
+  year: 2026
+  venue: Electronics
+  authors:
+  - Heejin Ahn
+  - C S Lee
+  - S H Lee
+  - Hyeonjoong Wi
+  - Insung Jang
+  - Dong‐Geol Choi
+  abstract: We propose KoSim-GL, a large-scale vision-based geo-localization dataset for drone positioning in GPS-denied environments.
+    Geo-localization estimates a drone’s location by matching drone-view imagery against a geo-referenced satellite image
+    database, offering a reliable alternative to GPS under conditions such as signal jamming, spoofing, or degradation in
+    dense urban canyons. Although this task is challenging due to the domain gap between drone-view and satellite-view imagery,
+    existing benchmarks are built predominantly around urban environments in the United States and China, leaving South Korea
+    largely unrepresented, despite its distinctive landscape in which mountainous terrain coexists with dense high-rise districts
+    and low-rise residential neighborhoods. To address this gap, we introduce KoSim-GL, constructed from drone-view images
+    captured via an AirSim- and ROS-based flight simulator and satellite images collected through the Google Maps Tile API,
+    covering the urban area of Daejeon, South Korea. Its key feature is a multi-view configuration that simultaneously captures
+    five views, one nadir and four oblique, at each flight position across altitudes from 100 m to 600 m, enabling robust
+    localization even in feature-sparse environments where nadir-only matching is prone to fail. In total, KoSim-GL comprises
+    2,450,315 drone images and 1704 satellite images. We further provide systematic comparisons against five existing benchmarks
+    and baseline evaluations of ten representative geo-localization models under single- and multi-view settings. Experimental
+    results show that the multi-view configuration substantially improves localization performance; for example, FSRA improves
+    Recall@1 from 44.08% (single-view) to 65.37% (multi-view), a gain of 21.29 percentage points. The dataset is publicly
+    available.
+  publication_date: '2026-06-19'
+  urls:
+    paper: https://doi.org/10.3390/electronics15122720
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: 10.3390/electronics15122720
+    arxiv_id: ''
+    openalex_id: https://openalex.org/W7165145298
+  discovery:
+    found_date: '2026-07-14'
+    found_by:
+    - source: openalex
+      keyword: DenseUAV
+    - source: openalex
+      keyword: Game4Loc
+    - source: openalex
+      citation_of: University-1652
+      seed_title: 'University-1652: A Multi-view Multi-source Benchmark for Drone-based Geo-localization'
+    - source: openalex
+      citation_of: SUES-200
+      seed_title: 'SUES-200: A Multi-height Multi-scene Cross-view Image Benchmark Across Drone and Satellite'
+    - source: openalex
+      citation_of: DenseUAV
+      seed_title: Vision-Based UAV Self-Positioning in Low-Altitude Urban Environments
+    - source: openalex
+      citation_of: GTA-UAV
+      seed_title: 'Game4Loc: A UAV Geo-Localization Benchmark from Game Data'
+    last_seen_date: '2026-07-14'
+  status: parsed
+  verified: false
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: retrieval
+    relevance_score: 0.97
+    tags:
+    - dataset
+    - simulation
+    - multi-view
+    - drone-to-satellite
+    - AirSim
+    - Korean-urban
+    datasets:
+    - KoSim-GL
+    possible_leaderboard: true
+    reason: Introduces a large-scale simulated UAV-to-satellite cross-view geo-localization dataset (KoSim-GL) with multi-view
+      drone imagery and satellite tiles, plus baseline retrieval evaluations of ten geo-localization models.
+    needs_review: false
+    minimax_main_category: retrieval
+  summary:
+    summary_en: KoSim-GL addresses vision-based UAV geo-localization in GPS-denied environments, where a drone-view image
+      is matched against a geo-referenced satellite-image database despite substantial cross-view appearance differences.
+      The paper introduces a simulation-based dataset designed specifically for South Korean urban landscapes, including mountainous
+      terrain, dense high-rise districts, and low-rise residential areas. Drone imagery is generated using an AirSim- and
+      ROS-based flight simulator, while satellite imagery is obtained through the Google Maps Tile API. The dataset covers
+      urban Daejeon and uses a five-view configuration consisting of one nadir view and four oblique views at each flight
+      position, sampled across altitudes from 100 m to 600 m. It contains 2,450,315 drone images and 1,704 satellite images.
+      The authors compare KoSim-GL with five existing benchmarks and evaluate ten representative geo-localization models under
+      single-view and multi-view settings. The reported results indicate that multi-view matching improves localization performance,
+      including an increase in FSRA Recall@1 from 44.08% to 65.37%. The dataset is stated to be publicly available, but no
+      direct download or repository URL is provided in the abstract.
+    main_category: retrieval
+    category_confirmed: true
+    classification_reason: 'The task is drone-to-satellite image matching for geographic place retrieval: the drone location
+      is estimated by retrieving a corresponding geo-referenced satellite image. The paper primarily contributes a dataset
+      and benchmark rather than a pose-refinement, unified localization, or navigation-aided system.'
+    benchmarks:
+    - KoSim-GL
+    main_modules:
+    - AirSim- and ROS-based drone flight simulation
+    - Google Maps Tile API satellite-image collection
+    - Five-view capture configuration with one nadir and four oblique views
+    - Multi-altitude image collection from 100 m to 600 m
+    - Single-view and multi-view UAV-to-satellite geo-localization evaluation
+    - Evaluation of ten representative retrieval models
+    reported_results:
+    - KoSim-GL contains 2,450,315 drone images and 1,704 satellite images.
+    - Multi-view configuration substantially improves geo-localization performance over single-view matching.
+    - FSRA Recall@1 increases from 44.08% with single-view input to 65.37% with multi-view input.
+    - The dataset is reported to be publicly available.
+    leaderboard_metrics: []
+    table_evidence_notes: No explicit result tables or table-like evidence are included in the supplied material. The abstract
+      reports an FSRA Recall@1 comparison for the new KoSim-GL dataset, but the available evidence does not identify a canonical
+      aggregate leaderboard protocol or provide a verifiable table entry, so no leaderboard metric is extracted. The dataset
+      appears eligible because it is stated to be publicly available, but no download URL is supplied.
+    code_url: null
+    needs_review: true
+  automation:
+    last_processed_date: '2026-10-26'
+- id: 921a8f0c8548
+  title: Hierarchical Spatial Discrimination for UAV Geo-Localization Under Continuous-Coverage Partial Matching
+  year: 2026
+  venue: Remote Sensing
+  authors:
+  - Qiang Li
+  - Huawei Liu
+  - Junhua Zhang
+  - Baoqing Li
+  - Jianpo Liu
+  abstract: 'Cross-view geo-localization enables GNSS-denied UAV navigation by matching a drone image against a geo-tagged
+    satellite database, a key capability for remote sensing. Existing methods perform well on landmark benchmarks but struggle
+    in continuous-coverage scenarios, where a drone image only partially overlaps surrounding tiles and many works sidestep
+    the issue by discarding partial pairs. This setting requires hierarchical spatial discrimination: the model must first
+    separate distant regions and then distinguish nearby tiles using fine-grained spatial layout. We build this hierarchy
+    into three pipeline stages. At the feature level, intermediate Vision Transformer (ViT) layers with Global Average Pooling
+    provide an effective spatially aware representation at no extra parameter cost. At the training level, Dynamic Curriculum
+    Mining (DCM), our primary training contribution, progressively shifts in-batch negative mining from coarse geographic
+    discrimination toward fine-grained visual confusions. At the inference level, the Spatial Overlap Estimation Module (SOEM)
+    estimates drone–satellite overlap from patch-token matching and re-ranks the top candidates. On GTA-UAV cross-area, our
+    method achieves 71.75% Recall@1 and 222.0 m Dis@1; on DenseUAV, it reaches 96.22% Recall@1. In zero-shot cross-dataset
+    evaluation on the real-world UAV-VisLoc dataset, the GTA-UAV-trained model achieves 35.39% Recall@1 without target-domain
+    adaptation, providing additional evidence of transfer to real UAV imagery. Rather than relying on heavy auxiliary modules,
+    the framework deliberately keeps additional architectural overhead minimal: layer truncation reduces backbone inference
+    cost by about 16%, while SOEM introduces only 0.08 M additional parameters.'
+  publication_date: '2026-10-01'
+  urls:
+    paper: https://doi.org/10.3390/rs18193368
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: 10.3390/rs18193368
+    arxiv_id: ''
+    openalex_id: https://openalex.org/W7215114640
+  discovery:
+    found_date: '2026-10-26'
+    found_by:
+    - source: openalex
+      keyword: DenseUAV
+    - source: openalex
+      keyword: UAV-VisLoc
+    - source: openalex
+      keyword: GTA-UAV
+    - source: openalex
+      citation_of: University-1652
+      seed_title: 'University-1652: A Multi-view Multi-source Benchmark for Drone-based Geo-localization'
+    - source: openalex
+      citation_of: SUES-200
+      seed_title: 'SUES-200: A Multi-height Multi-scene Cross-view Image Benchmark Across Drone and Satellite'
+    - source: openalex
+      citation_of: DenseUAV
+      seed_title: Vision-Based UAV Self-Positioning in Low-Altitude Urban Environments
+    - source: openalex
+      citation_of: GTA-UAV
+      seed_title: 'Game4Loc: A UAV Geo-Localization Benchmark from Game Data'
+    last_seen_date: '2026-10-26'
+  status: parsed
+  verified: false
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: retrieval
+    relevance_score: 0.97
+    tags:
+    - uav
+    - cross-view
+    - partial-matching
+    - continuous-coverage
+    - vit
+    - curriculum-mining
+    - re-ranking
+    datasets:
+    - GTA-UAV
+    - DenseUAV
+    - UAV-VisLoc
+    possible_leaderboard: true
+    reason: Paper addresses UAV-to-satellite cross-view geo-localization with retrieval benchmarks (GTA-UAV, DenseUAV, UAV-VisLoc)
+      and reports Recall@1, fitting the retrieval category.
+    needs_review: false
+    minimax_main_category: retrieval
+  summary:
+    summary_en: This paper addresses cross-view geo-localization for GNSS-denied UAV navigation in continuous-coverage settings,
+      where a drone image overlaps only partially with satellite tiles and standard global retrieval discards these difficult
+      pairs. The proposed hierarchy separates distant geographic regions before distinguishing nearby tiles through fine-grained
+      spatial layout. Its design uses truncated intermediate Vision Transformer features with Global Average Pooling, Dynamic
+      Curriculum Mining to progressively shift negative mining from coarse geographic separation toward visually similar fine-grained
+      confusions, and a Spatial Overlap Estimation Module that infers drone–satellite overlap from patch-token matching and
+      re-ranks top candidates. Evaluation covers GTA-UAV cross-area retrieval, DenseUAV, and zero-shot transfer to UAV-VisLoc.
+      The abstract reports 71.75% Recall@1 and 222.0 m Dis@1 on GTA-UAV cross-area, 96.22% Recall@1 on DenseUAV, and 35.39%
+      Recall@1 on UAV-VisLoc without target-domain adaptation. Layer truncation is reported to reduce backbone inference cost
+      by about 16%, while the overlap module adds 0.08 M parameters. No code URL is stated.
+    main_category: retrieval
+    category_confirmed: true
+    classification_reason: The paper directly addresses cross-view image retrieval for UAV geo-localization by ranking geo-tagged
+      satellite tiles against drone imagery. Although overlap estimation and re-ranking add spatial reasoning, the core task
+      and evaluated metrics remain retrieval rather than pose localization or navigation assistance.
+    benchmarks:
+    - GTA-UAV
+    - DenseUAV
+    - UAV-VisLoc
+    main_modules:
+    - Truncated intermediate Vision Transformer feature extraction with Global Average Pooling
+    - Dynamic Curriculum Mining for progressive coarse-to-fine in-batch negative mining
+    - Spatial Overlap Estimation Module based on patch-token matching and candidate re-ranking
+    reported_results:
+    - 'GTA-UAV cross-area: 71.75% Recall@1 and 222.0 m Dis@1'
+    - 'DenseUAV: 96.22% Recall@1'
+    - 'UAV-VisLoc zero-shot cross-dataset evaluation without target-domain adaptation: 35.39% Recall@1'
+    - Layer truncation reduces backbone inference cost by about 16%
+    - Spatial Overlap Estimation Module adds 0.08 M parameters
+    leaderboard_metrics:
+    - dataset: GTA-UAV
+      task: Cross-area UAV-to-satellite cross-view geo-localization
+      split: Cross-area
+      metric: Recall@1
+      method: Hierarchical Spatial Discrimination framework
+      value: '71.75'
+      source: Abstract
+      official_or_reproduced: official
+      verified: false
+      notes: Flagship method result stated in the abstract; no explicit result table or full-paper evidence was provided for
+        manual verification.
+    - dataset: GTA-UAV
+      task: Cross-area UAV-to-satellite cross-view geo-localization
+      split: Cross-area
+      metric: Dis@1
+      method: Hierarchical Spatial Discrimination framework
+      value: 222.0 m
+      source: Abstract
+      official_or_reproduced: official
+      verified: false
+      notes: Flagprint method result stated in the abstract; no explicit result table or full-paper evidence was provided
+        for manual verification.
+    - dataset: DenseUAV
+      task: UAV-to-satellite cross-view geo-localization
+      split: Overall
+      metric: Recall@1
+      method: Hierarchical Spatial Discrimination framework
+      value: '96.22'
+      source: Abstract
+      official_or_reproduced: official
+      verified: false
+      notes: The abstract does not identify a split; aggregate status should be checked against the full result table.
+    table_evidence_notes: Metrics are explicitly stated in the abstract, but no full-paper tables were supplied. The GTA-UAV
+      protocol is identified as cross-area, while DenseUAV and UAV-VisLoc split labels and aggregate table rows cannot be
+      verified. All extracted rows are therefore marked unverified. No code or project repository URL is provided.
+    code_url: null
+    needs_review: true
+  automation:
+    last_processed_date: '2026-10-26'
+- id: 5c82a3abe1fd
+  title: DSM-Free UAV Visual Localization via Latent-Depth Variable Projection and Structure-Adaptive Coupling
+  year: 2026
+  venue: arXiv
+  authors:
+  - Yibin Ye
+  - Xichao Teng
+  - Shuo Chen
+  - Xiaokai Song
+  - Yuli Sun
+  - Qifeng Yu
+  - Zhang Li
+  abstract: Visual localization enables unmanned aerial vehicles (UAVs) to maintain absolute positioning in GNSS-denied environments.
+    A common approach matches UAV images with geo-tagged orthographic maps and estimates camera pose using Perspective-n-Point
+    (PnP) with elevations from Digital Surface Models (DSMs). However, accurate and up-to-date DSMs are often unavailable
+    in practice. Orthographic-perspective geometry (OPG) enables DSM-free localization in scenes with varying elevations,
+    yet existing methods typically estimate pose indirectly through intermediate matrix estimation and decomposition. To address
+    this limitation, we propose Latent-Depth Variable Projection (LDVP), which treats the unknown scales along perspective
+    viewing rays as latent depths. By analytically eliminating these depths and solving for the horizontal camera center in
+    closed form given the rotation, LDVP reduces nonlinear estimation to a rotation-only problem, enabling direct recovery
+    of metric horizontal position without assuming a planar scene. To improve localization robustness across different scene
+    structures, we further introduce Structure-Adaptive Coupling (SAC), which uses relative scene structure inferred from
+    monocular depth estimation to select LDVP when the matched points are not dominated by a single plane, and Planar-PnP
+    otherwise. Our local observability analysis reveals how scene elevation variation affects the geometric constraints of
+    OPG, providing a basis for this adaptive strategy. Extensive experiments show that LDVP consistently outperforms existing
+    OPG-based DSM-free methods, while SAC further improves robustness across diverse scenes and substantially narrows the
+    gap to DSM-based localization. Code will be released at https://github.com/UAV-AVL/LDVP-SAC.
+  publication_date: '2026-10-10'
+  urls:
+    paper: http://arxiv.org/abs/2610.14945v1
+    pdf: http://arxiv.org/pdf/2610.14945v1
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: 10.48550/arxiv.2610.14945
+    arxiv_id: 2610.14945v1
+    openalex_id: https://openalex.org/W7221827528
+  discovery:
+    found_date: '2026-10-26'
+    found_by:
+    - source: arxiv
+      keyword: UAV-view geo-localization
+    - source: arxiv
+      keyword: drone-view geo-localization
+    - source: openalex
+      keyword: GNSS-denied UAV visual localization
+    last_seen_date: '2026-10-26'
+  status: parsed
+  verified: false
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: fine_pose_localization
+    relevance_score: 0.9
+    tags:
+    - DSM-free
+    - orthographic-perspective geometry
+    - pose estimation
+    - PnP
+    - monocular depth
+    - UAV localization
+    datasets: []
+    possible_leaderboard: false
+    reason: Paper addresses UAV visual localization by matching UAV images to geo-tagged orthographic maps and estimating
+      camera pose (fine pose localization), a cross-view geo-localization task. It is UAV-related and cross-view (perspective
+      vs orthographic). No specific benchmark datasets are named in the abstract, so datasets left empty.
+    needs_review: false
+    minimax_main_category: fine_pose_localization
+  summary:
+    summary_en: This paper addresses absolute visual localization for GNSS-denied UAVs when accurate, up-to-date digital surface
+      models are unavailable. It proposes Latent-Depth Variable Projection (LDVP), an orthographic–perspective geometric formulation
+      that treats each correspondence’s viewing-ray scale as a latent depth. These depths are analytically eliminated, and
+      the horizontal camera center is profiled in closed form for a given rotation, leaving rotation-only nonlinear optimization
+      and enabling direct metric horizontal-position recovery without a planar-scene assumption. Structure-Adaptive Coupling
+      (SAC) uses relative scene structure inferred from monocular depth to select LDVP for non-planar matches and Planar-PnP
+      for dominant-plane scenes. The method is evaluated with synthetic elevation variations and on the AnyVisLoc and OrthoLoC
+      benchmarks, using RoMa and several sparse matching pipelines. Results show that LDVP outperforms the OPE and AH DSM-free
+      baselines, while SAC generally improves LDVP and reduces the gap to DSM-based localization. Ablations examine the structural
+      threshold, matching methods, and monocular-depth models.
+    main_category: fine_pose_localization
+    category_confirmed: true
+    classification_reason: The work performs metric UAV camera-pose and horizontal-position estimation from correspondences
+      between perspective UAV images and geo-tagged orthographic maps. Its central contribution is geometric fine pose localization,
+      including direct horizontal camera-center estimation and structure-adaptive solver selection, rather than image retrieval,
+      navigation assistance, or a unified global-to-local system.
+    benchmarks:
+    - AnyVisLoc
+    - OrthoLoC
+    main_modules:
+    - Latent-Depth Variable Projection (LDVP)
+    - Structure-Adaptive Coupling (SAC)
+    - Orthographic–perspective point-to-line incidence constraints
+    - Analytic latent-depth elimination and horizontal-center profiling
+    - MSAC-based robust pose estimation
+    - Planar-PnP fallback
+    - Monocular-depth-based dominant-plane estimation
+    - Local observability analysis
+    reported_results:
+    - LDVP consistently outperforms the OPE and AH DSM-free methods on the evaluated AnyVisLoc and OrthoLoC protocols.
+    - LDVP+SAC improves LDVP on both datasets, with the clearest gains generally at the 3 m and 5 m accuracy thresholds.
+    - Synthetic experiments show that increasing scene elevation variation benefits the OPG-based methods, including LDVP,
+      while weakening the planar assumption used by Planar-PnP.
+    - With RoMa correspondences, LDVP+SAC achieves 51.35%, 81.51%, and 88.36% A@1, A@3, and A@5 on AnyVisLoc, with a 0.97
+      m median horizontal-position error.
+    - With RoMa correspondences, LDVP+SAC achieves 39.34%, 62.05%, and 70.33% A@1, A@3, and A@5 on OrthoLoC, with a 1.66 m
+      median horizontal-position error.
+    - SAC remains beneficial across the tested SuperPoint+LightGlue, DISK+LightGlue, and ALIKED+LightGlue matching pipelines
+      and across the tested monocular-depth models.
+    leaderboard_metrics: []
+    table_evidence_notes: The paper explicitly reports results on AnyVisLoc and OrthoLoC, but neither dataset appears in the
+      repository's tracked benchmark list. No explicit public download or project page for either benchmark is provided in
+      the supplied text, so these results are omitted from leaderboard_metrics. The synthetic results and ablation tables
+      are also excluded. The reported numerical values above are taken from the main real-world comparison table using RoMa
+      correspondences.
+    code_url: https://github.com/UAV-AVL/LDVP-SAC
+    needs_review: true
+  automation:
+    last_processed_date: '2026-10-26'
+- id: c449c7026c92
+  title: Cross-view visual positioning of unmanned aerial vehicle based on the hierarchical feature guided fusion pyramid
+    network
+  year: 2026
+  venue: Engineering Applications of Artificial Intelligence
+  authors:
+  - Bolong Yu
+  - Xuexian Geng
+  - Zhixiang Fang
+  - Shengwu Xiong
+  - Jiaming Qin
+  abstract: ''
+  publication_date: '2026-06-25'
+  urls:
+    paper: https://doi.org/10.1016/j.engappai.2026.115520
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: 10.1016/j.engappai.2026.115520
+    arxiv_id: ''
+    openalex_id: https://openalex.org/W7165892440
+  discovery:
+    found_date: '2026-07-14'
+    found_by:
+    - source: openalex
+      citation_of: SUES-200
+      seed_title: 'SUES-200: A Multi-height Multi-scene Cross-view Image Benchmark Across Drone and Satellite'
+    - source: openalex
+      citation_of: DenseUAV
+      seed_title: Vision-Based UAV Self-Positioning in Low-Altitude Urban Environments
+    - source: openalex
+      citation_of: GTA-UAV
+      seed_title: 'Game4Loc: A UAV Geo-Localization Benchmark from Game Data'
+    last_seen_date: '2026-07-14'
+  status: parsed
+  verified: false
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: retrieval
+    relevance_score: 0.85
+    tags:
+    - cross-view
+    - UAV
+    - feature-fusion
+    - pyramid-network
+    - hierarchical-fusion
+    datasets: []
+    possible_leaderboard: false
+    reason: Title indicates cross-view visual positioning of UAVs using a hierarchical feature guided fusion pyramid network,
+      consistent with UAV cross-view geo-localization. Abstract is empty, so datasets and exact task (retrieval vs fine pose)
+      cannot be confirmed; likely retrieval but uncertain.
+    needs_review: true
+    minimax_main_category: retrieval
+  summary:
+    summary_en: This paper addresses cross-view visual positioning for unmanned aerial vehicles, aiming to match UAV imagery
+      with geographically corresponding ground-level or reference-view images under substantial viewpoint and appearance changes.
+      The proposed hierarchical feature guided fusion pyramid network combines multi-scale hierarchical features with guided
+      fusion and pyramid-based representation to improve cross-view feature extraction and matching. The supplied record contains
+      no abstract, full-paper text, dataset names, benchmark protocols, result tables, or implementation links. Consequently,
+      the datasets and benchmarks used cannot be identified, and no experimental effects or quantitative leaderboard values
+      can be verified. The work is best classified as retrieval because its central objective is cross-view image matching
+      or visual place recognition, rather than direct regression of fine-grained pose, unified global-to-local localization,
+      or navigation-aided localization.
+    main_category: retrieval
+    category_confirmed: true
+    classification_reason: 'The title explicitly frames the task as cross-view visual positioning and identifies a hierarchical
+      feature fusion pyramid architecture, indicating image-retrieval or cross-view matching rather than numerical fine-pose
+      regression. The category is refined from the provided label only to the same valid category: retrieval. No full text
+      is available to examine the task formulation in greater detail.'
+    benchmarks: []
+    main_modules:
+    - hierarchical feature extraction
+    - feature-guided fusion
+    - multi-scale pyramid network
+    - cross-view visual feature matching
+    reported_results: []
+    leaderboard_metrics: []
+    table_evidence_notes: No abstract or full-paper text was provided, and no dataset, metric, value, method-result row, or
+      table-like evidence was available. Therefore, no leaderboard metrics could be extracted or verified, and no claims about
+      experimental performance are made.
+    code_url: null
+    needs_review: true
+  automation:
+    last_processed_date: '2026-10-26'
+- id: 98b7f741378f
+  title: 'CIDNet: Collaborative uncertainty-aware learning of invariance and discrimination for cross-view geo-localization'
+  year: 2026
+  venue: Pattern Recognition
+  authors:
+  - Jianghua Li
+  - Yixin He
+  - Yabo Hui
+  - Tengyu Liu
+  - Xiaofeng Wang
+  abstract: ''
+  publication_date: '2026-10-21'
+  urls:
+    paper: https://doi.org/10.1016/j.patcog.2026.115160
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: 10.1016/j.patcog.2026.115160
+    arxiv_id: ''
+    openalex_id: https://openalex.org/W7223154960
+  discovery:
+    found_date: '2026-10-26'
+    found_by:
+    - source: openalex
+      citation_of: University-1652
+      seed_title: 'University-1652: A Multi-view Multi-source Benchmark for Drone-based Geo-localization'
+  status: parsed
+  verified: false
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: retrieval
+    relevance_score: 0.85
+    tags:
+    - cross-view
+    - uncertainty-aware
+    - invariance-discrimination
+    - drone-to-satellite
+    datasets: []
+    possible_leaderboard: false
+    reason: Title indicates cross-view geo-localization with collaborative uncertainty-aware learning of invariance and discrimination,
+      a typical retrieval-style CVGL method; abstract is empty so datasets and UAV-specific benchmarks cannot be confirmed.
+    needs_review: true
+    minimax_main_category: retrieval
+  summary:
+    summary_en: CIDNet addresses cross-view geo-localization, particularly matching imagery captured from UAV viewpoints with
+      imagery from different perspectives such as satellite maps. Its central design is a collaborative uncertainty-aware
+      framework that jointly learns invariant representations and discriminative features, encouraging features to remain
+      consistent across large viewpoint and appearance changes while retaining enough information to distinguish the correct
+      geographic location. The proposed architecture is intended to reduce the impact of uncertain correspondence and ambiguous
+      visual cues in drone-to-satellite matching. However, the supplied abstract and full-paper text are empty, so the exact
+      components, training objectives, backbone configuration, and implementation details cannot be verified. No datasets,
+      benchmarks, experimental outcomes, numerical results, or public repository information are stated in the available material.
+      Consequently, the work can be classified as a retrieval-based cross-view geo-localization method, but its dataset-level
+      evidence and leaderboard-ready quantitative results cannot be extracted.
+    main_category: retrieval
+    category_confirmed: true
+    classification_reason: The paper title explicitly describes cross-view geo-localization, and the available abstract metadata
+      indicates drone-to-satellite matching. This is a image-retrieval problem rather than fine pose localization, navigation-aided
+      localization, a unified global-to-local method, or a survey. The category can be confirmed from the title and tags despite
+      the absence of abstract and full-paper text.
+    benchmarks: []
+    main_modules:
+    - Collaborative uncertainty-aware learning framework
+    - Invariance-learning component
+    - Discrimination-learning component
+    reported_results: []
+    leaderboard_metrics: []
+    table_evidence_notes: The abstract and optional full-paper text are empty, and no tables or table-like numerical evidence
+      were provided. Therefore, no dataset names, benchmark splits, metrics, values, or flagship-method results can be extracted.
+      No leaderboard rows are included, and no claim of public dataset availability can be verified from the supplied material.
+    code_url: null
+    needs_review: true
+  automation:
+    last_processed_date: '2026-10-26'
+- id: 42c160dae433
+  title: 'BiMLoc: Bidirectional Feature Modulation for UAV visual localization with satellite maps in GNSS-unavailable environments'
+  year: 2026
+  venue: Robotics and Autonomous Systems
+  authors:
+  - Ruiyang Zhang
+  - Yu Peng
+  - Bo Chen
+  - Benkuan Wang
+  abstract: ''
+  publication_date: '2026-10-10'
+  urls:
+    paper: https://doi.org/10.1016/j.robot.2026.105800
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: 10.1016/j.robot.2026.105800
+    arxiv_id: ''
+    openalex_id: https://openalex.org/W7221315792
+  discovery:
+    found_date: '2026-10-26'
+    found_by:
+    - source: openalex
+      keyword: UAV-VisLoc
+    - source: openalex
+      citation_of: DenseUAV
+      seed_title: Vision-Based UAV Self-Positioning in Low-Altitude Urban Environments
+    last_seen_date: '2026-10-26'
+  status: parsed
+  verified: false
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: retrieval
+    relevance_score: 0.85
+    tags:
+    - UAV
+    - satellite
+    - cross-view
+    - GNSS-denied
+    - feature-modulation
+    - visual-localization
+    datasets: []
+    possible_leaderboard: false
+    reason: Title indicates UAV visual localization against satellite maps in GNSS-unavailable environments, which is cross-view
+      geo-localization; abstract is empty so datasets/metrics cannot be confirmed.
+    needs_review: true
+    minimax_main_category: retrieval
+  summary:
+    summary_en: BiMLoc addresses UAV visual localization in GNSS-unavailable environments by matching UAV imagery with georeferenced
+      satellite maps. The paper focuses on bidirectional feature modulation, designed to improve cross-view correspondence
+      and reduce the semantic and geometric discrepancy between aerial and satellite representations. Its technical design
+      combines visual features extracted from UAV observations and satellite references, applies modulation in both directions
+      to exchange complementary cross-view information, and then performs localization through feature comparison and matching.
+      The supplied record contains no abstract or full-paper text, so the exact implementation, localization procedure, training
+      strategy, and benchmark protocols cannot be confirmed. No datasets, numerical results, or explicit result tables are
+      provided; therefore, experimental effects cannot be stated and no leaderboard-ready metrics can be extracted. The available
+      title, venue, and tags support classifying the work as a cross-view visual geo-localization retrieval method rather
+      than fine pose estimation, navigation-aided localization, a unified global-to-local system, or a survey.
+    main_category: retrieval
+    category_confirmed: true
+    classification_reason: The title and tags explicitly describe UAV visual localization by matching aerial imagery against
+      satellite maps, indicating a cross-view image-retrieval task. Bidirectional feature modulation is used to improve the
+      learned matching representation rather than directly regressing a fine-grained pose.
+    benchmarks: []
+    main_modules:
+    - Bidirectional feature modulation between UAV and satellite-map features
+    - Cross-view visual feature extraction
+    - Feature comparison and map-reference retrieval for UAV localization
+    reported_results: []
+    leaderboard_metrics: []
+    table_evidence_notes: The abstract and full-paper text are absent, and no datasets, result tables, metric values, split
+      definitions, or experimental claims are available. No leaderboard rows can be included without fabricating evidence.
+    code_url: null
+    needs_review: true
+  automation:
+    last_processed_date: '2026-10-26'
+- id: 4f1b473ec20b
+  title: Active multi-view selection for UAV-satellite remote sensing image matching using Multi-Agent Reinforcement Learning
+  year: 2026
+  venue: International Journal of Remote Sensing
+  authors:
+  - Jude Gu
+  - Yujin Zhang
+  - Hongri Fan
+  abstract: 'Cross-view image matching between unmanned aerial vehicles (UAVs) and satellite platforms has emerged as a fundamental
+    technique for vision-based geo-localization and GNSS-denied navigation. While utilizing multi-view fusion can improve
+    retrieval accuracy by providing comprehensive scene information, it also incurs a cost that grows with the number of processed
+    views and may introduce correlated or ambiguous observations. Importantly, the benefit of selection is altitude dependent:
+    reducing the view set does not universally improve top-rank accuracy, and the principal advantage is an accuracy–efficiency
+    trade-off rather than uniform superiority over full fusion. To address this issue, we propose MARL-AVSF, an efficient
+    Multi-Agent Reinforcement Learning framework designed for active multi-view selection. Instead of passively fusing all
+    captured images, MARL-AVSF deploys a cooperative multi-agent system to intelligently select a minimal subset of highly
+    complementary viewpoints. Extensive experiments on the multi-height SUES-200 remote sensing benchmark demonstrate the
+    effectiveness of the proposed framework. By actively selecting only three critical views, MARL-AVSF achieves a Recall@1
+    of 77.50% at 200 m, compared with 75.00% for the 50-view full-fusion baseline, while reducing the number of processed
+    views by 94%. Across all four altitudes, the method improves mean Average Precision from 81.79% to 84.34%, but its mean
+    Recall@1 is 3.13% points lower than full fusion; at 150 m, the Recall@1 deficit is 10.00 points. These results qualify
+    the claim: selection improves ranking quality and efficiency on average, whereas its top-rank advantage is specific to
+    200 m.'
+  publication_date: '2026-10-06'
+  urls:
+    paper: https://doi.org/10.1080/01431161.2026.2739606
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: 10.1080/01431161.2026.2739606
+    arxiv_id: ''
+    openalex_id: https://openalex.org/W7220729000
+  discovery:
+    found_date: '2026-10-26'
+    found_by:
+    - source: openalex
+      citation_of: University-1652
+      seed_title: 'University-1652: A Multi-view Multi-source Benchmark for Drone-based Geo-localization'
+    - source: openalex
+      citation_of: SUES-200
+      seed_title: 'SUES-200: A Multi-height Multi-scene Cross-view Image Benchmark Across Drone and Satellite'
+    last_seen_date: '2026-10-26'
+  status: parsed
+  verified: false
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: retrieval
+    relevance_score: 0.95
+    tags:
+    - UAV-satellite matching
+    - multi-view fusion
+    - multi-agent reinforcement learning
+    - view selection
+    - geo-localization
+    datasets:
+    - SUES-200
+    possible_leaderboard: true
+    reason: Paper addresses UAV-satellite cross-view image matching for geo-localization, using MARL for active multi-view
+      selection, evaluated on SUES-200 with Recall@1 and mAP retrieval metrics.
+    needs_review: false
+    minimax_main_category: retrieval
+  summary:
+    summary_en: This paper addresses active view selection for UAV-to-satellite image matching, where fixed multi-view fusion
+      increases computation and may add redundant or ambiguous observations. Its proposed MARL-AVSF framework uses cooperative
+      multi-agent reinforcement learning to select a small, complementary subset of UAV views for cross-view geo-localization.
+      The system is evaluated on the multi-height SUES-200 remote sensing benchmark. The abstract reports that selecting three
+      critical views at 200 m achieves 77.50% Recall@1, compared with 75.00% for 50-view full fusion, while processing 94%
+      fewer views. Across all four altitudes, mean Average Precision increases from 81.79% to 84.34%, although mean Recall@1
+      is 3.13 percentage points below full fusion, with a 10.00-point deficit at 150 m. Thus, the main contribution is an
+      accuracy–efficiency trade-off rather than universal improvement in top-rank retrieval. The research category is confirmed
+      as retrieval because the task is UAV–satellite image matching and the evaluation uses retrieval metrics.
+    main_category: retrieval
+    category_confirmed: true
+    classification_reason: The paper directly studies UAV-to-satellite cross-view image matching for geo-localization and
+      evaluates matching quality with Recall@1 and Average Precision, making retrieval the appropriate category rather than
+      fine pose, unified localization, or navigation-aided localization.
+    benchmarks:
+    - SUES-200
+    main_modules:
+    - Cooperative multi-agent reinforcement learning framework
+    - Active multi-view selection agent
+    - UAV viewpoint complementarity assessment
+    - Selected-view feature fusion for UAV–satellite image matching
+    reported_results:
+    - At 200 m, selecting three views with MARL-AVSF obtains 77.50% Recall@1 versus 75.00% for 50-view full fusion.
+    - At 200 m, MARL-AVSF reduces the number of processed views by 94% relative to full fusion.
+    - Across four altitudes, mean Average Precision increases from 81.79% for full fusion to 84.34% for MARL-AVSF.
+    - Across four altitudes, mean Recall@1 for MARL-AVSF is 3.13 percentage points lower than full fusion.
+    - At 150 m, MARL-AVSF has a 10.00-percentage-point Recall@1 deficit relative to full fusion.
+    leaderboard_metrics: []
+    table_evidence_notes: The abstract explicitly reports SUES-200 results, but no full-paper result tables or table-like
+      evidence are available to confirm canonical aggregate rows, split definitions, protocol details, or whether the reported
+      values correspond to the official leaderboard protocol. The altitude-specific result and the cross-altitude mean are
+      therefore omitted from leaderboard_metrics as required. The only available code_url value is null because no public
+      repository or download page is stated.
+    code_url: null
+    needs_review: true
+  automation:
+    last_processed_date: '2026-10-26'
+- id: b84535f9b452
+  title: 'AFGL-Net: adversarial frequency geo-localization network for robust cross-view geo-localization alignment'
+  year: 2026
+  venue: The Journal of Supercomputing
+  authors:
+  - He Xiao
+  - Guang Yang
+  - Q Y Liu
+  abstract: ''
+  publication_date: '2026-06-19'
+  urls:
+    paper: https://doi.org/10.1007/s11227-026-08664-6
+    pdf: ''
+    code: ''
+    project: ''
+  source:
+    semantic_scholar_id: ''
+    doi: 10.1007/s11227-026-08664-6
+    arxiv_id: ''
+    openalex_id: https://openalex.org/W7165133671
+  discovery:
+    found_date: '2026-07-14'
+    found_by:
+    - source: openalex
+      citation_of: University-1652
+      seed_title: 'University-1652: A Multi-view Multi-source Benchmark for Drone-based Geo-localization'
+    - source: openalex
+      citation_of: SUES-200
+      seed_title: 'SUES-200: A Multi-height Multi-scene Cross-view Image Benchmark Across Drone and Satellite'
+    last_seen_date: '2026-07-14'
+  status: parsed
+  verified: false
+  classification:
+    is_cvgl: true
+    is_uav_related: true
+    main_category: retrieval
+    relevance_score: 0.85
+    tags:
+    - cross-view
+    - geo-localization
+    - adversarial
+    - frequency-domain
+    - alignment
+    datasets: []
+    possible_leaderboard: false
+    reason: Title indicates a cross-view geo-localization network (AFGL-Net) with adversarial frequency alignment; UAV relevance
+      is plausible but not explicitly confirmed in the title, and no datasets or metrics are given in the abstract, so datasets
+      are left empty.
+    needs_review: true
+    minimax_main_category: retrieval
+  summary:
+    summary_en: AFGL-Net addresses robust cross-view geo-localization, particularly the alignment of UAV imagery captured
+      from different viewpoints and under potentially adverse frequency-domain variations. The proposed adversarial frequency
+      geo-localization network is designed to improve image matching across views by combining adversarial learning with frequency-domain
+      representations and alignment. The abstract and available text do not identify the specific network components in sufficient
+      detail, nor do they provide datasets, benchmark protocols, quantitative results, or a code repository. Consequently,
+      the paper’s technical modules can only be summarized at a high level from its title and stated focus. No experimental
+      effects can be confirmed from the supplied evidence because no explicit result tables or numerical comparisons are available.
+      The paper is best classified as a retrieval-based cross-view geo-localization method, rather than fine-pose localization,
+      unified global-to-local localization, navigation-aided localization, or a survey.
+    main_category: retrieval
+    category_confirmed: true
+    classification_reason: The title and abstract explicitly describe a geo-localization network for cross-view alignment
+      and robust matching between UAV views. This is a retrieval-style image localization problem, not a pose-refinement or
+      navigation-focused study.
+    benchmarks: []
+    main_modules:
+    - Adversarial learning for cross-view representation alignment
+    - Frequency-domain feature modeling
+    - Robust cross-view geo-localization network
+    reported_results: []
+    leaderboard_metrics: []
+    table_evidence_notes: No full-paper text, result tables, dataset names, benchmark protocols, or numerical values are provided.
+      Leaderboard metrics are therefore omitted. It cannot be determined whether any experiments use the repository’s tracked
+      datasets or a new public dataset.
+    code_url: null
+    needs_review: true
+  automation:
+    last_processed_date: '2026-10-26'

@@ -1,29 +1,30 @@
 # UAV-CVGL Classification Report
 
-Generated at: `2026-07-14T15:29:43`
+Generated at: `2026-10-26T07:42:54`
 
 ## Main Summary
 
 | Bucket | Count |
 |---|---:|
-| Algorithm Papers | 1 |
+| Algorithm Papers | 18 |
 | Survey Papers | 0 |
-| Unrelated Papers | 2 |
+| Unrelated Papers | 295 |
 | Error Papers | 0 |
-| Raw Papers | 29 |
+| Raw Papers | 0 |
 
 ## Category Counts
 
 | Category | Count |
 |---|---:|
-| retrieval | 1 |
-| unclassified | 29 |
-| unrelated | 2 |
+| fine_pose_localization | 3 |
+| navigation_aided | 5 |
+| retrieval | 16 |
+| survey | 3 |
+| unrelated | 286 |
 
 ## Status Counts
 
 | Status | Count |
 |---|---:|
-| parsed | 1 |
-| raw | 29 |
-| rejected | 2 |
+| parsed | 18 |
+| rejected | 295 |
